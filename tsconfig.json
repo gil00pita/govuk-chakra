@@ -1,0 +1,48 @@
+{
+  "compilerOptions": {
+     "target": "ESNext",
+    "module": "ESNext",
+    "moduleResolution": "Bundler",
+    "skipLibCheck": true,
+    "lib": [
+      "dom",
+      "dom.iterable",
+      "esnext"
+    ],
+    "allowJs": true,
+    "esModuleInterop": true,
+    "allowSyntheticDefaultImports": true,
+    "strict": true,
+    "forceConsistentCasingInFileNames": true,
+    "noFallthroughCasesInSwitch": true,
+    "resolveJsonModule": true,
+    "baseUrl": "./src",
+    "paths": {
+      "react": [ "./node_modules/@types/react" ],
+      "@/*": ["./*"],
+      "@/components/*": ["components/*"],
+      "@/components": ["components/index"],
+      "@/constant": ["app/constant/index"],
+      "@/types/*": ["types/*"],
+      "@/types": ["types/index"],
+      "@/utils/*": ["utils/*"],
+      "@/utils": ["utils/index"],
+      "@/providers/*": ["providers/*"],
+      "@/providers": ["providers/index"],
+      "@/hoc/*": ["app/hoc/*"],
+      "@/hoc": ["app/hoc/index"],
+      "@/internationalization/*": ["internationalization/*"],
+      "@/internationalization": ["internationalization/index"],
+      "@/theme": ["theme/index"],
+      "@/theme/*": ["theme/*"],
+    },
+    "isolatedModules": true,
+    "noEmit": true,
+    "jsx": "react-jsx",
+    "types": ["react"],
+  },
+  "include": [
+    "src",
+    ".storybook"
+  ]
+}
