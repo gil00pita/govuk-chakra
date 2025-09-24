@@ -23,7 +23,8 @@ export const Link = forwardRef<HTMLAnchorElement, LinkProps>((props, ref) => {
         outlineOffset: 0,
         bgColor: 'yellow.500',
         color: 'black',
-        textDecoration: 'none',
+        textDecoration: 'underline',
+        textDecorationThickness: 'max(3px, 0.1875rem)',
       }}
       _visited={{
         color: 'govuk.darkGrey',

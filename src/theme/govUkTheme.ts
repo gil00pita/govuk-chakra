@@ -1,4 +1,5 @@
 import { createSystem, defaultConfig, defineConfig } from '@chakra-ui/react'
+import { pxToRem, govukSpacing, govukFontSizes } from '../utils'
 
 import { colors } from './colors'
 import { fonts } from './fonts'

@@ -1,8 +1,12 @@
 import * as React from 'react'
 
-// Accordion.stories.tsx
-import { Accordion, Box, Button, Separator, Stack } from '@chakra-ui/react'
+import { Box, Button, Separator, Stack, Text } from '@chakra-ui/react'
 import type { Meta, StoryObj } from '@storybook/react'
+
+// Accordion.stories.tsx
+import { Accordion } from '@/components/Accordion'
+import { Link } from '@/components'
+import { pxToRem } from '@/utils/px-to-rem'
 
 const sections = [
   {
@@ -27,9 +31,9 @@ const sections = [
   },
 ]
 
-const meta: Meta<typeof Accordion.Root> = {
+const meta: Meta<typeof Accordion> = {
   title: 'GOV.UK/Accordion',
-  component: Accordion.Root,
+  component: Accordion,
   parameters: { layout: 'centered' },
   tags: ['autodocs'],
 }
@@ -43,7 +47,7 @@ const GovUkAccordion = () => {
 
   const openAll = React.useCallback(() => setValue(sections.map((s) => s.heading)), [])
   const closeAll = React.useCallback(() => setValue([]), [])
-  const toggleAll = () => (allOpen ? closeAll() : openAll())
+  const toggleAll = (e: React.MouseEvent) => (e.preventDefault(), allOpen ? closeAll() : openAll())
 
   return (
     <Box
@@ -56,59 +60,106 @@ const GovUkAccordion = () => {
       }}
     >
       {/* Open all / Hide all control (right aligned) */}
-      <Stack direction="row" justify="flex-end" mb={2}>
-        <Button
+      <Stack
+        direction="row"
+        justify="flex-start"
+        pb={pxToRem(14)}
+        borderBottom={'1px solid'}
+        borderColor={'gray.300'}
+      >
+        <Link
+          href="#"
           variant="ghost"
+          py={pxToRem(5)}
           size="sm"
           onClick={toggleAll}
           textDecoration="underline"
-          _hover={{ bg: 'transparent' }}
-          px={2}
+          _hover={{
+            bgColor: 'bg.muted',
+            '& .chevron': {
+              color: 'fg.inverted',
+              bgColor: 'fg',
+              borderColor: 'fg.inverted',
+              textDecoration: 'underline',
+              textDecorationThickness: 'max(3px, 0.1875rem)',
+            },
+            '& .chevron:after': {
+              color: 'fg.inverted',
+              borderColor: 'fg.inverted',
+            },
+            '& .chevron-text': {
+              color: 'fg',
+              textDecoration: 'underline',
+              textDecorationThickness: 'max(3px, 0.1875rem)',
+            },
+          }}
+          _focus={{
+            outline: 0,
+            '& .chevron': {
+              color: 'fg.inverted',
+              bgColor: 'fg',
+              borderColor: 'fg',
+              textDecoration: 'underline',
+              textDecorationThickness: 'max(3px, 0.1875rem)',
+            },
+            '& .chevron:after': {
+              color: 'fg.inverted',
+              borderColor: 'fg.inverted',
+            },
+            '& .chevron-text': {
+              color: 'black',
+              bgColor: 'yellow.500',
+              textDecoration: 'underline',
+              textDecorationColor: 'fg.inverted',
+              textDecorationThickness: 'max(3px, 0.1875rem)',
+            },
+          }}
         >
-          {allOpen ? 'Hide all sections' : 'Open all sections'}
-        </Button>
+          <Box
+            as="span"
+            className="chevron"
+            transform={allOpen ? 'rotate(0deg)' : 'rotate(180deg)'}
+            boxSizing="border-box"
+            display="inline-block"
+            position="relative"
+            width={pxToRem(20)}
+            height={pxToRem(20)}
+            border="1px solid"
+            borderColor={'brand.500'}
+            borderRadius="50%"
+            verticalAlign="middle"
+            transition="transform 0.2s ease-in-out"
+            _after={{
+              content: '""',
+              color: 'brand.500',
+              boxSizing: 'border-box',
+              display: 'block',
+              position: 'absolute',
+              bottom: pxToRem(5),
+              left: pxToRem(6),
+              width: pxToRem(6),
+              height: pxToRem(6),
+              transform: 'rotate(-45deg)',
+              borderTop: `${pxToRem(2)} solid`,
+              borderRight: `${pxToRem(2)} solid`,
+            }}
+          />
+          <Text className="chevron-text" fontSize={pxToRem(19)} lineHeight={'1.3157894737'}>
+            {allOpen ? 'Hide all sections' : 'Show all sections'}
+          </Text>
+        </Link>
       </Stack>
 
-      <Accordion.Root
-        multiple
-        collapsible
-        value={value}
-        onValueChange={(e) => setValue(e.value)}
-        border="1px solid"
-        borderColor="gray.300"
-        borderRadius="md"
-      >
+      <Accordion.Root value={value} onValueChange={(details) => setValue(details.value)}>
         {sections.map((s, i) => (
-          <Accordion.Item
-            key={s.heading}
-            value={s.heading}
-            border="0"
-            borderTop={i === 0 ? '0' : '1px solid'}
-            borderColor="gray.300"
-            _last={{ borderBottom: '0' }}
-          >
-            <h2>
-              <Accordion.ItemTrigger
-                px={4}
-                py={3}
-                _hover={{ bg: 'gray.50' }}
-                _expanded={{ bg: 'gray.50' }}
-                textAlign="left"
-              >
-                <Box as="span" flex="1" fontWeight="bold">
-                  {s.heading}
-                </Box>
-                {/* Chevron / indicator on the right like GOV.UK */}
-                <Accordion.ItemIndicator />
-              </Accordion.ItemTrigger>
-            </h2>
+          <Accordion.Item key={s.heading} value={s.heading}>
+            <Accordion.Trigger>
+              <h2>{s.heading}</h2>
+            </Accordion.Trigger>
 
-            <Accordion.ItemContent px={4} pt={3} pb={6} lineHeight="1.5">
-              <Accordion.ItemBody>
-                <Box mb={4}>{s.content}</Box>
-                {i < sections.length - 1 && <Separator />}
-              </Accordion.ItemBody>
-            </Accordion.ItemContent>
+            <Accordion.Content>
+              <Box mb={4}>{s.content}</Box>
+            </Accordion.Content>
           </Accordion.Item>
         ))}
       </Accordion.Root>
