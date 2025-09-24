@@ -2,7 +2,7 @@ import { Heading, Text, VStack } from '@chakra-ui/react'
 import type { Meta, StoryObj } from '@storybook/react'
 
 import { Link } from '../components/Link'
-import { linkTheme } from '../theme/components/link'
+import { linkTheme } from '../theme/recipes/link'
 
 const meta: Meta = {
   title: 'GOV.UK/Typography',

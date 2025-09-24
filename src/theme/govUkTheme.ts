@@ -1,10 +1,6 @@
 import { createSystem, defaultConfig, defineConfig } from '@chakra-ui/react'
 
-// If these are plain objects (e.g. { blue: "#1d70b8" }),
-// convert them to token objects (e.g. { blue: { value: "#1d70b8" } }).
 import { colors } from './colors'
-// v3 uses recipes instead of components
-import { components } from './components' // rename/export recipes from that file
 import { fonts } from './fonts'
 
 const govUkThemeConfig = defineConfig({
@@ -33,7 +29,6 @@ const govUkThemeConfig = defineConfig({
         subtleBg: { value: '{colors.brand.lightGrey}' },
       },
     },
-    recipes: components,
   },
 })
 

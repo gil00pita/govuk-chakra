@@ -8,20 +8,25 @@ export const Link = forwardRef<HTMLAnchorElement, LinkProps>((props, ref) => {
   return (
     <ChakraLink
       ref={ref}
-      color="govuk.blue"
+      color="brand.500"
       textDecoration="underline"
+      textDecorationThickness="max(1px, 0.0625rem)"
+      textUnderlineOffset="0.1578em"
       fontWeight="normal"
-      rounded="1px"
       _hover={{
-        color: 'govuk.darkBlue',
+        color: 'brand.700',
+        textDecorationThickness: 'max(3px, 0.1875rem)', // Thicker on hover (GOV.UK style)
       }}
       _focus={{
-        color: 'black',
-        textDecorationThickness: '3px',
         outline: '3px solid',
-        outlineColor: 'govuk.yellow',
-        outlineOffset: '0',
-        backgroundColor: 'govuk.yellow',
+        outlineColor: 'yellow.500',
+        outlineOffset: 0,
+        bgColor: 'yellow.500',
+        color: 'black',
+        textDecoration: 'none',
+      }}
+      _visited={{
+        color: 'govuk.darkGrey',
       }}
       {...props}
     />
