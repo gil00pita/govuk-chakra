@@ -1,8 +1,9 @@
-// Alert.stories.tsx
-import { Alert, VStack } from '@chakra-ui/react'
 import { GoAlert, GoCheckCircle } from 'react-icons/go'
+// Alert.stories.tsx
+import { HStack, VStack } from '@chakra-ui/react'
 import type { Meta, StoryObj } from '@storybook/react'
 
+import { Alert } from '@/components/Alert'
 import { FiInfo } from 'react-icons/fi'
 import { JSX } from 'react'
 import { TbAlertHexagon } from 'react-icons/tb'
@@ -16,14 +17,14 @@ const ICON: Record<Status, JSX.Element> = {
   error: <GoAlert />,
 }
 
-type AlertStoryControls = {
+type NotificationBannerStoryControls = {
   status: Status
   title: string
   description: string
 }
 
-const meta: Meta<AlertStoryControls> = {
-  title: 'GOV.UK/Alert',
+const meta: Meta<NotificationBannerStoryControls> = {
+  title: 'GOV.UK/Notification Banner',
   component: Alert.Root,
   tags: ['autodocs'],
   parameters: { layout: 'centered' },
@@ -34,20 +35,54 @@ const meta: Meta<AlertStoryControls> = {
   },
   args: {
     status: 'info',
-    title: '',
+    title: 'Important information',
     description: 'This is important information that users should be aware of.',
   },
   render: ({ status, title, description }) => (
-    <Alert.Root status={status}>
-      <Alert.Indicator>{ICON[status as Status]}</Alert.Indicator>
-      {title && <Alert.Title>{title}</Alert.Title>}
+    <Alert.Root
+      status={status}
+      bgColor={'bg'}
+      display={'flex'}
+      flexDirection={'column'}
+      px="0"
+      py="0"
+      border={'5px solid'}
+      borderColor={
+        status === 'info'
+          ? 'blue.500'
+          : status === 'warning'
+            ? 'orange.500'
+            : status === 'success'
+              ? 'green.500'
+              : 'red.500'
+      }
+      borderRadius="0"
+      boxShadow="md"
+    >
+      <HStack
+        align="start"
+        spacing={2}
+        mb={2}
+        bgColor={
+          status === 'info'
+            ? 'blue.500'
+            : status === 'warning'
+              ? 'orange.500'
+              : status === 'success'
+                ? 'green.500'
+                : 'red.500'
+        }
+      >
+        <Alert.Indicator>{ICON[status as Status]}</Alert.Indicator>
+        {title && <Alert.Title>{title}</Alert.Title>}
+      </HStack>
       <Alert.Description>{description}</Alert.Description>
     </Alert.Root>
   ),
 }
 
 export default meta
-type Story = StoryObj<AlertStoryControls>
+type Story = StoryObj<NotificationBannerStoryControls>
 
 export const Info: Story = {
   args: {

@@ -47,7 +47,7 @@ const AccordionItem = forwardRef<HTMLDivElement, AccordionItemProps>((props, ref
       ref={ref}
       border="none"
       borderTop="1px solid"
-      borderTopColor="gray.400"
+      borderTopColor="border.emphasized"
       _first={{
         borderTop: 'none',
       }}
@@ -115,6 +115,7 @@ const AccordionTrigger = forwardRef<HTMLButtonElement, AccordionTriggerProps>((p
           alignItems={'center'}
           gap={pxToRem(5)}
           className="chevron-container"
+          mb={pxToRem(13)}
         >
           <Box
             as="span"
@@ -216,10 +217,8 @@ const AccordionContent = forwardRef<HTMLDivElement, AccordionContentProps>((prop
       pb={pxToRem(50)}
       fontSize={pxToRem(19)}
       lineHeight="1.5"
-      color="gray.900"
-      bg="white"
-      borderTop="1px solid"
-      borderTopColor="gray.300"
+      color="fg"
+      bg="bg"
       {...props}
     />
   )

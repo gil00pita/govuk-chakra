@@ -65,7 +65,7 @@ const GovUkAccordion = () => {
         justify="flex-start"
         pb={pxToRem(14)}
         borderBottom={'1px solid'}
-        borderColor={'gray.300'}
+        borderColor="border.emphasized"
       >
         <Link
           href="#"
