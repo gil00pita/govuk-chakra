@@ -3,6 +3,7 @@ import * as React from 'react'
 import {
   AlertRootProps,
   Box,
+  BoxProps,
   Alert as ChakraAlert,
   HStack,
   IconProps,
@@ -59,6 +60,14 @@ const ChakraAlertRootBase = _AlertNS.Root || _AlertNS
 const ChakraAlertTitleBase = _AlertNS.Title || ((p: any) => <Text as="h3" {...p} />)
 const ChakraAlertDescriptionBase = _AlertNS.Description || ((p: any) => <Text {...p} />)
 
+// Indicator (icon) wrapper
+const AlertIndicator = ({ children, ...rest }: BoxProps) => (
+  <Box as="span" mt="1px" fontSize="20px" lineHeight="1" aria-hidden="true" {...rest}>
+    {children}
+  </Box>
+)
+AlertIndicator.displayName = 'AlertIndicator'
+
 // Root
 const AlertRoot = React.forwardRef<HTMLDivElement, GovUKAlertRootProps>((props, ref) => {
   const {
@@ -85,18 +94,8 @@ const AlertRoot = React.forwardRef<HTMLDivElement, GovUKAlertRootProps>((props, 
       lineHeight="1.4"
       {...rest}
     >
-      <HStack align="flex-start" spacing={3}>
-        <Box
-          as="span"
-          // status icon wrapper
-          mt="1px"
-          fontSize="20px"
-          lineHeight="1"
-          aria-hidden="true"
-          color={styles.iconColor}
-        >
-          {icon ?? styles.icon}
-        </Box>
+      <HStack align="flex-start" gap={3}>
+        <AlertIndicator color={styles.iconColor}>{icon ?? styles.icon}</AlertIndicator>
         <Box flex="1" minW={0}>
           {children}
         </Box>
@@ -153,6 +152,7 @@ AlertMeta.displayName = 'AlertMeta'
 // Compound export (add Root alias, set displayName once, remove later mutations)
 const Alert = Object.assign(AlertRoot, {
   Root: AlertRoot,
+  Indicator: AlertIndicator,
   Title: AlertTitle,
   Description: AlertDescription,
   Meta: AlertMeta,
@@ -160,4 +160,4 @@ const Alert = Object.assign(AlertRoot, {
 ;(Alert as any).displayName = 'Alert'
 
 // Clean exports
-export { Alert, AlertRoot, AlertTitle, AlertDescription, AlertMeta }
+export { Alert, AlertRoot, AlertIndicator, AlertTitle, AlertDescription, AlertMeta }

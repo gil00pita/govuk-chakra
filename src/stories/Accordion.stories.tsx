@@ -69,9 +69,8 @@ const GovUkAccordion = () => {
       >
         <Link
           href="#"
-          variant="ghost"
           py={pxToRem(5)}
-          size="sm"
+          fontSize="sm"
           onClick={toggleAll}
           textDecoration="underline"
           _hover={{
@@ -150,7 +149,10 @@ const GovUkAccordion = () => {
         </Link>
       </Stack>
 
-      <Accordion.Root value={value} onValueChange={(details) => setValue(details.value)}>
+      <Accordion.Root
+        value={value}
+        onValueChange={(details: { value: string[] }) => setValue(details.value)}
+      >
         {sections.map((s, i) => (
           <Accordion.Item key={s.heading} value={s.heading}>
             <Accordion.Trigger>

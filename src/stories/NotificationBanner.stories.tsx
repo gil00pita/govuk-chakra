@@ -61,7 +61,7 @@ const meta: Meta<NotificationBannerStoryControls> = {
     >
       <HStack
         align="start"
-        spacing={2}
+        gap={2}
         mb={2}
         bgColor={
           status === 'info'

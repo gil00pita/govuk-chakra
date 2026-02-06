@@ -2,7 +2,6 @@ import { Heading, Text, VStack } from '@chakra-ui/react'
 import type { Meta, StoryObj } from '@storybook/react'
 
 import { Link } from '../components/Link'
-import { linkTheme } from '../theme/recipes/link'
 
 const meta: Meta = {
   title: 'GOV.UK/Typography',
@@ -30,16 +29,16 @@ export const Headings: Story = {
 export const TextVariants: Story = {
   render: () => (
     <VStack gap={4} align="start" width="600px">
-      <Text variant="lead">
+      <Text fontSize="lg">
         This is lead text. Use this for important information that you need users to notice.
       </Text>
-      <Text variant="body">
+      <Text fontSize="md">
         This is body text. The default text size is 19px and it should be used for all body content.
       </Text>
-      <Text variant="small">
+      <Text fontSize="sm">
         This is small text. Use this sparingly for less important information.
       </Text>
-      <Text variant="caption">
+      <Text fontSize="xs">
         This is caption text. Use this for image captions or additional context.
       </Text>
     </VStack>
@@ -93,7 +92,7 @@ export const TypographyHierarchy: Story = {
 
       <Heading size="md">Documents you'll need</Heading>
 
-      <Text variant="body">
+      <Text fontSize="md">
         You'll need to provide documents that prove your identity. You can use your passport or
         other <Link href="#">accepted forms of ID</Link>.
       </Text>

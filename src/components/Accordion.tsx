@@ -1,5 +1,4 @@
 import {
-  AccordionItemIndicator,
   AccordionRootProps,
   Box,
   Accordion as ChakraAccordion,
@@ -19,7 +18,7 @@ export interface AccordionProps extends AccordionRootProps {
   children: ReactNode
 }
 
-const Accordion = forwardRef<HTMLDivElement, AccordionProps>((props, ref) => {
+const AccordionRoot = forwardRef<HTMLDivElement, AccordionProps>((props, ref) => {
   return (
     <ChakraAccordion.Root
       ref={ref}
@@ -34,7 +33,7 @@ const Accordion = forwardRef<HTMLDivElement, AccordionProps>((props, ref) => {
   )
 })
 
-Accordion.displayName = 'Accordion'
+AccordionRoot.displayName = 'Accordion'
 
 // Custom Accordion Item with GOV.UK styling
 export interface AccordionItemProps extends ChakraAccordionItemProps {
@@ -77,6 +76,7 @@ const AccordionTrigger = forwardRef<HTMLButtonElement, AccordionTriggerProps>((p
       border="none"
       pt={pxToRem(10)}
       pb={pxToRem(20)}
+      transition={' background-color 0.1s ease'}
       css={{
         '& .trigger-title': {
           fontSize: pxToRem(24),
@@ -107,7 +107,7 @@ const AccordionTrigger = forwardRef<HTMLButtonElement, AccordionTriggerProps>((p
       {...props}
     >
       <VStack gap={2} w="100%" justifyContent={'flex-start'} alignItems={'flex-start'}>
-        <Box as="span" flex="1" mr={2} className="trigger-title">
+        <Box as="span" flex="1" mr={2} className="trigger-title" color={'fg'}>
           {props.children}
         </Box>
         <Box
@@ -226,11 +226,20 @@ const AccordionContent = forwardRef<HTMLDivElement, AccordionContentProps>((prop
 
 AccordionContent.displayName = 'AccordionContent'
 
+type AccordionCompound = typeof AccordionRoot & {
+  Root: typeof AccordionRoot
+  Item: typeof AccordionItem
+  Trigger: typeof AccordionTrigger
+  Content: typeof AccordionContent
+}
+
 // Compound component pattern
-Accordion.Root = Accordion
-Accordion.Item = AccordionItem
-Accordion.Trigger = AccordionTrigger
-Accordion.Content = AccordionContent
+const Accordion = Object.assign(AccordionRoot, {
+  Root: AccordionRoot,
+  Item: AccordionItem,
+  Trigger: AccordionTrigger,
+  Content: AccordionContent,
+}) as AccordionCompound
 
 // Export individual components as well
 export { Accordion, AccordionItem, AccordionTrigger, AccordionContent }

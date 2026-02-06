@@ -20,7 +20,7 @@ export const Default: Story = {
       control: { type: 'select' },
       options: ['brand', 'secondary', 'error', 'inverse', 'link'],
     },
-    showArrow: 'boolean',
+    showArrow: { control: 'boolean' },
   },
   args: {
     children: 'Start now',

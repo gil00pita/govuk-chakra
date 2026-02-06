@@ -43,7 +43,7 @@ export const ColorPalette: Story = {
           <Card.Body>
             <Box bg="gray.900" h="60px" mb={3} borderRadius="md" />
             <Text fontWeight="bold">Gray 900</Text>
-            <Text variant="small">Primary text color</Text>
+            <Text fontSize="sm">Primary text color</Text>
           </Card.Body>
         </Card.Root>
 
@@ -51,7 +51,7 @@ export const ColorPalette: Story = {
           <Card.Body>
             <Box bg="green.600" h="60px" mb={3} borderRadius="md" />
             <Text fontWeight="bold">Green 600</Text>
-            <Text variant="small">Primary button color</Text>
+            <Text fontSize="sm">Primary button color</Text>
           </Card.Body>
         </Card.Root>
 
@@ -59,7 +59,7 @@ export const ColorPalette: Story = {
           <Card.Body>
             <Box bg="blue.600" h="60px" mb={3} borderRadius="md" />
             <Text fontWeight="bold">Blue 600</Text>
-            <Text variant="small">Link color</Text>
+            <Text fontSize="sm">Link color</Text>
           </Card.Body>
         </Card.Root>
 
@@ -67,7 +67,7 @@ export const ColorPalette: Story = {
           <Card.Body>
             <Box bg="yellow.400" h="60px" mb={3} borderRadius="md" />
             <Text fontWeight="bold">Yellow 400</Text>
-            <Text variant="small">Focus color</Text>
+            <Text fontSize="sm">Focus color</Text>
           </Card.Body>
         </Card.Root>
 
@@ -75,7 +75,7 @@ export const ColorPalette: Story = {
           <Card.Body>
             <Box bg="red.600" h="60px" mb={3} borderRadius="md" />
             <Text fontWeight="bold">Red 600</Text>
-            <Text variant="small">Error color</Text>
+            <Text fontSize="sm">Error color</Text>
           </Card.Body>
         </Card.Root>
       </Grid>
@@ -144,9 +144,9 @@ export const ComponentShowcase: Story = {
             </Heading>
             <VStack gap={3} align="start">
               <Heading size="lg">Large Heading</Heading>
-              <Text variant="lead">Lead paragraph text</Text>
-              <Text variant="body">Body text paragraph</Text>
-              <Text variant="small">Small text</Text>
+              <Text fontSize="lg">Lead paragraph text</Text>
+              <Text fontSize="md">Body text paragraph</Text>
+              <Text fontSize="sm">Small text</Text>
               <Link href="#">Standard link</Link>
             </VStack>
           </Card.Body>
@@ -232,7 +232,7 @@ export const AccessibilityFeatures: Story = {
     <VStack gap={6} align="stretch" p={8} maxW="800px">
       <Heading size="xl">Accessibility Features</Heading>
 
-      <Text variant="lead">
+      <Text fontSize="lg">
         All components follow GOV.UK accessibility standards and WCAG 2.1 AA guidelines.
       </Text>
 

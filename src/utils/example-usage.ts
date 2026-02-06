@@ -5,8 +5,8 @@ import { pxToRem, govukSpacing, govukFontSizes } from '../utils'
  */
 
 // Basic usage
-const marginTop = pxToRem(20) // "1.25rem"
-const fontSize = pxToRem(19) // "1.1875rem"
+export const marginTop = pxToRem(20) // "1.25rem"
+export const fontSize = pxToRem(19) // "1.1875rem"
 
 // Using predefined spacing values
 const styles = {

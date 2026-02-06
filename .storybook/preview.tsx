@@ -1,31 +1,35 @@
-import { ChakraProvider, createSystem, defaultConfig } from '@chakra-ui/react'
 import type { Preview, ReactRenderer } from '@storybook/react'
 
+import { ChakraProvider } from '@chakra-ui/react'
 import { govUkTheme } from './../src/theme/index'
 import { withThemeByClassName } from '@storybook/addon-themes'
 
-const preview: Preview = {
-  parameters: {
-    options: {
-      storySort: {
-        method: 'alphabetical',
-      },
+export const parameters = {
+  options: {
+    storySort: {
+      method: 'alphabetical',
     },
   },
-  decorators: [
-    withThemeByClassName<ReactRenderer>({
-      defaultTheme: 'light',
-      themes: {
-        light: 'light',
-        dark: 'dark',
-      },
-    }),
-    (Story) => (
-      <ChakraProvider value={govUkTheme}>
-        <Story />
-      </ChakraProvider>
-    ),
-  ],
+}
+
+export const decorators = [
+  withThemeByClassName<ReactRenderer>({
+    defaultTheme: 'light',
+    themes: {
+      light: 'light',
+      dark: 'dark',
+    },
+  }),
+  (Story: React.FC) => (
+    <ChakraProvider value={govUkTheme}>
+      <Story />
+    </ChakraProvider>
+  ),
+]
+
+const preview: Preview = {
+  parameters,
+  decorators,
 }
 
 export default preview

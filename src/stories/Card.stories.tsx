@@ -97,7 +97,7 @@ export const ServiceCards: Story = {
             <Button colorPalette="primary" size="sm">
               Start now
             </Button>
-            <Text variant="small">Takes about 5 minutes</Text>
+            <Text fontSize="sm">Takes about 5 minutes</Text>
           </HStack>
         </CardBody>
       </Card.Root>
@@ -114,7 +114,7 @@ export const ServiceCards: Story = {
             <Button colorPalette="primary" size="sm">
               Check now
             </Button>
-            <Text variant="small">Takes about 2 minutes</Text>
+            <Text fontSize="sm">Takes about 2 minutes</Text>
           </HStack>
         </CardBody>
       </Card.Root>

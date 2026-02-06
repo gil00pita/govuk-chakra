@@ -33,7 +33,7 @@ export const CompleteForm: Story = {
     <VStack gap={8} align="stretch" width="600px" p={6}>
       <Heading size="xl">Apply for a provisional driving licence</Heading>
 
-      <Text variant="lead">You can apply for a provisional driving licence online.</Text>
+      <Text fontSize="lg">You can apply for a provisional driving licence online.</Text>
 
       <Alert.Root status="info">
         <GoAlert />
@@ -118,14 +118,17 @@ export const CompleteForm: Story = {
 
         <Fieldset.Root>
           <Fieldset.Legend>How would you like to be contacted?</Fieldset.Legend>
-          <Select.Trigger>
-            <Select.ValueText placeholder="Choose an option" />
-          </Select.Trigger>
-          <Select.Content>
-            <Select.Item item="option1">Email</Select.Item>
-            <Select.Item item="option2">Post</Select.Item>
-            <Select.Item item="option3">Phone</Select.Item>
-          </Select.Content>
+
+          <Select.Root>
+            <Select.Trigger>
+              <Select.ValueText placeholder="Choose an option" />
+            </Select.Trigger>
+            <Select.Content>
+              <Select.Item item="option1">Email</Select.Item>
+              <Select.Item item="option2">Post</Select.Item>
+              <Select.Item item="option3">Phone</Select.Item>
+            </Select.Content>
+          </Select.Root>
         </Fieldset.Root>
 
         <Fieldset.Root>

@@ -14,6 +14,12 @@ const meta: Meta = {
 export default meta
 type Story = StoryObj<typeof meta>
 
+const basicOptions = createListCollection({
+  items: ['option1', 'option2', 'option3'],
+  itemToString: (item) => item,
+  itemToValue: (item) => item,
+})
+
 const countries = createListCollection({
   items: [
     { value: 'US', label: 'United States', flag: '🇺🇸', continent: 'America' },
@@ -53,7 +59,7 @@ const continents = Object.entries(groupedByContinent)
 export const Default: Story = {
   render: () => (
     <Field.Root>
-      <Select.Root>
+      <Select.Root collection={basicOptions}>
         <Select.Trigger>
           <Select.ValueText placeholder="Choose an option" />
           <Select.Indicator />
@@ -145,7 +151,7 @@ export const Countries: Story = {
 export const Error: Story = {
   render: () => (
     <Field.Root invalid>
-      <Select.Root>
+      <Select.Root collection={basicOptions}>
         <Field.Label>Country</Field.Label>
         <Select.Trigger>
           <Select.ValueText placeholder="Select a country" />

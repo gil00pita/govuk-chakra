@@ -4,12 +4,12 @@ import { forwardRef } from 'react'
 import { pxToRem } from '@/utils'
 
 export interface GovUKButtonProps extends Omit<ButtonProps, 'colorPalette'> {
-  colorPalette?: 'primary' | 'secondary' | 'warning' | 'link'
+  colorPalette?: 'brand' | 'secondary' | 'error' | 'inverse' | 'link'
   showArrow?: boolean
 }
 
 export const Button = forwardRef<HTMLButtonElement, GovUKButtonProps>(
-  ({ colorPalette = 'primary', children, showArrow, ...props }, ref) => {
+  ({ colorPalette = 'brand', children, showArrow, ...props }, ref) => {
     const variantStyles: Record<NonNullable<GovUKButtonProps['colorPalette']>, ButtonProps> = {
       brand: {
         bgColor: 'green.500',
@@ -68,7 +68,7 @@ export const Button = forwardRef<HTMLButtonElement, GovUKButtonProps>(
         {children}
         {showArrow && (
           <svg
-            class="govuk-button__start-icon"
+            className="govuk-button__start-icon"
             xmlns="http://www.w3.org/2000/svg"
             width="17.5"
             height="19"
