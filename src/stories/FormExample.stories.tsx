@@ -12,6 +12,7 @@ import {
   Text,
   Textarea,
   VStack,
+  createListCollection,
 } from '@chakra-ui/react'
 import type { Meta, StoryObj } from '@storybook/react'
 
@@ -27,6 +28,12 @@ const meta: Meta = {
 
 export default meta
 type Story = StoryObj<typeof meta>
+
+const contactOptions = createListCollection({
+  items: ['option1', 'option2', 'option3'],
+  itemToString: (item) => item,
+  itemToValue: (item) => item,
+})
 
 export const CompleteForm: Story = {
   render: () => (
@@ -119,7 +126,7 @@ export const CompleteForm: Story = {
         <Fieldset.Root>
           <Fieldset.Legend>How would you like to be contacted?</Fieldset.Legend>
 
-          <Select.Root>
+          <Select.Root collection={contactOptions}>
             <Select.Trigger>
               <Select.ValueText placeholder="Choose an option" />
             </Select.Trigger>

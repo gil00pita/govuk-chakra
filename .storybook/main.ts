@@ -13,6 +13,7 @@ const config: StorybookConfig = {
     // add other addons as needed
     '@storybook/addon-themes',
     '@storybook/addon-vitest',
+    '@storybook/addon-mcp'
   ],
   framework: {
     name: '@storybook/react-vite',
