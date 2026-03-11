@@ -1,144 +1,197 @@
 import {
-  Box,
-  Heading,
+  Card as ChakraCard,
   Image,
-  LinkBox,
   LinkOverlay,
   SimpleGrid,
-  Text,
   type HeadingProps,
-  type LinkBoxProps,
   type SimpleGridProps,
 } from '@chakra-ui/react'
+import { forwardRef } from 'react'
+import { Text } from './Text'
+import { Heading } from './Heading'
 
 type HeadingTag = Extract<HeadingProps['as'], 'h2' | 'h3' | 'h4'>
 
-export interface GovUKCardProps extends Omit<LinkBoxProps, 'title'> {
+export interface CardHeaderProps extends ChakraCard.HeaderProps {
+  headingType?: HeadingTag
+}
+
+export interface CardRootProps extends ChakraCard.RootProps {
+  imageSrc?: string
+  imageAlt?: string
+  href?: string
+  headingType?: HeadingTag
+  openInNewTab?: boolean
+  linkCard?: boolean
+  /** Accessible label for the card, used when there is no visible header */
+  'aria-label'?: string
+  /** ID of the element that labels this card (typically the header) */
+  'aria-labelledby'?: string
+  /** ID of the element that describes this card (typically the body) */
+  'aria-describedby'?: string
+}
+
+export interface CardProps extends Omit<CardRootProps, 'title'> {
   title: string
   href?: string
   description?: string
   meta?: string
-  imageSrc?: string
-  imageAlt?: string
-  headingAs?: HeadingTag
   openInNewTab?: boolean
   linkCard?: boolean
 }
 
-export function GovUKCard({
-  title,
-  href,
-  description,
-  meta,
-  imageSrc,
-  imageAlt,
-  headingAs = 'h3',
-  openInNewTab = false,
-  linkCard = true,
-  ...props
-}: GovUKCardProps) {
-  const hasLink = Boolean(href)
+export const Card = {
+  Root: forwardRef<HTMLDivElement, CardRootProps>(function CardRoot(
+    {
+      imageSrc,
+      imageAlt,
+      openInNewTab = false,
+      linkCard = true,
+      href,
+      headingType = 'h3' as HeadingTag,
+      ...props
+    },
+    ref
+  ) {
+    const hasLink = Boolean(href)
 
-  return (
-    <LinkBox
-      bg="bg"
-      border="1px solid"
-      borderColor="border"
-      borderTopWidth="4px"
-      borderTopColor="govuk.blue"
-      p={5}
-      minH="100%"
-      display="flex"
-      flexDirection="column"
-      gap={3}
-      {...props}
-    >
-      {imageSrc ? (
-        <Image
-          src={imageSrc}
-          alt={imageAlt ?? ''}
-          width="100%"
-          objectFit="cover"
-          borderBottom="1px solid"
-          borderColor="border"
-          mb={1}
-        />
-      ) : null}
-
-      <Heading as={headingAs} size="md" lineHeight="1.35">
+    return (
+      <ChakraCard.Root
+        ref={ref}
+        role="region"
+        bg="bg"
+        border="1px solid"
+        borderColor="border"
+        overflow="hidden"
+        cursor={hasLink && linkCard ? 'pointer' : 'default'}
+        asChild={hasLink && linkCard ? true : undefined}
+        {...props}
+      >
         {hasLink && linkCard ? (
           <LinkOverlay
             href={href}
             target={openInNewTab ? '_blank' : undefined}
             rel={openInNewTab ? 'noopener noreferrer' : undefined}
+            aria-label={
+              openInNewTab ? `${props['aria-label'] ?? ''} (opens in new tab)`.trim() : undefined
+            }
             color="link"
-            _hover={{ color: 'link.hover' }}
+            css={{
+              '& .card-body': { color: 'fg' },
+            }}
+            _hover={{
+              color: 'common.white',
+              textDecoration: 'none',
+              bg: 'primary',
+              '& .card-body': { color: 'common.white' },
+            }}
+            _focus={{
+              bg: 'primary.700',
+              outline: '3px solid',
+              outlineColor: 'yellow.500',
+              outlineOffset: 0,
+              color: 'black',
+              '& .card-header': {
+                outline: '3px solid',
+                outlineColor: 'yellow.500',
+                outlineOffset: 0,
+                bgColor: 'yellow.500',
+                color: 'black',
+                textDecoration: 'underline',
+                textDecorationThickness: 'max(3px, 0.1875rem)',
+              },
+              '& .card-body': { color: 'common.white' },
+            }}
             _visited={{ color: 'link.visited' }}
           >
-            {title}
+            {imageSrc ? (
+              <Image
+                src={imageSrc}
+                alt={imageAlt ?? ''}
+                width="100%"
+                objectFit="cover"
+                borderBottom="1px solid"
+                borderColor="border"
+              />
+            ) : null}
+            {props.children}
           </LinkOverlay>
         ) : (
-          title
+          <>
+            {imageSrc ? (
+              <Image
+                src={imageSrc}
+                alt={imageAlt ?? ''}
+                width="100%"
+                objectFit="cover"
+                borderBottom="1px solid"
+                borderColor="border"
+              />
+            ) : null}
+            {props.children}
+          </>
         )}
-      </Heading>
-
-      {description ? <Text color="fg">{description}</Text> : null}
-
-      {meta ? (
-        <Text fontSize="sm" color="fg.muted" mt="auto">
-          {meta}
+      </ChakraCard.Root>
+    )
+  }),
+  Header: forwardRef<HTMLDivElement, CardHeaderProps>(function CardHeader(
+    { headingType, ...props },
+    ref
+  ) {
+    return (
+      <ChakraCard.Header ref={ref} role="heading" {...props}>
+        <Heading
+          as={headingType}
+          size={24}
+          lineHeight="1.35"
+          className="card-header"
+          alignItems={'flex-start'}
+        >
+          {props.children}
+        </Heading>
+      </ChakraCard.Header>
+    )
+  }),
+  Body: forwardRef<HTMLDivElement, ChakraCard.BodyProps>(function CardBody(props, ref) {
+    return (
+      <ChakraCard.Body ref={ref} {...props}>
+        <Text className="card-body" fontSize={'md'}>
+          {props.children}
         </Text>
-      ) : null}
-    </LinkBox>
-  )
+      </ChakraCard.Body>
+    )
+  }),
+  Footer: forwardRef<HTMLDivElement, ChakraCard.FooterProps>(function CardFooter(props, ref) {
+    return <ChakraCard.Footer ref={ref} role="contentinfo" {...props} />
+  }),
 }
 
-export interface GovUKCardGroupProps extends Omit<SimpleGridProps, 'children'> {
-  cards: GovUKCardProps[]
+export const CardRoot = Card.Root
+export const CardHeader = Card.Header
+export const CardBody = Card.Body
+export const CardFooter = Card.Footer
+
+export interface CardGroupProps extends Omit<SimpleGridProps, 'children'> {
+  cards: CardProps[]
 }
 
-export function GovUKCardGroup({
+export function CardGroup({
   cards,
   columns = { base: 1, md: 2 },
   gap = 4,
   ...props
-}: GovUKCardGroupProps) {
+}: CardGroupProps) {
   return (
     <SimpleGrid columns={columns} gap={gap} {...props}>
       {cards.map((card, index) => (
-        <GovUKCard
-          key={card.href ?? `${card.title}-${index}`}
-          title={card.title}
-          href={card.href}
-          description={card.description}
-          meta={card.meta}
-          imageSrc={card.imageSrc}
-          imageAlt={card.imageAlt}
-          headingAs={card.headingAs}
-          openInNewTab={card.openInNewTab}
-          linkCard={card.linkCard}
-        />
+        <Card.Root key={card.href ?? `${card.title}-${index}`}>
+          <Card.Header href={card.href} openInNewTab={card.openInNewTab} linkCard={card.linkCard}>
+            {card.title}
+          </Card.Header>
+          <Card.Body>{card.description}</Card.Body>
+          <Card.Footer>{card.meta}</Card.Footer>
+        </Card.Root>
       ))}
     </SimpleGrid>
-  )
-}
-
-export interface GovUKCardExampleTwoProps {
-  title: string
-  description: string
-  meta: string
-  href: string
-}
-
-export function GovUKCardExampleTwo(props: GovUKCardExampleTwoProps) {
-  return (
-    <Box maxW="420px">
-      <GovUKCard
-        title={props.title}
-        description={props.description}
-        meta={props.meta}
-        href={props.href}
-      />
-    </Box>
   )
 }

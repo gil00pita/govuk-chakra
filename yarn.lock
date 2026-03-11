@@ -2573,6 +2573,16 @@
     tmcp "^1.16.0"
     valibot "1.2.0"
 
+"@storybook/mcp@^0.5.1":
+  version "0.5.1"
+  resolved "https://registry.yarnpkg.com/@storybook/mcp/-/mcp-0.5.1.tgz#77bdc4e9955acdbe38589276f09fb9d2dddaafa6"
+  integrity sha512-Sa9nrvnzI6y+dJ63cc1krZmeLjUGqvgGRaBsccBUja4cm5/jxIau20CM61MCX1jg9I7FzrwnnXSmifw2LtT+Cg==
+  dependencies:
+    "@tmcp/adapter-valibot" "^0.1.4"
+    "@tmcp/transport-http" "^0.8.0"
+    tmcp "^1.16.0"
+    valibot "1.2.0"
+
 "@storybook/nextjs@10.2.17":
   version "10.2.17"
   resolved "https://registry.npmjs.org/@storybook/nextjs/-/nextjs-10.2.17.tgz#abe94e1133808e6147c86d8e8e8c1633266f7241"
@@ -5522,6 +5532,11 @@ chokidar@^4.0.1:
   integrity sha512-Qgzu8kfBvo+cA4962jnP1KkS6Dop5NS6g7R5LFYJr4b8Ub94PPQXUksCw9PvXoeXPRRddRNC5C1JQUR2SMGtnA==
   dependencies:
     readdirp "^4.0.1"
+
+chrome-devtools-mcp@^0.20.0:
+  version "0.20.0"
+  resolved "https://registry.yarnpkg.com/chrome-devtools-mcp/-/chrome-devtools-mcp-0.20.0.tgz#52e090a487a65dd5ae9d40ce539949e0971ba8ff"
+  integrity sha512-wBnt8901lAXdac3AB7WdONYTAXGW+YqqIVVg7PztxYVNPs3VVgM2UZnZT/ICYPIofKTuRBOkRdEE/VYm90ZgYA==
 
 chrome-trace-event@^1.0.2:
   version "1.0.4"
