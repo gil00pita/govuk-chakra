@@ -82,7 +82,7 @@ const govUKPalette = {
     950: { value: '#042a1a' },
   },
   grey: {
-    50: { value: '#f3f3f3' }, // lightGrey
+    50: { value: '#f3f3f3' }, // lightGrey, secondary-bg-color
     100: { value: '#cecece' }, // border-colour, hover-colour
     200: { value: '#858686' },
     300: { value: '#6c6d6d' },

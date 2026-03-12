@@ -1,20 +1,15 @@
 import type { Meta, StoryObj } from '@storybook/react'
-import { Stack, Text } from '@chakra-ui/react'
 
 import { CookieBanner } from './CookieBanner'
 
 const meta: Meta<typeof CookieBanner> = {
   title: 'GOV.UK/CookieBanner',
   component: CookieBanner,
-  parameters: { layout: 'centered' },
+  parameters: { layout: 'fullscreen' },
   tags: ['autodocs'],
-  argTypes: {
-    href: { control: 'text' },
-    children: { control: 'text' },
-  },
   args: {
-    href: '#',
-    children: 'View guidance',
+    serviceName: 'name of service',
+    viewCookiesHref: '#',
   },
 }
 
@@ -22,3 +17,15 @@ export default meta
 type Story = StoryObj<typeof meta>
 
 export const Default: Story = {}
+
+export const AcceptedState: Story = {
+  args: {
+    defaultDecision: 'accepted',
+  },
+}
+
+export const RejectedState: Story = {
+  args: {
+    defaultDecision: 'rejected',
+  },
+}
