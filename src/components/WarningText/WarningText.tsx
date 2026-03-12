@@ -16,14 +16,7 @@ export const WarningText = forwardRef<HTMLDivElement, WarningTextProps>(function
   ref
 ) {
   return (
-    <HStack
-      ref={ref}
-      role="note"
-      align="flex-start"
-      gap={pxToRem(15)}
-      w="full"
-      {...props}
-    >
+    <HStack ref={ref} role="note" align="flex-start" gap={pxToRem(15)} w="full" {...props}>
       <Box
         as="span"
         flexShrink={0}
