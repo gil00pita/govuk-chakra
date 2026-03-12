@@ -1,10 +1,11 @@
 import type { StorybookConfig } from '@storybook/react-vite'
+import { fileURLToPath } from 'node:url'
+
+const srcPath = (relativePath = '.') => fileURLToPath(new URL(`../src/${relativePath}`, import.meta.url))
 
 const config: StorybookConfig = {
   stories: [
-    // '../src/stories/**/*.mdx',
-    // '../src/stories/**/*.stories.@(js|jsx|mjs|ts|tsx)',
-    '../src/components/**/*.mdx',
+    '../src/stories/**/*.stories.@(js|jsx|mjs|ts|tsx)',
     '../src/components/**/*.stories.@(js|jsx|mjs|ts|tsx)',
   ],
   addons: [
@@ -25,6 +26,26 @@ const config: StorybookConfig = {
   core: {
     disableTelemetry: true,
     disableProjectJson: true,
+  },
+  async viteFinal(config) {
+    return {
+      ...config,
+      resolve: {
+        ...config.resolve,
+        alias: {
+          ...(config.resolve?.alias ?? {}),
+          '@': srcPath(),
+          '@/components': srcPath('components'),
+          '@/constant': srcPath('app/constant/index.ts'),
+          '@/hoc': srcPath('app/hoc/index.ts'),
+          '@/internationalization': srcPath('internationalization/index.ts'),
+          '@/providers': srcPath('providers/index.ts'),
+          '@/theme': srcPath('theme/index.ts'),
+          '@/types': srcPath('types/index.ts'),
+          '@/utils': srcPath('utils/index.ts'),
+        },
+      },
+    }
   },
 }
 

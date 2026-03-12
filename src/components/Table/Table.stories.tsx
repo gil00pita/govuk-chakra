@@ -1,10 +1,10 @@
 import type { Meta, StoryObj } from '@storybook/react'
-import { VStack } from '@chakra-ui/react'
 
 import { Table } from './Table'
+import { VStack } from '@chakra-ui/react'
 
 const meta: Meta = {
-  title: 'GOV.UK/Table',
+  title: 'GOV.UK/Components/Table',
   parameters: {
     layout: 'centered',
   },

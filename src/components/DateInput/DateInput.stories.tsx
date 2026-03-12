@@ -3,7 +3,7 @@ import type { Meta, StoryObj } from '@storybook/react'
 import { DateInput } from './DateInput'
 
 const meta: Meta = {
-  title: 'GOV.UK/Date Input',
+  title: 'GOV.UK/Components/Date input',
   parameters: {
     layout: 'centered',
   },

@@ -4,10 +4,18 @@ import type { Meta, StoryObj } from '@storybook/react'
 import { Tag } from './Tag'
 
 const meta: Meta<typeof Tag> = {
-  title: 'GOV.UK/Tag',
+  title: 'GOV.UK/Components/Tag',
   component: Tag,
   parameters: {
     layout: 'centered',
+    docs: {
+      description: {
+        component:
+          'Use the tag component to help users identify the status or category of an item.\n\n' +
+          'The tag component has nine variants: `grey`, `green`, `teal`, `blue`, `purple`, `magenta`, `red`, `orange`, and `yellow`. Use the appropriate variant to convey the meaning or importance of the tag.\n\n' +
+          'Choose the variant based on the context so the interface stays clear and consistent. For GOV.UK guidance, see the GOV.UK Design System tag documentation: https://design-system.service.gov.uk/components/tag/.',
+      },
+    },
   },
   tags: ['autodocs'],
   args: {
@@ -17,7 +25,7 @@ const meta: Meta<typeof Tag> = {
   argTypes: {
     variant: {
       control: 'select',
-      options: ['grey', 'green', 'turquoise', 'blue', 'purple', 'pink', 'red', 'orange', 'yellow'],
+      options: ['grey', 'green', 'teal', 'blue', 'purple', 'magenta', 'red', 'orange', 'yellow'],
     },
   },
 }
@@ -41,10 +49,10 @@ export const AllColours: Story = {
     <Stack gap={3} align="start">
       <Tag variant="grey">Draft</Tag>
       <Tag variant="green">Active</Tag>
-      <Tag variant="turquoise">Received</Tag>
+      <Tag variant="teal">Received</Tag>
       <Tag variant="blue">New</Tag>
       <Tag variant="purple">Pending</Tag>
-      <Tag variant="pink">Waiting on</Tag>
+      <Tag variant="magenta">Waiting on</Tag>
       <Tag variant="red">Urgent</Tag>
       <Tag variant="orange">Delayed</Tag>
       <Tag variant="yellow">Attention</Tag>

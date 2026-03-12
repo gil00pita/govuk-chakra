@@ -3,7 +3,7 @@ import type { Meta, StoryObj } from '@storybook/react'
 import { InsetText } from './InsetText'
 
 const meta: Meta = {
-  title: 'GOV.UK/InsetText',
+  title: 'GOV.UK/Components/Inset text',
   parameters: {
     layout: 'centered',
   },

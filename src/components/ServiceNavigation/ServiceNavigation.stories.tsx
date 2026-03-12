@@ -4,7 +4,7 @@ import { Box } from '@chakra-ui/react'
 import { ServiceNavigation } from './ServiceNavigation'
 
 const meta: Meta = {
-  title: 'GOV.UK/ServiceNavigation',
+  title: 'GOV.UK/Components/ServiceNavigation',
   parameters: {
     layout: 'fullscreen',
   },

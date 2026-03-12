@@ -3,7 +3,7 @@ import type { Meta, StoryObj } from '@storybook/react'
 import { CookieBanner } from './CookieBanner'
 
 const meta: Meta<typeof CookieBanner> = {
-  title: 'GOV.UK/CookieBanner',
+  title: 'GOV.UK/Components/Cookie banner',
   component: CookieBanner,
   parameters: { layout: 'fullscreen' },
   tags: ['autodocs'],

@@ -1,9 +1,10 @@
-import { HStack, VStack } from '@chakra-ui/react'
 import { Card, CardGroup } from '@/components/Card/Card'
-import { Button } from '@/components/Button/Button'
+import { HStack, VStack } from '@chakra-ui/react'
 import type { Meta, StoryObj } from '@storybook/react'
-import { Text } from '@/components'
+
+import { Button } from '@/components/Button/Button'
 import type { CardRootProps } from '@/components/Card/Card'
+import { Text } from '@/components'
 
 interface CardStoryArgs extends CardRootProps {
   showHeader: boolean
@@ -13,7 +14,7 @@ interface CardStoryArgs extends CardRootProps {
 }
 
 const meta: Meta<CardStoryArgs> = {
-  title: 'GOV.UK/Card',
+  title: 'GOV.UK/Components/Card',
   component: Card.Root,
   parameters: {
     layout: 'centered',

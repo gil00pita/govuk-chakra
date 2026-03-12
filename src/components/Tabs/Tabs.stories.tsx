@@ -1,13 +1,12 @@
-import { Stack } from '@chakra-ui/react'
 import type { Meta, StoryObj } from '@storybook/react'
 
 import { Heading } from '@/components/Heading/Heading'
+import { Stack } from '@chakra-ui/react'
+import { Tabs } from './Tabs'
 import { Text } from '@/components/Text/Text'
 
-import { Tabs } from './Tabs'
-
 const meta: Meta<typeof Tabs> = {
-  title: 'GOV.UK/Tabs',
+  title: 'GOV.UK/Components/Tabs',
   component: Tabs,
   parameters: {
     layout: 'centered',

@@ -3,7 +3,7 @@ import type { Meta, StoryObj } from '@storybook/react'
 import { FileUpload } from './FileUpload'
 
 const meta: Meta = {
-  title: 'GOV.UK/File Upload',
+  title: 'GOV.UK/Components/File upload',
   parameters: {
     layout: 'centered',
   },

@@ -4,7 +4,7 @@ import { Checkbox } from '../Checkbox/Checkbox'
 import { Fieldset } from './Fieldset'
 
 const meta: Meta = {
-  title: 'GOV.UK/Fieldset',
+  title: 'GOV.UK/Components/Fieldset',
   parameters: {
     layout: 'centered',
   },

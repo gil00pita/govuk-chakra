@@ -3,7 +3,7 @@ import type { Meta, StoryObj } from '@storybook/react'
 import { NotificationBanner } from './NotificationBanner'
 
 const meta: Meta = {
-  title: 'GOV.UK/Notification Banner',
+  title: 'GOV.UK/Components/Notification banner',
   tags: ['autodocs'],
   parameters: { layout: 'centered' },
 }

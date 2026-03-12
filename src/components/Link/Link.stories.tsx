@@ -4,7 +4,7 @@ import { Stack, Text } from '@chakra-ui/react'
 import { Link } from './Link'
 
 const meta: Meta<typeof Link> = {
-  title: 'GOV.UK/Link',
+  title: 'GOV.UK/Components/Link',
   component: Link,
   parameters: { layout: 'centered' },
   tags: ['autodocs'],

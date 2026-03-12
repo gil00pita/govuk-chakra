@@ -3,7 +3,7 @@ import type { Meta, StoryObj } from '@storybook/react'
 import { PhaseBanner } from './PhaseBanner'
 
 const meta: Meta = {
-  title: 'GOV.UK/PhaseBanner',
+  title: 'GOV.UK/Components/PhaseBanner',
   parameters: {
     layout: 'centered',
   },

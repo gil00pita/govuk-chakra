@@ -3,7 +3,7 @@ import type { Meta, StoryObj } from '@storybook/react'
 import { Pagination } from './Pagination'
 
 const meta: Meta = {
-  title: 'GOV.UK/Pagination',
+  title: 'GOV.UK/Components/Pagination',
   parameters: {
     layout: 'centered',
   },

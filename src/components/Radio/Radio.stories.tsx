@@ -3,7 +3,7 @@ import type { Meta, StoryObj } from '@storybook/react'
 import { Radio } from './Radio'
 
 const meta: Meta = {
-  title: 'GOV.UK/Radio',
+  title: 'GOV.UK/Components/Radio',
   tags: ['autodocs'],
   parameters: { layout: 'centered' },
 }

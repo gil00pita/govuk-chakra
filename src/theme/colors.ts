@@ -5,7 +5,7 @@ const govUKPalette = {
   },
   brand: {
     50: { value: '#f4f8fb' }, // template-background-colour, surface-background-colour
-    100: { value: '#d2e2f1' },
+    100: { value: '#d2e2f1' }, // tag-blue
     200: { value: '#8eb8dc' }, // surface-border-colour
     300: { value: '#5694ca' },
     400: { value: '#3d7ebc' },
@@ -32,7 +32,7 @@ const govUKPalette = {
   yellow: {
     50: { value: '#fffdf2' },
     100: { value: '#fff8cc' },
-    200: { value: '#ffee80' },
+    200: { value: '#ffee80' }, // tag-yellow
     300: { value: '#ffe640' },
     400: { value: '#ffe22c' },
     500: { value: '#ffdd00' }, // focus-colour
@@ -44,7 +44,7 @@ const govUKPalette = {
   },
   teal: {
     50: { value: '#f3f9f9' },
-    100: { value: '#d0e6e7' },
+    100: { value: '#d0e6e7' }, // tag-teal
     200: { value: '#8ac0c3' },
     300: { value: '#50a1a5' },
     400: { value: '#3b9297' },
@@ -57,7 +57,7 @@ const govUKPalette = {
   },
   red: {
     50: { value: '#fcf5f5' },
-    100: { value: '#f4d7d7' },
+    100: { value: '#f4d7d7' }, // tag-red
     200: { value: '#e59a9a' },
     300: { value: '#d76868' },
     400: { value: '#d15353' },
@@ -70,7 +70,7 @@ const govUKPalette = {
   },
   green: {
     50: { value: '#f3f9f7' },
-    100: { value: '#cfe7de' },
+    100: { value: '#cfe7de' }, // tag-green closest to #cfe4dc
     200: { value: '#88c3ad' },
     300: { value: '#4da583' },
     400: { value: '#389771' },
@@ -83,7 +83,7 @@ const govUKPalette = {
   },
   grey: {
     50: { value: '#f3f3f3' }, // lightGrey, secondary-bg-color
-    100: { value: '#cecece' }, // border-colour, hover-colour
+    100: { value: '#cecece' }, // border-colour, hover-colour, tag-grey
     200: { value: '#858686' },
     300: { value: '#6c6d6d' },
     400: { value: '#484949' }, // secondary-text-colour
@@ -96,7 +96,7 @@ const govUKPalette = {
   },
   orange: {
     50: { value: '#fcf0f2' },
-    100: { value: '#fde4d7' },
+    100: { value: '#fde4d7' }, // tag-orange
     200: { value: '#fabb9c' },
     300: { value: '#f7996a' },
     400: { value: '#f68955' },
@@ -109,7 +109,7 @@ const govUKPalette = {
   },
   magenta: {
     50: { value: '#fcf5f8' },
-    100: { value: '#f4d7e5' },
+    100: { value: '#f4d7e5' }, // tag-magenta
     200: { value: '#e59abe' },
     300: { value: '#d7689d' },
     400: { value: '#d1538e' },
@@ -122,7 +122,7 @@ const govUKPalette = {
   },
   purple: {
     50: { value: '#f6f5fa' },
-    100: { value: '#ddd6ec' },
+    100: { value: '#ddd6ec' }, // tag-purple
     200: { value: '#aa98cf' },
     300: { value: '#7f65b7' },
     400: { value: '#6c50ac' },

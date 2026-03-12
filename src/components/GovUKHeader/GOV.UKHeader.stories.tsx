@@ -5,7 +5,7 @@ import { GovUKHeader } from './GovUKHeader'
 import { pxToRem } from '../../utils'
 
 const meta: Meta = {
-  title: 'GOV.UK/GOV.UK - Header',
+  title: 'GOV.UK/Components/GOV.UK - Header',
   parameters: {
     layout: 'fullscreen',
   },

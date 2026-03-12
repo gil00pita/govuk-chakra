@@ -3,7 +3,7 @@ import type { Meta, StoryObj } from '@storybook/react'
 import { WarningText } from './WarningText'
 
 const meta: Meta<typeof WarningText> = {
-  title: 'GOV.UK/WarningText',
+  title: 'GOV.UK/Components/WarningText',
   component: WarningText,
   parameters: {
     layout: 'centered',

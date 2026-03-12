@@ -3,7 +3,7 @@ import type { Meta, StoryObj } from '@storybook/react'
 import { SummaryList } from './SummaryList'
 
 const meta: Meta = {
-  title: 'GOV.UK/SummaryList',
+  title: 'GOV.UK/Components/SummaryList',
   parameters: {
     layout: 'centered',
   },

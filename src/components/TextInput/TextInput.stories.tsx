@@ -1,10 +1,10 @@
-import { VStack } from '@chakra-ui/react'
 import type { Meta, StoryObj } from '@storybook/react'
 
 import { TextInput } from './TextInput'
+import { VStack } from '@chakra-ui/react'
 
 const meta: Meta<typeof TextInput> = {
-  title: 'GOV.UK/TextInput',
+  title: 'GOV.UK/Components/TextInput',
   component: TextInput,
   parameters: {
     layout: 'centered',

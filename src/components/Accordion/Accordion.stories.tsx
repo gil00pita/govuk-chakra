@@ -32,10 +32,20 @@ const sections = [
 ]
 
 const meta: Meta<typeof Accordion> = {
-  title: 'GOV.UK/Accordion',
+  title: 'GOV.UK/Components/Accordion',
   component: Accordion,
-  parameters: { layout: 'centered' },
   tags: ['autodocs'],
+  parameters: {
+    layout: 'centered',
+    docs: {
+      description: {
+        component:
+          'Use the accordion component to help users navigate and access content in a structured manner.\n\n' +
+          'The accordion component allows users to expand and collapse sections of content, making it easier to manage large amounts of information.\n\n' +
+          'Choose the variant based on the importance and context of the content so the interface stays clear and consistent. For GOV.UK guidance, see the GOV.UK Design System accordion documentation: https://design-system.service.gov.uk/components/accordion/.',
+      },
+    },
+  },
 }
 export default meta
 type Story = StoryObj<typeof meta>

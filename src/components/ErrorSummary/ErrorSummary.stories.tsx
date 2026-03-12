@@ -4,11 +4,18 @@ import { ErrorSummary } from './ErrorSummary'
 import { pxToRem } from '@/utils'
 
 const meta: Meta<typeof ErrorSummary> = {
-  title: 'GOV.UK/ErrorSummary',
+  title: 'GOV.UK/Components/Error summary',
   component: ErrorSummary,
   parameters: {
     layout: 'centered',
+    docs: {
+      description: {
+        component:
+          'Use ErrorSummary to show a page-level summary of validation errors and link each message to the relevant field.',
+      },
+    },
   },
+  tags: ['autodocs'],
 }
 
 export default meta

@@ -10,7 +10,7 @@ interface CheckboxStoryArgs extends Omit<CheckboxProps, 'hint'> {
 }
 
 const meta: Meta<CheckboxStoryArgs> = {
-  title: 'GOV.UK/Checkbox',
+  title: 'GOV.UK/Components/Checkbox',
   component: Checkbox.Root as any,
   parameters: {
     layout: 'centered',

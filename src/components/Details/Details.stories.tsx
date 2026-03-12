@@ -3,7 +3,7 @@ import type { Meta, StoryObj } from '@storybook/react'
 import { Details } from './Details'
 
 const meta: Meta = {
-  title: 'GOV.UK/Details',
+  title: 'GOV.UK/Components/Details',
   parameters: {
     layout: 'centered',
   },

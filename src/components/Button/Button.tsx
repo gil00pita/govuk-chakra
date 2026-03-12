@@ -5,11 +5,11 @@ import { pxToRem } from '@/utils'
 
 export interface GovUKButtonProps extends Omit<ButtonProps, 'variant'> {
   variant?: 'primary' | 'secondary' | 'error' | 'inverse' | 'link'
-  showArrow?: boolean
+  startButton?: boolean
 }
 
 export const Button = forwardRef<HTMLButtonElement, GovUKButtonProps>(
-  ({ variant = 'primary', children, showArrow, ...props }, ref) => {
+  ({ variant = 'primary', children, startButton, ...props }, ref) => {
     const focusStyles: SystemStyleObject = {
       outline: 'none',
       bgColor: 'yellow.500',
@@ -33,6 +33,17 @@ export const Button = forwardRef<HTMLButtonElement, GovUKButtonProps>(
       secondary: {
         color: 'grey.900',
         bgColor: 'grey.50',
+        _dark: {
+          color: 'grey.50',
+          bgColor: 'grey.600',
+          _hover: {
+            bgColor: 'grey.600',
+            _focus: focusStyles,
+            _focusVisible: focusStyles,
+          },
+          _focus: focusStyles,
+          _focusVisible: focusStyles,
+        },
         boxShadow: '0 2px 0 var(--govuk-colors-grey-600)',
         _hover: {
           bgColor: 'grey.300',
@@ -58,6 +69,18 @@ export const Button = forwardRef<HTMLButtonElement, GovUKButtonProps>(
         bgColor: 'bg',
         color: 'blue.500',
         boxShadow: '0 2px 0 var(--govuk-colors-blue-700)',
+        _dark: {
+          bgColor: 'blue.900',
+          color: 'blue.50',
+          _hover: {
+            color: 'blue.50',
+            bgColor: 'blue.800',
+            _focus: focusStyles,
+            _focusVisible: focusStyles,
+          },
+          _focus: focusStyles,
+          _focusVisible: focusStyles,
+        },
         _hover: {
           color: 'blue.700',
           bgColor: 'blue.100',
@@ -90,13 +113,13 @@ export const Button = forwardRef<HTMLButtonElement, GovUKButtonProps>(
         bg="green.500"
         color="white"
         boxShadow="0 2px 0 var(--govuk-colors-green-900)"
-        fontWeight={showArrow ? 'bold' : 'normal'}
+        fontWeight={startButton ? 'bold' : 'normal'}
         padding={`${pxToRem(8)} ${pxToRem(10)} ${pxToRem(7)}`}
         {...variantStyles[variant]}
         {...props}
       >
         {children}
-        {showArrow && (
+        {startButton && (
           <svg
             className="govuk-button__start-icon"
             xmlns="http://www.w3.org/2000/svg"
