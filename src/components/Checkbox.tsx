@@ -5,17 +5,19 @@ import {
   type FieldsetRootProps,
 } from '@chakra-ui/react'
 import React, { forwardRef, type ReactNode } from 'react'
-import { Text } from './Text'
-
+import { Heading } from '@/components/Heading'
+import { Text } from '@/components/Text'
+import { pxToRem } from '@/utils'
+import { createIcon } from '@chakra-ui/react'
 // ─── Types ───────────────────────────────────────────────────────────
 export interface CheckboxProps extends CheckboxRootProps {
   /** Hint text displayed below the label */
   hint?: string
+  size?: 'sm' | 'lg'
 }
 
 export interface CheckboxControlProps extends ChakraCheckbox.ControlProps {
   /** Use smaller checkboxes (24×24 instead of 40×40) */
-  size?: 'sm' | 'lg'
 }
 
 export interface CheckboxGroupProps extends Omit<FieldsetRootProps, 'children'> {
@@ -30,67 +32,23 @@ export interface CheckboxGroupProps extends Omit<FieldsetRootProps, 'children'> 
   children: ReactNode
 }
 
-// ─── GOV.UK Styles ───────────────────────────────────────────────────
-const govukCheckboxStyles = {
-  control: {
-    width: '40px',
-    height: '40px',
-    minWidth: '40px',
-    border: '2px solid',
-    borderColor: 'black',
-    borderRadius: '0',
-    bg: 'fg',
-    _dark: {
-      _checked: {
-        bg: 'white',
-        borderColor: 'white',
-      },
-    },
-
-    _checked: {
-      bg: 'black',
-      borderColor: 'black',
-      color: 'fg',
-      _hover: {
-        bg: 'black',
-        borderColor: 'black',
-      },
-    },
-    _focus: {
-      boxShadow:
-        '0 0 0 3px var(--chakra-colors-focus), 0 0 0 7px var(--chakra-colors-common-black)',
-      outline: 'none',
-    },
-    _disabled: {
-      opacity: 0.5,
-      cursor: 'not-allowed',
-    },
-    _invalid: {
-      borderColor: 'red.500',
-    },
-  },
-  small: {
-    width: '24px',
-    height: '24px',
-    minWidth: '24px',
-  },
-}
-
 // ─── Subcomponents ───────────────────────────────────────────────────
 export const Checkbox = {
   Root: forwardRef<HTMLLabelElement, CheckboxProps>(function CheckboxRoot(
-    { hint, children, ...props },
+    { hint, size, children, ...props },
     ref
   ) {
     return (
       <ChakraCheckbox.Root
         ref={ref}
+        className="root"
         display="flex"
+        alignItems={size === 'sm' ? 'center' : 'flex-start'}
         gap={3}
-        py={2}
+        py={0}
+        mb={pxToRem(10)}
         cursor="pointer"
         color="fg"
-        {...props}
         _dark={{
           _hover: {
             '& > .control': {
@@ -108,6 +66,17 @@ export const Checkbox = {
             stroke: 'fg',
           },
         }}
+        css={{
+          '& .label': {
+            lineHeight: size === 'sm' ? '20px' : '40px',
+          },
+          '& .control': {
+            width: size === 'sm' ? '20px' : '40px',
+            height: size === 'sm' ? '20px' : '40px',
+            minWidth: size === 'sm' ? '20px' : '40px',
+          },
+        }}
+        {...props}
       >
         {children}
       </ChakraCheckbox.Root>
@@ -115,35 +84,65 @@ export const Checkbox = {
   }),
 
   Control: forwardRef<HTMLElement, CheckboxControlProps>(function CheckboxControl(
-    { size, children, ...props },
+    { children, ...props },
     ref
   ) {
-    const controlSize =
-      size === 'sm'
-        ? { ...govukCheckboxStyles.control, ...govukCheckboxStyles.small }
-        : govukCheckboxStyles.control
-
     return (
       <ChakraCheckbox.Control
-        {...props}
         ref={ref}
-        css={controlSize}
         className="control"
         bg="common.transparent"
+        borderRadius="0"
         borderColor={'common.black'}
+        borderWidth="2px"
+        borderStyle={'solid'}
+        alignItems="flex-start"
         _dark={{
           borderColor: 'common.white',
           _checked: {
             bg: 'common.transparent',
             borderColor: 'common.white',
           },
+          _hover: {
+            bg: 'common.transparent',
+            _checked: {
+              bg: 'common.transparent',
+            },
+          },
         }}
-        bg={'bg'}
         _checked={{
+          borderColor: 'black',
+          color: 'fg',
           bg: 'bg',
+          _hover: {
+            borderColor: 'black',
+            bg: 'common.transparent',
+          },
         }}
+        _focus={{
+          borderWidth: '4px',
+          outline: '3px solid transparent',
+          outlineOffset: '1px',
+          boxShadow: ' 0 0 0 3px var(--govuk-color-focus, #fd0)',
+        }}
+        _disabled={{
+          opacity: 0.5,
+          cursor: 'not-allowed',
+        }}
+        _invalid={{
+          borderColor: 'red.500',
+        }}
+        {...props}
       >
-        {children ?? <ChakraCheckbox.Indicator className="indicator" stroke={'fg'} />}
+        {children ?? (
+          <ChakraCheckbox.Indicator
+            className="indicator"
+            stroke="currentColor"
+            strokeWidth="3.5"
+            strokeLinecap="butt"
+            strokeLinejoin="butt"
+          />
+        )}
       </ChakraCheckbox.Control>
     )
   }),
@@ -158,8 +157,9 @@ export const Checkbox = {
         color="fg"
         cursor="pointer"
         className="label"
-        {...props}
+        // py={pxToRem(7)}
         asChild
+        {...props}
       >
         <Text fontSize={16}>{children}</Text>
       </ChakraCheckbox.Label>
@@ -174,7 +174,17 @@ export const Checkbox = {
 
   Indicator: forwardRef<HTMLDivElement, ChakraCheckbox.IndicatorProps>(
     function CheckboxIndicator(props, ref) {
-      return <ChakraCheckbox.Indicator ref={ref} className="indicator" {...props} />
+      return (
+        <ChakraCheckbox.Indicator
+          ref={ref}
+          className="indicator-check"
+          stroke="currentColor"
+          strokeWidth="3.5"
+          strokeLinecap="butt"
+          strokeLinejoin="butt"
+          {...props}
+        />
+      )
     }
   ),
 
@@ -199,33 +209,52 @@ export const Checkbox = {
     ref
   ) {
     return (
-      <Fieldset.Root ref={ref} invalid={Boolean(error)} className="group" {...props}>
+      <Fieldset.Root
+        ref={ref}
+        invalid={Boolean(error)}
+        className="group"
+        mb={{ base: pxToRem(30), md: pxToRem(20) }}
+        border={'0px solid transparent'}
+        padding={0}
+        paddingLeft={Boolean(error) ? pxToRem(15) : 0}
+        borderLeftWidth={Boolean(error) ? pxToRem(5) : 0}
+        borderLeftColor={Boolean(error) ? 'danger' : 'transparent'}
+        css={{
+          '& .root:last-of-type': {
+            mb: 0,
+          },
+        }}
+        {...props}
+      >
         <Fieldset.Legend
-          fontSize={legendAsHeading ? '1.5rem' : '1.1875rem'}
-          fontWeight={legendAsHeading ? 'bold' : 'normal'}
-          lineHeight={legendAsHeading ? '1.875rem' : '1.5625rem'}
+          // fontSize={legendAsHeading ? '1.5rem' : '1.1875rem'}
+          // fontWeight={legendAsHeading ? 'bold' : 'normal'}
+          // lineHeight={legendAsHeading ? '1.875rem' : '1.5625rem'}
           mb={hint || error ? 1 : 3}
+          float="left"
+          width="100%"
+          asChild
         >
-          {legend}
+          {legendAsHeading ? (
+            <Heading as="h1" size={36}>
+              {legend}
+            </Heading>
+          ) : (
+            <Text fontSize={24}>{legend}</Text>
+          )}
         </Fieldset.Legend>
 
         {hint ? (
-          <Text fontSize="1rem" color="fg.muted" mb={3}>
+          <Text fontSize={19} color="fg.muted" mb={3}>
             {hint}
           </Text>
         ) : null}
 
         {error ? (
-          <Fieldset.ErrorText
-            fontSize="1.1875rem"
-            fontWeight="bold"
-            color="danger"
-            borderLeft="4px solid"
-            borderColor="danger"
-            pl={3}
-            mb={3}
-          >
-            {error}
+          <Fieldset.ErrorText asChild mb={3}>
+            <Text fontSize={19} fontWeight={"700"} color="danger" >
+              {error}
+            </Text>
           </Fieldset.ErrorText>
         ) : null}
 

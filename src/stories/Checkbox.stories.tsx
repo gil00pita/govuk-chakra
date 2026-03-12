@@ -48,6 +48,7 @@ type Story = StoryObj<typeof meta>
 export const Default: Story = {
   render: (args) => (
     <Checkbox.Root
+      size={args.size}
       invalid={args.state === 'invalid'}
       disabled={args.state === 'disabled'}
       readOnly={args.state === 'readonly'}
@@ -55,7 +56,7 @@ export const Default: Story = {
       value={args.value}
     >
       <Checkbox.HiddenInput />
-      <Checkbox.Control size={args.size} />
+      <Checkbox.Control />
       {args.hint ? (
         <VStack align="start" gap={0}>
           <Checkbox.Label>I agree to the terms and conditions</Checkbox.Label>
@@ -93,9 +94,9 @@ export const WithHint: Story = {
 
 export const SmallCheckbox: Story = {
   render: () => (
-    <Checkbox.Root>
+    <Checkbox.Root size="sm">
       <Checkbox.HiddenInput />
-      <Checkbox.Control size="sm" />
+      <Checkbox.Control />
       <Checkbox.Label>HM Revenue and Customs</Checkbox.Label>
     </Checkbox.Root>
   ),
@@ -113,7 +114,11 @@ export const DisabledCheckbox: Story = {
 
 export const CheckboxGroupExample: Story = {
   render: () => (
-    <Checkbox.Group legend="Which types of waste do you transport?" hint="Select all that apply.">
+    <Checkbox.Group
+      legendAsHeading
+      legend="Which types of waste do you transport?"
+      hint="Select all that apply."
+    >
       <Checkbox.Root value="waste-animal">
         <Checkbox.HiddenInput />
         <Checkbox.Control />
@@ -140,7 +145,11 @@ export const CheckboxGroupExample: Story = {
 
 export const WithHintsGroup: Story = {
   render: () => (
-    <Checkbox.Group legend="Which types of waste do you transport?" hint="Select all that apply.">
+    <Checkbox.Group
+      legendAsHeading
+      legend="Which types of waste do you transport?"
+      hint="Select all that apply."
+    >
       <Checkbox.Root value="waste-animal">
         <Checkbox.HiddenInput />
         <Checkbox.Control />
@@ -175,6 +184,7 @@ export const WithError: Story = {
       legend="Which types of waste do you transport?"
       hint="Select all that apply."
       error="Select the types of waste you transport"
+      legendAsHeading
     >
       <Checkbox.Root value="waste-animal">
         <Checkbox.HiddenInput />
@@ -198,19 +208,19 @@ export const WithError: Story = {
 export const SmallCheckboxGroup: Story = {
   render: () => (
     <Checkbox.Group legend="Organisation">
-      <Checkbox.Root value="hmrc">
+      <Checkbox.Root value="hmrc" size="sm">
         <Checkbox.HiddenInput />
-        <Checkbox.Control size="sm" />
+        <Checkbox.Control />
         <Checkbox.Label>HM Revenue and Customs</Checkbox.Label>
       </Checkbox.Root>
-      <Checkbox.Root value="employment">
+      <Checkbox.Root value="employment" size="sm">
         <Checkbox.HiddenInput />
-        <Checkbox.Control size="sm" />
+        <Checkbox.Control />
         <Checkbox.Label>Employment Tribunal</Checkbox.Label>
       </Checkbox.Root>
-      <Checkbox.Root value="mod">
+      <Checkbox.Root value="mod" size="sm">
         <Checkbox.HiddenInput />
-        <Checkbox.Control size="sm" />
+        <Checkbox.Control />
         <Checkbox.Label>Ministry of Defence</Checkbox.Label>
       </Checkbox.Root>
     </Checkbox.Group>

@@ -27,6 +27,7 @@ export const Heading = forwardRef<HTMLHeadingElement, HeadingProps>(function Hea
     return (
       <ChakraHeading
         ref={ref}
+        fontWeight={'700'}
         fontSize={{ base: scale.small.fontSize, sm: scale.large.fontSize }}
         lineHeight={{ base: scale.small.lineHeight, sm: scale.large.lineHeight }}
         {...props}

@@ -5,6 +5,8 @@ import { fonts } from './fonts'
 import { govukFontSizes } from '../utils'
 
 const govUkThemeConfig = defineConfig({
+  preflight: true,
+  cssVarsPrefix: 'govuk', // changes --chakra-* to --govuk-*
   globalCss: {
     body: {
       bg: 'bg',
