@@ -1,10 +1,18 @@
 import { HStack, VStack } from '@chakra-ui/react'
-import { Card, CardGroup } from '@/components/Card'
-import { Button } from '@/components/Button'
+import { Card, CardGroup } from '@/components/Card/Card'
+import { Button } from '@/components/Button/Button'
 import type { Meta, StoryObj } from '@storybook/react'
 import { Text } from '@/components'
+import type { CardRootProps } from '@/components/Card/Card'
 
-const meta: Meta<typeof Card.Root> = {
+interface CardStoryArgs extends CardRootProps {
+  showHeader: boolean
+  showBody: boolean
+  showFooter: boolean
+  showImage: boolean
+}
+
+const meta: Meta<CardStoryArgs> = {
   title: 'GOV.UK/Card',
   component: Card.Root,
   parameters: {
@@ -38,7 +46,7 @@ const meta: Meta<typeof Card.Root> = {
 }
 
 export default meta
-type Story = StoryObj<typeof meta>
+type Story = StoryObj<CardStoryArgs>
 
 /** Basic card with body content only */
 export const Default: Story = {

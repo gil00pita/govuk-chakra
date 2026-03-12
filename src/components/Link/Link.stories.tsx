@@ -1,7 +1,7 @@
 import type { Meta, StoryObj } from '@storybook/react'
 import { Stack, Text } from '@chakra-ui/react'
 
-import { Link } from '../components/Link'
+import { Link } from './Link'
 
 const meta: Meta<typeof Link> = {
   title: 'GOV.UK/Link',

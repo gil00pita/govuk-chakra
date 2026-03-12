@@ -1,14 +1,10 @@
 {
   "compilerOptions": {
-     "target": "ESNext",
+    "target": "ESNext",
     "module": "ESNext",
     "moduleResolution": "Bundler",
     "skipLibCheck": true,
-    "lib": [
-      "dom",
-      "dom.iterable",
-      "esnext"
-    ],
+    "lib": ["dom", "dom.iterable", "esnext"],
     "allowJs": true,
     "esModuleInterop": true,
     "allowSyntheticDefaultImports": true,
@@ -18,7 +14,7 @@
     "resolveJsonModule": true,
     "baseUrl": "./src",
     "paths": {
-      "react": [ "./node_modules/@types/react" ],
+      "react": ["./node_modules/@types/react"],
       "@/*": ["./*"],
       "@/components/*": ["components/*"],
       "@/components": ["components/index"],
@@ -34,15 +30,12 @@
       "@/internationalization/*": ["internationalization/*"],
       "@/internationalization": ["internationalization/index"],
       "@/theme": ["theme/index"],
-      "@/theme/*": ["theme/*"],
+      "@/theme/*": ["theme/*"]
     },
     "isolatedModules": true,
     "noEmit": true,
     "jsx": "react-jsx",
-    "types": ["react"],
+    "types": ["react"]
   },
-  "include": [
-    "src",
-    ".storybook"
-  ]
+  "include": ["src", ".storybook", "src/stories/.tsx"]
 }

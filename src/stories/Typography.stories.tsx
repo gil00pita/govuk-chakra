@@ -1,7 +1,14 @@
 import { VStack } from '@chakra-ui/react'
 import type { Meta, StoryObj } from '@storybook/react'
 import { Heading, Text } from '@/components'
-import { Link } from '@/components/Link'
+import { Link } from '@/components/Link/Link'
+import type { HeadingProps } from '@/components/Heading/Heading'
+
+interface TypographyStoryArgs extends HeadingProps {
+  componentType: 'Heading' | 'Text'
+  error?: boolean
+  errorMsg?: string
+}
 
 const meta: Meta = {
   title: 'GOV.UK/Styles/Typography',
@@ -19,10 +26,10 @@ const headingOptions = ['h1', 'h2', 'h3', 'h4', 'h5', 'h6', 'span', 'p']
 // const textOptions = ['span', 'p']
 const componentTypeOptions = ['Heading', 'Text']
 
-export const HeadingStory: StoryObj<typeof Heading> = {
+export const HeadingStory: StoryObj<TypographyStoryArgs> = {
   name: 'Heading',
   args: {
-    componentType: 'heading',
+    componentType: 'Heading',
     size: 'xl',
     as: 'h1',
     children: 'Extra Large Heading (H1)',

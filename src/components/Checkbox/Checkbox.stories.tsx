@@ -1,10 +1,17 @@
 import type { Meta, StoryObj } from '@storybook/react'
-import { Checkbox } from '@/components/Checkbox'
+import { Checkbox } from '@/components/Checkbox/Checkbox'
 import { VStack } from '@chakra-ui/react'
+import type { CheckboxProps } from '@/components/Checkbox/Checkbox'
 
-const meta: Meta<typeof Checkbox.Root> = {
+interface CheckboxStoryArgs extends Omit<CheckboxProps, 'hint'> {
+  hint: boolean
+  hintText: string
+  state: 'disabled' | 'enabled' | 'readonly' | 'invalid'
+}
+
+const meta: Meta<CheckboxStoryArgs> = {
   title: 'GOV.UK/Checkbox',
-  component: Checkbox.Root,
+  component: Checkbox.Root as any,
   parameters: {
     layout: 'centered',
   },
@@ -38,12 +45,11 @@ const meta: Meta<typeof Checkbox.Root> = {
     value: {
       control: 'text',
     },
-    small: { table: { disable: true } },
   },
-} satisfies Meta<typeof Checkbox.Root>
+} satisfies Meta<CheckboxStoryArgs>
 
 export default meta
-type Story = StoryObj<typeof meta>
+type Story = StoryObj<CheckboxStoryArgs>
 
 export const Default: Story = {
   render: (args) => (

@@ -4,7 +4,7 @@ import { Box, Button, Separator, Stack, Text } from '@chakra-ui/react'
 import type { Meta, StoryObj } from '@storybook/react'
 
 // Accordion.stories.tsx
-import { Accordion } from '@/components/Accordion'
+import { Accordion } from '@/components/Accordion/Accordion'
 import { Link } from '@/components'
 import { pxToRem } from '@/utils/px-to-rem'
 

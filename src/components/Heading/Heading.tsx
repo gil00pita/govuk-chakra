@@ -1,6 +1,6 @@
 import { Heading as ChakraHeading, type HeadingProps as ChakraHeadingProps } from '@chakra-ui/react'
 import { forwardRef } from 'react'
-import { govukTypeScale } from '../utils'
+import { govukTypeScale } from '../../utils'
 
 type GovukFontSize = keyof typeof govukTypeScale
 

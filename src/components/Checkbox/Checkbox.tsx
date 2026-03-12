@@ -5,8 +5,8 @@ import {
   type FieldsetRootProps,
 } from '@chakra-ui/react'
 import React, { forwardRef, type ReactNode } from 'react'
-import { Heading } from '@/components/Heading'
-import { Text } from '@/components/Text'
+import { Heading } from '@/components/Heading/Heading'
+import { Text } from '@/components/Text/Text'
 import { pxToRem } from '@/utils'
 import { createIcon } from '@chakra-ui/react'
 // ─── Types ───────────────────────────────────────────────────────────
@@ -44,7 +44,7 @@ export const Checkbox = {
         className="root"
         display="flex"
         alignItems={size === 'sm' ? 'center' : 'flex-start'}
-        gap={3}
+        gap={pxToRem(15)}
         py={0}
         mb={pxToRem(10)}
         cursor="pointer"
@@ -68,12 +68,12 @@ export const Checkbox = {
         }}
         css={{
           '& .label': {
-            lineHeight: size === 'sm' ? '20px' : '40px',
+            lineHeight: size === 'sm' ? pxToRem(19) : pxToRem(41),
           },
           '& .control': {
-            width: size === 'sm' ? '20px' : '40px',
-            height: size === 'sm' ? '20px' : '40px',
-            minWidth: size === 'sm' ? '20px' : '40px',
+            width: size === 'sm' ? pxToRem(20) : pxToRem(40),
+            height: size === 'sm' ? pxToRem(20) : pxToRem(40),
+            minWidth: size === 'sm' ? pxToRem(20) : pxToRem(40),
           },
         }}
         {...props}
@@ -166,13 +166,14 @@ export const Checkbox = {
     )
   }),
 
-  HiddenInput: forwardRef<HTMLInputElement, ChakraCheckbox.HiddenInputProps>(
-    function CheckboxHiddenInput(props, ref) {
-      return <ChakraCheckbox.HiddenInput ref={ref} className="hidden-input" {...props} />
-    }
-  ),
+  HiddenInput: forwardRef<
+    HTMLInputElement,
+    React.ComponentPropsWithRef<typeof ChakraCheckbox.HiddenInput>
+  >(function CheckboxHiddenInput(props, ref) {
+    return <ChakraCheckbox.HiddenInput ref={ref} className="hidden-input" {...props} />
+  }),
 
-  Indicator: forwardRef<HTMLDivElement, ChakraCheckbox.IndicatorProps>(
+  Indicator: forwardRef<SVGSVGElement, ChakraCheckbox.IndicatorProps>(
     function CheckboxIndicator(props, ref) {
       return (
         <ChakraCheckbox.Indicator
@@ -252,7 +253,7 @@ export const Checkbox = {
 
         {error ? (
           <Fieldset.ErrorText asChild mb={3}>
-            <Text fontSize={19} fontWeight={"700"} color="danger" >
+            <Text fontSize={19} fontWeight={'700'} color="danger">
               {error}
             </Text>
           </Fieldset.ErrorText>
