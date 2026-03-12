@@ -149,7 +149,7 @@ const TaskListStatus = forwardRef<HTMLSpanElement, TaskListStatusProps>(function
         status === 'incomplete' || status === 'notStarted'
           ? 'blue.100'
           : status === 'cannotStartYet'
-            ? 'grey.200'
+            ? 'grey.50'
             : 'transparent'
       }
       color={status === 'cannotStartYet' ? 'grey.950' : 'grey.950'}

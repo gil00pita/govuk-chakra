@@ -7,7 +7,7 @@ const meta: Meta<typeof ErrorSummary> = {
   title: 'GOV.UK/ErrorSummary',
   component: ErrorSummary,
   parameters: {
-    layout: 'padded',
+    layout: 'centered',
   },
 }
 

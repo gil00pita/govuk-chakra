@@ -3,7 +3,7 @@ import type { Meta, StoryObj } from '@storybook/react'
 import { GovUKFooter } from './GovUKFooter'
 
 const meta: Meta = {
-  title: 'GOV.UK/Footer',
+  title: 'GOV.UK/GOV.UK - Footer',
   parameters: {
     layout: 'fullscreen',
   },

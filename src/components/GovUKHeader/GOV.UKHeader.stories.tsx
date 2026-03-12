@@ -1,11 +1,11 @@
 import type { Meta, StoryObj } from '@storybook/react'
-import { Box } from '@chakra-ui/react'
 
+import { Box } from '@chakra-ui/react'
 import { GovUKHeader } from './GovUKHeader'
 import { pxToRem } from '../../utils'
 
 const meta: Meta = {
-  title: 'GOV.UK/Header',
+  title: 'GOV.UK/GOV.UK - Header',
   parameters: {
     layout: 'fullscreen',
   },
