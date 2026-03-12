@@ -4,7 +4,7 @@ import { Heading, Text } from '@/components'
 import { Link } from '@/components/Link'
 
 const meta: Meta = {
-  title: 'GOV.UK/Typography',
+  title: 'GOV.UK/Styles/Typography',
   parameters: {
     layout: 'centered',
   },
@@ -26,6 +26,8 @@ export const HeadingStory: StoryObj<typeof Heading> = {
     size: 'xl',
     as: 'h1',
     children: 'Extra Large Heading (H1)',
+    error: false,
+    errorMsg: 'This is an error message',
   },
   argTypes: {
     componentType: {
@@ -80,9 +82,6 @@ export const TextStory: StoryObj<typeof Text> = {
       control: 'select',
       options: ['normal', 'medium', 'semibold', 'bold'],
     },
-    color: {
-      control: 'text',
-    },
   },
   render: (args) => <Text {...args} />,
 }
@@ -128,7 +127,7 @@ export const Links: Story = {
         </Link>{' '}
         in the middle of the text.
       </Text>
-      <Text bg="gray.900" color="white" p={4}>
+      <Text bg="grey.900" color="white" p={4}>
         This is text on a dark background with an{' '}
         <Link href="#" color="text.muted">
           inverse link

@@ -24,7 +24,7 @@ const AccordionRoot = forwardRef<HTMLDivElement, AccordionProps>((props, ref) =>
       ref={ref}
       multiple
       border="0px solid"
-      borderColor="gray.400"
+      borderColor="grey.400"
       borderRadius="0"
       fontSize="16px"
       lineHeight="1.25"

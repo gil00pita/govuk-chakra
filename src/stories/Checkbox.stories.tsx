@@ -1,5 +1,6 @@
 import type { Meta, StoryObj } from '@storybook/react'
 import { Checkbox } from '@/components/Checkbox'
+import { VStack } from '@chakra-ui/react'
 
 const meta: Meta<typeof Checkbox.Root> = {
   title: 'GOV.UK/Checkbox',
@@ -9,15 +10,35 @@ const meta: Meta<typeof Checkbox.Root> = {
   },
   tags: ['autodocs'],
   args: {
-    disabled: false,
+    checked: false,
+    hint: true,
+    hintText: 'This is some hint text to help the user understand the checkbox option.',
+    size: 'lg',
+    state: 'enabled',
+    value: 'agree',
   },
   argTypes: {
-    disabled: {
-      control: 'boolean',
+    state: {
+      control: 'select',
+      options: ['disabled', 'enabled', 'readonly', 'invalid'],
     },
     checked: {
       control: 'boolean',
     },
+    hint: {
+      control: 'boolean',
+    },
+    hintText: {
+      control: 'text',
+    },
+    size: {
+      control: 'select',
+      options: ['sm', 'lg'],
+    },
+    value: {
+      control: 'text',
+    },
+    small: { table: { disable: true } },
   },
 } satisfies Meta<typeof Checkbox.Root>
 
@@ -25,46 +46,94 @@ export default meta
 type Story = StoryObj<typeof meta>
 
 export const Default: Story = {
-  args: {
-    children: 'I agree to the terms and conditions',
-  },
+  render: (args) => (
+    <Checkbox.Root
+      invalid={args.state === 'invalid'}
+      disabled={args.state === 'disabled'}
+      readOnly={args.state === 'readonly'}
+      checked={args.checked}
+      value={args.value}
+    >
+      <Checkbox.HiddenInput />
+      <Checkbox.Control size={args.size} />
+      {args.hint ? (
+        <VStack align="start" gap={0}>
+          <Checkbox.Label>I agree to the terms and conditions</Checkbox.Label>
+          <Checkbox.Hint>{args.hintText}</Checkbox.Hint>
+        </VStack>
+      ) : (
+        <Checkbox.Label>I agree to the terms and conditions</Checkbox.Label>
+      )}
+    </Checkbox.Root>
+  ),
 }
 
 export const Checked: Story = {
-  args: {
-    defaultChecked: true,
-    children: 'Pre-selected option',
-  },
+  render: () => (
+    <Checkbox.Root defaultChecked>
+      <Checkbox.HiddenInput />
+      <Checkbox.Control />
+      <Checkbox.Label>Pre-selected option</Checkbox.Label>
+    </Checkbox.Root>
+  ),
 }
 
 export const WithHint: Story = {
-  args: {
-    children: 'Waste from animal carcasses',
-    hint: 'Including abattoir waste and dead animals',
-  },
+  render: () => (
+    <Checkbox.Root>
+      <Checkbox.HiddenInput />
+      <Checkbox.Control />
+      <VStack align="start" gap={0}>
+        <Checkbox.Label>Waste from animal carcasses</Checkbox.Label>
+        <Checkbox.Hint>Including abattoir waste and dead animals</Checkbox.Hint>
+      </VStack>
+    </Checkbox.Root>
+  ),
 }
 
 export const SmallCheckbox: Story = {
-  args: {
-    children: 'HM Revenue and Customs',
-    small: true,
-  },
+  render: () => (
+    <Checkbox.Root>
+      <Checkbox.HiddenInput />
+      <Checkbox.Control size="sm" />
+      <Checkbox.Label>HM Revenue and Customs</Checkbox.Label>
+    </Checkbox.Root>
+  ),
 }
 
 export const DisabledCheckbox: Story = {
-  args: {
-    disabled: true,
-    children: 'Disabled checkbox',
-  },
+  render: () => (
+    <Checkbox.Root disabled>
+      <Checkbox.HiddenInput />
+      <Checkbox.Control />
+      <Checkbox.Label>Disabled checkbox</Checkbox.Label>
+    </Checkbox.Root>
+  ),
 }
 
 export const CheckboxGroupExample: Story = {
   render: () => (
     <Checkbox.Group legend="Which types of waste do you transport?" hint="Select all that apply.">
-      <Checkbox.Root value="waste-animal">Waste from animal carcasses</Checkbox.Root>
-      <Checkbox.Root value="waste-mines">Waste from mines or quarries</Checkbox.Root>
-      <Checkbox.Root value="waste-farm">Farm or agricultural waste</Checkbox.Root>
-      <Checkbox.Root value="waste-clinical">Clinical waste</Checkbox.Root>
+      <Checkbox.Root value="waste-animal">
+        <Checkbox.HiddenInput />
+        <Checkbox.Control />
+        <Checkbox.Label>Waste from animal carcasses</Checkbox.Label>
+      </Checkbox.Root>
+      <Checkbox.Root value="waste-mines">
+        <Checkbox.HiddenInput />
+        <Checkbox.Control />
+        <Checkbox.Label>Waste from mines or quarries</Checkbox.Label>
+      </Checkbox.Root>
+      <Checkbox.Root value="waste-farm">
+        <Checkbox.HiddenInput />
+        <Checkbox.Control />
+        <Checkbox.Label>Farm or agricultural waste</Checkbox.Label>
+      </Checkbox.Root>
+      <Checkbox.Root value="waste-clinical">
+        <Checkbox.HiddenInput />
+        <Checkbox.Control />
+        <Checkbox.Label>Clinical waste</Checkbox.Label>
+      </Checkbox.Root>
     </Checkbox.Group>
   ),
 }
@@ -72,14 +141,29 @@ export const CheckboxGroupExample: Story = {
 export const WithHintsGroup: Story = {
   render: () => (
     <Checkbox.Group legend="Which types of waste do you transport?" hint="Select all that apply.">
-      <Checkbox.Root value="waste-animal" hint="Including abattoir waste and dead animals">
-        Waste from animal carcasses
+      <Checkbox.Root value="waste-animal">
+        <Checkbox.HiddenInput />
+        <Checkbox.Control />
+        <VStack align="start" gap={0}>
+          <Checkbox.Label>Waste from animal carcasses</Checkbox.Label>
+          <Checkbox.Hint>Including abattoir waste and dead animals</Checkbox.Hint>
+        </VStack>
       </Checkbox.Root>
-      <Checkbox.Root value="waste-mines" hint="ite waste andite tailings">
-        Waste from mines or quarries
+      <Checkbox.Root value="waste-mines">
+        <Checkbox.HiddenInput />
+        <Checkbox.Control />
+        <VStack align="start" gap={0}>
+          <Checkbox.Label>Waste from mines or quarries</Checkbox.Label>
+          <Checkbox.Hint>Ite waste and ite tailings</Checkbox.Hint>
+        </VStack>
       </Checkbox.Root>
-      <Checkbox.Root value="waste-farm" hint="For example, slurry">
-        Farm or agricultural waste
+      <Checkbox.Root value="waste-farm">
+        <Checkbox.HiddenInput />
+        <Checkbox.Control />
+        <VStack align="start" gap={0}>
+          <Checkbox.Label>Farm or agricultural waste</Checkbox.Label>
+          <Checkbox.Hint>For example, slurry</Checkbox.Hint>
+        </VStack>
       </Checkbox.Root>
     </Checkbox.Group>
   ),
@@ -92,9 +176,21 @@ export const WithError: Story = {
       hint="Select all that apply."
       error="Select the types of waste you transport"
     >
-      <Checkbox.Root value="waste-animal">Waste from animal carcasses</Checkbox.Root>
-      <Checkbox.Root value="waste-mines">Waste from mines or quarries</Checkbox.Root>
-      <Checkbox.Root value="waste-farm">Farm or agricultural waste</Checkbox.Root>
+      <Checkbox.Root value="waste-animal">
+        <Checkbox.HiddenInput />
+        <Checkbox.Control />
+        <Checkbox.Label>Waste from animal carcasses</Checkbox.Label>
+      </Checkbox.Root>
+      <Checkbox.Root value="waste-mines">
+        <Checkbox.HiddenInput />
+        <Checkbox.Control />
+        <Checkbox.Label>Waste from mines or quarries</Checkbox.Label>
+      </Checkbox.Root>
+      <Checkbox.Root value="waste-farm">
+        <Checkbox.HiddenInput />
+        <Checkbox.Control />
+        <Checkbox.Label>Farm or agricultural waste</Checkbox.Label>
+      </Checkbox.Root>
     </Checkbox.Group>
   ),
 }
@@ -102,14 +198,20 @@ export const WithError: Story = {
 export const SmallCheckboxGroup: Story = {
   render: () => (
     <Checkbox.Group legend="Organisation">
-      <Checkbox.Root value="hmrc" small>
-        HM Revenue and Customs
+      <Checkbox.Root value="hmrc">
+        <Checkbox.HiddenInput />
+        <Checkbox.Control size="sm" />
+        <Checkbox.Label>HM Revenue and Customs</Checkbox.Label>
       </Checkbox.Root>
-      <Checkbox.Root value="employment" small>
-        Employment Tribunal
+      <Checkbox.Root value="employment">
+        <Checkbox.HiddenInput />
+        <Checkbox.Control size="sm" />
+        <Checkbox.Label>Employment Tribunal</Checkbox.Label>
       </Checkbox.Root>
-      <Checkbox.Root value="mod" small>
-        Ministry of Defence
+      <Checkbox.Root value="mod">
+        <Checkbox.HiddenInput />
+        <Checkbox.Control size="sm" />
+        <Checkbox.Label>Ministry of Defence</Checkbox.Label>
       </Checkbox.Root>
     </Checkbox.Group>
   ),

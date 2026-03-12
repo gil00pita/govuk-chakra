@@ -23,7 +23,7 @@ import type { Meta, StoryObj } from '@storybook/react'
 import { GoAlert } from 'react-icons/go'
 
 const meta: Meta = {
-  title: 'GOV.UK/Design System Overview',
+  title: 'GOV.UK/Styles/Design System Overview',
   parameters: {
     layout: 'fullscreen',
   },
@@ -41,8 +41,8 @@ export const ColorPalette: Story = {
       <Grid templateColumns="repeat(auto-fit, minmax(200px, 1fr))" gap={4}>
         <Card.Root>
           <Card.Body>
-            <Box bg="gray.900" h="60px" mb={3} borderRadius="md" />
-            <Text fontWeight="bold">Gray 900</Text>
+            <Box bg="grey.900" h="60px" mb={3} borderRadius="md" />
+            <Text fontWeight="bold">Grey 900</Text>
             <Text fontSize="sm">Primary text color</Text>
           </Card.Body>
         </Card.Root>

@@ -19,10 +19,10 @@ export const Button = forwardRef<HTMLButtonElement, GovUKButtonProps>(
         _focus: { bgColor: 'yellow.500', color: 'grey.950' },
       },
       secondary: {
-        color: 'gray.900',
-        bgColor: 'gray.200',
-        boxShadow: '0 2px 0 var(--chakra-colors-gray-600)',
-        _hover: { bgColor: 'gray.300' },
+        color: 'grey.900',
+        bgColor: 'grey.200',
+        boxShadow: '0 2px 0 var(--chakra-colors-grey-600)',
+        _hover: { bgColor: 'grey.300' },
         _focus: { bgColor: 'yellow.500', color: 'grey.950' },
       },
       error: {

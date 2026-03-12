@@ -19,7 +19,7 @@ import type { Meta, StoryObj } from '@storybook/react'
 import { GoAlert } from 'react-icons/go'
 
 const meta: Meta = {
-  title: 'GOV.UK/Form Examples',
+  title: 'GOV.UK/Patterns/Form Examples',
   parameters: {
     layout: 'centered',
   },
