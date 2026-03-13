@@ -1,2 +1,15 @@
-export { Textarea } from './Textarea'
-export type { TextareaProps } from './Textarea'
+export {
+  Textarea,
+  TextareaRoot,
+  TextareaLabel,
+  TextareaHint,
+  TextareaError,
+  TextareaInput,
+} from './Textarea'
+export type {
+  TextareaRootProps,
+  TextareaLabelProps,
+  TextareaHintProps,
+  TextareaErrorProps,
+  TextareaInputProps,
+} from './Textarea'

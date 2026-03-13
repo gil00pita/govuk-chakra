@@ -30,12 +30,12 @@ export const Default: Story = {
       control: { type: 'select' },
       options: ['primary', 'secondary', 'error', 'inverse', 'link'],
     },
-    showArrow: { control: 'boolean' },
+    startButton: { control: 'boolean' },
   },
   args: {
     children: 'Start now',
     variant: 'primary',
-    showArrow: false,
+    startButton: false,
   },
 }
 
@@ -59,7 +59,7 @@ export const StartButton: Story = {
     docs: {
       description: {
         story: `Use a start button for the main call to action on your service’s Start page.
-Start buttons do not usually submit form data, so use a link tag instead of a button tag to avoid confusion for assistive technologies. Use the \`showArrow\` prop to add a right arrow to the button, which is a common design pattern for start buttons on GOV.UK. \n\nFor more guidance on start buttons, see the GOV.UK Design System start button documentation: https://design-system.service.gov.uk/components/start-button/.`,
+Start buttons do not usually submit form data, so use a link tag instead of a button tag to avoid confusion for assistive technologies. Use the \`startButton\` prop to apply the start button styling and arrow, which is a common design pattern on GOV.UK. \n\nFor more guidance on start buttons, see the GOV.UK Design System start button documentation: https://design-system.service.gov.uk/components/start-button/.`,
       },
     },
   },

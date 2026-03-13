@@ -32,6 +32,7 @@
     "eject": "react-scripts eject",
     "storybook": "storybook dev -p 6006",
     "build-storybook": "storybook build",
+    "serve-storybook": "serve storybook-static",
     "lint": "eslint . --no-color --cache --ext .js,.jsx,.ts,.tsx",
     "lint:fix": "eslint . --no-color --cache --ext .js,.jsx,.ts,.tsx --fix",
     "format": "prettier --write .",

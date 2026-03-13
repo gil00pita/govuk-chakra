@@ -1,6 +1,6 @@
 import type { Meta, StoryObj } from '@storybook/react'
 
-import { Textinput } from './Textinput'
+import { Textinput, type TextinputProps } from './Textinput'
 import { VStack } from '@chakra-ui/react'
 
 const meta: Meta<typeof Textinput> = {
@@ -34,7 +34,9 @@ export const Default: Story = {
 }
 
 export const WithLabel: Story = {
-  render: (args) => <Textinput {...args} label="Full name" placeholder="Enter your full name" />,
+  render: (args: TextinputProps) => (
+    <Textinput {...args} label="Full name" placeholder="Enter your full name" />
+  ),
 }
 
 export const Error: Story = {

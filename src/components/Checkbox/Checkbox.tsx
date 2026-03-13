@@ -66,8 +66,21 @@ export const Checkbox = {
           '& > .control > .indicator': {
             stroke: 'fg',
           },
+          '&:focus > .control, &:focus-within > .control': {
+            borderWidth: '4px',
+            outline: '3px solid transparent',
+            outlineOffset: '1px',
+            boxShadow: '0 0 0 3px var(--govuk-color-focus, #fd0)',
+          },
         }}
         css={{
+          '&:focus > .control, &:focus-within > .control': {
+            borderWidth: '4px',
+            outline: '3px solid transparent',
+            outlineOffset: '1px',
+            boxShadow: '0 0 0 3px var(--govuk-color-focus, #fd0)',
+          },
+
           '& .label': {
             lineHeight: size === 'sm' ? pxToRem(19) : pxToRem(41),
           },

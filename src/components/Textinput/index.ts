@@ -1,2 +1,10 @@
-export { TextInput } from './Textnnput'
-export type { TextInputProps, TextInputWidth } from './Textnnput'
+export { Textinput } from './Textinput'
+export type {
+  TextinputProps,
+  TextinputWidth,
+  TextinputRootProps,
+  TextinputLabelProps,
+  TextinputHintProps,
+  TextinputErrorProps,
+  TextinputInputProps,
+} from './Textinput'

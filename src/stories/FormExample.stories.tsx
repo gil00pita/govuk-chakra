@@ -9,7 +9,7 @@ import { Heading } from '@/components/Heading'
 import { Radio } from '@/components/Radio'
 import { Select } from '@/components/Select'
 import { Text } from '@/components/Text'
-import { TextInput } from '@/components/Textinput'
+import { Textinput } from '@/components/Textinput'
 import { Textarea } from '@/components/Textarea'
 
 const meta: Meta = {
@@ -79,16 +79,19 @@ export const CompleteForm: Story = {
         <Heading size="lg">Personal details</Heading>
 
         <Fieldset legend="Full name" hint="This must match the name on your identity documents">
-          <TextInput placeholder="Enter your full name as it appears on your passport" required />
+          <Textinput.Input
+            placeholder="Enter your full name as it appears on your passport"
+            required
+          />
         </Fieldset>
 
         <HStack gap={4}>
           <Fieldset legend="Date of birth">
-            <TextInput type="date" required />
+            <Textinput.Input type="date" required />
           </Fieldset>
 
           <Fieldset legend="Postcode">
-            <TextInput placeholder="SW1A 1AA" required />
+            <Textinput.Input placeholder="SW1A 1AA" required />
           </Fieldset>
         </HStack>
 
@@ -124,7 +127,7 @@ export const CompleteForm: Story = {
           legend="Additional information"
           hint="Do not include personal information like your National Insurance number"
         >
-          <Textarea
+          <Textarea.Input
             placeholder="Tell us about any medical conditions that might affect your driving"
             rows={4}
           />
@@ -146,7 +149,7 @@ export const CompleteForm: Story = {
         </Fieldset>
 
         <Fieldset legend="Email address">
-          <TextInput type="email" placeholder="name@example.com" required />
+          <Textinput.Input type="email" placeholder="name@example.com" required />
         </Fieldset>
 
         <Separator />
@@ -196,11 +199,11 @@ export const ErrorForm: Story = {
         </Alert.Description>
       </Alert.Root>
       <Fieldset legend="Full name" error="Enter your full name">
-        <TextInput variant="subtle" required />
+        <Textinput.Input variant="subtle" required />
       </Fieldset>
 
       <Fieldset legend="Email address" error="Enter a valid email address">
-        <TextInput variant="subtle" type="email" value="invalid-email" />
+        <Textinput.Input variant="subtle" type="email" value="invalid-email" />
       </Fieldset>
 
       <Fieldset legend="Where do you live?" error="Select where you live">

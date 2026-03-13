@@ -56,7 +56,7 @@ const PhaseBannerContent = forwardRef<HTMLParagraphElement, PhaseBannerContentPr
   }
 )
 
-const PhaseBannerTag = forwardRef<HTMLElement, PhaseBannerTagProps>(function PhaseBannerTag(
+const PhaseBannerTag = forwardRef<HTMLParagraphElement, PhaseBannerTagProps>(function PhaseBannerTag(
   { children, variant = 'blue', ...props },
   ref
 ) {

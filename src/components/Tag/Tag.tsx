@@ -1,4 +1,4 @@
-import { Box, type BoxProps } from '@chakra-ui/react'
+import { type BoxProps, type SystemStyleObject } from '@chakra-ui/react'
 import { forwardRef, type ReactNode } from 'react'
 
 import { pxToRem } from '@/utils'
@@ -22,7 +22,7 @@ export interface TagProps extends Omit<BoxProps, 'color'> {
   uppercase?: boolean
 }
 
-const variantStyles: Record<TagVariant, Pick<BoxProps, 'bg' | 'color'>> = {
+const variantStyles: Record<TagVariant, SystemStyleObject> = {
   grey: { bg: 'grey.100', color: 'grey.950', _dark: { bg: 'grey.950', color: 'grey.100' } },
   green: { bg: 'green.100', color: 'green.900', _dark: { bg: 'green.900', color: 'green.100' } },
   teal: { bg: 'teal.100', color: 'teal.900', _dark: { bg: 'teal.900', color: 'teal.100' } },
@@ -50,7 +50,7 @@ const variantStyles: Record<TagVariant, Pick<BoxProps, 'bg' | 'color'>> = {
   },
 }
 
-export const Tag = forwardRef<HTMLSpanElement, TagProps>(function Tag(
+export const Tag = forwardRef<HTMLParagraphElement, TagProps>(function Tag(
   { children, bold, uppercase, variant = 'grey', ...props },
   ref
 ) {
@@ -62,7 +62,6 @@ export const Tag = forwardRef<HTMLSpanElement, TagProps>(function Tag(
       pt={pxToRem(2)}
       px={pxToRem(8)}
       pb={pxToRem(3)}
-      borderRadius="1px"
       borderRadius={pxToRem(2)}
       fontWeight={bold ? '700' : '400'}
       letterSpacing={pxToRem(0.5)}

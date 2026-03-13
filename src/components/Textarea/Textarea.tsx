@@ -2,93 +2,117 @@ import {
   Field,
   Textarea as ChakraTextarea,
   type FieldRootProps,
-  type TextareaProps,
+  type TextareaProps as ChakraTextareaProps,
 } from '@chakra-ui/react'
-import { forwardRef, useId, type ReactNode } from 'react'
+import { forwardRef, type ReactNode } from 'react'
 
 import { Text } from '@/components/Text/Text'
 import { pxToRem } from '@/utils'
 
-export interface TextareaProps extends Omit<TextareaProps, 'size'> {
-  label?: ReactNode
-  hint?: ReactNode
-  error?: ReactNode
-  labelSize?: 19 | 24
-  formProps?: Omit<FieldRootProps, 'children' | 'invalid'>
+// ─── Types ───────────────────────────────────────────────────────────
+
+export interface TextareaRootProps extends FieldRootProps {
+  /** Whether the textarea is in an invalid state */
   invalid?: boolean
 }
 
-export const Textarea = forwardRef<HTMLTextAreaElement, TextareaProps>(function Textarea(
-  {
-    id,
-    label,
-    hint,
-    error,
-    labelSize = 19,
-    rows = 5,
-    required,
-    disabled,
-    invalid,
-    formProps,
-    ...props
-  },
-  ref
-) {
-  const generatedId = useId()
-  const textAreaId = id ?? `govuk-text-area-${generatedId}`
-  const hintId = hint ? `${textAreaId}-hint` : undefined
-  const errorId = error ? `${textAreaId}-error` : undefined
-  const isInvalid = Boolean(error) || Boolean(invalid)
+export interface TextareaLabelProps {
+  /** Font size for the label */
+  fontSize?: 19 | 24
+  children: ReactNode
+}
 
-  const describedBy =
-    [hintId, errorId, props['aria-describedby']].filter(Boolean).join(' ') || undefined
+export interface TextareaHintProps {
+  /** ID applied to the hint element for aria-describedby linking */
+  id?: string
+  children: ReactNode
+}
 
-  return (
-    <Field.Root
-      required={required}
-      disabled={disabled}
-      invalid={isInvalid}
-      display="flex"
-      alignItems="flex-start"
-      gap={pxToRem(8)}
-      borderLeftWidth={isInvalid ? pxToRem(5) : 0}
-      borderLeftColor={isInvalid ? 'red.500' : 'transparent'}
-      pl={isInvalid ? pxToRem(15) : 0}
-      {...formProps}
-    >
-      {label ? (
-        <Field.Label asChild>
-          <Text fontSize={labelSize} fontWeight="700" color="grey.950" mb={0}>
-            {label}
-          </Text>
-        </Field.Label>
-      ) : null}
+export interface TextareaErrorProps {
+  /** ID applied to the error element for aria-describedby linking */
+  id?: string
+  children: ReactNode
+}
 
-      {hint ? (
-        <Field.HelperText id={hintId} asChild>
-          <Text fontSize={19} color="grey.400" mb={0}>
-            {hint}
-          </Text>
-        </Field.HelperText>
-      ) : null}
+export interface TextareaInputProps extends Omit<ChakraTextareaProps, 'size'> {}
 
-      {error ? (
-        <Field.ErrorText id={errorId} asChild>
-          <Text fontSize={19} color="red.500" fontWeight="700" mb={0}>
-            {`Error: ${error}`}
-          </Text>
-        </Field.ErrorText>
-      ) : null}
+// ─── Subcomponents ───────────────────────────────────────────────────
 
+export const Textarea = {
+  Root: forwardRef<HTMLDivElement, TextareaRootProps>(function TextareaRoot(
+    { invalid, children, ...props },
+    ref
+  ) {
+    const isInvalid = Boolean(invalid)
+
+    return (
+      <Field.Root
+        ref={ref}
+        invalid={isInvalid}
+        display="flex"
+        alignItems="flex-start"
+        gap={pxToRem(8)}
+        borderLeftWidth={isInvalid ? pxToRem(5) : 0}
+        borderLeftColor={isInvalid ? 'red.500' : 'transparent'}
+        pl={isInvalid ? pxToRem(15) : 0}
+        {...props}
+      >
+        {children}
+      </Field.Root>
+    )
+  }),
+
+  Label: forwardRef<HTMLLabelElement, TextareaLabelProps>(function TextareaLabel(
+    { fontSize = 19, children, ...props },
+    ref
+  ) {
+    return (
+      <Field.Label ref={ref} asChild {...props}>
+        <Text fontSize={fontSize} fontWeight="700" color="grey.950" mb={0}>
+          {children}
+        </Text>
+      </Field.Label>
+    )
+  }),
+
+  Hint: forwardRef<HTMLDivElement, TextareaHintProps>(function TextareaHint(
+    { children, ...props },
+    ref
+  ) {
+    return (
+      <Field.HelperText ref={ref} asChild {...props}>
+        <Text fontSize={19} color="grey.400" mb={0}>
+          {children}
+        </Text>
+      </Field.HelperText>
+    )
+  }),
+
+  Error: forwardRef<HTMLDivElement, TextareaErrorProps>(function TextareaError(
+    { children, ...props },
+    ref
+  ) {
+    return (
+      <Field.ErrorText ref={ref} asChild {...props}>
+        <Text fontSize={19} color="red.500" fontWeight="700" mb={0}>
+          {`Error: ${children}`}
+        </Text>
+      </Field.ErrorText>
+    )
+  }),
+
+  Input: forwardRef<HTMLTextAreaElement, TextareaInputProps>(function TextareaInput(
+    { rows = 5, ...props },
+    ref
+  ) {
+    return (
       <ChakraTextarea
         ref={ref}
-        id={textAreaId}
         rows={rows}
         resize="vertical"
-        aria-describedby={describedBy}
         borderRadius="0"
         borderWidth={pxToRem(2)}
-        borderColor={isInvalid ? 'red.500' : 'grey.950'}
+        borderColor="grey.950"
         bg="common.white"
         color="grey.950"
         fontSize={pxToRem(19)}
@@ -97,7 +121,7 @@ export const Textarea = forwardRef<HTMLTextAreaElement, TextareaProps>(function 
         py={pxToRem(8)}
         w="100%"
         _placeholder={{ color: 'grey.400', opacity: 1 }}
-        _hover={{ borderColor: isInvalid ? 'red.500' : 'common.black' }}
+        _hover={{ borderColor: 'common.black' }}
         _focusVisible={{
           outline: `${pxToRem(3)} solid`,
           outlineColor: 'yellow.500',
@@ -114,6 +138,14 @@ export const Textarea = forwardRef<HTMLTextAreaElement, TextareaProps>(function 
         }}
         {...props}
       />
-    </Field.Root>
-  )
-})
+    )
+  }),
+}
+
+// ─── Named Exports ───────────────────────────────────────────────────
+
+export const TextareaRoot = Textarea.Root
+export const TextareaLabel = Textarea.Label
+export const TextareaHint = Textarea.Hint
+export const TextareaError = Textarea.Error
+export const TextareaInput = Textarea.Input
