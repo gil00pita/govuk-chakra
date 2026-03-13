@@ -54,7 +54,7 @@ export const Button = forwardRef<HTMLButtonElement, GovUKButtonProps>(
         _focusVisible: focusStyles,
       },
       error: {
-        bgColor: 'red.500',
+        bgColor: 'border.error',
         color: 'white',
         boxShadow: '0 2px 0 var(--govuk-colors-red-800)',
         _hover: {

@@ -1,10 +1,10 @@
 import { Box, type BoxProps } from '@chakra-ui/react'
 import { forwardRef, type ReactNode } from 'react'
 
-import { Link } from '../Link/Link'
-import { Tag, type TagVariant } from '../Tag/Tag'
-import { Text } from '../Text/Text'
-import { pxToRem } from '../../utils'
+import { Link } from '@/components/Link'
+import { Tag, type TagVariant } from '@/components/Tag'
+import { Text } from '@/components/Text'
+import { pxToRem } from '@/utils'
 
 export interface PhaseBannerProps extends BoxProps {
   phase?: ReactNode
@@ -56,16 +56,15 @@ const PhaseBannerContent = forwardRef<HTMLParagraphElement, PhaseBannerContentPr
   }
 )
 
-const PhaseBannerTag = forwardRef<HTMLParagraphElement, PhaseBannerTagProps>(function PhaseBannerTag(
-  { children, variant = 'blue', ...props },
-  ref
-) {
-  return (
-    <Tag ref={ref} as="strong" variant={variant} flexShrink={0} mt={pxToRem(-1)} {...props}>
-      {children}
-    </Tag>
-  )
-})
+const PhaseBannerTag = forwardRef<HTMLParagraphElement, PhaseBannerTagProps>(
+  function PhaseBannerTag({ children, variant = 'blue', ...props }, ref) {
+    return (
+      <Tag ref={ref} as="strong" variant={variant} flexShrink={0} mt={pxToRem(-1)} {...props}>
+        {children}
+      </Tag>
+    )
+  }
+)
 
 const PhaseBannerText = forwardRef<HTMLParagraphElement, PhaseBannerTextProps>(
   function PhaseBannerText(props, ref) {

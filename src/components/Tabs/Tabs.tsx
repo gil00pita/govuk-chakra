@@ -2,7 +2,7 @@ import { Tabs as ChakraTabs } from '@chakra-ui/react'
 import { forwardRef, type ReactNode } from 'react'
 
 import { pxToRem } from '@/utils'
-import { Text } from '../Text'
+import { Text } from '@/components'
 
 export interface TabsItem {
   value: string

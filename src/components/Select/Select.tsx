@@ -8,7 +8,7 @@ import {
 } from '@chakra-ui/react'
 import { forwardRef, useId, type ReactNode } from 'react'
 
-import { pxToRem } from '../../utils'
+import { pxToRem } from '@/utils'
 
 export type SelectWidth = 'full' | '20' | '10' | '5'
 

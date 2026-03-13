@@ -18,6 +18,15 @@ const meta: Meta<CardStoryArgs> = {
   component: Card.Root,
   parameters: {
     layout: 'centered',
+    docs: {
+      description: {
+        component:
+          'Use the card component to display content in a structured and visually distinct container.\n\n' +
+          'The card component allows users to group related information, making it easier to scan and understand.\n\n' +
+          'Choose the variant based on the importance and context of the content so the interface stays clear and consistent.\n\n' +
+          'This is an unofficial component from GOV.UK, its been seen in the GOV.UK Education Design System card documentation: https://design.education.gov.uk/design-system/components/card/.',
+      },
+    },
   },
   tags: ['autodocs'],
   argTypes: {

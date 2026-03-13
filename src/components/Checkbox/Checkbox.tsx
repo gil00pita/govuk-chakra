@@ -144,7 +144,7 @@ export const Checkbox = {
           cursor: 'not-allowed',
         }}
         _invalid={{
-          borderColor: 'red.500',
+          borderColor: 'border.error',
         }}
         {...props}
       >

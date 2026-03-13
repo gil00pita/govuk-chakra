@@ -2,7 +2,7 @@ import { type BoxProps, type SystemStyleObject } from '@chakra-ui/react'
 import { forwardRef, type ReactNode } from 'react'
 
 import { pxToRem } from '@/utils'
-import { Text } from '../Text'
+import { Text } from '@/components'
 
 export type TagVariant =
   | 'grey'

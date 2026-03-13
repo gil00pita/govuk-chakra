@@ -1,7 +1,7 @@
 import { Table as ChakraTable, type HTMLChakraProps } from '@chakra-ui/react'
 import { forwardRef, type ComponentProps } from 'react'
 
-import { pxToRem } from '../../utils'
+import { pxToRem } from '@/utils'
 
 type ChakraTableRootProps = ComponentProps<typeof ChakraTable.Root>
 type ChakraTableSectionProps = ComponentProps<typeof ChakraTable.Header>

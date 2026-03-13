@@ -7,8 +7,8 @@ import {
   type SimpleGridProps,
 } from '@chakra-ui/react'
 import { forwardRef } from 'react'
-import { Text } from '../Text/Text'
-import { Heading } from '../Heading/Heading'
+import { Text } from '@/components/Text'
+import { Heading } from '@/components/Heading'
 
 type HeadingTag = Extract<HeadingProps['as'], 'h2' | 'h3' | 'h4'>
 

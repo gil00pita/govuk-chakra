@@ -1,9 +1,9 @@
 import { Box, type BoxProps } from '@chakra-ui/react'
 import { forwardRef, type ReactNode } from 'react'
 
-import { Heading } from '../Heading/Heading'
-import { Link } from '../Link/Link'
-import { pxToRem } from '../../utils'
+import { Heading } from '@/components/Heading'
+import { Link } from '@/components/Link'
+import { pxToRem } from '@/utils'
 
 export interface GovUKHeaderProps extends BoxProps {}
 

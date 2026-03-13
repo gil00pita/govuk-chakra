@@ -6,7 +6,7 @@ import { DocsContainer, type DocsContainerProps } from '@storybook/addon-docs/bl
 import { withThemeByClassName } from '@storybook/addon-themes'
 import { themes } from 'storybook/theming'
 
-import { govUkTheme } from './../src/theme/govUkTheme'
+import { govUkTheme } from '@/theme/govUkTheme'
 
 const getDocsTheme = () =>
   document.documentElement.classList.contains('dark') ? themes.dark : themes.light

@@ -1,4 +1,4 @@
-import { pxToRem, govukSpacing, govukFontSizes } from '../utils'
+import { pxToRem, govukSpacing, govukFontSizes } from '@/utils'
 
 /**
  * Example usage of the GOV.UK px to rem utility

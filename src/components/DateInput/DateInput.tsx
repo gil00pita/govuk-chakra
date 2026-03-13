@@ -1,166 +1,242 @@
 import { Box, Input as ChakraInput, chakra, type BoxProps, type InputProps } from '@chakra-ui/react'
-import { forwardRef, useId, type ReactNode } from 'react'
+import { createContext, forwardRef, useContext, type ReactNode } from 'react'
 
-import { pxToRem } from '../../utils'
-import { Text } from '../Text/Text'
+import { pxToRem } from '@/utils'
+import { Text } from '@/components/Text'
+import { Heading } from '@/components/Heading'
 
-type DateInputWidth = '2' | '4'
-type DateInputPart = 'day' | 'month' | 'year'
+// ─── Context ─────────────────────────────────────────────────────────
+
+interface DateInputContextValue {
+  invalid?: boolean
+  showHint?: boolean
+  hideLegend?: boolean
+  asPageHeading?: boolean
+}
+
+const DateInputContext = createContext<DateInputContextValue>({})
+const useDateInputContext = () => useContext(DateInputContext)
+
+// ─── Types ───────────────────────────────────────────────────────────
+
+export type DateInputWidth = '2' | '4'
 
 const WIDTH_MAX: Record<DateInputWidth, string> = {
   '2': '5.4ex',
   '4': '9ex',
 }
 
+export interface DateInputRootProps extends BoxProps {
+  children: ReactNode
+  invalid?: boolean
+  showHint?: boolean
+  hideLegend?: boolean
+}
+
+export interface DateInputLegendProps {
+  /** Render the legend as an h1 page heading */
+
+  children: ReactNode
+}
+
+export interface DateInputHintProps {
+  id?: string
+  children: ReactNode
+}
+
+export interface DateInputErrorProps {
+  id?: string
+  children: ReactNode
+}
+
+export interface DateInputContainerProps extends BoxProps {
+  children: ReactNode
+}
+
+export interface DateInputFieldProps extends BoxProps {
+  children: ReactNode
+}
+
+export interface DateInputLabelProps {
+  htmlFor?: string
+  children: ReactNode
+}
+
 export interface DateInputInputProps extends Omit<InputProps, 'size'> {
-  label: ReactNode
   inputWidth?: DateInputWidth
 }
 
-export interface DateInputProps extends BoxProps {
-  legend?: ReactNode
-  hint?: ReactNode
-  error?: ReactNode
-  legendAsPageHeading?: boolean
-  dayLabel?: ReactNode
-  monthLabel?: ReactNode
-  yearLabel?: ReactNode
-  dayInputProps?: Omit<DateInputInputProps, 'label' | 'inputWidth' | 'id'>
-  monthInputProps?: Omit<DateInputInputProps, 'label' | 'inputWidth' | 'id'>
-  yearInputProps?: Omit<DateInputInputProps, 'label' | 'inputWidth' | 'id'>
-}
+// ─── Subcomponents ───────────────────────────────────────────────────
 
-function getInputStyles(isInvalid: boolean): InputProps {
-  return {
-    borderRadius: '0',
-    borderWidth: pxToRem(2),
-    borderColor: isInvalid ? 'red.500' : 'grey.950',
-    bg: 'common.white',
-    color: 'grey.950',
-    fontSize: pxToRem(19),
-    lineHeight: pxToRem(25),
-    px: pxToRem(8),
-    py: pxToRem(5),
-    h: pxToRem(40),
-    _placeholder: { color: 'grey.400', opacity: 1 },
-    _hover: { borderColor: isInvalid ? 'red.500' : 'common.black' },
-    _focusVisible: {
-      outline: `${pxToRem(3)} solid`,
-      outlineColor: 'yellow.500',
-      outlineOffset: '0',
-      borderColor: 'common.black',
-      boxShadow: 'inset 0 0 0 2px var(--chakra-colors-common-black)',
-    },
-    _invalid: { borderColor: 'red.500' },
-    _disabled: {
-      opacity: 1,
-      cursor: 'not-allowed',
-      color: 'grey.700',
-      bg: 'grey.100',
-    },
-  }
-}
+export const DateInput = {
+  Root: forwardRef<HTMLDivElement, DateInputRootProps>(function DateInputRoot(
+    { children, invalid, hideLegend = false, asPageHeading = false, showHint = false, ...props },
+    ref
+  ) {
+    return (
+      <DateInputContext.Provider
+        value={{
+          invalid: Boolean(invalid),
+          showHint: Boolean(showHint),
+          hideLegend: Boolean(hideLegend),
+          asPageHeading: Boolean(asPageHeading),
+        }}
+      >
+        <Box
+          ref={ref}
+          paddingLeft={invalid ? pxToRem(15) : 0}
+          borderLeft={invalid ? `${pxToRem(5)} solid` : '0'}
+          borderColor={invalid ? 'border.error' : 'transparent'}
+          {...props}
+        >
+          <Box as="fieldset" border="0" p={0} m={0} minInlineSize={0}>
+            {children}
+          </Box>
+        </Box>
+      </DateInputContext.Provider>
+    )
+  }),
 
-const DateInputField = forwardRef<HTMLInputElement, DateInputInputProps>(function DateInputField(
-  { label, inputWidth = '2', ...props },
-  ref
-) {
-  return (
-    <Box display="flex" flexDirection="column" gap={pxToRem(10)}>
+  Legend: forwardRef<HTMLDivElement, DateInputLegendProps>(function DateInputLegend(
+    { children, ...props },
+    ref
+  ) {
+    const { hideLegend, asPageHeading } = useDateInputContext()
+    if (hideLegend) return null
+    return (
+      <Box ref={ref} as="legend" mb={pxToRem(10)} width="100%" {...props}>
+        {asPageHeading ? (
+          <Heading as="h1" size={36} color="fg">
+            {children}
+          </Heading>
+        ) : (
+          <Text as="span" fontSize={24} fontWeight="700" color="fg">
+            {children}
+          </Text>
+        )}
+      </Box>
+    )
+  }),
+
+  Hint: forwardRef<HTMLParagraphElement, DateInputHintProps>(function DateInputHint(
+    { children, ...props },
+    ref
+  ) {
+    const { showHint } = useDateInputContext()
+    if (!showHint) return null
+
+    return (
+      <Text ref={ref} fontSize={19} color="fg.muted" mb={pxToRem(15)} {...props}>
+        {children}
+      </Text>
+    )
+  }),
+
+  Error: forwardRef<HTMLParagraphElement, DateInputErrorProps>(function DateInputError(
+    { children, ...props },
+    ref
+  ) {
+    const { invalid } = useDateInputContext()
+    if (!invalid) return null
+
+    return (
+      <Text ref={ref} fontSize={19} color="border.error" fontWeight="700" mb={3} {...props}>
+        {children}
+      </Text>
+    )
+  }),
+
+  Container: forwardRef<HTMLDivElement, DateInputContainerProps>(function DateInputContainer(
+    { children, ...props },
+    ref
+  ) {
+    return (
+      <Box ref={ref} display="flex" flexWrap="wrap" gap={pxToRem(20)} {...props}>
+        {children}
+      </Box>
+    )
+  }),
+
+  Field: forwardRef<HTMLDivElement, DateInputFieldProps>(function DateInputField(
+    { children, ...props },
+    ref
+  ) {
+    return (
+      <Box ref={ref} display="flex" flexDirection="column" gap={pxToRem(10)} {...props}>
+        {children}
+      </Box>
+    )
+  }),
+
+  Label: forwardRef<HTMLLabelElement, DateInputLabelProps>(function DateInputLabel(
+    { children, ...props },
+    ref
+  ) {
+    return (
       <chakra.label
-        htmlFor={props.id}
+        ref={ref}
         fontSize={pxToRem(19)}
         lineHeight={pxToRem(25)}
-        color="var(--chakra-colors-grey-950)"
+        color="var(--chakra-colors-fg)"
         marginBottom={0}
+        {...props}
       >
-        {label}
+        {children}
       </chakra.label>
-      <ChakraInput ref={ref} w="100%" maxW={WIDTH_MAX[inputWidth]} inputMode="numeric" {...props} />
-    </Box>
-  )
-})
+    )
+  }),
 
-export const DateInput = forwardRef<HTMLDivElement, DateInputProps>(function DateInput(
-  {
-    legend,
-    hint,
-    error,
-    legendAsPageHeading = false,
-    dayLabel = 'Day',
-    monthLabel = 'Month',
-    yearLabel = 'Year',
-    dayInputProps,
-    monthInputProps,
-    yearInputProps,
-    ...props
-  },
-  ref
-) {
-  const generatedId = useId()
-  const baseId = `govuk-date-input-${generatedId}`
-  const hintId = hint ? `${baseId}-hint` : undefined
-  const errorId = error ? `${baseId}-error` : undefined
-  const isInvalid = Boolean(error)
-  const describedBy = [hintId, errorId].filter(Boolean).join(' ') || undefined
-  const inputStyles = getInputStyles(isInvalid)
+  Input: forwardRef<HTMLInputElement, DateInputInputProps>(function DateInputInput(
+    { inputWidth = '2', ...props },
+    ref
+  ) {
+    const { invalid } = useDateInputContext()
 
-  const buildInputProps = (
-    part: DateInputPart,
-    extraProps?: Omit<DateInputInputProps, 'label' | 'inputWidth' | 'id'>
-  ) => ({
-    id: `${baseId}-${part}`,
-    name: `${baseId}-${part}`,
-    'aria-describedby': describedBy,
-    ...inputStyles,
-    ...extraProps,
-  })
+    return (
+      <ChakraInput
+        ref={ref}
+        w="100%"
+        maxW={WIDTH_MAX[inputWidth]}
+        inputMode="numeric"
+        borderRadius="0"
+        borderWidth={pxToRem(2)}
+        borderColor={invalid ? 'border.error' : 'border.input'}
+        bgColor="transparent"
+        color="fg"
+        fontSize={pxToRem(19)}
+        lineHeight={pxToRem(25)}
+        px={pxToRem(8)}
+        py={pxToRem(5)}
+        h={pxToRem(40)}
+        _placeholder={{ color: 'fg.muted', opacity: 1 }}
+        _hover={{ borderColor: 'border.input' }}
+        _focusVisible={{
+          outline: `${pxToRem(3)} solid`,
+          outlineColor: 'yellow.500',
+          outlineOffset: '0',
+          borderColor: 'border.input',
+          boxShadow: 'inset 0 0 0 2px var(--chakra-colors-common-black)',
+        }}
+        _invalid={{ borderColor: 'border.error' }}
+        _disabled={{
+          opacity: 1,
+          cursor: 'not-allowed',
+          color: 'fg.disabled',
+          bgColor: 'bg.disabled',
+        }}
+        {...props}
+      />
+    )
+  }),
+}
 
-  return (
-    <Box ref={ref} as="fieldset" border="0" p={0} m={0} minInlineSize={0} {...props}>
-      {legend ? (
-        <Box as="legend" mb={hint || error ? 1 : 3} width="100%">
-          <Text
-            as={legendAsPageHeading ? 'h1' : 'span'}
-            fontSize={legendAsPageHeading ? 36 : 24}
-            fontWeight="700"
-            color="grey.950"
-            mb={0}
-          >
-            {legend}
-          </Text>
-        </Box>
-      ) : null}
+// ─── Named Exports ───────────────────────────────────────────────────
 
-      {hint ? (
-        <Text id={hintId} fontSize={19} color="grey.400" mb={3}>
-          {hint}
-        </Text>
-      ) : null}
-
-      {error ? (
-        <Text id={errorId} fontSize={19} color="red.500" fontWeight="700" mb={3}>
-          {`Error: ${error}`}
-        </Text>
-      ) : null}
-
-      <Box display="flex" flexWrap="wrap" gap={pxToRem(20)}>
-        <DateInputField
-          label={dayLabel}
-          inputWidth="2"
-          {...buildInputProps('day', dayInputProps)}
-        />
-        <DateInputField
-          label={monthLabel}
-          inputWidth="2"
-          {...buildInputProps('month', monthInputProps)}
-        />
-        <DateInputField
-          label={yearLabel}
-          inputWidth="4"
-          {...buildInputProps('year', yearInputProps)}
-        />
-      </Box>
-    </Box>
-  )
-})
+export const DateInputRoot = DateInput.Root
+export const DateInputLegend = DateInput.Legend
+export const DateInputHint = DateInput.Hint
+export const DateInputError = DateInput.Error
+export const DateInputContainer = DateInput.Container
+export const DateInputField = DateInput.Field
+export const DateInputLabel = DateInput.Label
+export const DateInputInput = DateInput.Input

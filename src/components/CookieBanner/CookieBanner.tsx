@@ -83,20 +83,24 @@ export function CookieBanner({
       borderColor="grey.100"
       role="region"
       aria-label={computedHeading}
+      _dark={{
+        bgColor: 'brand.950',
+        borderColor: 'grey.900',
+      }}
       {...props}
     >
       <Box maxW="960px" mx="auto" px={{ base: pxToRem(15), md: pxToRem(30) }} py={pxToRem(20)}>
         {!hasDecision ? (
           <Stack gap={pxToRem(15)} alignItems="flex-start">
-            <Heading as="h2" size={24} color="grey.950" mb={0}>
+            <Heading as="h2" size={24} color="fg" mb={0}>
               {computedHeading}
             </Heading>
 
-            <Text fontSize={19} color="grey.950" mb={0}>
+            <Text fontSize={19} color="fg" mb={0}>
               {essentialCookiesText}
             </Text>
 
-            <Text fontSize={19} color="grey.950" mb={0}>
+            <Text fontSize={19} color="fg" mb={0}>
               {analyticsCookiesText}
             </Text>
 
@@ -117,7 +121,7 @@ export function CookieBanner({
             ref={confirmationRef}
             _focusVisible={{ outline: 'none' }}
           >
-            <Text fontSize={19} color="grey.950" mb={0}>
+            <Text fontSize={19} color="fg" mb={0}>
               {decision === 'accepted' ? acceptedConfirmationText : rejectedConfirmationText}
             </Text>
 

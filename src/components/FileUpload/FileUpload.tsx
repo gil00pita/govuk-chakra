@@ -8,7 +8,7 @@ import {
 } from '@chakra-ui/react'
 import { forwardRef, useId, type ReactNode } from 'react'
 
-import { pxToRem } from '../../utils'
+import { pxToRem } from '@/utils'
 
 export interface FileUploadProps extends Omit<InputProps, 'size' | 'type'> {
   label?: ReactNode

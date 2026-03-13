@@ -1,9 +1,9 @@
 import { Box, VisuallyHidden, type BoxProps, type HTMLChakraProps } from '@chakra-ui/react'
 import { forwardRef, type ComponentProps, type ReactNode } from 'react'
 
-import { Heading } from '../Heading/Heading'
-import { Link } from '../Link/Link'
-import { pxToRem } from '../../utils'
+import { Heading } from '@/components/Heading'
+import { Link } from '@/components/Link'
+import { pxToRem } from '@/utils'
 
 export interface SummaryListRootProps extends BoxProps {}
 

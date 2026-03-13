@@ -22,12 +22,24 @@ export const Link = forwardRef<HTMLAnchorElement, LinkProps>((props, ref) => {
         outlineColor: 'yellow.500',
         outlineOffset: 0,
         bgColor: 'yellow.500',
-        color: 'black',
+        color: 'fg',
         textDecoration: 'underline',
         textDecorationThickness: 'max(3px, 0.1875rem)',
       }}
       _visited={{
         color: 'govuk.darkGrey',
+      }}
+      _dark={{
+        color: 'brand.200',
+        _hover: {
+          color: 'brand.400',
+        },
+        _focus: {
+          color: 'fg',
+        },
+        _visited: {
+          color: 'govuk.darkGrey',
+        },
       }}
       {...props}
     />

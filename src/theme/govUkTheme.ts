@@ -2,7 +2,7 @@ import { createSystem, defaultConfig, defineConfig } from '@chakra-ui/react'
 
 import { colors } from './colors'
 import { fonts } from './fonts'
-import { govukFontSizes } from '../utils'
+import { govukFontSizes } from '@/utils'
 
 const govUkThemeConfig = defineConfig({
   preflight: true,
@@ -72,13 +72,25 @@ const govUkThemeConfig = defineConfig({
         border: {
           value: {
             base: '{colors.govuk.border}',
-            _dark: '{colors.grey.700}',
+            _dark: '{colors.grey.200}',
+          },
+        },
+        'border.input': {
+          value: {
+            base: '{colors.common.black}',
+            _dark: '{colors.common.white}',
           },
         },
         'border.emphasized': {
           value: {
             base: '{colors.grey.400}',
             _dark: '{colors.grey.600}',
+          },
+        },
+        'border.error': {
+          value: {
+            base: '{colors.red.500}',
+            _dark: '{colors.red.400}',
           },
         },
         link: {

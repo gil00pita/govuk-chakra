@@ -1,8 +1,8 @@
 import { Box, type BoxProps } from '@chakra-ui/react'
 import { forwardRef, type ReactNode } from 'react'
 
-import { Text } from '../Text/Text'
-import { pxToRem } from '../../utils'
+import { Text } from '@/components/Text'
+import { pxToRem } from '@/utils'
 
 export interface DetailsProps extends BoxProps {
   summary: ReactNode
@@ -22,7 +22,7 @@ const DetailsRoot = forwardRef<HTMLDetailsElement, DetailsProps>(function Detail
   return (
     <Box ref={ref} as="details" mb={pxToRem(20)} {...props}>
       <DetailsSummary>{summary}</DetailsSummary>
-      <Box mt={pxToRem(15)} pl={pxToRem(20)} borderLeft="5px solid" borderLeftColor="grey.300">
+      <Box mt={pxToRem(15)} pl={pxToRem(20)} borderLeft="5px solid" borderLeftColor="fg.muted">
         {children}
       </Box>
     </Box>
@@ -90,7 +90,7 @@ const DetailsSummary = forwardRef<HTMLElement, DetailsSummaryProps>(function Det
 
 const DetailsText = forwardRef<HTMLParagraphElement, DetailsTextProps>(
   function DetailsText(props, ref) {
-    return <Text ref={ref} fontSize={19} color="grey.950" mb={0} {...props} />
+    return <Text ref={ref} fontSize={19} color="fg" mb={0} {...props} />
   }
 )
 

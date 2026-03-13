@@ -10,8 +10,8 @@ import {
   type ReactNode,
 } from 'react'
 
-import { Link } from '../Link/Link'
-import { pxToRem } from '../../utils'
+import { Link } from '@/components/Link'
+import { pxToRem } from '@/utils'
 
 type ServiceNavigationContextValue = {
   isMobileOpen: boolean

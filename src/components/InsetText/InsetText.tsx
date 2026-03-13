@@ -1,8 +1,8 @@
 import { Box, type BoxProps } from '@chakra-ui/react'
 import { forwardRef, type ReactNode } from 'react'
 
-import { Text } from '../Text/Text'
-import { pxToRem } from '../../utils'
+import { Text } from '@/components/Text'
+import { pxToRem } from '@/utils'
 
 export interface InsetTextProps extends BoxProps {
   children: ReactNode

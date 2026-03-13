@@ -8,9 +8,9 @@ import {
 } from '@chakra-ui/react'
 import React, { forwardRef, type ReactNode } from 'react'
 
-import { Heading } from '../Heading/Heading'
-import { Text } from '../Text/Text'
-import { pxToRem } from '../../utils'
+import { Heading } from '@/components/Heading'
+import { Text } from '@/components/Text'
+import { pxToRem } from '@/utils'
 
 const RadioItemPrimitive = ChakraRadioGroup.Item as React.ElementType
 const RadioItemControlPrimitive = ChakraRadioGroup.ItemControl as React.ElementType
