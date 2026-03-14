@@ -3,12 +3,12 @@ import { Button as ChakraButton, type ButtonProps, type SystemStyleObject } from
 import { forwardRef } from 'react'
 import { pxToRem } from '@/utils'
 
-export interface GovUKButtonProps extends Omit<ButtonProps, 'variant'> {
+export interface ButtonProps extends Omit<ButtonProps, 'variant'> {
   variant?: 'primary' | 'secondary' | 'error' | 'inverse' | 'link'
   startButton?: boolean
 }
 
-export const Button = forwardRef<HTMLButtonElement, GovUKButtonProps>(
+export const Button = forwardRef<HTMLButtonElement, ButtonProps>(
   ({ variant = 'primary', children, startButton, ...props }, ref) => {
     const focusStyles: SystemStyleObject = {
       outline: 'none',
@@ -16,7 +16,7 @@ export const Button = forwardRef<HTMLButtonElement, GovUKButtonProps>(
       color: 'grey.950',
     }
 
-    const variantStyles: Record<NonNullable<GovUKButtonProps['variant']>, SystemStyleObject> = {
+    const variantStyles: Record<NonNullable<ButtonProps['variant']>, SystemStyleObject> = {
       primary: {
         bgColor: 'green.500',
         color: 'white',

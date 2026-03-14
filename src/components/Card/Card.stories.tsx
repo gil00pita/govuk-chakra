@@ -14,7 +14,7 @@ interface CardStoryArgs extends CardRootProps {
 }
 
 const meta: Meta<CardStoryArgs> = {
-  title: 'GOV.UK/Unofficial Components/Card',
+  title: 'Unofficial Components/Card',
   component: Card.Root,
   parameters: {
     layout: 'centered',

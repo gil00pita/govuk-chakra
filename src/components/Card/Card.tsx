@@ -149,6 +149,7 @@ export const Card = {
           lineHeight="1.35"
           className="card-header"
           alignItems={'flex-start'}
+          aria-level={'heading'}
         >
           {props.children}
         </Heading>
