@@ -28,6 +28,7 @@ const WIDTH_MAX: Record<DateInputWidth, string> = {
 
 export interface DateInputRootProps extends BoxProps {
   children: ReactNode
+  asPageHeading?: boolean
   invalid?: boolean
   showHint?: boolean
   hideLegend?: boolean

@@ -97,8 +97,8 @@ export const WithError: Story = {
 
 export const AsPageHeading: Story = {
   render: () => (
-    <DateInput.Root width="720px">
-      <DateInput.Legend asPageHeading>When did you arrive in the UK?</DateInput.Legend>
+    <DateInput.Root width="720px" asPageHeading>
+      <DateInput.Legend>When did you arrive in the UK?</DateInput.Legend>
       <DateInput.Hint>For example, 5 9 2023</DateInput.Hint>
       <DateInput.Container>
         <DateInput.Field>

@@ -138,18 +138,17 @@ export const Card = {
     )
   }),
   Header: forwardRef<HTMLDivElement, CardHeaderProps>(function CardHeader(
-    { headingType, ...props },
+    { headingType = 'h2', ...props },
     ref
   ) {
     return (
-      <ChakraCard.Header ref={ref} role="heading" {...props}>
+      <ChakraCard.Header ref={ref} {...props}>
         <Heading
           as={headingType}
           size={24}
           lineHeight="1.35"
           className="card-header"
           alignItems={'flex-start'}
-          aria-level={'heading'}
         >
           {props.children}
         </Heading>

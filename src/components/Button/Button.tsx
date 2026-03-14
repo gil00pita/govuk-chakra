@@ -1,9 +1,13 @@
-import { Button as ChakraButton, type ButtonProps, type SystemStyleObject } from '@chakra-ui/react'
+import {
+  Button as ChakraButton,
+  type ButtonProps as ChakraButtonProps,
+  type SystemStyleObject,
+} from '@chakra-ui/react'
 
 import { forwardRef } from 'react'
 import { pxToRem } from '@/utils'
 
-export interface ButtonProps extends Omit<ButtonProps, 'variant'> {
+export interface ButtonProps extends Omit<ChakraButtonProps, 'variant'> {
   variant?: 'primary' | 'secondary' | 'error' | 'inverse' | 'link'
   startButton?: boolean
 }

@@ -2,7 +2,7 @@ import { createSystem, defaultConfig, defineConfig } from '@chakra-ui/react'
 
 import { colors } from './colors'
 import { fonts } from './fonts'
-import { govukFontSizes } from '@/utils'
+import { govukFontSizes } from '@/utils/px-to-rem'
 
 const govUkThemeConfig = defineConfig({
   preflight: true,
