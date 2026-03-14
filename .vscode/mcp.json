@@ -2,23 +2,38 @@
   "servers": {
     "chakra-ui": {
       "command": "npx",
-      "args": ["-y", "@chakra-ui/react-mcp"],
+      "args": [
+        "-y",
+        "@chakra-ui/react-mcp"
+      ],
       "type": "stdio"
     },
     "Storybook": {
       "command": "npx",
-      "args": ["-y", "@storybook/mcp@latest"],
+      "args": [
+        "-y",
+        "@storybook/mcp@latest"
+      ],
       "type": "stdio"
     },
     "chrome-devtools": {
       "command": "npx",
-      "args": ["-y", "chrome-devtools-mcp@latest"],
+      "args": [
+        "-y",
+        "chrome-devtools-mcp@latest"
+      ],
       "type": "stdio"
     },
     "ESLint": {
       "type": "stdio",
       "command": "npx",
-      "args": ["@eslint/mcp@latest"]
+      "args": [
+        "@eslint/mcp@latest"
+      ]
+    },
+    "vite": {
+      "type": "sse",
+      "url": "http://localhost:5173/__mcp/sse"
     }
   },
   "inputs": []

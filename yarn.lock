@@ -2072,7 +2072,7 @@
   dependencies:
     "@types/mdx" "^2.0.0"
 
-"@modelcontextprotocol/sdk@^1.20.2":
+"@modelcontextprotocol/sdk@^1.20.2", "@modelcontextprotocol/sdk@^1.25.1":
   version "1.27.1"
   resolved "https://registry.npmjs.org/@modelcontextprotocol/sdk/-/sdk-1.27.1.tgz"
   integrity sha512-sr6GbP+4edBwFndLbM60gf07z0FQ79gaExpnsjMGePXqFcSSb7t6iscpjk9DhFhwd+mTEQrzNafGP8/iGGFYaA==
@@ -2539,75 +2539,70 @@
   resolved "https://registry.npmjs.org/@standard-schema/spec/-/spec-1.1.0.tgz"
   integrity sha512-l2aFy5jALhniG5HgqrD6jXLi/rUWrKvqN/qJx6yoJsgKhblVd+iqqU4RCXavm/jPityDo5TCvKMnpjKnOriy0w==
 
-"@storybook/addon-docs@10.2.17":
-  version "10.2.17"
-  resolved "https://registry.npmjs.org/@storybook/addon-docs/-/addon-docs-10.2.17.tgz"
-  integrity sha512-c414xi7rxlaHn92qWOxtEkcOMm0/+cvBui0gUsgiWOZOM8dHChGZ/RjMuf1pPDyOrSsybLsPjZhP0WthsMDkdQ==
+"@storybook/addon-docs@10.2.19":
+  version "10.2.19"
+  resolved "https://registry.yarnpkg.com/@storybook/addon-docs/-/addon-docs-10.2.19.tgz#e6071ee91b4c326176367621d0ea76c759a918cb"
+  integrity sha512-tXugthdzjX5AkGWDSP4pnRgA/CWlOaEKp/+y9JOGXHLQmm1GHjW+4brNvNkKbjBl06LALXwlcTOyU4lyVRDLAw==
   dependencies:
     "@mdx-js/react" "^3.0.0"
-    "@storybook/csf-plugin" "10.2.17"
+    "@storybook/csf-plugin" "10.2.19"
     "@storybook/icons" "^2.0.1"
-    "@storybook/react-dom-shim" "10.2.17"
+    "@storybook/react-dom-shim" "10.2.19"
     react "^16.8.0 || ^17.0.0 || ^18.0.0 || ^19.0.0"
     react-dom "^16.8.0 || ^17.0.0 || ^18.0.0 || ^19.0.0"
     ts-dedent "^2.0.0"
 
-"@storybook/addon-links@10.2.17":
-  version "10.2.17"
-  resolved "https://registry.npmjs.org/@storybook/addon-links/-/addon-links-10.2.17.tgz"
-  integrity sha512-KY2usxhPpt9AAzD22uBEfdPj1NZyCNyaYXgKkr8r/UeCNt7E7OdVBLNA1QMYZZ5dtIWj9EtY8c55OPuBM7aUkQ==
+"@storybook/addon-links@10.2.19":
+  version "10.2.19"
+  resolved "https://registry.yarnpkg.com/@storybook/addon-links/-/addon-links-10.2.19.tgz#f630dd393c53ecd5df518dfc74b75aea53445e97"
+  integrity sha512-3uZqbjlEmPg+X82nkwjBHshaCjDKLT75/NnbscvXPBiIl7ew+lhKDnufYLhChQmuAKQqfqBhdtwa2ISzw+O1XQ==
   dependencies:
     "@storybook/global" "^5.0.0"
 
-"@storybook/addon-mcp@^0.4.0":
-  version "0.4.0"
-  resolved "https://registry.npmjs.org/@storybook/addon-mcp/-/addon-mcp-0.4.0.tgz"
-  integrity sha512-vxDJTS+WWrtADgp6fGID+GlEU9aTRn9YAS/ybU2AMUr/YP77+E3XqvELtGkEvwpwYIS0hi+3sfoKpK2FRq7Mdw==
+"@storybook/addon-mcp@^0.4.1":
+  version "0.4.1"
+  resolved "https://registry.yarnpkg.com/@storybook/addon-mcp/-/addon-mcp-0.4.1.tgz#ea10fed616562811716db8af381983b4a1d61a0f"
+  integrity sha512-LJpzwFeS1Mw/k16T3NE1MuKa4EaJXGwt5kcVgupMnFa0Y3jbCCf2Hw9DjI6tQqc5w6hJG9DOA+YX9Qd+Pc2PZQ==
   dependencies:
-    "@storybook/mcp" "0.6.0"
+    "@storybook/mcp" "0.6.1"
     "@tmcp/adapter-valibot" "^0.1.4"
     "@tmcp/transport-http" "^0.8.0"
     picoquery "^2.5.0"
     tmcp "^1.16.0"
     valibot "1.2.0"
 
-"@storybook/addon-onboarding@10.2.17":
-  version "10.2.17"
-  resolved "https://registry.npmjs.org/@storybook/addon-onboarding/-/addon-onboarding-10.2.17.tgz"
-  integrity sha512-+WQC4RJlIFXF+ww2aNsq0pg8JaM5el29WQ9Hd2VZrB9LdjTqckuJI+5oQBZ1GFQNQDPxlif2TJfRGgI3m1wSpA==
+"@storybook/addon-onboarding@10.2.19":
+  version "10.2.19"
+  resolved "https://registry.yarnpkg.com/@storybook/addon-onboarding/-/addon-onboarding-10.2.19.tgz#3a7ac648e4f079771f50b12fd0ec56154e29f903"
+  integrity sha512-nlsQrdVMRFpbdimouLJHmCOCSsa3J1ASgDT6ipuE1owpUltg7Dj2PdUg/JRaWE6ghlP7MOP5see6vvnUgZ0Feg==
 
-"@storybook/addon-themes@10.2.17":
-  version "10.2.17"
-  resolved "https://registry.npmjs.org/@storybook/addon-themes/-/addon-themes-10.2.17.tgz"
-  integrity sha512-5AJ6h/i967CEDG3DNstfgKo9ysDNIOb1pnbn8VbcD/Fw8D2dZm7pLkTAQOnxu6lFQaIU10DIiVp7cviBMasDUg==
+"@storybook/addon-themes@10.2.19":
+  version "10.2.19"
+  resolved "https://registry.yarnpkg.com/@storybook/addon-themes/-/addon-themes-10.2.19.tgz#40f861a7b1d661acbd5049d6a5c46fe948df3a7d"
+  integrity sha512-TzcX/aqzZrQUypDATywLOenVoa1CTXBthODoY9odLsLLrxVaoeqsAdulkmOjeppKR1FigcERyIjIWPB8W48dag==
   dependencies:
     ts-dedent "^2.0.0"
 
-"@storybook/addon-viewport@^9.0.8":
-  version "9.0.8"
-  resolved "https://registry.yarnpkg.com/@storybook/addon-viewport/-/addon-viewport-9.0.8.tgz#def767425a92a4bab91c2a09e884fbfb1810e3c5"
-  integrity sha512-HgIFDzNXvMx0zQBM5mhwBoAJlrF9KRlxNCZnJbqrFLCJO4Ps2PMtB0HRGHcg0gm3RLcqyps0DpiF7wll3udb7Q==
-
-"@storybook/addon-vitest@10.2.17":
-  version "10.2.17"
-  resolved "https://registry.npmjs.org/@storybook/addon-vitest/-/addon-vitest-10.2.17.tgz"
-  integrity sha512-47mo952M/dHZQn1yTVMEUnri5KuIwWynPqamv6Q9KFXrSPOnBt/8IdrTcPUXFo5XO1ZmIWclgQjJtIvGe4z+ag==
+"@storybook/addon-vitest@10.2.19":
+  version "10.2.19"
+  resolved "https://registry.yarnpkg.com/@storybook/addon-vitest/-/addon-vitest-10.2.19.tgz#663948bc8b66701a0db4cd17f67d9fdf128a2d67"
+  integrity sha512-mx7B8QBT4YFLJ6+30rVxRfJNMDrIfVjJBWtdhP4mbZCS2IuoKAqf28KaC4ZZ4/UWAxjA/8VSQrV9CpXArepMlg==
   dependencies:
     "@storybook/global" "^5.0.0"
     "@storybook/icons" "^2.0.1"
 
-"@storybook/builder-vite@10.2.17":
-  version "10.2.17"
-  resolved "https://registry.npmjs.org/@storybook/builder-vite/-/builder-vite-10.2.17.tgz"
-  integrity sha512-m/OBveTLm5ds/tUgHmmbKzgSi/oeCpQwm5rZa49vP2BpAd41Q7ER6TzkOoISzPoNNMAcbVmVc5vn7k6hdbPSHw==
+"@storybook/builder-vite@10.2.19":
+  version "10.2.19"
+  resolved "https://registry.yarnpkg.com/@storybook/builder-vite/-/builder-vite-10.2.19.tgz#b43c9a35d9a70150ee5c300b0750994f697a2687"
+  integrity sha512-a59xALzM9GeYh6p+wzAeBbDyIe+qyrC4nxS3QNzb5i2ZOhrq1iIpvnDaOWe80NC8mV3IlqUEGY8Uawkf//1Rmg==
   dependencies:
-    "@storybook/csf-plugin" "10.2.17"
+    "@storybook/csf-plugin" "10.2.19"
     ts-dedent "^2.0.0"
 
-"@storybook/csf-plugin@10.2.17":
-  version "10.2.17"
-  resolved "https://registry.npmjs.org/@storybook/csf-plugin/-/csf-plugin-10.2.17.tgz"
-  integrity sha512-crHH8i/4mwzeXpWRPgwvwX2vjytW42zyzTRySUax5dTU8o9sjk4y+Z9hkGx3Nmu1TvqseS8v1Z20saZr/tQcWw==
+"@storybook/csf-plugin@10.2.19":
+  version "10.2.19"
+  resolved "https://registry.yarnpkg.com/@storybook/csf-plugin/-/csf-plugin-10.2.19.tgz#2c08da16808eddf4b759488e812ae665b9ff9c53"
+  integrity sha512-BpjYIOdyQn/Rm6MjUAc5Gl8HlARZrskD/OhUNShiOh2fznb523dHjiE5mbU1kKM/+L1uvRlEqqih40rTx+xCrg==
   dependencies:
     unplugin "^2.3.5"
 
@@ -2621,43 +2616,43 @@
   resolved "https://registry.npmjs.org/@storybook/icons/-/icons-2.0.1.tgz"
   integrity sha512-/smVjw88yK3CKsiuR71vNgWQ9+NuY2L+e8X7IMrFjexjm6ZR8ULrV2DRkTA61aV6ryefslzHEGDInGpnNeIocg==
 
-"@storybook/mcp@0.6.0", "@storybook/mcp@^0.6.0":
-  version "0.6.0"
-  resolved "https://registry.npmjs.org/@storybook/mcp/-/mcp-0.6.0.tgz"
-  integrity sha512-Zxb/GrwWX45irGkBnODso7hoVdGL9YVovDnwlpoTLi/K4McZbRVeWfymUyINVRb8KYJRWoXbcrYkqRm5Y1+XAg==
+"@storybook/mcp@0.6.1", "@storybook/mcp@^0.6.1":
+  version "0.6.1"
+  resolved "https://registry.yarnpkg.com/@storybook/mcp/-/mcp-0.6.1.tgz#63ffb17f9a16c2aec7a95dfd05281395473f2f1f"
+  integrity sha512-fdVJ3Br9/7Taj/sMCeM0jXM5rwdBbsRoh+nz8krMJj+Cj1vzfXRewkeadjt1Bg0q5UcV/0CSOHwj0QI8S5TIgA==
   dependencies:
     "@tmcp/adapter-valibot" "^0.1.4"
     "@tmcp/transport-http" "^0.8.0"
     tmcp "^1.16.0"
     valibot "1.2.0"
 
-"@storybook/react-dom-shim@10.2.17":
-  version "10.2.17"
-  resolved "https://registry.npmjs.org/@storybook/react-dom-shim/-/react-dom-shim-10.2.17.tgz"
-  integrity sha512-x9Kb7eUSZ1zGsEw/TtWrvs1LwWIdNp8qoOQCgPEjdB07reSJcE8R3+ASWHJThmd4eZf66ZALPJyerejake4Osw==
+"@storybook/react-dom-shim@10.2.19":
+  version "10.2.19"
+  resolved "https://registry.yarnpkg.com/@storybook/react-dom-shim/-/react-dom-shim-10.2.19.tgz#7971868fc0eb6a3101190251c46640b44fbdde28"
+  integrity sha512-BXCEfBGVBRYBTYeBeH/PJsy0Bq5MERe/HiaylR+ah/XrvIr2Z9bkne1J8yYiXCjiyq5HQa7Bj11roz0+vyUaEw==
 
-"@storybook/react-vite@10.2.17":
-  version "10.2.17"
-  resolved "https://registry.npmjs.org/@storybook/react-vite/-/react-vite-10.2.17.tgz"
-  integrity sha512-E/1hNmxVsjy9l3TuaNufSqkdz8saTJUGEs8GRCjKlF7be2wljIwewUxjAT3efk+bxOCw76ZmqGHk6MnRa3y7Gw==
+"@storybook/react-vite@10.2.19":
+  version "10.2.19"
+  resolved "https://registry.yarnpkg.com/@storybook/react-vite/-/react-vite-10.2.19.tgz#ecfd02a56cc14cce1b93e897517abca7686fbb63"
+  integrity sha512-2/yMKrK4IqMIZicRpPMoIg+foBuWnkaEWt0R4V4hjErDj/SC3D9ov+GUqhjKJ81TegijhKzNpwnSD7Nf87haKw==
   dependencies:
     "@joshwooding/vite-plugin-react-docgen-typescript" "^0.6.4"
     "@rollup/pluginutils" "^5.0.2"
-    "@storybook/builder-vite" "10.2.17"
-    "@storybook/react" "10.2.17"
+    "@storybook/builder-vite" "10.2.19"
+    "@storybook/react" "10.2.19"
     empathic "^2.0.0"
     magic-string "^0.30.0"
     react-docgen "^8.0.0"
     resolve "^1.22.8"
     tsconfig-paths "^4.2.0"
 
-"@storybook/react@10.2.17":
-  version "10.2.17"
-  resolved "https://registry.npmjs.org/@storybook/react/-/react-10.2.17.tgz"
-  integrity sha512-875AVMYil2X9Civil6GFZ8koIzlKxcXbl2eJ7+/GPbhIonTNmwx0qbWPHttjZXUvFuQ4RRtb9KkBwy4TCb/LeA==
+"@storybook/react@10.2.19":
+  version "10.2.19"
+  resolved "https://registry.yarnpkg.com/@storybook/react/-/react-10.2.19.tgz#7e273b942f42b9f7eb69de3e91101bec54545c18"
+  integrity sha512-gm2qxLyYSsGp7fee5i+d8jSVUKMla8yRaTJ1wxPEnyaJMd0QUu6U2v3p2rW7PH1DWop3D6NqWOY8kmZjmSZKlA==
   dependencies:
     "@storybook/global" "^5.0.0"
-    "@storybook/react-dom-shim" "10.2.17"
+    "@storybook/react-dom-shim" "10.2.19"
     react-docgen "^8.0.2"
 
 "@surma/rollup-plugin-off-main-thread@^2.2.3":
@@ -4651,6 +4646,11 @@ ansi-styles@^5.0.0, ansi-styles@^5.2.0:
   resolved "https://registry.npmjs.org/ansi-styles/-/ansi-styles-5.2.0.tgz"
   integrity sha512-Cxwpt2SfTzTtXcfOlzGEee8O+c+MmUgGrNiBcXnuWxuFJHe6a5Hz7qwhwe5OgaSYI0IJvkLqWX1ASG+cJOkEiA==
 
+ansis@^4.2.0:
+  version "4.2.0"
+  resolved "https://registry.yarnpkg.com/ansis/-/ansis-4.2.0.tgz#2e6e61c46b11726ac67f78785385618b9e658780"
+  integrity sha512-HqZ5rWlFjGiV0tDm3UxxgNRqsOTniqoKZu0pIAfh7TZQMGuZK+hH0drySty0si0QXj1ieop4+SkSfPZBPPkHig==
+
 any-promise@^1.0.0:
   version "1.3.0"
   resolved "https://registry.npmjs.org/any-promise/-/any-promise-1.3.0.tgz"
@@ -5347,6 +5347,13 @@ chokidar@^3.4.2, chokidar@^3.5.3, chokidar@^3.6.0:
     readdirp "~3.6.0"
   optionalDependencies:
     fsevents "~2.3.2"
+
+chokidar@^4.0.3:
+  version "4.0.3"
+  resolved "https://registry.yarnpkg.com/chokidar/-/chokidar-4.0.3.tgz#7be37a4c03c9aee1ecfe862a4a23b2c70c205d30"
+  integrity sha512-Qgzu8kfBvo+cA4962jnP1KkS6Dop5NS6g7R5LFYJr4b8Ub94PPQXUksCw9PvXoeXPRRddRNC5C1JQUR2SMGtnA==
+  dependencies:
+    readdirp "^4.0.1"
 
 chromatic@^15.2.0:
   version "15.2.0"
@@ -9544,6 +9551,14 @@ npm-run-path@^4.0.1:
   dependencies:
     path-key "^3.0.0"
 
+npm-run-path@^6.0.0:
+  version "6.0.0"
+  resolved "https://registry.yarnpkg.com/npm-run-path/-/npm-run-path-6.0.0.tgz#25cfdc4eae04976f3349c0b1afc089052c362537"
+  integrity sha512-9qny7Z9DsQU8Ou39ERsPU4OZQlSTP47ShQzuKZ6PRXpYLtIFgl/DEBYEXKlvcEa+9tHVcK8CF81Y2V72qaZhWA==
+  dependencies:
+    path-key "^4.0.0"
+    unicorn-magic "^0.3.0"
+
 nth-check@^1.0.2:
   version "1.0.2"
   resolved "https://registry.npmjs.org/nth-check/-/nth-check-1.0.2.tgz"
@@ -9905,6 +9920,11 @@ path-key@^3.0.0, path-key@^3.1.0:
   version "3.1.1"
   resolved "https://registry.npmjs.org/path-key/-/path-key-3.1.1.tgz"
   integrity sha512-ojmeN0qd+y0jszEtoY48r0Peq5dwMEkIlCOu6Q5f41lfkswXuKtYrhgoTpLnyIcHm24Uhqx+5Tqm2InSwLhE6Q==
+
+path-key@^4.0.0:
+  version "4.0.0"
+  resolved "https://registry.yarnpkg.com/path-key/-/path-key-4.0.0.tgz#295588dc3aee64154f877adb9d780b81c554bf18"
+  integrity sha512-haREypq7xkM7ErfgIyA0z+Bj4AGKlMSdlQE2jvJo6huWD1EdkKYV+G/T4nq0YEF2vgTT8kqMFKo1uHn950r4SQ==
 
 path-parse@^1.0.7:
   version "1.0.7"
@@ -10981,6 +11001,11 @@ readable-stream@^3.0.6:
     string_decoder "^1.1.1"
     util-deprecate "^1.0.1"
 
+readdirp@^4.0.1:
+  version "4.1.2"
+  resolved "https://registry.yarnpkg.com/readdirp/-/readdirp-4.1.2.tgz#eb85801435fbf2a7ee58f19e0921b068fc69948d"
+  integrity sha512-GDhwkLfywWL2s6vEjyhri+eXmfH6j1L7JE27WhqLeYzoh/A3DBaYGEj2H/HFZCn/kMfim73FXxEJTw06WtxQwg==
+
 readdirp@~3.6.0:
   version "3.6.0"
   resolved "https://registry.npmjs.org/readdirp/-/readdirp-3.6.0.tgz"
@@ -11771,10 +11796,10 @@ stop-iteration-iterator@^1.1.0:
     es-errors "^1.3.0"
     internal-slot "^1.1.0"
 
-storybook@10.2.17:
-  version "10.2.17"
-  resolved "https://registry.npmjs.org/storybook/-/storybook-10.2.17.tgz"
-  integrity sha512-yueTpl5YJqLzQqs3CanxNdAAfFU23iP0j+JVJURE4ghfEtRmWfWoZWLGkVcyjmgum7UmjwAlqRuOjQDNvH89kw==
+storybook@10.2.19:
+  version "10.2.19"
+  resolved "https://registry.yarnpkg.com/storybook/-/storybook-10.2.19.tgz#55de21d2e53b33ecde82096578092a3d115f7d13"
+  integrity sha512-UUm5eGSm6BLhkcFP0WbxkmAHJZfVN2ViLpIZOqiIPS++q32VYn+CLFC0lrTYTDqYvaG7i4BK4uowXYujzE4NdQ==
   dependencies:
     "@storybook/global" "^5.0.0"
     "@storybook/icons" "^2.0.1"
@@ -12507,6 +12532,11 @@ unicode-property-aliases-ecmascript@^2.0.0:
   resolved "https://registry.npmjs.org/unicode-property-aliases-ecmascript/-/unicode-property-aliases-ecmascript-2.2.0.tgz"
   integrity sha512-hpbDzxUY9BFwX+UeBnxv3Sh1q7HFxj48DTmXchNgRa46lO8uj3/1iEn3MiNUYTg1g9ctIqXCCERn8gYZhHC5lQ==
 
+unicorn-magic@^0.3.0:
+  version "0.3.0"
+  resolved "https://registry.yarnpkg.com/unicorn-magic/-/unicorn-magic-0.3.0.tgz#4efd45c85a69e0dd576d25532fbfa22aa5c8a104"
+  integrity sha512-+QBBXBCvifc56fsbuxZQ6Sic3wqqc3WWaqxs58gvJrcOuN83HGTCwz3oS5phzU9LthRNE9VrJCFCLUgHeeFnfA==
+
 unique-string@^2.0.0:
   version "2.0.0"
   resolved "https://registry.npmjs.org/unique-string/-/unique-string-2.0.0.tgz"
@@ -12636,6 +12666,31 @@ vary@^1, vary@^1.1.2, vary@~1.1.2:
   resolved "https://registry.npmjs.org/vary/-/vary-1.1.2.tgz"
   integrity sha512-BNGbWLfd0eUPabhkXUVm0j8uuvREyTh5ovRa/dyow/BqAbZJyC+5fU+IzQOzmAKzYqYRAISoRhdQr3eIZ/PXqg==
 
+vite-plugin-checker@^0.12.0:
+  version "0.12.0"
+  resolved "https://registry.yarnpkg.com/vite-plugin-checker/-/vite-plugin-checker-0.12.0.tgz#1e9688a5a10f5de1fd833bc1351618eed54db3bc"
+  integrity sha512-CmdZdDOGss7kdQwv73UyVgLPv0FVYe5czAgnmRX2oKljgEvSrODGuClaV3PDR2+3ou7N/OKGauDDBjy2MB07Rg==
+  dependencies:
+    "@babel/code-frame" "^7.27.1"
+    chokidar "^4.0.3"
+    npm-run-path "^6.0.0"
+    picocolors "^1.1.1"
+    picomatch "^4.0.3"
+    tiny-invariant "^1.3.3"
+    tinyglobby "^0.2.15"
+    vscode-uri "^3.1.0"
+
+vite-plugin-mcp@^0.3.2:
+  version "0.3.2"
+  resolved "https://registry.yarnpkg.com/vite-plugin-mcp/-/vite-plugin-mcp-0.3.2.tgz#53b1024d3b8758ad18d9aeba572606c793be5fb7"
+  integrity sha512-U/fLFkozIAaIzOoWpFOA5aAKBa5j5isdn/gZPcTcw6m2DadoB+Y+9e2hkMXSuom0dAbeb0Q+nLTCQmLqj4tNnA==
+  dependencies:
+    "@modelcontextprotocol/sdk" "^1.25.1"
+    ansis "^4.2.0"
+    debug "^4.4.3"
+    pathe "^2.0.3"
+    zod "^3.25.76"
+
 "vite@^6.0.0 || ^7.0.0 || ^8.0.0-0", vite@^8.0.0:
   version "8.0.0"
   resolved "https://registry.npmjs.org/vite/-/vite-8.0.0.tgz"
@@ -12675,6 +12730,11 @@ vitest@^4.1.0:
     tinyrainbow "^3.0.3"
     vite "^6.0.0 || ^7.0.0 || ^8.0.0-0"
     why-is-node-running "^2.3.0"
+
+vscode-uri@^3.1.0:
+  version "3.1.0"
+  resolved "https://registry.yarnpkg.com/vscode-uri/-/vscode-uri-3.1.0.tgz#dd09ec5a66a38b5c3fffc774015713496d14e09c"
+  integrity sha512-/BpdSx+yCQGnCvecbyXdxHDkuk55/G3xwnC0GqY4gmQ3j+A+g8kzzgB4Nk/SINjqn6+waqw3EgbVF2QKExkRxQ==
 
 w3c-hr-time@^1.0.2:
   version "1.0.2"
@@ -13256,7 +13316,7 @@ zod-to-json-schema@^3.25.1:
   resolved "https://registry.npmjs.org/zod-validation-error/-/zod-validation-error-4.0.2.tgz"
   integrity sha512-Q6/nZLe6jxuU80qb/4uJ4t5v2VEZ44lzQjPDhYJNztRQ4wyWc6VF3D3Kb/fAuPetZQnhS3hnajCf9CsWesghLQ==
 
-zod@^3.23.8:
+zod@^3.23.8, zod@^3.25.76:
   version "3.25.76"
   resolved "https://registry.npmjs.org/zod/-/zod-3.25.76.tgz"
   integrity sha512-gzUt/qt81nXsFGKIFcC3YnfEAx5NkunCfnDlvuBSSFS02bcXu4Lmea0AFIUwbLWxWPx3d9p8S5QoaujKcNQxcQ==

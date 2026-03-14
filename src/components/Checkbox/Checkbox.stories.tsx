@@ -11,7 +11,6 @@ interface CheckboxStoryArgs extends Omit<CheckboxProps, 'hint'> {
 
 const meta: Meta<CheckboxStoryArgs> = {
   title: 'GOV.UK/Components/Checkbox',
-  component: Checkbox.Root as React.FC<CheckboxProps>,
   parameters: {
     layout: 'centered',
     docs: {

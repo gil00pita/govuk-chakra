@@ -73,7 +73,7 @@ function App() {
             <VStack gap={3} align="start">
               <Button variant="primary">Primary Button</Button>
               <Button variant="secondary">Secondary Button</Button>
-              <Button variant="warning">Warning Button</Button>
+              <Button variant="error">Error Button</Button>
               <Button variant="primary" disabled>
                 Disabled Button
               </Button>

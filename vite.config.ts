@@ -1,6 +1,8 @@
 /// <reference types="vitest/config" />
 import { defineConfig } from 'vite'
 import react from '@vitejs/plugin-react'
+import checker from 'vite-plugin-checker'
+import { ViteMcp } from 'vite-plugin-mcp'
 
 // https://vitejs.dev/config/
 import path from 'node:path'
@@ -27,7 +29,17 @@ const externalPackages = [
 
 // More info at: https://storybook.js.org/docs/next/writing-tests/integrations/vitest-addon
 export default defineConfig({
-  plugins: [react()],
+  plugins: [
+    react(),
+    checker({
+      typescript: true,
+      eslint: {
+        lintCommand: 'eslint . --no-color',
+        useFlatConfig: true,
+      },
+    }),
+    ViteMcp(),
+  ],
   publicDir: false,
   resolve: {
     tsconfigPaths: true,

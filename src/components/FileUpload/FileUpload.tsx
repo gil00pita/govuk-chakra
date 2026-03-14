@@ -256,6 +256,7 @@ export const FileUpload = {
   ) {
     const { disabled, invalid, inputRef, isDragging, setDragging, setFileText, multiple } =
       useFileUploadContext()
+    const promptLabel = typeof prompt === 'string' ? prompt : undefined
 
     const syncDroppedFiles = (files: FileList) => {
       if (!inputRef.current) {
@@ -333,7 +334,7 @@ export const FileUpload = {
         onDragLeave={handleDragLeave}
         onDragOver={handleDragOver}
         onDrop={handleDrop}
-        aria-label={prompt}
+        aria-label={promptLabel}
         {...props}
       >
         {/* {prompt ? (
