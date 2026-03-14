@@ -1,2 +1,7 @@
-export { Details, DetailsRoot, DetailsSummary, DetailsText } from './Details'
-export type { DetailsProps, DetailsSummaryProps, DetailsTextProps } from './Details'
+export { Details, DetailsRoot, DetailsSummary, DetailsContent, DetailsText } from './Details'
+export type {
+  DetailsRootProps,
+  DetailsSummaryProps,
+  DetailsContentProps,
+  DetailsTextProps,
+} from './Details'

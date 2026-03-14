@@ -177,7 +177,7 @@ export const DateInput = {
         ref={ref}
         fontSize={pxToRem(19)}
         lineHeight={pxToRem(25)}
-        color="var(--chakra-colors-fg)"
+        color="fg"
         marginBottom={0}
         {...props}
       >
