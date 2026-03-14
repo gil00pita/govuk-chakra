@@ -1,4 +1,4 @@
-import type { Meta, StoryObj } from '@storybook/react'
+import type { Meta, StoryObj } from '@storybook/react-vite'
 
 import { Checkbox } from '@/components/Checkbox'
 import { Radio } from '@/components/Radio'
@@ -58,7 +58,7 @@ export const AsPageHeading: Story = {
         Do you know your National Insurance number?
       </Fieldset.Legend>
       <Fieldset.Hint>
-        It's on your National Insurance card, benefit letter, payslip or P60.
+        It&apos;s on your National Insurance card, benefit letter, payslip or P60.
       </Fieldset.Hint>
       <Fieldset.Content gap={3}>
         <Radio.Root name="ni-number" defaultValue="yes">

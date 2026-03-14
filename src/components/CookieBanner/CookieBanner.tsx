@@ -1,5 +1,5 @@
 import { Box, HStack, Stack, type BoxProps } from '@chakra-ui/react'
-import { useRef, useState } from 'react'
+import { useState } from 'react'
 
 import { Button } from '@/components/Button/Button'
 import { Heading } from '@/components/Heading/Heading'
@@ -45,8 +45,7 @@ export function CookieBanner({
   onHide,
   ...props
 }: CookieBannerProps) {
-  const initialDecisionRef = useRef(defaultDecision)
-  const [internalDecision, setInternalDecision] = useState<CookieDecision>(initialDecisionRef.current)
+  const [internalDecision, setInternalDecision] = useState<CookieDecision>(() => defaultDecision)
   const [isVisible, setIsVisible] = useState(true)
 
   const decision = controlledDecision ?? internalDecision

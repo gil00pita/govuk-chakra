@@ -1,4 +1,4 @@
-import type { Meta, StoryObj } from '@storybook/react'
+import type { Meta, StoryObj } from '@storybook/react-vite'
 
 import { Heading } from '@/components/Heading/Heading'
 import { Stack } from '@chakra-ui/react'

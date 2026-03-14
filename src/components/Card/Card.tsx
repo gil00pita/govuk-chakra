@@ -45,15 +45,7 @@ export interface CardProps extends Omit<CardRootProps, 'title'> {
 
 export const Card = {
   Root: forwardRef<HTMLDivElement, CardRootProps>(function CardRoot(
-    {
-      imageSrc,
-      imageAlt,
-      openInNewTab = false,
-      linkCard = true,
-      href,
-      headingType = 'h3' as HeadingTag,
-      ...props
-    },
+    { imageSrc, imageAlt, openInNewTab = false, linkCard = true, href, ...props },
     ref
   ) {
     const hasLink = Boolean(href)

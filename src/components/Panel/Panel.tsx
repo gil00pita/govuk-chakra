@@ -10,9 +10,9 @@ export interface PanelProps extends BoxProps {
   children?: ReactNode
 }
 
-export interface PanelTitleProps extends React.ComponentProps<typeof Heading> {}
+export type PanelTitleProps = React.ComponentProps<typeof Heading>
 
-export interface PanelBodyProps extends React.ComponentProps<typeof Text> {}
+export type PanelBodyProps = React.ComponentProps<typeof Text>
 
 const PanelRoot = forwardRef<HTMLDivElement, PanelProps>(function Panel(
   { heading, children, ...props },

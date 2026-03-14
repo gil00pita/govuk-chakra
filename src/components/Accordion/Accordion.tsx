@@ -4,8 +4,10 @@ import {
   Accordion as ChakraAccordion,
   AccordionItem as ChakraAccordionItem,
   AccordionItemContent as ChakraAccordionItemContent,
+  AccordionItemContentProps as ChakraAccordionItemContentProps,
   AccordionItemProps as ChakraAccordionItemProps,
   AccordionItemTrigger as ChakraAccordionItemTrigger,
+  AccordionItemTriggerProps as ChakraAccordionItemTriggerProps,
   Text,
   VStack,
 } from '@chakra-ui/react'
@@ -58,9 +60,8 @@ const AccordionItem = forwardRef<HTMLDivElement, AccordionItemProps>((props, ref
 AccordionItem.displayName = 'AccordionItem'
 
 // Custom Accordion Trigger with GOV.UK styling (v3 uses Trigger instead of Button)
-export interface AccordionTriggerProps {
+export interface AccordionTriggerProps extends ChakraAccordionItemTriggerProps {
   children: ReactNode
-  [key: string]: any
 }
 
 const AccordionTrigger = forwardRef<HTMLButtonElement, AccordionTriggerProps>((props, ref) => {
@@ -203,9 +204,8 @@ const AccordionTrigger = forwardRef<HTMLButtonElement, AccordionTriggerProps>((p
 AccordionTrigger.displayName = 'AccordionTrigger'
 
 // Custom Accordion Content with GOV.UK styling (v3 uses Content instead of Panel)
-export interface AccordionContentProps {
+export interface AccordionContentProps extends ChakraAccordionItemContentProps {
   children: ReactNode
-  [key: string]: any
 }
 
 const AccordionContent = forwardRef<HTMLDivElement, AccordionContentProps>((props, ref) => {

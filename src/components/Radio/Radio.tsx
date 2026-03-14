@@ -16,18 +16,18 @@ const RadioItemPrimitive = ChakraRadioGroup.Item as React.ElementType
 const RadioItemControlPrimitive = ChakraRadioGroup.ItemControl as React.ElementType
 const RadioItemTextPrimitive = ChakraRadioGroup.ItemText as React.ElementType
 
-export interface RadioRootProps extends RadioGroupRootProps {}
+export type RadioRootProps = RadioGroupRootProps
 
 export interface RadioItemProps extends RadioGroupItemProps {
   children?: ReactNode
   hint?: ReactNode
 }
 
-export interface RadioControlProps extends RadioGroupItemControlProps {}
+export type RadioControlProps = RadioGroupItemControlProps
 
-export interface RadioTextProps extends RadioGroupItemTextProps {}
+export type RadioTextProps = RadioGroupItemTextProps
 
-export interface RadioHintProps extends React.ComponentProps<typeof Text> {}
+export type RadioHintProps = React.ComponentProps<typeof Text>
 
 export interface RadioGroupProps extends React.ComponentProps<typeof Box> {
   legend: string
@@ -37,56 +37,86 @@ export interface RadioGroupProps extends React.ComponentProps<typeof Box> {
   children: ReactNode
 }
 
-export const Radio = {
-  Root: forwardRef<HTMLDivElement, RadioRootProps>(function RadioRoot(props, ref) {
-    return (
-      <ChakraRadioGroup.Root ref={ref} display="flex" flexDirection="column" gap={0} {...props} />
-    )
-  }),
+type RadioItemIndicatorComponent = React.ForwardRefExoticComponent<
+  React.ComponentPropsWithoutRef<typeof ChakraRadioGroup.ItemIndicator> &
+    React.RefAttributes<HTMLSpanElement>
+>
 
-  Item: forwardRef<HTMLDivElement, RadioItemProps>(function RadioItem(
-    { hint, children, ...props },
-    ref
-  ) {
-    return (
-      <RadioItemPrimitive
-        ref={ref}
-        display="flex"
-        flexWrap="wrap"
-        alignItems="flex-start"
-        columnGap={pxToRem(15)}
-        rowGap={0}
-        py={0}
-        mb={pxToRem(10)}
-        cursor="pointer"
-        color="fg"
-        data-govuk-radio-item=""
-        _hover={{
-          '& [data-govuk-radio-control]': {
-            borderColor: 'common.black',
-            boxShadow: `0 0 0 10px var(--govuk-color-hover, #cecece)`,
-          },
-        }}
-        {...props}
-      >
-        {children}
-        {hint ? (
-          <Box flexBasis="100%" pl={pxToRem(55)}>
-            <Radio.Hint>{hint}</Radio.Hint>
-          </Box>
-        ) : null}
-      </RadioItemPrimitive>
-    )
-  }),
+interface RadioComponents {
+  Root: typeof RadioRoot
+  Item: typeof RadioItem
+  ItemHiddenInput: typeof RadioItemHiddenInput
+  ItemControl: typeof RadioItemControl
+  ItemIndicator: typeof RadioItemIndicator
+  ItemText: typeof RadioItemText
+  Hint: typeof RadioHint
+  Group: typeof RadioGroup
+}
 
-  ItemHiddenInput: forwardRef<
-    HTMLInputElement,
-    React.ComponentPropsWithRef<typeof ChakraRadioGroup.ItemHiddenInput>
-  >(function RadioItemHiddenInput(props, ref) {
-    return <ChakraRadioGroup.ItemHiddenInput ref={ref} {...props} />
-  }),
+const RadioRoot = forwardRef<HTMLDivElement, RadioRootProps>(function RadioRoot(props, ref) {
+  return (
+    <ChakraRadioGroup.Root ref={ref} display="flex" flexDirection="column" gap={0} {...props} />
+  )
+})
 
-  ItemControl: forwardRef<HTMLDivElement, RadioControlProps>(function RadioControl(props, ref) {
+const RadioHint = forwardRef<HTMLParagraphElement, RadioHintProps>(function RadioHint(props, ref) {
+  return (
+    <Text
+      ref={ref}
+      fontSize={19}
+      color="fg.muted"
+      mt={pxToRem(-4)}
+      mb={0}
+      css={{ '[data-disabled] &': { opacity: 0.5 } }}
+      {...props}
+    />
+  )
+})
+
+const RadioItem = forwardRef<HTMLDivElement, RadioItemProps>(function RadioItem(
+  { hint, children, ...props },
+  ref
+) {
+  return (
+    <RadioItemPrimitive
+      ref={ref}
+      display="flex"
+      flexWrap="wrap"
+      alignItems="flex-start"
+      columnGap={pxToRem(15)}
+      rowGap={0}
+      py={0}
+      mb={pxToRem(10)}
+      cursor="pointer"
+      color="fg"
+      data-govuk-radio-item=""
+      _hover={{
+        '& [data-govuk-radio-control]': {
+          borderColor: 'common.black',
+          boxShadow: `0 0 0 10px var(--govuk-color-hover, #cecece)`,
+        },
+      }}
+      {...props}
+    >
+      {children}
+      {hint ? (
+        <Box flexBasis="100%" pl={pxToRem(55)}>
+          <RadioHint>{hint}</RadioHint>
+        </Box>
+      ) : null}
+    </RadioItemPrimitive>
+  )
+})
+
+const RadioItemHiddenInput = forwardRef<
+  HTMLInputElement,
+  React.ComponentPropsWithRef<typeof ChakraRadioGroup.ItemHiddenInput>
+>(function RadioItemHiddenInput(props, ref) {
+  return <ChakraRadioGroup.ItemHiddenInput ref={ref} {...props} />
+})
+
+const RadioItemControl = forwardRef<HTMLDivElement, RadioControlProps>(
+  function RadioControl(props, ref) {
     return (
       <RadioItemControlPrimitive
         ref={ref}
@@ -115,140 +145,135 @@ export const Radio = {
         {...props}
       />
     )
-  }),
+  }
+)
 
-  ItemIndicator: forwardRef<
-    HTMLSpanElement,
-    React.ComponentProps<typeof ChakraRadioGroup.ItemIndicator>
-  >(function RadioIndicator(props, ref) {
-    return (
-      <ChakraRadioGroup.ItemIndicator
-        ref={ref}
-        className="check-indicator"
-        bg="transparent"
-        borderRadius="full"
-        borderColor="transparent"
-        borderWidth={0}
-        width={pxToRem(18)}
-        height={pxToRem(18)}
-        position="absolute"
-        top="50%"
-        left="50%"
-        transform="translate(-50%, -50%)"
-        transition="background-color 0.2s ease, border-color 0.2s ease"
-        // _selected={{
-        //   bg: 'common.black',
-        //   borderColor: 'common.black',
-        // }}
-        css={{
-          '&[data-state=checked]': {
-            bg: 'common.black',
-            color: 'common.black',
-          },
-          '[data-state=checked] &': {
-            bg: 'common.black',
-            color: 'common.black',
-          },
-        }}
-        {...props}
-      />
-    )
-  }),
+const RadioItemIndicator: RadioItemIndicatorComponent = forwardRef<
+  HTMLSpanElement,
+  React.ComponentPropsWithoutRef<typeof ChakraRadioGroup.ItemIndicator>
+>(function RadioIndicator(props, ref) {
+  return (
+    <ChakraRadioGroup.ItemIndicator
+      ref={ref}
+      className="check-indicator"
+      bg="transparent"
+      borderRadius="full"
+      borderColor="transparent"
+      borderWidth={0}
+      width={pxToRem(18)}
+      height={pxToRem(18)}
+      position="absolute"
+      top="50%"
+      left="50%"
+      transform="translate(-50%, -50%)"
+      transition="background-color 0.2s ease, border-color 0.2s ease"
+      css={{
+        '&[data-state=checked]': {
+          bg: 'common.black',
+          color: 'common.black',
+        },
+        '[data-state=checked] &': {
+          bg: 'common.black',
+          color: 'common.black',
+        },
+      }}
+      {...props}
+    />
+  )
+})
 
-  ItemText: forwardRef<HTMLSpanElement, RadioTextProps>(function RadioText(props, ref) {
-    return (
-      <RadioItemTextPrimitive
-        ref={ref}
-        color="fg"
-        cursor="pointer"
-        fontSize={pxToRem(19)}
-        lineHeight={pxToRem(40)}
-        {...props}
-      />
-    )
-  }),
+const RadioItemText = forwardRef<HTMLSpanElement, RadioTextProps>(function RadioText(props, ref) {
+  return (
+    <RadioItemTextPrimitive
+      ref={ref}
+      color="fg"
+      cursor="pointer"
+      fontSize={pxToRem(19)}
+      lineHeight={pxToRem(40)}
+      {...props}
+    />
+  )
+})
 
-  Hint: forwardRef<HTMLParagraphElement, RadioHintProps>(function RadioHint(props, ref) {
-    return (
-      <Text
-        ref={ref}
-        fontSize={19}
-        color="fg.muted"
-        mt={pxToRem(-4)}
-        mb={0}
-        css={{ '[data-disabled] &': { opacity: 0.5 } }}
-        {...props}
-      />
-    )
-  }),
-
-  Group: forwardRef<HTMLFieldSetElement, RadioGroupProps>(function RadioGroup(
-    { legend, legendAsHeading = false, hint, error, children, ...props },
-    ref
-  ) {
-    return (
-      <Box
-        ref={ref}
-        as="fieldset"
-        mb={{ base: pxToRem(30), md: pxToRem(20) }}
-        border="0px solid transparent"
-        padding={0}
-        paddingLeft={Boolean(error) ? pxToRem(15) : 0}
-        borderLeftWidth={Boolean(error) ? pxToRem(5) : 0}
-        borderLeftColor={Boolean(error) ? 'danger' : 'transparent'}
-        css={{
-          '& [data-govuk-radio-item]:last-of-type': {
-            mb: 0,
-          },
-        }}
-        {...props}
-      >
-        <Box as="legend" mb={hint || error ? 1 : 3} float="left" width="100%">
-          {legendAsHeading ? (
-            <Heading as="h1" fontWeight={700} size={36}>
-              {legend}
-            </Heading>
-          ) : (
-            <Text fontSize={24}>{legend}</Text>
-          )}
-        </Box>
-
-        {hint ? (
-          <Text fontSize={19} color="fg.muted" mb={3} clear="left">
-            {hint}
-          </Text>
-        ) : null}
-
-        {error ? (
-          <Text
-            fontSize={19}
-            fontWeight="700"
-            color="danger"
-            mb={3}
-            clear={!hint ? 'left' : undefined}
-          >
-            {error}
-          </Text>
-        ) : null}
-
-        <Box
-          display="flex"
-          flexDirection="column"
-          gap={0}
-          clear={!hint && !error ? 'left' : undefined}
-        >
-          {children}
-        </Box>
+const RadioGroup = forwardRef<HTMLFieldSetElement, RadioGroupProps>(function RadioGroup(
+  { legend, legendAsHeading = false, hint, error, children, ...props },
+  ref
+) {
+  return (
+    <Box
+      ref={ref}
+      as="fieldset"
+      mb={{ base: pxToRem(30), md: pxToRem(20) }}
+      border="0px solid transparent"
+      padding={0}
+      paddingLeft={error ? pxToRem(15) : 0}
+      borderLeftWidth={error ? pxToRem(5) : 0}
+      borderLeftColor={error ? 'danger' : 'transparent'}
+      css={{
+        '& [data-govuk-radio-item]:last-of-type': {
+          mb: 0,
+        },
+      }}
+      {...props}
+    >
+      <Box as="legend" mb={hint || error ? 1 : 3} float="left" width="100%">
+        {legendAsHeading ? (
+          <Heading as="h1" fontWeight={700} size={36}>
+            {legend}
+          </Heading>
+        ) : (
+          <Text fontSize={24}>{legend}</Text>
+        )}
       </Box>
-    )
-  }),
+
+      {hint ? (
+        <Text fontSize={19} color="fg.muted" mb={3} clear="left">
+          {hint}
+        </Text>
+      ) : null}
+
+      {error ? (
+        <Text
+          fontSize={19}
+          fontWeight="700"
+          color="danger"
+          mb={3}
+          clear={!hint ? 'left' : undefined}
+        >
+          {error}
+        </Text>
+      ) : null}
+
+      <Box
+        display="flex"
+        flexDirection="column"
+        gap={0}
+        clear={!hint && !error ? 'left' : undefined}
+      >
+        {children}
+      </Box>
+    </Box>
+  )
+})
+
+export const Radio: RadioComponents = {
+  Root: RadioRoot,
+  Item: RadioItem,
+  ItemHiddenInput: RadioItemHiddenInput,
+  ItemControl: RadioItemControl,
+  ItemIndicator: RadioItemIndicator,
+  ItemText: RadioItemText,
+  Hint: RadioHint,
+  Group: RadioGroup,
 }
 
-export const RadioRoot = Radio.Root
-export const RadioItem = Radio.Item
-export const RadioItemHiddenInput = Radio.ItemHiddenInput
-export const RadioItemControl = Radio.ItemControl
-export const RadioItemIndicator = Radio.ItemIndicator
-export const RadioItemText = Radio.ItemText
-export const RadioHint = Radio.Hint
-export const RadioGroup = Radio.Group
+export {
+  RadioRoot,
+  RadioItem,
+  RadioItemHiddenInput,
+  RadioItemControl,
+  RadioItemIndicator,
+  RadioItemText,
+  RadioHint,
+  RadioGroup,
+}

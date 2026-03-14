@@ -10,7 +10,7 @@ export interface PaginationProps extends BoxProps {
   block?: boolean
 }
 
-export interface PaginationListProps extends BoxProps {}
+export type PaginationListProps = BoxProps
 
 export interface PaginationItemProps extends BoxProps {
   current?: boolean

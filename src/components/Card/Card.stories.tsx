@@ -1,6 +1,6 @@
 import { Card, CardGroup } from '@/components/Card/Card'
 import { HStack, VStack } from '@chakra-ui/react'
-import type { Meta, StoryObj } from '@storybook/react'
+import type { Meta, StoryObj } from '@storybook/react-vite'
 
 import { Button } from '@/components/Button/Button'
 import type { CardRootProps } from '@/components/Card/Card'
@@ -96,7 +96,7 @@ export const WithLink: Story = {
     <Card.Root maxW="400px" href="https://www.gov.uk/apply-renew-passport">
       <Card.Header>Apply for a passport</Card.Header>
       <Card.Body>
-        You can apply for or renew a British passport if you're a British citizen.
+        You can apply for or renew a British passport if you&apos;re a British citizen.
       </Card.Body>
     </Card.Root>
   ),
@@ -148,7 +148,7 @@ export const WithFooter: Story = {
     <Card.Root maxW="400px" href="https://www.gov.uk/apply-renew-passport">
       <Card.Header>Apply for a passport</Card.Header>
       <Card.Body>
-        You can apply for or renew a British passport if you're a British citizen.
+        You can apply for or renew a British passport if you&apos;re a British citizen.
       </Card.Body>
       <Card.Footer>
         <Button colorPalette="primary">Start application</Button>

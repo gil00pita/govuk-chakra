@@ -1,0 +1,30 @@
+{
+  "extends": "./tsconfig.json",
+  "compilerOptions": {
+    "noEmit": false,
+    "declaration": true,
+    "emitDeclarationOnly": true,
+    "declarationMap": false,
+    "outDir": "./dist/types",
+    "rootDir": "./src",
+    "stripInternal": true
+  },
+  "include": [
+    "src/lib.ts",
+    "src/chakra.ts",
+    "src/provider.tsx",
+    "src/components/**/*.ts",
+    "src/components/**/*.tsx",
+    "src/theme/**/*.ts",
+    "src/theme/**/*.tsx",
+    "src/utils/**/*.ts",
+    "src/utils/**/*.tsx",
+    "src/types/**/*.d.ts",
+    "src/**/*.stories.ts",
+    "src/**/*.stories.tsx",
+    "src/App.tsx",
+    "src/App.test.tsx",
+    "src/stories/**/*"
+  ],
+  "exclude": ["src/index.tsx", "src/reportWebVitals.ts", "src/setupTests.ts"]
+}

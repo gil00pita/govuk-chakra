@@ -6,7 +6,6 @@ import {
   Checkbox,
   Fieldset,
   Grid,
-  GridItem,
   HStack,
   Heading,
   Input,
@@ -18,7 +17,7 @@ import {
   Text,
   VStack,
 } from '@chakra-ui/react'
-import type { Meta, StoryObj } from '@storybook/react'
+import type { Meta, StoryObj } from '@storybook/react-vite'
 
 import { GoAlert } from 'react-icons/go'
 

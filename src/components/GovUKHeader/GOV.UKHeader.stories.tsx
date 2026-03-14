@@ -1,4 +1,4 @@
-import type { Meta, StoryObj } from '@storybook/react'
+import type { Meta, StoryObj } from '@storybook/react-vite'
 
 import { Box } from '@chakra-ui/react'
 import { GovUKHeader } from './GovUKHeader'
@@ -6,12 +6,15 @@ import { pxToRem } from '@/utils'
 
 const meta: Meta = {
   title: 'GOV.UK/Components/GOV.UK - Header',
-  docs: {
-    description: {
-      component:
-        'GOV.UK headers provide links to important information and services, such as contact details, accessibility information, and legal notices.\n\n' +
-        'Use the header to provide users with easy access to important information and services, and to help them navigate your website.\n\n' +
-        'For GOV.UK guidance, see the GOV.UK Design System header documentation: https://design-system.service.gov.uk/components/header/.',
+  parameters: {
+    layout: 'centered',
+    docs: {
+      description: {
+        component:
+          'GOV.UK headers provide links to important information and services, such as contact details, accessibility information, and legal notices.\n\n' +
+          'Use the header to provide users with easy access to important information and services, and to help them navigate your website.\n\n' +
+          'For GOV.UK guidance, see the GOV.UK Design System header documentation: https://design-system.service.gov.uk/components/header/.',
+      },
     },
   },
   tags: ['autodocs'],

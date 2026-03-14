@@ -195,10 +195,4 @@ export const Textinput = Object.assign(TextinputRootComponent, {
   Input: TextinputInput,
 })
 
-export {
-  TextinputRoot,
-  TextinputLabel,
-  TextinputHint,
-  TextinputError,
-  TextinputInput,
-}
+export { TextinputRoot, TextinputLabel, TextinputHint, TextinputError, TextinputInput }

@@ -14,24 +14,15 @@ interface NumericAlignmentProps {
   numeric?: boolean
 }
 
-export interface TableRootProps extends ChakraTableRootProps {}
-
-export interface TableHeaderProps extends ChakraTableSectionProps {}
-
-export interface TableBodyProps extends ChakraTableSectionProps {}
-
-export interface TableFooterProps extends ChakraTableSectionProps {}
-
-export interface TableCaptionProps extends ChakraTableCaptionProps {}
-
-export interface TableRowProps extends ChakraTableRowProps {}
-
-export interface TableColumnHeaderProps
-  extends ChakraTableColumnHeaderProps, NumericAlignmentProps {}
-
-export interface TableCellProps extends ChakraTableCellProps, NumericAlignmentProps {}
-
-export interface TableRowHeaderProps extends HTMLChakraProps<'th'>, NumericAlignmentProps {}
+export type TableRootProps = ChakraTableRootProps
+export type TableHeaderProps = ChakraTableSectionProps
+export type TableBodyProps = ChakraTableSectionProps
+export type TableFooterProps = ChakraTableSectionProps
+export type TableCaptionProps = ChakraTableCaptionProps
+export type TableRowProps = ChakraTableRowProps
+export type TableColumnHeaderProps = ChakraTableColumnHeaderProps & NumericAlignmentProps
+export type TableCellProps = ChakraTableCellProps & NumericAlignmentProps
+export type TableRowHeaderProps = HTMLChakraProps<'th'> & NumericAlignmentProps
 
 const cellPadding = `${pxToRem(10)} ${pxToRem(20)} ${pxToRem(10)} 0`
 

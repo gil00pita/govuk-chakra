@@ -1,5 +1,5 @@
 import { HStack, Stack } from '@chakra-ui/react'
-import type { Meta, StoryObj } from '@storybook/react'
+import type { Meta, StoryObj } from '@storybook/react-vite'
 
 import { Tag } from './Tag'
 

@@ -7,7 +7,6 @@ import {
   useMemo,
   useState,
   type ComponentProps,
-  type ReactNode,
 } from 'react'
 
 import { Link } from '@/components/Link'
@@ -29,7 +28,7 @@ export interface ServiceNavigationRootProps extends BoxProps {
   defaultMobileOpen?: boolean
 }
 
-export interface ServiceNavigationServiceNameProps extends ComponentProps<typeof Link> {}
+export type ServiceNavigationServiceNameProps = ComponentProps<typeof Link>
 
 export interface ServiceNavigationNavProps extends BoxProps {
   collapsible?: boolean
@@ -41,7 +40,7 @@ export interface ServiceNavigationToggleProps extends ComponentProps<typeof Butt
   closedLabel?: string
 }
 
-export interface ServiceNavigationListProps extends BoxProps {}
+export type ServiceNavigationListProps = BoxProps
 
 export interface ServiceNavigationItemProps extends BoxProps {
   current?: boolean

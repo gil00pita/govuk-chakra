@@ -1,5 +1,5 @@
 import { Alert, HStack, Separator, VStack } from '@chakra-ui/react'
-import type { Meta, StoryObj } from '@storybook/react'
+import type { Meta, StoryObj } from '@storybook/react-vite'
 
 import { Button } from '@/components/Button'
 import { Checkbox } from '@/components/Checkbox'

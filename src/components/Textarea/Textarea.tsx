@@ -34,7 +34,7 @@ export interface TextareaErrorProps {
   children: ReactNode
 }
 
-export interface TextareaInputProps extends Omit<ChakraTextareaProps, 'size'> {}
+export type TextareaInputProps = Omit<ChakraTextareaProps, 'size'>
 
 // ─── Subcomponents ───────────────────────────────────────────────────
 

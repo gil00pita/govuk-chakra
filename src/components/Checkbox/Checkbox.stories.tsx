@@ -1,4 +1,4 @@
-import type { Meta, StoryObj } from '@storybook/react'
+import type { Meta, StoryObj } from '@storybook/react-vite'
 import { Checkbox } from '@/components/Checkbox/Checkbox'
 import { VStack } from '@chakra-ui/react'
 import type { CheckboxProps } from '@/components/Checkbox/Checkbox'
@@ -11,7 +11,7 @@ interface CheckboxStoryArgs extends Omit<CheckboxProps, 'hint'> {
 
 const meta: Meta<CheckboxStoryArgs> = {
   title: 'GOV.UK/Components/Checkbox',
-  component: Checkbox.Root as any,
+  component: Checkbox.Root as React.FC<CheckboxProps>,
   parameters: {
     layout: 'centered',
     docs: {

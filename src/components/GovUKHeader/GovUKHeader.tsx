@@ -1,23 +1,22 @@
 import { Box, type BoxProps } from '@chakra-ui/react'
-import { forwardRef, type ReactNode } from 'react'
+import { forwardRef } from 'react'
 
-import { Heading } from '@/components/Heading'
 import { Link } from '@/components/Link'
 import { pxToRem } from '@/utils'
 
-export interface GovUKHeaderProps extends BoxProps {}
+export type GovUKHeaderProps = BoxProps
 
-export interface GovUKHeaderContainerProps extends BoxProps {}
+export type GovUKHeaderContainerProps = BoxProps
 
-export interface GovUKHeaderProductNameProps extends React.ComponentProps<typeof Link> {}
+export type GovUKHeaderProductNameProps = React.ComponentProps<typeof Link>
 
-export interface GovUKHeaderServiceNameProps extends React.ComponentProps<typeof Link> {}
+export type GovUKHeaderServiceNameProps = React.ComponentProps<typeof Link>
 
-export interface GovUKHeaderNavigationProps extends BoxProps {}
+export type GovUKHeaderNavigationProps = BoxProps
 
-export interface GovUKHeaderListProps extends BoxProps {}
+export type GovUKHeaderListProps = BoxProps
 
-export interface GovUKHeaderListItemProps extends BoxProps {
+export type GovUKHeaderListItemProps = BoxProps & {
   current?: boolean
 }
 

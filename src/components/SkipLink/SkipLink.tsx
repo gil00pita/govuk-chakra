@@ -3,7 +3,7 @@ import { forwardRef } from 'react'
 
 import { pxToRem } from '@/utils'
 
-export interface SkipLinkProps extends ChakraLinkProps {}
+export type SkipLinkProps = ChakraLinkProps
 
 export const SkipLink = forwardRef<HTMLAnchorElement, SkipLinkProps>(
   ({ children = 'Skip to main content', href = '#content', ...props }, ref) => {

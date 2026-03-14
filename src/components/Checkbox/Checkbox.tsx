@@ -1,13 +1,10 @@
-import {
-  Checkbox as ChakraCheckbox,
-  type CheckboxRootProps,
-} from '@chakra-ui/react'
+import { Checkbox as ChakraCheckbox, type CheckboxRootProps } from '@chakra-ui/react'
 import React, { forwardRef, type ReactNode } from 'react'
 import { Fieldset, type FieldsetRootProps } from '@/components/Fieldset'
 import { Heading } from '@/components/Heading/Heading'
 import { Text } from '@/components/Text/Text'
 import { pxToRem } from '@/utils'
-import { createIcon } from '@chakra-ui/react'
+
 // ─── Types ───────────────────────────────────────────────────────────
 export interface CheckboxProps extends CheckboxRootProps {
   /** Hint text displayed below the label */
@@ -15,9 +12,7 @@ export interface CheckboxProps extends CheckboxRootProps {
   size?: 'sm' | 'lg'
 }
 
-export interface CheckboxControlProps extends ChakraCheckbox.ControlProps {
-  /** Use smaller checkboxes (24×24 instead of 40×40) */
-}
+export type CheckboxControlProps = ChakraCheckbox.ControlProps
 
 export interface CheckboxGroupProps extends Omit<FieldsetRootProps, 'children'> {
   /** Legend / question text */
@@ -34,7 +29,7 @@ export interface CheckboxGroupProps extends Omit<FieldsetRootProps, 'children'> 
 // ─── Subcomponents ───────────────────────────────────────────────────
 export const Checkbox = {
   Root: forwardRef<HTMLLabelElement, CheckboxProps>(function CheckboxRoot(
-    { hint, size, children, ...props },
+    { size, children, ...props },
     ref
   ) {
     return (
@@ -230,9 +225,9 @@ export const Checkbox = {
         mb={{ base: pxToRem(30), md: pxToRem(20) }}
         border={'0px solid transparent'}
         padding={0}
-        paddingLeft={Boolean(error) ? pxToRem(15) : 0}
-        borderLeftWidth={Boolean(error) ? pxToRem(5) : 0}
-        borderLeftColor={Boolean(error) ? 'danger' : 'transparent'}
+        paddingLeft={error ? pxToRem(15) : 0}
+        borderLeftWidth={error ? pxToRem(5) : 0}
+        borderLeftColor={error ? 'danger' : 'transparent'}
         css={{
           '& .root:last-of-type': {
             mb: 0,

@@ -16,7 +16,7 @@ export interface DetailsContentProps extends BoxProps {
   children: ReactNode
 }
 
-export interface DetailsTextProps extends React.ComponentProps<typeof Text> {}
+export type DetailsTextProps = React.ComponentProps<typeof Text>
 
 const DetailsRoot = forwardRef<HTMLDetailsElement, DetailsRootProps>(function DetailsRoot(
   { children, ...props },

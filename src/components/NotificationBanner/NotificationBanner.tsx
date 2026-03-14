@@ -17,13 +17,13 @@ export interface NotificationBannerHeaderProps extends BoxProps {
   variant?: NotificationBannerVariant
 }
 
-export interface NotificationBannerTitleProps extends React.ComponentProps<typeof Heading> {}
+export type NotificationBannerTitleProps = React.ComponentProps<typeof Heading>
 
-export interface NotificationBannerContentProps extends BoxProps {}
+export type NotificationBannerContentProps = BoxProps
 
-export interface NotificationBannerHeadingProps extends React.ComponentProps<typeof Heading> {}
+export type NotificationBannerHeadingProps = React.ComponentProps<typeof Heading>
 
-export interface NotificationBannerBodyProps extends React.ComponentProps<typeof Text> {}
+export type NotificationBannerBodyProps = React.ComponentProps<typeof Text>
 
 const variantStyles: Record<NotificationBannerVariant, { borderColor: string; headerBg: string }> =
   {

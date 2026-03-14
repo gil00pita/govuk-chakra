@@ -14,11 +14,11 @@ export interface TabsProps extends ChakraTabs.RootProps {
   items?: TabsItem[]
 }
 
-export interface TabsListProps extends ChakraTabs.ListProps {}
+export type TabsListProps = ChakraTabs.ListProps
 
-export interface TabsTriggerProps extends ChakraTabs.TriggerProps {}
+export type TabsTriggerProps = ChakraTabs.TriggerProps
 
-export interface TabsContentProps extends ChakraTabs.ContentProps {}
+export type TabsContentProps = ChakraTabs.ContentProps
 
 const TabsRoot = forwardRef<HTMLDivElement, TabsProps>(function TabsRoot(
   { items, children, defaultValue, ...props },

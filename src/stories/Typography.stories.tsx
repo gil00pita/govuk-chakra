@@ -1,5 +1,5 @@
 import { VStack } from '@chakra-ui/react'
-import type { Meta, StoryObj } from '@storybook/react'
+import type { Meta, StoryObj } from '@storybook/react-vite'
 import { Heading, Text } from '@/components'
 import { Link } from '@/components/Link/Link'
 import type { HeadingProps } from '@/components/Heading/Heading'
@@ -146,7 +146,7 @@ export const Links: Story = {
         <Link href="#" color="text.muted">
           muted link
         </Link>{' '}
-        that's less prominent.
+        that&apos;s less prominent.
       </Text>
     </VStack>
   ),
@@ -158,21 +158,21 @@ export const TypographyHierarchy: Story = {
       <Heading size="xl">Apply for a provisional driving licence</Heading>
 
       <Text textStyle="5xl">
-        You can apply for a provisional driving licence online if you're a resident of Great Britain
-        and meet the minimum age requirement.
+        You can apply for a provisional driving licence online if you&apos;re a resident of Great
+        Britain and meet the minimum age requirement.
       </Text>
 
       <Heading size="lg">What you need to know</Heading>
 
       <Text textStyle="md">
         You must be at least 15 years and 9 months old to apply for a provisional driving licence.
-        You can start driving a car when you're 17.
+        You can start driving a car when you&apos;re 17.
       </Text>
 
-      <Heading size="md">Documents you'll need</Heading>
+      <Heading size="md">Documents you&apos;ll need</Heading>
 
       <Text fontSize="md">
-        You'll need to provide documents that prove your identity. You can use your passport or
+        You&apos;ll need to provide documents that prove your identity. You can use your passport or
         other <Link href="#">accepted forms of ID</Link>.
       </Text>
 

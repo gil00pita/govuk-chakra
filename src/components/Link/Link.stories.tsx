@@ -1,4 +1,4 @@
-import type { Meta, StoryObj } from '@storybook/react'
+import type { Meta, StoryObj } from '@storybook/react-vite'
 import { Stack, Text } from '@chakra-ui/react'
 
 import { Link } from './Link'

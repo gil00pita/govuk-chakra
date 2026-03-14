@@ -12,15 +12,15 @@ export interface PhaseBannerProps extends BoxProps {
   children?: ReactNode
 }
 
-export interface PhaseBannerContentProps extends BoxProps {}
+export type PhaseBannerContentProps = BoxProps
 
 export interface PhaseBannerTagProps extends Omit<React.ComponentProps<typeof Tag>, 'variant'> {
   variant?: TagVariant
 }
 
-export interface PhaseBannerTextProps extends React.ComponentProps<typeof Text> {}
+export type PhaseBannerTextProps = React.ComponentProps<typeof Text>
 
-export interface PhaseBannerLinkProps extends React.ComponentProps<typeof Link> {}
+export type PhaseBannerLinkProps = React.ComponentProps<typeof Link>
 
 const PhaseBannerRoot = forwardRef<HTMLDivElement, PhaseBannerProps>(function PhaseBanner(
   { phase = 'Beta', phaseVariant = 'blue', children, ...props },

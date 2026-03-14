@@ -1,32 +1,32 @@
 import { Box, type BoxProps } from '@chakra-ui/react'
-import { forwardRef, type ReactNode } from 'react'
+import { forwardRef } from 'react'
 
 import { Heading } from '@/components/Heading'
 import { Link } from '@/components/Link'
 import { Text } from '@/components/Text'
 import { pxToRem } from '@/utils'
 
-export interface GovUKFooterProps extends BoxProps {}
+export type GovUKFooterProps = BoxProps
 
-export interface GovUKFooterContainerProps extends BoxProps {}
+export type GovUKFooterContainerProps = BoxProps
 
-export interface GovUKFooterNavigationProps extends BoxProps {}
+export type GovUKFooterNavigationProps = BoxProps
 
-export interface GovUKFooterSectionProps extends BoxProps {}
+export type GovUKFooterSectionProps = BoxProps
 
-export interface GovUKFooterSectionTitleProps extends React.ComponentProps<typeof Heading> {}
+export type GovUKFooterSectionTitleProps = React.ComponentProps<typeof Heading>
 
-export interface GovUKFooterListProps extends BoxProps {}
+export type GovUKFooterListProps = BoxProps
 
-export interface GovUKFooterListItemProps extends BoxProps {}
+export type GovUKFooterListItemProps = BoxProps
 
-export interface GovUKFooterLinkProps extends React.ComponentProps<typeof Link> {}
+export type GovUKFooterLinkProps = React.ComponentProps<typeof Link>
 
-export interface GovUKFooterMetaProps extends BoxProps {}
+export type GovUKFooterMetaProps = BoxProps
 
-export interface GovUKFooterMetaItemProps extends BoxProps {}
+export type GovUKFooterMetaItemProps = BoxProps
 
-export interface GovUKFooterMetaTextProps extends React.ComponentProps<typeof Text> {}
+export type GovUKFooterMetaTextProps = React.ComponentProps<typeof Text>
 
 const GovUKFooterRoot = forwardRef<HTMLElement, GovUKFooterProps>(function GovUKFooter(props, ref) {
   return (
@@ -35,8 +35,8 @@ const GovUKFooterRoot = forwardRef<HTMLElement, GovUKFooterProps>(function GovUK
       as="footer"
       borderTop="10px solid"
       borderColor="brand.500"
-      bg="grey.50"
-      color="grey.950"
+      bg="primary.50"
+      color="fg"
       mt={pxToRem(60)}
       pt={{ base: pxToRem(40), md: pxToRem(48) }}
       pb={{ base: pxToRem(24), md: pxToRem(32) }}
@@ -50,11 +50,14 @@ const GovUKFooterContainer = forwardRef<HTMLDivElement, GovUKFooterContainerProp
     return (
       <Box
         ref={ref}
+        className="footer-container"
         maxW="1200px"
         mx="auto"
         px={{ base: pxToRem(15), md: pxToRem(30) }}
         {...props}
-      />
+      >
+        {props.children}
+      </Box>
     )
   }
 )
@@ -64,6 +67,7 @@ const GovUKFooterNavigation = forwardRef<HTMLDivElement, GovUKFooterNavigationPr
     return (
       <Box
         ref={ref}
+        className="footer-navigation"
         display="grid"
         gridTemplateColumns={{
           base: '1fr',
@@ -84,7 +88,7 @@ const GovUKFooterNavigation = forwardRef<HTMLDivElement, GovUKFooterNavigationPr
 
 const GovUKFooterSection = forwardRef<HTMLDivElement, GovUKFooterSectionProps>(
   function GovUKFooterSection(props, ref) {
-    return <Box ref={ref} {...props} />
+    return <Box ref={ref} className="footer-column" {...props} />
   }
 )
 
@@ -128,27 +132,7 @@ const GovUKFooterListItem = forwardRef<HTMLLIElement, GovUKFooterListItemProps>(
 
 const GovUKFooterLink = forwardRef<HTMLAnchorElement, GovUKFooterLinkProps>(
   function GovUKFooterLink(props, ref) {
-    return (
-      <Link
-        ref={ref}
-        color="grey.950"
-        fontSize={16}
-        lineHeight={pxToRem(20)}
-        textDecorationThickness="max(1px, 0.0625rem)"
-        textUnderlineOffset="0.1578em"
-        _hover={{ color: 'grey.950', textDecorationThickness: 'max(3px, 0.1875rem)' }}
-        _focus={{
-          outline: '3px solid',
-          outlineColor: 'yellow.500',
-          outlineOffset: 0,
-          bgColor: 'yellow.500',
-          color: 'common.black',
-          textDecoration: 'none',
-        }}
-        _visited={{ color: 'grey.950' }}
-        {...props}
-      />
-    )
+    return <Link ref={ref} fontSize={16} color="grey.950" lineHeight={pxToRem(20)} {...props} />
   }
 )
 

@@ -5,33 +5,33 @@ import { Heading } from '@/components/Heading'
 import { Link } from '@/components/Link'
 import { pxToRem } from '@/utils'
 
-export interface SummaryListRootProps extends BoxProps {}
+export type SummaryListRootProps = BoxProps
 
-export interface SummaryListRowProps extends BoxProps {}
+export type SummaryListRowProps = BoxProps
 
-export interface SummaryListKeyProps extends HTMLChakraProps<'dt'> {}
+export type SummaryListKeyProps = HTMLChakraProps<'dt'>
 
-export interface SummaryListValueProps extends HTMLChakraProps<'dd'> {}
+export type SummaryListValueProps = HTMLChakraProps<'dd'>
 
-export interface SummaryListActionsProps extends HTMLChakraProps<'dd'> {}
+export type SummaryListActionsProps = HTMLChakraProps<'dd'>
 
-export interface SummaryListActionsListProps extends BoxProps {}
+export type SummaryListActionsListProps = BoxProps
 
-export interface SummaryListActionsListItemProps extends BoxProps {}
+export type SummaryListActionsListItemProps = BoxProps
 
 export interface SummaryListActionLinkProps extends ComponentProps<typeof Link> {
   visuallyHiddenText?: ReactNode
 }
 
-export interface SummaryCardProps extends BoxProps {}
+export type SummaryCardProps = BoxProps
 
-export interface SummaryCardHeaderProps extends BoxProps {}
+export type SummaryCardHeaderProps = BoxProps
 
-export interface SummaryCardTitleProps extends ComponentProps<typeof Heading> {}
+export type SummaryCardTitleProps = ComponentProps<typeof Heading>
 
-export interface SummaryCardActionsProps extends BoxProps {}
+export type SummaryCardActionsProps = BoxProps
 
-export interface SummaryCardContentProps extends BoxProps {}
+export type SummaryCardContentProps = BoxProps
 
 const rowBorderColor = 'grey.100'
 

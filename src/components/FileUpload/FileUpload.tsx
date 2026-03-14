@@ -108,7 +108,7 @@ export interface FileUploadFileTextProps extends ComponentProps<typeof Text> {
   emptyText?: string
 }
 
-export interface FileUploadInputProps extends Omit<InputProps, 'size' | 'type'> {}
+export type FileUploadInputProps = Omit<InputProps, 'size' | 'type'>
 
 export const FileUpload = {
   Root: forwardRef<HTMLDivElement, FileUploadRootProps>(function FileUploadRoot(
@@ -333,6 +333,7 @@ export const FileUpload = {
         onDragLeave={handleDragLeave}
         onDragOver={handleDragOver}
         onDrop={handleDrop}
+        aria-label={prompt}
         {...props}
       >
         {/* {prompt ? (

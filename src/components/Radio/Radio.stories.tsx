@@ -1,7 +1,6 @@
-import type { Meta, StoryObj } from '@storybook/react'
+import type { Meta, StoryObj } from '@storybook/react-vite'
 
 import { Radio } from './Radio'
-import { VStack } from '@chakra-ui/react'
 
 const meta: Meta = {
   title: 'GOV.UK/Components/Radio',

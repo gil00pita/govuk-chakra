@@ -8,6 +8,8 @@ import { themes } from 'storybook/theming'
 
 import { govUkTheme } from '@/theme/govUkTheme'
 
+import { INITIAL_VIEWPORTS } from 'storybook/viewport'
+
 const getDocsTheme = () =>
   document.documentElement.classList.contains('dark') ? themes.dark : themes.light
 
@@ -43,6 +45,9 @@ export const parameters = {
     storySort: {
       method: 'alphabetical',
     },
+  },
+  viewport: {
+    options: INITIAL_VIEWPORTS,
   },
   docs: {
     container: ThemedDocsContainer,

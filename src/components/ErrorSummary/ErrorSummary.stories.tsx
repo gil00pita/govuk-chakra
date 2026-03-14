@@ -1,4 +1,4 @@
-import type { Meta, StoryObj } from '@storybook/react'
+import type { Meta, StoryObj } from '@storybook/react-vite'
 
 import { ErrorSummary } from './ErrorSummary'
 import { pxToRem } from '@/utils'
@@ -28,7 +28,9 @@ export const Default: Story = {
   render: () => (
     <ErrorSummary.Root maxW={pxToRem(960)}>
       <ErrorSummary.Title>There is a problem</ErrorSummary.Title>
-      <ErrorSummary.Description>Fix the following errors before continuing:</ErrorSummary.Description>
+      <ErrorSummary.Description>
+        Fix the following errors before continuing:
+      </ErrorSummary.Description>
       <ErrorSummary.List>
         <ErrorSummary.Item>
           <ErrorSummary.Link href="#full-name">Enter your full name</ErrorSummary.Link>

@@ -15,9 +15,9 @@ export interface FieldsetLegendProps extends BoxProps {
   children: ReactNode
 }
 
-export interface FieldsetHintProps extends React.ComponentProps<typeof Text> {}
+export type FieldsetHintProps = React.ComponentProps<typeof Text>
 
-export interface FieldsetErrorProps extends React.ComponentProps<typeof Text> {}
+export type FieldsetErrorProps = React.ComponentProps<typeof Text>
 
 export interface FieldsetContentProps extends BoxProps {
   children: ReactNode
@@ -62,26 +62,23 @@ const FieldsetLegend = forwardRef<HTMLLegendElement, FieldsetLegendProps>(functi
   )
 })
 
-const FieldsetHint = forwardRef<HTMLParagraphElement, FieldsetHintProps>(function FieldsetHint(
-  props,
-  ref
-) {
-  return <Text ref={ref} fontSize={19} color="fg.muted" mb={3} {...props} />
-})
+const FieldsetHint = forwardRef<HTMLParagraphElement, FieldsetHintProps>(
+  function FieldsetHint(props, ref) {
+    return <Text ref={ref} fontSize={19} color="fg.muted" mb={3} {...props} />
+  }
+)
 
-const FieldsetError = forwardRef<HTMLParagraphElement, FieldsetErrorProps>(function FieldsetError(
-  props,
-  ref
-) {
-  return <Text ref={ref} fontSize={19} fontWeight="700" color="danger" mb={3} {...props} />
-})
+const FieldsetError = forwardRef<HTMLParagraphElement, FieldsetErrorProps>(
+  function FieldsetError(props, ref) {
+    return <Text ref={ref} fontSize={19} fontWeight="700" color="danger" mb={3} {...props} />
+  }
+)
 
-const FieldsetContent = forwardRef<HTMLDivElement, FieldsetContentProps>(function FieldsetContent(
-  props,
-  ref
-) {
-  return <Box ref={ref} display="flex" flexDirection="column" gap={0} {...props} />
-})
+const FieldsetContent = forwardRef<HTMLDivElement, FieldsetContentProps>(
+  function FieldsetContent(props, ref) {
+    return <Box ref={ref} display="flex" flexDirection="column" gap={0} {...props} />
+  }
+)
 
 export const Fieldset = {
   Root: FieldsetRoot,
