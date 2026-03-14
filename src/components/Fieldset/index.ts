@@ -11,5 +11,5 @@ export type {
   FieldsetErrorProps,
   FieldsetHintProps,
   FieldsetLegendProps,
-  FieldsetProps,
+  FieldsetRootProps,
 } from './Fieldset'

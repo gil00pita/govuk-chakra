@@ -5725,6 +5725,11 @@ chokidar@^4.0.1:
   dependencies:
     readdirp "^4.0.1"
 
+chromatic@^15.2.0:
+  version "15.2.0"
+  resolved "https://registry.yarnpkg.com/chromatic/-/chromatic-15.2.0.tgz#35dc769219d43749acd84c067331e57ea25d0676"
+  integrity sha512-c9tDfE62aiPVPnVab8jQLz+9c9II/CUFZ6T2Kk3hi2hSL+HLkRwX3zjwRYW1z9Shn57R/ORBEpQ3ftufp8EgWA==
+
 chrome-devtools-mcp@^0.20.0:
   version "0.20.0"
   resolved "https://registry.yarnpkg.com/chrome-devtools-mcp/-/chrome-devtools-mcp-0.20.0.tgz#52e090a487a65dd5ae9d40ce539949e0971ba8ff"

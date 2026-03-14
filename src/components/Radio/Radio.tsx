@@ -227,7 +227,7 @@ export const Radio = {
             mb={3}
             clear={!hint ? 'left' : undefined}
           >
-            {`Error: ${error}`}
+            {error}
           </Text>
         ) : null}
 

@@ -78,32 +78,38 @@ export const CompleteForm: Story = {
       <VStack gap={6} align="stretch">
         <Heading size="lg">Personal details</Heading>
 
-        <Fieldset legend="Full name" hint="This must match the name on your identity documents">
+        <Fieldset.Root>
+          <Fieldset.Legend mb={1}>Full name</Fieldset.Legend>
+          <Fieldset.Hint>This must match the name on your identity documents</Fieldset.Hint>
           <Textinput.Input
             placeholder="Enter your full name as it appears on your passport"
             required
           />
-        </Fieldset>
+        </Fieldset.Root>
 
         <HStack gap={4}>
-          <Fieldset legend="Date of birth">
+          <Fieldset.Root>
+            <Fieldset.Legend mb={3}>Date of birth</Fieldset.Legend>
             <Textinput.Input type="date" required />
-          </Fieldset>
+          </Fieldset.Root>
 
-          <Fieldset legend="Postcode">
+          <Fieldset.Root>
+            <Fieldset.Legend mb={3}>Postcode</Fieldset.Legend>
             <Textinput.Input placeholder="SW1A 1AA" required />
-          </Fieldset>
+          </Fieldset.Root>
         </HStack>
 
-        <Fieldset legend="Where do you live?">
+        <Fieldset.Root>
+          <Fieldset.Legend mb={3}>Where do you live?</Fieldset.Legend>
           <Fieldset.Content>
             <Radio.Root defaultValue="england">
               <ContactMethodRadios />
             </Radio.Root>
           </Fieldset.Content>
-        </Fieldset>
+        </Fieldset.Root>
 
-        <Fieldset legend="What do you want to drive?">
+        <Fieldset.Root>
+          <Fieldset.Legend mb={3}>What do you want to drive?</Fieldset.Legend>
           <VStack align="start" gap={3}>
             <Checkbox.Root required>
               <Checkbox.HiddenInput />
@@ -121,23 +127,25 @@ export const CompleteForm: Story = {
               <Checkbox.Label>Moped or light quad bike</Checkbox.Label>
             </Checkbox.Root>
           </VStack>
-        </Fieldset>
+        </Fieldset.Root>
 
-        <Fieldset
-          legend="Additional information"
-          hint="Do not include personal information like your National Insurance number"
-        >
+        <Fieldset.Root>
+          <Fieldset.Legend mb={1}>Additional information</Fieldset.Legend>
+          <Fieldset.Hint>
+            Do not include personal information like your National Insurance number
+          </Fieldset.Hint>
           <Textarea.Input
             placeholder="Tell us about any medical conditions that might affect your driving"
             rows={4}
           />
-        </Fieldset>
+        </Fieldset.Root>
 
         <Separator />
 
         <Heading size="lg">Contact preferences</Heading>
 
-        <Fieldset legend="How would you like to be contacted?">
+        <Fieldset.Root>
+          <Fieldset.Legend mb={3}>How would you like to be contacted?</Fieldset.Legend>
           <Select placeholder="Choose an option" defaultValue="">
             <option value="" disabled>
               Choose an option
@@ -146,11 +154,12 @@ export const CompleteForm: Story = {
             <option value="post">Post</option>
             <option value="phone">Phone</option>
           </Select>
-        </Fieldset>
+        </Fieldset.Root>
 
-        <Fieldset legend="Email address">
+        <Fieldset.Root>
+          <Fieldset.Legend mb={3}>Email address</Fieldset.Legend>
           <Textinput.Input type="email" placeholder="name@example.com" required />
-        </Fieldset>
+        </Fieldset.Root>
 
         <Separator />
 
@@ -198,23 +207,30 @@ export const ErrorForm: Story = {
           </VStack>
         </Alert.Description>
       </Alert.Root>
-      <Fieldset legend="Full name" error="Enter your full name">
+      <Fieldset.Root invalid>
+        <Fieldset.Legend mb={1}>Full name</Fieldset.Legend>
+        <Fieldset.Error>Enter your full name</Fieldset.Error>
         <Textinput.Input variant="subtle" required />
-      </Fieldset>
+      </Fieldset.Root>
 
-      <Fieldset legend="Email address" error="Enter a valid email address">
+      <Fieldset.Root invalid>
+        <Fieldset.Legend mb={1}>Email address</Fieldset.Legend>
+        <Fieldset.Error>Enter a valid email address</Fieldset.Error>
         <Textinput.Input variant="subtle" type="email" value="invalid-email" />
-      </Fieldset>
+      </Fieldset.Root>
 
-      <Fieldset legend="Where do you live?" error="Select where you live">
+      <Fieldset.Root invalid>
+        <Fieldset.Legend mb={1}>Where do you live?</Fieldset.Legend>
+        <Fieldset.Error>Select where you live</Fieldset.Error>
         <Fieldset.Content>
           <Radio.Root defaultValue="england">
             <ContactMethodRadios />
           </Radio.Root>
         </Fieldset.Content>
-      </Fieldset>
+      </Fieldset.Root>
 
-      <Fieldset legend="Where do you live?">
+      <Fieldset.Root>
+        <Fieldset.Legend mb={3}>Where do you live?</Fieldset.Legend>
         <Fieldset.Content>
           <Radio.Root defaultValue="england">
             <VStack align="start" gap={3}>
@@ -249,7 +265,7 @@ export const ErrorForm: Story = {
             </VStack>
           </Radio.Root>
         </Fieldset.Content>
-      </Fieldset>
+      </Fieldset.Root>
 
       <Button variant="primary">Continue</Button>
     </VStack>

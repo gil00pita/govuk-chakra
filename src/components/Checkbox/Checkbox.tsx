@@ -1,10 +1,9 @@
 import {
   Checkbox as ChakraCheckbox,
-  Fieldset,
   type CheckboxRootProps,
-  type FieldsetRootProps,
 } from '@chakra-ui/react'
 import React, { forwardRef, type ReactNode } from 'react'
+import { Fieldset, type FieldsetRootProps } from '@/components/Fieldset'
 import { Heading } from '@/components/Heading/Heading'
 import { Text } from '@/components/Text/Text'
 import { pxToRem } from '@/utils'
@@ -266,11 +265,11 @@ export const Checkbox = {
         ) : null}
 
         {error ? (
-          <Fieldset.ErrorText asChild mb={3}>
+          <Fieldset.Error asChild mb={3}>
             <Text fontSize={19} fontWeight={'700'} color="danger">
               {error}
             </Text>
-          </Fieldset.ErrorText>
+          </Fieldset.Error>
         ) : null}
 
         <Fieldset.Content display="flex" flexDirection="column" gap={0}>

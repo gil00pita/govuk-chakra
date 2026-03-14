@@ -3,15 +3,17 @@ import type { Meta, StoryObj } from '@storybook/react'
 import { ErrorSummary } from './ErrorSummary'
 import { pxToRem } from '@/utils'
 
-const meta: Meta<typeof ErrorSummary> = {
+const meta: Meta = {
   title: 'GOV.UK/Components/Error summary',
-  component: ErrorSummary,
+  component: ErrorSummary.Root,
   parameters: {
     layout: 'centered',
     docs: {
       description: {
         component:
-          'Use ErrorSummary to show a page-level summary of validation errors and link each message to the relevant field.',
+          'Use the error summary component to show a page-level summary of validation errors and link each message to the relevant field.\n\n' +
+          'The error summary component is useful for forms or content that require users to correct errors before proceeding.\n\n' +
+          'Choose the variant based on the importance and context of the content so the interface stays clear and consistent. For GOV.UK guidance, see the GOV.UK Design System error summary documentation: https://design-system.service.gov.uk/components/error-summary/.',
       },
     },
   },
@@ -20,25 +22,43 @@ const meta: Meta<typeof ErrorSummary> = {
 
 export default meta
 
-type Story = StoryObj<typeof ErrorSummary>
+type Story = StoryObj<typeof meta>
 
 export const Default: Story = {
-  args: {
-    description: 'Fix the following errors before continuing:',
-    errorList: [
-      { href: '#full-name', children: 'Enter your full name' },
-      { href: '#national-insurance-number', children: 'Enter your National Insurance number' },
-    ],
-    maxW: pxToRem(960),
-  },
+  render: () => (
+    <ErrorSummary.Root maxW={pxToRem(960)}>
+      <ErrorSummary.Title>There is a problem</ErrorSummary.Title>
+      <ErrorSummary.Description>Fix the following errors before continuing:</ErrorSummary.Description>
+      <ErrorSummary.List>
+        <ErrorSummary.Item>
+          <ErrorSummary.Link href="#full-name">Enter your full name</ErrorSummary.Link>
+        </ErrorSummary.Item>
+        <ErrorSummary.Item>
+          <ErrorSummary.Link href="#national-insurance-number">
+            Enter your National Insurance number
+          </ErrorSummary.Link>
+        </ErrorSummary.Item>
+      </ErrorSummary.List>
+    </ErrorSummary.Root>
+  ),
 }
 
 export const WithoutDescription: Story = {
-  args: {
-    errorList: [
-      { href: '#passport-issued', children: 'Select when your passport was issued' },
-      { href: '#passport-expiry', children: 'Enter your passport expiry date' },
-    ],
-    maxW: pxToRem(960),
-  },
+  render: () => (
+    <ErrorSummary.Root maxW={pxToRem(960)}>
+      <ErrorSummary.Title>There is a problem</ErrorSummary.Title>
+      <ErrorSummary.List>
+        <ErrorSummary.Item>
+          <ErrorSummary.Link href="#passport-issued">
+            Select when your passport was issued
+          </ErrorSummary.Link>
+        </ErrorSummary.Item>
+        <ErrorSummary.Item>
+          <ErrorSummary.Link href="#passport-expiry">
+            Enter your passport expiry date
+          </ErrorSummary.Link>
+        </ErrorSummary.Item>
+      </ErrorSummary.List>
+    </ErrorSummary.Root>
+  ),
 }

@@ -5,12 +5,9 @@ import { Heading } from '@/components/Heading'
 import { Text } from '@/components/Text'
 import { pxToRem } from '@/utils'
 
-export interface FieldsetProps extends BoxProps {
-  legend: ReactNode
-  legendAsHeading?: boolean
-  hint?: ReactNode
-  error?: ReactNode
+export interface FieldsetRootProps extends BoxProps {
   children: ReactNode
+  invalid?: boolean
 }
 
 export interface FieldsetLegendProps extends BoxProps {
@@ -22,10 +19,12 @@ export interface FieldsetHintProps extends React.ComponentProps<typeof Text> {}
 
 export interface FieldsetErrorProps extends React.ComponentProps<typeof Text> {}
 
-export interface FieldsetContentProps extends BoxProps {}
+export interface FieldsetContentProps extends BoxProps {
+  children: ReactNode
+}
 
-const FieldsetRoot = forwardRef<HTMLFieldSetElement, FieldsetProps>(function Fieldset(
-  { legend, legendAsHeading = false, hint, error, children, ...props },
+const FieldsetRoot = forwardRef<HTMLFieldSetElement, FieldsetRootProps>(function FieldsetRoot(
+  { children, invalid = false, ...props },
   ref
 ) {
   return (
@@ -36,19 +35,12 @@ const FieldsetRoot = forwardRef<HTMLFieldSetElement, FieldsetProps>(function Fie
       border="0px solid transparent"
       padding={0}
       minInlineSize={0}
-      paddingLeft={Boolean(error) ? pxToRem(15) : 0}
-      borderLeftWidth={Boolean(error) ? pxToRem(5) : 0}
-      borderLeftColor={Boolean(error) ? 'danger' : 'transparent'}
+      paddingLeft={invalid ? pxToRem(15) : 0}
+      borderLeftWidth={invalid ? pxToRem(5) : 0}
+      borderLeftColor={invalid ? 'danger' : 'transparent'}
       {...props}
     >
-      <FieldsetLegend legendAsHeading={legendAsHeading} mb={hint || error ? 1 : 3}>
-        {legend}
-      </FieldsetLegend>
-
-      {hint ? <FieldsetHint>{hint}</FieldsetHint> : null}
-      {error ? <FieldsetError>{`Error: ${error}`}</FieldsetError> : null}
-
-      <FieldsetContent>{children}</FieldsetContent>
+      {children}
     </Box>
   )
 })
@@ -70,30 +62,33 @@ const FieldsetLegend = forwardRef<HTMLLegendElement, FieldsetLegendProps>(functi
   )
 })
 
-const FieldsetHint = forwardRef<HTMLParagraphElement, FieldsetHintProps>(
-  function FieldsetHint(props, ref) {
-    return <Text ref={ref} fontSize={19} color="fg.muted" mb={3} {...props} />
-  }
-)
+const FieldsetHint = forwardRef<HTMLParagraphElement, FieldsetHintProps>(function FieldsetHint(
+  props,
+  ref
+) {
+  return <Text ref={ref} fontSize={19} color="fg.muted" mb={3} {...props} />
+})
 
-const FieldsetError = forwardRef<HTMLParagraphElement, FieldsetErrorProps>(
-  function FieldsetError(props, ref) {
-    return <Text ref={ref} fontSize={19} fontWeight="700" color="danger" mb={3} {...props} />
-  }
-)
+const FieldsetError = forwardRef<HTMLParagraphElement, FieldsetErrorProps>(function FieldsetError(
+  props,
+  ref
+) {
+  return <Text ref={ref} fontSize={19} fontWeight="700" color="danger" mb={3} {...props} />
+})
 
-const FieldsetContent = forwardRef<HTMLDivElement, FieldsetContentProps>(
-  function FieldsetContent(props, ref) {
-    return <Box ref={ref} display="flex" flexDirection="column" gap={0} {...props} />
-  }
-)
+const FieldsetContent = forwardRef<HTMLDivElement, FieldsetContentProps>(function FieldsetContent(
+  props,
+  ref
+) {
+  return <Box ref={ref} display="flex" flexDirection="column" gap={0} {...props} />
+})
 
-export const Fieldset = Object.assign(FieldsetRoot, {
+export const Fieldset = {
   Root: FieldsetRoot,
   Legend: FieldsetLegend,
   Hint: FieldsetHint,
   Error: FieldsetError,
   Content: FieldsetContent,
-})
+}
 
 export { FieldsetRoot, FieldsetLegend, FieldsetHint, FieldsetError, FieldsetContent }
