@@ -14,6 +14,14 @@ const meta: Meta<TextareaStoryArgs> = {
   component: Textarea.Root,
   parameters: {
     layout: 'centered',
+    docs: {
+      description: {
+        component:
+          'Use the <Textarea/> component to allow users to enter multi-line text input.\n\n' +
+          'The <Textarea/> component is useful for collecting detailed information from users, such as descriptions, comments, or feedback.\n\n' +
+          'Choose the variant based on the importance and context of the content so the interface stays clear and consistent. For GOV.UK guidance, see the GOV.UK Design System textarea documentation: https://design-system.service.gov.uk/components/textarea/.',
+      },
+    },
   },
   tags: ['autodocs'],
   argTypes: {

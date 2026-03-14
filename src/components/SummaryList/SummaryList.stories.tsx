@@ -6,6 +6,14 @@ const meta: Meta = {
   title: 'GOV.UK/Components/Summary list',
   parameters: {
     layout: 'centered',
+    docs: {
+      description: {
+        component:
+          'Use the SummaryList component to display a list of key-value pairs, often used for summarizing information.\n\n' +
+          'The SummaryList component is useful for presenting information in a clear and structured manner, allowing users to quickly scan and understand the content.\n\n' +
+          'Choose the variant based on the importance and context of the content so the interface stays clear and consistent. For GOV.UK guidance, see the GOV.UK Design System summary list documentation: https://design-system.service.gov.uk/components/summary-list/.',
+      },
+    },
   },
   tags: ['autodocs'],
 }

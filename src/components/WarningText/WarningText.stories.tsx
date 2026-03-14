@@ -7,6 +7,14 @@ const meta: Meta<typeof WarningText> = {
   component: WarningText,
   parameters: {
     layout: 'centered',
+    docs: {
+      description: {
+        component:
+          'Use the <WarningText/> component to display warning messages to users.\n\n' +
+          'The <WarningText/> component is useful for highlighting important information or potential issues that users should be aware of.\n\n' +
+          'Choose the variant based on the importance and context of the content so the interface stays clear and consistent. For GOV.UK guidance, see the GOV.UK Design System warning text documentation: https://design-system.service.gov.uk/components/warning-text/.',
+      },
+    },
   },
   tags: ['autodocs'],
   args: {

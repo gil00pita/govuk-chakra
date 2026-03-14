@@ -33,12 +33,13 @@ const GovUKFooterRoot = forwardRef<HTMLElement, GovUKFooterProps>(function GovUK
     <Box
       ref={ref}
       as="footer"
-      borderTop="1px solid"
-      borderColor="grey.300"
+      borderTop="10px solid"
+      borderColor="brand.500"
       bg="grey.50"
       color="grey.950"
       mt={pxToRem(60)}
-      py={{ base: pxToRem(30), md: pxToRem(40) }}
+      pt={{ base: pxToRem(40), md: pxToRem(48) }}
+      pb={{ base: pxToRem(24), md: pxToRem(32) }}
       {...props}
     />
   )
@@ -64,10 +65,15 @@ const GovUKFooterNavigation = forwardRef<HTMLDivElement, GovUKFooterNavigationPr
       <Box
         ref={ref}
         display="grid"
-        gridTemplateColumns={{ base: '1fr', md: 'repeat(2, minmax(0, 1fr))' }}
-        gap={{ base: pxToRem(30), md: pxToRem(40) }}
-        pb={pxToRem(30)}
-        mb={pxToRem(30)}
+        gridTemplateColumns={{
+          base: '1fr',
+          md: 'repeat(2, minmax(0, 1fr))',
+          xl: 'repeat(auto-fit, minmax(240px, 1fr))',
+        }}
+        columnGap={{ base: pxToRem(24), md: pxToRem(30) }}
+        rowGap={{ base: pxToRem(24), md: pxToRem(32) }}
+        pb={{ base: pxToRem(24), md: pxToRem(32) }}
+        mb={{ base: pxToRem(20), md: pxToRem(24) }}
         borderBottom="1px solid"
         borderColor="grey.300"
         {...props}
@@ -84,7 +90,16 @@ const GovUKFooterSection = forwardRef<HTMLDivElement, GovUKFooterSectionProps>(
 
 const GovUKFooterSectionTitle = forwardRef<HTMLHeadingElement, GovUKFooterSectionTitleProps>(
   function GovUKFooterSectionTitle(props, ref) {
-    return <Heading ref={ref} as="h2" size={24} color="grey.950" mb={pxToRem(15)} {...props} />
+    return (
+      <Heading
+        ref={ref}
+        as="h2"
+        size={24}
+        color="grey.950"
+        mb={{ base: pxToRem(16), md: pxToRem(20) }}
+        {...props}
+      />
+    )
   }
 )
 
@@ -96,7 +111,7 @@ const GovUKFooterList = forwardRef<HTMLUListElement, GovUKFooterListProps>(
         as="ul"
         listStyleType="none"
         display="grid"
-        gap={pxToRem(10)}
+        gap={{ base: pxToRem(12), md: pxToRem(14) }}
         m={0}
         p={0}
         {...props}
@@ -113,7 +128,27 @@ const GovUKFooterListItem = forwardRef<HTMLLIElement, GovUKFooterListItemProps>(
 
 const GovUKFooterLink = forwardRef<HTMLAnchorElement, GovUKFooterLinkProps>(
   function GovUKFooterLink(props, ref) {
-    return <Link ref={ref} color="grey.950" _visited={{ color: 'grey.950' }} {...props} />
+    return (
+      <Link
+        ref={ref}
+        color="grey.950"
+        fontSize={16}
+        lineHeight={pxToRem(20)}
+        textDecorationThickness="max(1px, 0.0625rem)"
+        textUnderlineOffset="0.1578em"
+        _hover={{ color: 'grey.950', textDecorationThickness: 'max(3px, 0.1875rem)' }}
+        _focus={{
+          outline: '3px solid',
+          outlineColor: 'yellow.500',
+          outlineOffset: 0,
+          bgColor: 'yellow.500',
+          color: 'common.black',
+          textDecoration: 'none',
+        }}
+        _visited={{ color: 'grey.950' }}
+        {...props}
+      />
+    )
   }
 )
 
@@ -122,11 +157,12 @@ const GovUKFooterMeta = forwardRef<HTMLDivElement, GovUKFooterMetaProps>(
     return (
       <Box
         ref={ref}
-        display="flex"
-        flexDirection={{ base: 'column', md: 'row' }}
-        alignItems={{ md: 'center' }}
+        display="grid"
+        gridTemplateColumns={{ base: '1fr', md: 'minmax(0, 1fr) auto' }}
+        alignItems="start"
         justifyContent="space-between"
-        gap={pxToRem(20)}
+        columnGap={{ base: pxToRem(20), md: pxToRem(30) }}
+        rowGap={{ base: pxToRem(16), md: pxToRem(20) }}
         {...props}
       />
     )
@@ -140,8 +176,11 @@ const GovUKFooterMetaItem = forwardRef<HTMLDivElement, GovUKFooterMetaItemProps>
         ref={ref}
         display="flex"
         flexWrap="wrap"
-        gap={pxToRem(15)}
+        columnGap={pxToRem(16)}
+        rowGap={pxToRem(8)}
         alignItems="center"
+        fontSize={16}
+        lineHeight={pxToRem(20)}
         {...props}
       />
     )
@@ -150,7 +189,18 @@ const GovUKFooterMetaItem = forwardRef<HTMLDivElement, GovUKFooterMetaItemProps>
 
 const GovUKFooterMetaText = forwardRef<HTMLParagraphElement, GovUKFooterMetaTextProps>(
   function GovUKFooterMetaText(props, ref) {
-    return <Text ref={ref} fontSize={16} color="grey.950" mb={0} {...props} />
+    return (
+      <Text
+        ref={ref}
+        fontSize={16}
+        color="grey.950"
+        lineHeight={pxToRem(20)}
+        mb={0}
+        justifySelf={{ md: 'end' }}
+        textAlign={{ md: 'right' }}
+        {...props}
+      />
+    )
   }
 )
 

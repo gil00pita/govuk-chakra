@@ -8,6 +8,14 @@ const meta: Meta = {
   title: 'GOV.UK/Components/Fieldset',
   parameters: {
     layout: 'centered',
+    docs: {
+      description: {
+        component:
+          'Fieldsets group related form controls together, making it easier for users to understand and complete forms.\n\n' +
+          'Use fieldsets to group related form controls together, such as a set of checkboxes or radio buttons.\n\n' +
+          'Choose the variant based on the importance and context of the content so the interface stays clear and consistent. For GOV.UK guidance, see the GOV.UK Design System fieldset documentation: https://design-system.service.gov.uk/components/fieldset/.',
+      },
+    },
   },
   tags: ['autodocs'],
 }

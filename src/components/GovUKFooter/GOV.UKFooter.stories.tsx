@@ -5,7 +5,15 @@ import { GovUKFooter } from './GovUKFooter'
 const meta: Meta = {
   title: 'GOV.UK/Components/GOV.UK - Footer',
   parameters: {
-    layout: 'fullscreen',
+    layout: 'centered',
+    docs: {
+      description: {
+        component:
+          'GOV.UK footers provide links to important information and services, such as contact details, accessibility information, and legal notices.\n\n' +
+          'Use the footer to provide users with easy access to important information and services, and to help them navigate your website.\n\n' +
+          'For GOV.UK guidance, see the GOV.UK Design System footer documentation: https://design-system.service.gov.uk/components/footer/.',
+      },
+    },
   },
   tags: ['autodocs'],
 }

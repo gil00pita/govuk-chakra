@@ -22,6 +22,7 @@ const STATUS_LABEL: Record<TaskStatus, string> = {
 }
 
 export interface TaskListItemData {
+  id?: string
   title: ReactNode
   href: string
   status: TaskStatus
@@ -59,9 +60,9 @@ const TaskListRoot = forwardRef<HTMLDivElement, TaskListProps>(function TaskList
 
       <Box as="ul" listStyleType="none" m={0} p={0} borderTop="1px solid" borderColor="grey.100">
         {items
-          ? items.map((item, idx) => (
+          ? items.map((item) => (
               <TaskListItem
-                key={`${item.href}-${idx}`}
+                key={item.id ?? item.href}
                 title={item.title}
                 href={item.href}
                 hint={item.hint}

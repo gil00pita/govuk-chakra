@@ -10,6 +10,14 @@ const meta: Meta<typeof Tabs> = {
   component: Tabs,
   parameters: {
     layout: 'centered',
+    docs: {
+      description: {
+        component:
+          'Use the Tabs component to display content in a tabbed interface, allowing users to switch between different views or sections.\n\n' +
+          'The Tabs component is useful for organizing related content into separate panels, making it easier for users to navigate and find information.\n\n' +
+          'Choose the variant based on the importance and context of the content so the interface stays clear and consistent. For GOV.UK guidance, see the GOV.UK Design System tabs documentation: https://design-system.service.gov.uk/components/tabs/.',
+      },
+    },
   },
   tags: ['autodocs'],
 }

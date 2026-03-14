@@ -6,6 +6,14 @@ const meta: Meta = {
   title: 'GOV.UK/Components/Select',
   parameters: {
     layout: 'centered',
+    docs: {
+      description: {
+        component:
+          'Use the Select component to allow users to choose one option from a dropdown list.\n\n' +
+          'The Select component is useful for forms or content that require users to make a single choice from a list of options.\n\n' +
+          'Choose the variant based on the importance and context of the content so the interface stays clear and consistent. For GOV.UK guidance, see the GOV.UK Design System select documentation: https://design-system.service.gov.uk/components/select/.',
+      },
+    },
   },
   tags: ['autodocs'],
 }

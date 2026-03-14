@@ -11,7 +11,7 @@ const meta: Meta = {
     docs: {
       description: {
         component:
-          'Use the radio component to allow users to select one option from a set of choices.\n\n' +
+          'Use the Radio component to allow users to select one option from a set of choices.\n\n' +
           'The radio component can be used in forms and surveys where a single choice is required. It supports hints and error messages to guide users and provide feedback.\n\n' +
           'For GOV.UK guidance, see the GOV.UK Design System radio documentation: https://design-system.service.gov.uk/components/radios/.',
       },

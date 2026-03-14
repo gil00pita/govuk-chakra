@@ -7,7 +7,15 @@ const meta: Meta<typeof SkipLink> = {
   title: 'GOV.UK/Components/Skip link',
   component: SkipLink,
   parameters: {
-    layout: 'fullscreen',
+    layout: 'centered',
+    docs: {
+      description: {
+        component:
+          'Use the SkipLink component to provide a way for users to quickly navigate to the main content of a page.\n\n' +
+          'The SkipLink component is useful for improving accessibility, allowing users to bypass repetitive navigation links.\n\n' +
+          'Choose the variant based on the importance and context of the content so the interface stays clear and consistent. For GOV.UK guidance, see the GOV.UK Design System skip link documentation: https://design-system.service.gov.uk/components/skip-link/.',
+      },
+    },
   },
   tags: ['autodocs'],
   args: {

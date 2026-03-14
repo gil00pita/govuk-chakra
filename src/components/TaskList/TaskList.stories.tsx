@@ -7,6 +7,14 @@ const meta: Meta<typeof TaskList> = {
   component: TaskList,
   parameters: {
     layout: 'centered',
+    docs: {
+      description: {
+        component:
+          'Use the <TaskList/> component to display a list of tasks with their status.\n\n' +
+          'The <TaskList/> component is useful for showing the progress of tasks or steps in a process.\n\n' +
+          'Choose the variant based on the importance and context of the content so the interface stays clear and consistent. For GOV.UK guidance, see the GOV.UK Design System task list documentation: https://design-system.service.gov.uk/components/task-list/.',
+      },
+    },
   },
   tags: ['autodocs'],
 }

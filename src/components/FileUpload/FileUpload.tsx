@@ -237,7 +237,7 @@ export const FileUpload = {
         marginBottom={0}
         {...props}
       >
-        ${children}
+        {children}
       </Text>
     )
   }),

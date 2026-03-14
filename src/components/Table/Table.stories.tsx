@@ -7,6 +7,14 @@ const meta: Meta = {
   title: 'GOV.UK/Components/Table',
   parameters: {
     layout: 'centered',
+    docs: {
+      description: {
+        component:
+          'Use the Table component to display data in a structured tabular format.\n\n' +
+          'The Table component is useful for presenting information in rows and columns, allowing users to easily compare and analyze data.\n\n' +
+          'Choose the variant based on the importance and context of the content so the interface stays clear and consistent. For GOV.UK guidance, see the GOV.UK Design System table documentation: https://design-system.service.gov.uk/components/table/.',
+      },
+    },
   },
   tags: ['autodocs'],
 }

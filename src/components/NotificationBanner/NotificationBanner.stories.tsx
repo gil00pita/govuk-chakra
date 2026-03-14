@@ -4,8 +4,18 @@ import { NotificationBanner } from './NotificationBanner'
 
 const meta: Meta = {
   title: 'GOV.UK/Components/Notification banner',
+  parameters: {
+    layout: 'centered',
+    docs: {
+      description: {
+        component:
+          'Use the notification banner component to display important messages to users.\n\n' +
+          'The notification banner component is useful for drawing attention to critical information or updates.\n\n' +
+          'Choose the variant based on the importance and context of the content so the interface stays clear and consistent. For GOV.UK guidance, see the GOV.UK Design System notification banner documentation: https://design-system.service.gov.uk/components/notification-banner/.',
+      },
+    },
+  },
   tags: ['autodocs'],
-  parameters: { layout: 'centered' },
 }
 
 export default meta

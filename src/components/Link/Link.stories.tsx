@@ -6,7 +6,17 @@ import { Link } from './Link'
 const meta: Meta<typeof Link> = {
   title: 'GOV.UK/Components/Link',
   component: Link,
-  parameters: { layout: 'centered' },
+  parameters: {
+    layout: 'centered',
+    docs: {
+      description: {
+        component:
+          'Use the link component to create hyperlinks to other pages or resources.\n\n' +
+          'The link component is useful for navigation and providing additional information to users.\n\n' +
+          'Choose the variant based on the importance and context of the content so the interface stays clear and consistent. For GOV.UK guidance, see the GOV.UK Design System link documentation: https://design-system.service.gov.uk/components/link/.',
+      },
+    },
+  },
   tags: ['autodocs'],
   argTypes: {
     href: { control: 'text' },

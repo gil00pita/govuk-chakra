@@ -6,6 +6,14 @@ const meta: Meta = {
   title: 'GOV.UK/Components/Pagination',
   parameters: {
     layout: 'centered',
+    docs: {
+      description: {
+        component:
+          'Use the pagination component to navigate through multiple pages of content.\n\n' +
+          'The pagination component is useful for breaking up large sets of data or content into manageable chunks.\n\n' +
+          'Choose the variant based on the importance and context of the content so the interface stays clear and consistent. For GOV.UK guidance, see the GOV.UK Design System pagination documentation: https://design-system.service.gov.uk/components/pagination/.',
+      },
+    },
   },
   tags: ['autodocs'],
 }

@@ -1,5 +1,5 @@
 import { Box, HStack, Stack, type BoxProps } from '@chakra-ui/react'
-import { useEffect, useRef, useState } from 'react'
+import { useRef, useState } from 'react'
 
 import { Button } from '@/components/Button/Button'
 import { Heading } from '@/components/Heading/Heading'
@@ -45,19 +45,13 @@ export function CookieBanner({
   onHide,
   ...props
 }: CookieBannerProps) {
-  const [internalDecision, setInternalDecision] = useState<CookieDecision>(defaultDecision)
+  const initialDecisionRef = useRef(defaultDecision)
+  const [internalDecision, setInternalDecision] = useState<CookieDecision>(initialDecisionRef.current)
   const [isVisible, setIsVisible] = useState(true)
-  const confirmationRef = useRef<HTMLDivElement>(null)
 
   const decision = controlledDecision ?? internalDecision
   const hasDecision = decision !== null
   const computedHeading = heading ?? `Cookies on ${serviceName}`
-
-  useEffect(() => {
-    if (hasDecision) {
-      confirmationRef.current?.focus()
-    }
-  }, [hasDecision])
 
   const handleDecision = (nextDecision: Exclude<CookieDecision, null>) => {
     if (controlledDecision === undefined) {
@@ -118,7 +112,11 @@ export function CookieBanner({
             alignItems="flex-start"
             role="alert"
             tabIndex={-1}
-            ref={confirmationRef}
+            ref={(node) => {
+              if (node) {
+                node.focus()
+              }
+            }}
             _focusVisible={{ outline: 'none' }}
           >
             <Text fontSize={19} color="fg" mb={0}>

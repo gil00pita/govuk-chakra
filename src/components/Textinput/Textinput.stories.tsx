@@ -8,6 +8,14 @@ const meta: Meta<typeof Textinput> = {
   component: Textinput,
   parameters: {
     layout: 'centered',
+    docs: {
+      description: {
+        component:
+          'Use the <Textinput/> component to allow users to enter single-line text input.\n\n' +
+          'The <Textinput/> component is useful for collecting short pieces of information from users, such as names, email addresses, or other identifiers.\n\n' +
+          'Choose the variant based on the importance and context of the content so the interface stays clear and consistent. For GOV.UK guidance, see the GOV.UK Design System text input documentation: https://design-system.service.gov.uk/components/text-input/.',
+      },
+    },
   },
   tags: ['autodocs'],
   argTypes: {
