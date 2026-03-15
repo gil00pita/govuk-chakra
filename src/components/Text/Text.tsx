@@ -4,12 +4,13 @@ import { govukTypeScale } from '@/utils'
 
 type GovukFontSize = keyof typeof govukTypeScale
 
-export interface TextProps extends Omit<ChakraTextProps, 'fontSize'> {
+export interface TextProps extends Omit<ChakraTextProps, 'fontSize' | 'fontWeight'> {
   fontSize?: GovukFontSize | ChakraTextProps['fontSize']
+  fontWeight?: ChakraTextProps['fontWeight']
 }
 
 export const Text = forwardRef<HTMLParagraphElement, TextProps>(function Text(
-  { fontSize, ...props },
+  { fontSize, fontWeight = 400, ...props },
   ref
 ) {
   if (typeof fontSize === 'number' && !(fontSize in govukTypeScale)) {
@@ -29,6 +30,7 @@ export const Text = forwardRef<HTMLParagraphElement, TextProps>(function Text(
         ref={ref}
         fontSize={{ base: scale.small.fontSize, sm: scale.large.fontSize }}
         lineHeight={{ base: scale.small.lineHeight, sm: scale.large.lineHeight }}
+        fontWeight={fontWeight}
         {...props}
       />
     )

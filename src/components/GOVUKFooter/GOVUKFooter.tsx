@@ -80,7 +80,7 @@ const GOVUKFooterNavigation = forwardRef<HTMLDivElement, GOVUKFooterNavigationPr
         pb={{ base: pxToRem(24), md: pxToRem(32) }}
         mb={{ base: pxToRem(20), md: pxToRem(24) }}
         borderBottom="1px solid"
-        borderColor="grey.300"
+        borderColor="primary.200"
         {...props}
       />
     )
@@ -116,7 +116,7 @@ const GOVUKFooterList = forwardRef<HTMLUListElement, GOVUKFooterListProps>(
         as="ul"
         listStyleType="none"
         display="grid"
-        gap={{ base: pxToRem(12), md: pxToRem(14) }}
+        gap={{ base: pxToRem(12), md: pxToRem(20) }}
         m={0}
         p={0}
         {...props}
@@ -133,7 +133,13 @@ const GOVUKFooterListItem = forwardRef<HTMLLIElement, GOVUKFooterListItemProps>(
 
 const GOVUKFooterLink = forwardRef<HTMLAnchorElement, GOVUKFooterLinkProps>(
   function GOVUKFooterLink(props, ref) {
-    return <Link ref={ref} fontSize={16} lineHeight={pxToRem(20)} {...props} />
+    return (
+      <Link ref={ref} {...props}>
+        <Text as={'span'} fontSize={19}>
+          {props.children}
+        </Text>
+      </Link>
+    )
   }
 )
 
@@ -142,6 +148,7 @@ const GOVUKFooterMeta = forwardRef<HTMLDivElement, GOVUKFooterMetaProps>(
     return (
       <Box
         ref={ref}
+        className="meta"
         display="grid"
         gridTemplateColumns={{ base: '1fr', md: 'minmax(0, 1fr) auto' }}
         alignItems="start"
@@ -177,6 +184,7 @@ const GOVUKFooterMetaText = forwardRef<HTMLParagraphElement, GOVUKFooterMetaText
     return (
       <Text
         ref={ref}
+        className="text"
         fontSize={16}
         color="grey.950"
         lineHeight={pxToRem(20)}

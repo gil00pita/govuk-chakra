@@ -1,8 +1,9 @@
 import type { Meta, StoryObj } from '@storybook/react-vite'
 
 import { GOVUKFooter } from './GOVUKFooter'
-import { Box } from '@chakra-ui/react'
+import { Box, HStack, Image, LinkBox, LinkOverlay, VStack } from '@chakra-ui/react'
 import { pxToRem } from '@/utils'
+import { Link } from '../Link'
 
 const meta: Meta = {
   title: 'GOV.UK/Components/GOV.UK - Footer',
@@ -97,14 +98,79 @@ export const Default: Story = {
         </GOVUKFooter.Navigation>
 
         <GOVUKFooter.Meta>
-          <GOVUKFooter.MetaItem>
-            <GOVUKFooter.Link href="#">Help</GOVUKFooter.Link>
-            <GOVUKFooter.Link href="#">Cookies</GOVUKFooter.Link>
-            <GOVUKFooter.Link href="#">Contact</GOVUKFooter.Link>
-            <GOVUKFooter.Link href="#">Terms and conditions</GOVUKFooter.Link>
-          </GOVUKFooter.MetaItem>
+          <VStack alignItems={'flex-start'}>
+            <HStack>
+              <VStack
+                w={'full'}
+                justifyContent="space-between"
+                flexWrap="wrap"
+                alignItems={'flex-start'}
+                rowGap={pxToRem(16)}
+              >
+                <GOVUKFooter.MetaItem>
+                  <GOVUKFooter.Link href="#">Help</GOVUKFooter.Link>
+                  <GOVUKFooter.Link href="#">Cookies</GOVUKFooter.Link>
+                  <GOVUKFooter.Link href="#">Contact</GOVUKFooter.Link>
+                  <GOVUKFooter.Link href="#">Terms and conditions</GOVUKFooter.Link>
+                  <GOVUKFooter.Link href="#">Rhestr o Wasanaethau Cymraeg</GOVUKFooter.Link>
+                </GOVUKFooter.MetaItem>
+                <Box>
+                  <GOVUKFooter.MetaText>
+                    Built by the{' '}
+                    <GOVUKFooter.Link href="#">Government Digital Service</GOVUKFooter.Link>
+                  </GOVUKFooter.MetaText>
+                </Box>
 
-          <GOVUKFooter.MetaText>Built by the Government Digital Service</GOVUKFooter.MetaText>
+                <Box>
+                  <svg
+                    aria-hidden="true"
+                    focusable="false"
+                    class="govuk-footer__licence-logo"
+                    xmlns="http://www.w3.org/2000/svg"
+                    viewBox="0 0 483.2 195.7"
+                    height="17"
+                    width="41"
+                  >
+                    <path
+                      fill="currentColor"
+                      d="M421.5 142.8V.1l-50.7 32.3v161.1h112.4v-50.7zm-122.3-9.6A47.12 47.12 0 0 1 221 97.8c0-26 21.1-47.1 47.1-47.1 16.7 0 31.4 8.7 39.7 21.8l42.7-27.2A97.63 97.63 0 0 0 268.1 0c-36.5 0-68.3 20.1-85.1 49.7A98 98 0 0 0 97.8 0C43.9 0 0 43.9 0 97.8s43.9 97.8 97.8 97.8c36.5 0 68.3-20.1 85.1-49.7a97.76 97.76 0 0 0 149.6 25.4l19.4 22.2h3v-87.8h-80l24.3 27.5zM97.8 145c-26 0-47.1-21.1-47.1-47.1s21.1-47.1 47.1-47.1 47.2 21 47.2 47S123.8 145 97.8 145"
+                    ></path>
+                  </svg>
+                </Box>
+                <HStack
+                  alignItems={'flex-start'}
+                  w={'full'}
+                  justifyContent="space-between"
+                  flexWrap="wrap"
+                  rowGap={pxToRem(16)}
+                  display={{ base: 'none', md: 'flex' }}
+                  justifyContent="space-between"
+                >
+                  <GOVUKFooter.MetaText>
+                    All content is available under the{' '}
+                    <GOVUKFooter.Link href="#">Open Government Licence v3.0</GOVUKFooter.Link>,
+                    except where otherwise stated.
+                  </GOVUKFooter.MetaText>
+                </HStack>
+              </VStack>
+              <HStack flexShrink={1} minW={pxToRem(136)}>
+                <GOVUKFooter.MetaItem position={'relative'}>
+                  <LinkOverlay asChild>
+                    <Link
+                      href="#"
+                      display="flex"
+                      alignItems="center"
+                      gap={pxToRem(10)}
+                      flexDirection={'column'}
+                    >
+                      <Image src="/govuk-crest.svg" />
+                      <GOVUKFooter.MetaText>© Crown copyright</GOVUKFooter.MetaText>
+                    </Link>
+                  </LinkOverlay>
+                </GOVUKFooter.MetaItem>
+              </HStack>
+            </HStack>
+          </VStack>
         </GOVUKFooter.Meta>
       </GOVUKFooter.Container>
     </GOVUKFooter>
