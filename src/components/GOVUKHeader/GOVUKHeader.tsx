@@ -44,7 +44,7 @@ const GOVUKHeaderContainer = forwardRef<HTMLDivElement, GOVUKHeaderContainerProp
 const GOVUKHeaderLogotype = forwardRef<HTMLSpanElement, GOVUKHeaderLogotypeProps>(
   function GOVUKHeaderLogotype(props, ref) {
     return (
-      <Box ref={ref} as="span" whiteSpace="nowrap" color="common.white" {...props}>
+      <Box ref={ref} as="span" whiteSpace="nowrap" color="currentColor" {...props}>
         <svg
           focusable="false"
           role="img"

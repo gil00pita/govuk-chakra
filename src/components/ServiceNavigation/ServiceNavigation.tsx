@@ -1,4 +1,4 @@
-import { Box, Button, HStack, type BoxProps } from '@chakra-ui/react'
+import { Box, Button, HStack, StackProps, type BoxProps } from '@chakra-ui/react'
 import {
   createContext,
   forwardRef,
@@ -25,7 +25,7 @@ function useServiceNavigationContext() {
   return useContext(ServiceNavigationContext)
 }
 
-export interface ServiceNavigationRootProps extends BoxProps {
+export interface ServiceNavigationRootProps extends StackProps {
   defaultMobileOpen?: boolean
 }
 

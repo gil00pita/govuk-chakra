@@ -42,29 +42,28 @@ const BreadcrumbsRoot = forwardRef<HTMLDivElement, BreadcrumbsProps>(function Br
   )
 })
 
-const BreadcrumbsList = forwardRef<HTMLOListElement, BreadcrumbsListProps>(function BreadcrumbsList(
-  props,
-  ref
-) {
-  const { inverse } = useBreadcrumbsContext()
+const BreadcrumbsList = forwardRef<HTMLOListElement, BreadcrumbsListProps>(
+  function BreadcrumbsList(props, ref) {
+    const { inverse } = useBreadcrumbsContext()
 
-  return (
-    <Box
-      ref={ref}
-      as="ol"
-      display="flex"
-      flexWrap="wrap"
-      alignItems="center"
-      listStyleType="none"
-      m={0}
-      p={0}
-      fontSize={pxToRem(16)}
-      lineHeight={1.25}
-      color={inverse ? 'common.white' : 'grey.950'}
-      {...props}
-    />
-  )
-})
+    return (
+      <Box
+        ref={ref}
+        as="ol"
+        display="flex"
+        flexWrap="wrap"
+        alignItems="center"
+        listStyleType="none"
+        m={0}
+        p={0}
+        fontSize={pxToRem(16)}
+        lineHeight={1.25}
+        color={inverse ? 'common.white' : 'grey.950'}
+        {...props}
+      />
+    )
+  }
+)
 
 const BreadcrumbsItem = forwardRef<HTMLLIElement, BreadcrumbsItemProps>(function BreadcrumbsItem(
   { current = false, children, ...props },
@@ -96,7 +95,9 @@ const BreadcrumbsItem = forwardRef<HTMLLIElement, BreadcrumbsItemProps>(function
           transform: 'translateY(-50%) rotate(15deg)',
           borderRight: '1px solid',
           borderBottom: '1px solid',
-          borderColor: inverse ? 'var(--chakra-colors-common-white)' : 'var(--chakra-colors-grey-700)',
+          borderColor: inverse
+            ? 'var(--chakra-colors-common-white)'
+            : 'var(--chakra-colors-grey-700)',
         },
       }}
       aria-current={current ? 'page' : undefined}
@@ -107,45 +108,44 @@ const BreadcrumbsItem = forwardRef<HTMLLIElement, BreadcrumbsItemProps>(function
   )
 })
 
-const BreadcrumbsLink = forwardRef<HTMLAnchorElement, BreadcrumbsLinkProps>(function BreadcrumbsLink(
-  props,
-  ref
-) {
-  const { inverse } = useBreadcrumbsContext()
+const BreadcrumbsLink = forwardRef<HTMLAnchorElement, BreadcrumbsLinkProps>(
+  function BreadcrumbsLink(props, ref) {
+    const { inverse } = useBreadcrumbsContext()
 
-  return (
-    <Link
-      ref={ref}
-      color={inverse ? 'common.white' : 'brand.500'}
-      fontSize={pxToRem(16)}
-      lineHeight={1.25}
-      whiteSpace="nowrap"
-      _hover={{
-        color: inverse ? 'common.white' : 'brand.700',
-        textDecoration: 'underline',
-        textDecorationThickness: 'max(3px, 0.1875rem)',
-      }}
-      _visited={{
-        color: inverse ? 'common.white' : 'fg',
-      }}
-      _dark={undefined}
-      _focus={{
-        outline: '3px solid',
-        outlineColor: 'yellow.500',
-        outlineOffset: 0,
-        bgColor: 'yellow.500',
-        color: 'fg',
-        textDecoration: 'underline',
-        textDecorationThickness: 'max(3px, 0.1875rem)',
-        _hover: {
-          color: 'fg',
+    return (
+      <Link
+        ref={ref}
+        color={inverse ? 'common.white' : 'brand.500'}
+        fontSize={pxToRem(16)}
+        lineHeight={1.25}
+        whiteSpace="nowrap"
+        _hover={{
+          color: inverse ? 'common.white' : 'brand.700',
+          textDecoration: 'underline',
           textDecorationThickness: 'max(3px, 0.1875rem)',
-        },
-      }}
-      {...props}
-    />
-  )
-})
+        }}
+        _visited={{
+          color: inverse ? 'common.white' : 'fg',
+        }}
+        _dark={undefined}
+        _focus={{
+          outline: '3px solid',
+          outlineColor: 'yellow.500',
+          outlineOffset: 0,
+          bgColor: 'yellow.500',
+          color: 'fg',
+          textDecoration: 'underline',
+          textDecorationThickness: 'max(3px, 0.1875rem)',
+          _hover: {
+            color: 'fg',
+            textDecorationThickness: 'max(3px, 0.1875rem)',
+          },
+        }}
+        {...props}
+      />
+    )
+  }
+)
 
 const BreadcrumbsCurrent = forwardRef<HTMLSpanElement, BreadcrumbsCurrentProps>(
   function BreadcrumbsCurrent(props, ref) {
@@ -181,10 +181,4 @@ export const Breadcrumbs = Object.assign(BreadcrumbsRoot, {
   Current: BreadcrumbsCurrent,
 }) as BreadcrumbsCompound
 
-export {
-  BreadcrumbsRoot,
-  BreadcrumbsList,
-  BreadcrumbsItem,
-  BreadcrumbsLink,
-  BreadcrumbsCurrent,
-}
+export { BreadcrumbsRoot, BreadcrumbsList, BreadcrumbsItem, BreadcrumbsLink, BreadcrumbsCurrent }

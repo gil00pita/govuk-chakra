@@ -56,11 +56,7 @@ export const BackLink = forwardRef<HTMLAnchorElement, BackLinkProps>(
           viewBox="0 0 17 14"
           style={{ flexShrink: 0 }}
         >
-          <path
-            fill="currentColor"
-            d="M10.5 1-1 7l11.5 6V8h7V6h-7V1z"
-            transform="translate(1 0)"
-          />
+          <path fill="currentColor" d="M10.5 1-1 7l11.5 6V8h7V6h-7V1z" transform="translate(1 0)" />
         </svg>
         {children}
       </ChakraLink>
