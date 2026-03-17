@@ -223,7 +223,7 @@ const ServiceNavigationToggle = forwardRef<HTMLAnchorElement, ServiceNavigationT
 const ServiceNavigationList = forwardRef<HTMLUListElement, ServiceNavigationListProps>(
   function ServiceNavigationList(props, ref) {
     return (
-      <HStack
+      <Box
         ref={ref}
         as="ul"
         listStyleType="none"

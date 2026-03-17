@@ -3,6 +3,7 @@ import { createContext, forwardRef, useContext, type ComponentProps } from 'reac
 
 import { Link } from '@/components/Link'
 import { pxToRem } from '@/utils'
+import { Text } from '../Text'
 
 export interface BreadcrumbsProps extends BoxProps {
   inverse?: boolean
@@ -58,7 +59,7 @@ const BreadcrumbsList = forwardRef<HTMLOListElement, BreadcrumbsListProps>(
         p={0}
         fontSize={pxToRem(16)}
         lineHeight={1.25}
-        color={inverse ? 'common.white' : 'grey.950'}
+        color={inverse ? 'common.white' : 'fg'}
         {...props}
       />
     )
@@ -79,8 +80,8 @@ const BreadcrumbsItem = forwardRef<HTMLLIElement, BreadcrumbsItemProps>(function
       alignItems="center"
       position="relative"
       pe={pxToRem(10)}
-      me={pxToRem(10)}
-      mb={pxToRem(5)}
+      // me={pxToRem(10)}
+      // mb={pxToRem(5)}
       css={{
         '&:not(:first-of-type)': {
           paddingInlineStart: pxToRem(15),
@@ -92,12 +93,10 @@ const BreadcrumbsItem = forwardRef<HTMLLIElement, BreadcrumbsItemProps>(function
           left: 0,
           width: pxToRem(7),
           height: pxToRem(7),
-          transform: 'translateY(-50%) rotate(15deg)',
+          transform: 'translateY(-50%) rotate(-45deg)',
           borderRight: '1px solid',
           borderBottom: '1px solid',
-          borderColor: inverse
-            ? 'var(--chakra-colors-common-white)'
-            : 'var(--chakra-colors-grey-700)',
+          borderColor: inverse ? 'fg.inverted' : 'fg',
         },
       }}
       aria-current={current ? 'page' : undefined}
@@ -115,34 +114,21 @@ const BreadcrumbsLink = forwardRef<HTMLAnchorElement, BreadcrumbsLinkProps>(
     return (
       <Link
         ref={ref}
-        color={inverse ? 'common.white' : 'brand.500'}
-        fontSize={pxToRem(16)}
-        lineHeight={1.25}
-        whiteSpace="nowrap"
+        color={inverse ? 'fg.inverted' : 'fg'}
         _hover={{
-          color: inverse ? 'common.white' : 'brand.700',
-          textDecoration: 'underline',
-          textDecorationThickness: 'max(3px, 0.1875rem)',
+          color: inverse ? 'fg.inverted' : 'fg',
+          textDecorationThickness: '3px',
         }}
         _visited={{
-          color: inverse ? 'common.white' : 'fg',
+          color: inverse ? 'fg.inverted' : 'fg',
         }}
         _dark={undefined}
-        _focus={{
-          outline: '3px solid',
-          outlineColor: 'yellow.500',
-          outlineOffset: 0,
-          bgColor: 'yellow.500',
-          color: 'fg',
-          textDecoration: 'underline',
-          textDecorationThickness: 'max(3px, 0.1875rem)',
-          _hover: {
-            color: 'fg',
-            textDecorationThickness: 'max(3px, 0.1875rem)',
-          },
-        }}
         {...props}
-      />
+      >
+        <Text as="span" whiteSpace="nowrap" fontSize={16} color={'currentColor'}>
+          {props.children}
+        </Text>
+      </Link>
     )
   }
 )
@@ -157,7 +143,7 @@ const BreadcrumbsCurrent = forwardRef<HTMLSpanElement, BreadcrumbsCurrentProps>(
         as="span"
         fontSize={pxToRem(16)}
         lineHeight={1.25}
-        color={inverse ? 'common.white' : 'grey.950'}
+        color={inverse ? 'fg.inverted' : 'fg'}
         whiteSpace="nowrap"
         {...props}
       />

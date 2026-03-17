@@ -2,6 +2,9 @@ import type { Meta, StoryObj } from '@storybook/react-vite'
 
 import { GOVUKHeader } from './GOVUKHeader'
 import { ServiceNavigation } from '@/components/ServiceNavigation'
+import { Breadcrumbs } from '../Breadcrumbs'
+import { Box, VStack } from '@chakra-ui/react'
+import { pxToRem } from '@/utils'
 
 const meta: Meta = {
   title: 'GOV.UK/Components/GOV.UK - Header',
@@ -64,6 +67,70 @@ export const WithServiceName: Story = {
           </ServiceNavigation.List>
         </ServiceNavigation.Nav>
       </ServiceNavigation.Root>
+    </GOVUKHeader>
+  ),
+}
+
+export const WithServiceNameAndBreadcrumbs: Story = {
+  render: () => (
+    <GOVUKHeader>
+      <GOVUKHeader.Container>
+        <GOVUKHeader.Logo href="#" />
+      </GOVUKHeader.Container>
+      <ServiceNavigation.Root>
+        <ServiceNavigation.ServiceContainer>
+          <ServiceNavigation.ServiceName href="#">Service name</ServiceNavigation.ServiceName>
+          <ServiceNavigation.Toggle />
+        </ServiceNavigation.ServiceContainer>
+        <ServiceNavigation.Nav>
+          <ServiceNavigation.List>
+            <ServiceNavigation.Item current>
+              <ServiceNavigation.Link href="#" current>
+                Navigation item 1
+              </ServiceNavigation.Link>
+            </ServiceNavigation.Item>
+            <ServiceNavigation.Item>
+              <ServiceNavigation.Link href="#">Navigation item 2</ServiceNavigation.Link>
+            </ServiceNavigation.Item>
+            <ServiceNavigation.Item>
+              <ServiceNavigation.Link href="#">Navigation item 3</ServiceNavigation.Link>
+            </ServiceNavigation.Item>
+            <ServiceNavigation.Item>
+              <ServiceNavigation.Link href="#">Navigation item 4</ServiceNavigation.Link>
+            </ServiceNavigation.Item>
+          </ServiceNavigation.List>
+        </ServiceNavigation.Nav>
+      </ServiceNavigation.Root>
+      <VStack
+        className="app-container-wrapper"
+        maxW="1200px"
+        paddingTop={{ base: '30px', md: '15px' }}
+        paddingBottom={{ base: '50px', md: '20px' }}
+        marginLeft="auto"
+        marginRight="auto"
+        width="100%"
+        px={{ base: pxToRem(15), md: pxToRem(30) }}
+      >
+        <Breadcrumbs w="full">
+          <Breadcrumbs.List>
+            <Breadcrumbs.Item>
+              <Breadcrumbs.Link href="#">Home</Breadcrumbs.Link>
+            </Breadcrumbs.Item>
+            <Breadcrumbs.Item>
+              <Breadcrumbs.Link href="#">Passports, travel and living abroad</Breadcrumbs.Link>
+            </Breadcrumbs.Item>
+            <Breadcrumbs.Item>
+              <Breadcrumbs.Link href="#">Travel abroad</Breadcrumbs.Link>
+            </Breadcrumbs.Item>
+            <Breadcrumbs.Item>
+              <Breadcrumbs.Link href="#">Foreign travel advice</Breadcrumbs.Link>
+            </Breadcrumbs.Item>
+            <Breadcrumbs.Item current>
+              <Breadcrumbs.Current>Spain</Breadcrumbs.Current>
+            </Breadcrumbs.Item>
+          </Breadcrumbs.List>
+        </Breadcrumbs>
+      </VStack>
     </GOVUKHeader>
   ),
 }
