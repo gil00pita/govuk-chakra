@@ -6,6 +6,8 @@ It is not a replacement for Chakra. The point is to keep Chakra's composability,
 
 ![Screenshot](public/screenshot.png)
 
+See it in action [Here](https://gov-uk-gds-react-chakra.vercel.app 'Live demo')
+
 ## What This Project Is
 
 - A Chakra-based design skin for React applications
