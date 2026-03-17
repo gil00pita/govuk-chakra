@@ -122,12 +122,13 @@ const ServiceNavigationServiceName = forwardRef<
       ref={ref}
       display="inline-block"
       my={pxToRem(10)}
-      mr={pxToRem(30)}
-      px={{ base: pxToRem(15), md: 0 }}
+      mr={{ base: 0, md: pxToRem(30) }}
+      ml={{ base: pxToRem(15), md: 0 }}
       noStyle
+      className="service-name"
       {...props}
     >
-      <Text fontSize={19} lineHeight={1.3157894737} fontWeight="700" as={'span'}>
+      <Text fontSize={19} fontWeight="700" as={'span'}>
         {props.children}
       </Text>
     </Link>
@@ -176,7 +177,7 @@ const ServiceNavigationNav = forwardRef<HTMLDivElement, ServiceNavigationNavProp
   }
 )
 
-const ServiceNavigationToggle = forwardRef<HTMLAnchorElement, ServiceNavigationToggleProps>(
+const ServiceNavigationToggle = forwardRef<HTMLButtonElement, ServiceNavigationToggleProps>(
   function ServiceNavigationToggle(
     { navigationId, openLabel = 'Menu', closedLabel = 'Menu', children, ...props },
     ref
@@ -187,20 +188,36 @@ const ServiceNavigationToggle = forwardRef<HTMLAnchorElement, ServiceNavigationT
 
     return (
       <Box display={{ base: 'block', md: 'none' }} w="full" px={{ base: pxToRem(15), md: 0 }}>
-        <Link
+        <Button
           ref={ref}
           variant="plain"
           display={{ base: 'inline-flex', md: 'none' }}
+          type="button"
           justifyContent="flex-start"
           color={'primary.500'}
           gap={pxToRem(6)}
           px={0}
+          minH="auto"
+          h="auto"
           aria-controls={resolvedNavigationId}
           aria-expanded={isMobileOpen}
           onClick={() => context?.setIsMobileOpen((current) => !current)}
-          href="#"
-          noStyle
           mb={pxToRem(10)}
+          borderRadius={2}
+          _hover={{ bg: 'transparent' }}
+          _focus={{
+            outline: '3px solid',
+            outlineColor: 'yellow.500',
+            outlineOffset: 0,
+            bgColor: 'yellow.500',
+            color: 'fg',
+            textDecoration: 'underline',
+            textDecorationThickness: 'max(3px, 0.1875rem)',
+            _hover: {
+              color: 'fg',
+              textDecorationThickness: 'max(3px, 0.1875rem)',
+            },
+          }}
           {...props}
         >
           <Text
@@ -214,7 +231,7 @@ const ServiceNavigationToggle = forwardRef<HTMLAnchorElement, ServiceNavigationT
           </Text>
 
           <MenuCaretIcon transform={isMobileOpen ? 'rotate(180deg)' : undefined} />
-        </Link>
+        </Button>
       </Box>
     )
   }

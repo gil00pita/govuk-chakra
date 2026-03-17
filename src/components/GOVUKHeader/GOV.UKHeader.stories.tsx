@@ -3,7 +3,7 @@ import type { Meta, StoryObj } from '@storybook/react-vite'
 import { GOVUKHeader } from './GOVUKHeader'
 import { ServiceNavigation } from '@/components/ServiceNavigation'
 import { Breadcrumbs } from '../Breadcrumbs'
-import { Box, VStack } from '@chakra-ui/react'
+import { VStack } from '@chakra-ui/react'
 import { pxToRem } from '@/utils'
 
 const meta: Meta = {
