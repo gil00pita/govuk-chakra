@@ -11,7 +11,6 @@ import {
   type BoxProps,
   Stack,
   type StackProps,
-  Text,
   VStack,
 } from '@chakra-ui/react'
 import {
@@ -27,7 +26,8 @@ import {
   type ReactNode,
 } from 'react'
 
-import { Link } from '@/components/Link/Link'
+import { Link } from '@/components/Link'
+import { Text } from '@/components/Text'
 import { pxToRem } from '@/utils'
 
 type AccordionValueChangeDetails = { value: string[] }
@@ -173,43 +173,68 @@ const AccordionToggleAll = forwardRef<HTMLAnchorElement, AccordionToggleAllProps
         fontSize="sm"
         onClick={handleClick}
         textDecoration="underline"
+        _dark={{
+          '& .chevron-text': {
+            color: 'primary.300',
+          },
+          _hover: {
+            '& .chevron': {
+              color: 'primary.600',
+              borderColor: 'primary.200',
+            },
+            '& .chevron:after': {
+              color: 'primary.200',
+              borderColor: 'primary.200',
+            },
+            '& .chevron-text': {
+              color: 'primary.200',
+            },
+          },
+          _focus: {
+            '& .chevron-text': {
+              color: 'common.black',
+              borderColor: 'common.black',
+            },
+          },
+        }}
         _hover={{
           bgColor: 'bg.muted',
           '& .chevron': {
-            color: 'fg.inverted',
-            bgColor: 'fg',
-            borderColor: 'fg.inverted',
+            color: 'primary.600',
+            bgColor: 'transparent',
+            borderColor: 'primary.600',
             textDecoration: 'underline',
             textDecorationThickness: 'max(3px, 0.1875rem)',
           },
           '& .chevron:after': {
-            color: 'fg.inverted',
-            borderColor: 'fg.inverted',
+            color: 'primary.600',
+            borderColor: 'primary.600',
           },
           '& .chevron-text': {
-            color: 'fg',
+            color: 'primary.500',
             textDecoration: 'underline',
             textDecorationThickness: 'max(3px, 0.1875rem)',
           },
         }}
         _focus={{
+          bgColor: 'yellow.500',
           outline: 0,
           '& .chevron': {
-            color: 'fg.inverted',
-            bgColor: 'fg',
-            borderColor: 'fg',
+            color: 'common.black',
+            bgColor: 'transparent',
+            borderColor: 'common.black',
             textDecoration: 'underline',
             textDecorationThickness: 'max(3px, 0.1875rem)',
           },
           '& .chevron:after': {
-            color: 'fg.inverted',
-            borderColor: 'fg.inverted',
+            color: 'common.black',
+            borderColor: 'common.black',
           },
           '& .chevron-text': {
             color: 'black',
             bgColor: 'yellow.500',
             textDecoration: 'underline',
-            textDecorationColor: 'fg.inverted',
+            textDecorationColor: 'common.black',
             textDecorationThickness: 'max(3px, 0.1875rem)',
           },
         }}
@@ -243,8 +268,16 @@ const AccordionToggleAll = forwardRef<HTMLAnchorElement, AccordionToggleAllProps
             borderTop: `${pxToRem(2)} solid`,
             borderRight: `${pxToRem(2)} solid`,
           }}
+          _dark={{
+            borderColor: 'brand.300',
+            color: 'brand.300',
+            _after: {
+              color: 'brand.300',
+              borderColor: 'brand.300',
+            },
+          }}
         />
-        <Text className="chevron-text" fontSize={pxToRem(19)} lineHeight="1.3157894737">
+        <Text className="chevron-text" color="currentColor" fontSize={19}>
           {allOpen ? closeLabel : openLabel}
         </Text>
       </Link>
@@ -337,10 +370,14 @@ const AccordionTrigger = forwardRef<HTMLButtonElement, AccordionTriggerProps>(
         }}
         _hover={{
           bg: 'bg.muted',
-          color: 'fg',
-          '& .chevron': { color: 'fg', bgColor: 'fg', borderColor: 'fg' },
-          '& .chevron:after': { color: 'fg.inverted', borderColor: 'fg.inverted' },
-          '& .chevron-text': { color: 'fg' },
+          color: 'primary.500',
+          '& .chevron': {
+            color: 'primary.300',
+            bgColor: 'transparent',
+            borderColor: 'primary.300',
+          },
+          '& .chevron:after': { borderColor: 'primary.300' },
+          '& .chevron-text': { color: 'primary.300' },
         }}
         _open={{
           bg: 'transparent',
@@ -348,14 +385,59 @@ const AccordionTrigger = forwardRef<HTMLButtonElement, AccordionTriggerProps>(
         _focus={{
           outline: '0px solid',
           '& .trigger-title, & .chevron-container, & .chevron-text': {
-            color: 'fg',
+            color: 'common.black',
             bgColor: 'yellow.500',
             borderColor: 'yellow.500',
             textDecoration: 'underline',
             textDecorationThickness: 'max(3px, 0.1875rem)',
           },
-          '& .chevron': { color: 'fg', bgColor: 'fg', borderColor: 'fg' },
-          '& .chevron:after': { color: 'fg.inverted', borderColor: 'fg.inverted' },
+          '& .chevron': {
+            color: 'common.black',
+            bgColor: 'transparent',
+            borderColor: 'common.black',
+          },
+          '& .chevron:after': { borderColor: 'common.black' },
+          _hover: {
+            '& .chevron': {
+              color: 'common.black',
+              bgColor: 'transparent',
+              borderColor: 'common.black',
+            },
+            '& .chevron:after': { borderColor: 'common.black' },
+            '& .chevron-text': { color: 'common.black' },
+          },
+        }}
+        _dark={{
+          _hover: {
+            color: 'primary.300',
+            '& .chevron': {
+              color: 'primary.200',
+              bgColor: 'transparent',
+              borderColor: 'primary.200',
+            },
+            '& .chevron:after': { borderColor: 'primary.200' },
+            '& .chevron-text': { color: 'primary.200' },
+          },
+          _focus: {
+            color: 'common.black',
+            '& .chevron': {
+              color: 'common.black',
+              bgColor: 'transparent',
+              borderColor: 'common.black',
+            },
+            '& .chevron:after': { borderColor: 'common.black' },
+            '& .chevron-text': { color: 'common.black' },
+            _hover: {
+              color: 'common.black',
+              '& .chevron': {
+                color: 'common.black',
+                bgColor: 'transparent',
+                borderColor: 'common.black',
+              },
+              '& .chevron:after': { borderColor: 'common.black' },
+              '& .chevron-text': { color: 'common.black' },
+            },
+          },
         }}
         {...props}
       >
@@ -402,15 +484,23 @@ const AccordionTrigger = forwardRef<HTMLButtonElement, AccordionTriggerProps>(
                 transform: 'rotate(-45deg)',
                 borderTop: `${pxToRem(2)} solid`,
                 borderRight: `${pxToRem(2)} solid`,
-                borderColor: 'border',
+                borderColor: 'brand.500',
+              }}
+              _dark={{
+                borderColor: 'brand.300',
+                _after: {
+                  color: 'brand.300',
+                  borderColor: 'brand.300',
+                },
               }}
             />
             <Text
               className="chevron-text"
-              fontSize={pxToRem(19)}
-              lineHeight="1.3157894737"
-              fontWeight="500"
+              fontSize={19}
               color="brand.500"
+              _dark={{
+                color: 'brand.300',
+              }}
               css={{
                 "[data-state='closed'] &": {
                   display: 'inherit',
@@ -424,10 +514,11 @@ const AccordionTrigger = forwardRef<HTMLButtonElement, AccordionTriggerProps>(
             </Text>
             <Text
               className="chevron-text"
-              fontSize={pxToRem(19)}
-              lineHeight="1.3157894737"
-              fontWeight="500"
+              fontSize={19}
               color="brand.500"
+              _dark={{
+                color: 'brand.300',
+              }}
               css={{
                 "[data-state='closed'] &": {
                   display: 'none',
@@ -463,7 +554,6 @@ const AccordionContent = forwardRef<HTMLDivElement, AccordionContentProps>(
         fontSize={pxToRem(19)}
         lineHeight="1.5"
         color="fg"
-        bg="bg"
         {...props}
       />
     )
