@@ -1,7 +1,7 @@
-import { Box } from '@chakra-ui/react'
 import type { Meta, StoryObj } from '@storybook/react-vite'
 
 import { BackLink } from './BackLink'
+import { Box } from '@chakra-ui/react'
 
 const meta: Meta<typeof BackLink> = {
   title: 'GOV.UK/Components/Back link',
@@ -31,7 +31,7 @@ export const Default: Story = {}
 
 export const Inverse: Story = {
   render: (args) => (
-    <Box bg="grey.950" px={6} py={4}>
+    <Box bg="primary.500" px={6} py={4}>
       <BackLink {...args} inverse />
     </Box>
   ),

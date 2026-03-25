@@ -9,8 +9,8 @@ export interface BackLinkProps extends LinkProps {
 
 export const BackLink = forwardRef<HTMLAnchorElement, BackLinkProps>(
   ({ children = 'Back', href = '#', inverse = false, ...props }, ref) => {
-    const linkColor = inverse ? 'common.white' : 'brand.500'
-    const hoverColor = inverse ? 'common.white' : 'brand.700'
+    const linkColor = inverse ? 'common.white' : 'common.black'
+    const hoverColor = inverse ? 'common.white' : 'common.black'
 
     return (
       <Link
@@ -25,6 +25,8 @@ export const BackLink = forwardRef<HTMLAnchorElement, BackLinkProps>(
         textUnderlineOffset="0.1578em"
         fontSize={pxToRem(16)}
         lineHeight={1.25}
+        pl={pxToRem(14)}
+        position={'relative'}
         _hover={{
           color: hoverColor,
           textDecorationThickness: 'max(3px, 0.1875rem)',
@@ -46,18 +48,20 @@ export const BackLink = forwardRef<HTMLAnchorElement, BackLinkProps>(
         }}
         _dark={undefined}
         {...props}
+        _after={{
+          content: '""',
+          position: 'absolute',
+          top: '50%',
+          left: 0,
+          fontSize: pxToRem(16),
+          width: pxToRem(7),
+          height: pxToRem(7),
+          transform: 'translateY(-50%) rotate(135deg)',
+          borderRight: '1px solid',
+          borderBottom: '1px solid',
+          borderColor: 'currentColor',
+        }}
       >
-        <svg
-          aria-hidden="true"
-          focusable="false"
-          xmlns="http://www.w3.org/2000/svg"
-          height={pxToRem(14)}
-          width={pxToRem(17)}
-          viewBox="0 0 17 14"
-          style={{ flexShrink: 0 }}
-        >
-          <path fill="currentColor" d="M10.5 1-1 7l11.5 6V8h7V6h-7V1z" transform="translate(1 0)" />
-        </svg>
         {children}
       </Link>
     )

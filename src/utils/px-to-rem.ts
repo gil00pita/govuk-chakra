@@ -6,7 +6,7 @@
  * @returns The rem value as a string with 'rem' suffix
  */
 export function pxToRem(pixels: number, baseFontSize: number = 16): string {
-  return `${pixels / baseFontSize}rem`
+  return `max(${pixels}px, ${pixels / baseFontSize}rem)`
 }
 
 /**

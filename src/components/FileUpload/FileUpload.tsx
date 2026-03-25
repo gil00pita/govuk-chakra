@@ -349,7 +349,7 @@ export const FileUpload = {
           flexWrap="wrap"
           flexDirection="column"
           alignItems="flex-start"
-          gap={pxToRem(15)}
+          gap={pxToRem(10)}
         >
           {children}
         </Box>
@@ -413,7 +413,6 @@ export const FileUpload = {
     return (
       <Box
         bgColor={'primary.100'}
-        mb={pxToRem(10)}
         py={pxToRem(15)}
         px={pxToRem(10)}
         textAlign="left"

@@ -48,7 +48,7 @@ export const Default: Story = {
 
 export const Inverse: Story = {
   render: () => (
-    <Breadcrumbs width="720px" inverse bg="grey.950" px={4} py={3}>
+    <Breadcrumbs width="720px" inverse bg="primary.500" px={4} py={3}>
       <Breadcrumbs.List>
         <Breadcrumbs.Item>
           <Breadcrumbs.Link href="#">Home</Breadcrumbs.Link>
