@@ -1,7 +1,7 @@
+import { Container, Stack } from '@chakra-ui/react'
 import type { Meta, StoryObj } from '@storybook/react-vite'
 
 import { Heading } from '@/components/Heading/Heading'
-import { Stack } from '@chakra-ui/react'
 import { Tabs } from './Tabs'
 import { Text } from '@/components/Text/Text'
 
@@ -83,33 +83,35 @@ export const Default: Story = {
 
 export const CompoundApi: Story = {
   render: () => (
-    <Tabs defaultValue="overview" width="min(100%, 960px)">
-      <Tabs.List>
-        <Tabs.Trigger value="overview">Overview</Tabs.Trigger>
-        <Tabs.Trigger value="team">Team</Tabs.Trigger>
-        <Tabs.Trigger value="activity">Activity</Tabs.Trigger>
-      </Tabs.List>
+    <Container bg="bg" p={14} maxW="960px">
+      <Tabs defaultValue="overview" width="min(100%, 960px)">
+        <Tabs.List>
+          <Tabs.Trigger value="overview">Overview</Tabs.Trigger>
+          <Tabs.Trigger value="team">Team</Tabs.Trigger>
+          <Tabs.Trigger value="activity">Activity</Tabs.Trigger>
+        </Tabs.List>
 
-      <Tabs.Content value="overview">
-        <Heading as="h2" size={24} mb={3}>
-          Overview
-        </Heading>
-        <Text fontSize={19}>Summary of current performance and service delivery metrics.</Text>
-      </Tabs.Content>
+        <Tabs.Content value="overview">
+          <Heading as="h2" size={24} mb={3}>
+            Overview
+          </Heading>
+          <Text fontSize={19}>Summary of current performance and service delivery metrics.</Text>
+        </Tabs.Content>
 
-      <Tabs.Content value="team">
-        <Heading as="h2" size={24} mb={3}>
-          Team
-        </Heading>
-        <Text fontSize={19}>Current staffing levels, roles and responsibilities.</Text>
-      </Tabs.Content>
+        <Tabs.Content value="team">
+          <Heading as="h2" size={24} mb={3}>
+            Team
+          </Heading>
+          <Text fontSize={19}>Current staffing levels, roles and responsibilities.</Text>
+        </Tabs.Content>
 
-      <Tabs.Content value="activity">
-        <Heading as="h2" size={24} mb={3}>
-          Activity
-        </Heading>
-        <Text fontSize={19}>Recent task and case activity across the service.</Text>
-      </Tabs.Content>
-    </Tabs>
+        <Tabs.Content value="activity">
+          <Heading as="h2" size={24} mb={3}>
+            Activity
+          </Heading>
+          <Text fontSize={19}>Recent task and case activity across the service.</Text>
+        </Tabs.Content>
+      </Tabs>
+    </Container>
   ),
 }

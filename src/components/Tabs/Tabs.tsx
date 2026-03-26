@@ -76,15 +76,12 @@ const TabsTrigger = forwardRef<HTMLButtonElement, TabsTriggerProps>(function Tab
     <ChakraTabs.Trigger
       ref={ref}
       borderRadius="0"
-      bgColor="transparent"
+      bgColor="bg.subtle"
       color="fg"
-      borderWidth="1px"
-      borderStyle="solid"
-      borderColor="border"
       h={'unset'}
       mt={pxToRem(8)}
       mr={pxToRem(4)}
-      mb={pxToRem(4)}
+      mb={pxToRem(5)}
       px={pxToRem(20)}
       py={pxToRem(10)}
       whiteSpace="nowrap"
@@ -106,10 +103,12 @@ const TabsTrigger = forwardRef<HTMLButtonElement, TabsTriggerProps>(function Tab
         textDecoration: 'none',
         fontWeight: '700',
         mt: 0,
-        // pt: pxToRem(18),
-        borderColor: 'border',
+        bgColor: 'bg',
+        borderWidth: '1px',
+        borderStyle: 'solid',
+        borderColor: 'border.subtle',
         borderBottom: '1px solid',
-        borderBottomColor: 'transparent',
+        borderBottomColor: 'bg',
       }}
       _focusVisible={{
         outline: 'none',
@@ -136,7 +135,7 @@ const TabsContent = forwardRef<HTMLDivElement, TabsContentProps>(function TabsCo
     <ChakraTabs.Content
       ref={ref}
       border="1px solid"
-      borderColor="border"
+      borderColor="border.subtle"
       p={{ base: pxToRem(16), md: pxToRem(24) }}
       mt={pxToRem(-1)}
       bg="bg"

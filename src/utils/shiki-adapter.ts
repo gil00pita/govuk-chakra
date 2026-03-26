@@ -9,7 +9,15 @@ export interface GovUkShikiAdapterOptions {
   theme?: string | Record<string, string>
 }
 
-const defaultShikiLanguages: BundledLanguage[] = ['tsx', 'typescript', 'javascript', 'json', 'html']
+const defaultShikiLanguages: BundledLanguage[] = [
+  'bash',
+  'html',
+  'javascript',
+  'json',
+  'python',
+  'tsx',
+  'typescript',
+]
 const defaultShikiThemes: BundledTheme[] = ['github-light', 'github-dark']
 const defaultShikiTheme = {
   light: 'github-light',

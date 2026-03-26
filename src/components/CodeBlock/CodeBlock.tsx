@@ -26,9 +26,13 @@ export type CodeBlockOverlayProps = ComponentPropsWithoutRef<typeof ChakraCodeBl
 export type CodeBlockCollapseTriggerProps = ComponentPropsWithoutRef<
   typeof ChakraCodeBlock.CollapseTrigger
 >
-export type CodeBlockCollapseIndicatorProps = ComponentPropsWithoutRef<
-  typeof ChakraCodeBlock.CollapseIndicator
->
+export interface CodeBlockCollapseIndicatorProps extends Omit<
+  ComponentPropsWithoutRef<typeof ChakraCodeBlock.CollapseIndicator>,
+  'collapsed'
+> {
+  collapsedLabel?: ReactNode
+  expandedLabel?: ReactNode
+}
 export type CodeBlockCollapseTextProps = ComponentPropsWithoutRef<
   typeof ChakraCodeBlock.CollapseText
 >
@@ -65,6 +69,7 @@ const codeStyles: SystemStyleObject = {
 
 const CodeBlockRoot = forwardRef<ElementRef<typeof ChakraCodeBlock.Root>, CodeBlockProps>(
   function CodeBlockRoot(props, ref) {
+    const { meta, ...restProps } = props
     const { colorMode } = useColorMode()
     return (
       <ChakraCodeBlock.AdapterProvider value={shikiAdapter}>
@@ -72,7 +77,8 @@ const CodeBlockRoot = forwardRef<ElementRef<typeof ChakraCodeBlock.Root>, CodeBl
           {() => (
             <ChakraCodeBlock.Root
               ref={ref}
-              meta={{ colorScheme: colorMode }}
+              meta={{ ...meta, colorScheme: colorMode }}
+              colorPalette={'green'}
               bg="bg"
               color="fg"
               borderWidth="1px"
@@ -80,7 +86,7 @@ const CodeBlockRoot = forwardRef<ElementRef<typeof ChakraCodeBlock.Root>, CodeBl
               borderRadius="0"
               overflow="hidden"
               className="code-block"
-              {...props}
+              {...restProps}
             />
           )}
         </ClientOnly>
@@ -206,8 +212,35 @@ const CodeBlockCollapseTrigger = forwardRef<
 const CodeBlockCollapseIndicator = forwardRef<
   ElementRef<typeof ChakraCodeBlock.CollapseIndicator>,
   CodeBlockCollapseIndicatorProps
->(function CodeBlockCollapseIndicator(props, ref) {
-  return <ChakraCodeBlock.CollapseIndicator ref={ref} {...props} />
+>(function CodeBlockCollapseIndicator(
+  { children, collapsedLabel = 'Expand code', expandedLabel = 'Collapse code', ...props },
+  ref
+) {
+  const expandedContent = expandedLabel ?? children
+  const collapsedComponent = () => {
+    return (
+      <Button variant="secondary" size="xs">
+        {collapsedLabel}
+      </Button>
+    )
+  }
+  return (
+    <ChakraCodeBlock.CollapseIndicator
+      asChild
+      ref={ref}
+      cursor="pointer"
+      collapsed={collapsedComponent()}
+      display="inline-flex"
+      alignItems="center"
+      justifyContent="center"
+      minH="auto"
+      {...props}
+    >
+      <Button variant="secondary" size="xs">
+        {expandedContent}
+      </Button>
+    </ChakraCodeBlock.CollapseIndicator>
+  )
 })
 
 const CodeBlockCollapseText = forwardRef<

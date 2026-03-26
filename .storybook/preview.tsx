@@ -25,7 +25,7 @@ const docsLightTheme = create({
 const docsDarkTheme = create({
   base: 'dark',
   appBg: colors.grey[950].value,
-  appContentBg: colors.grey[950].value,
+  appContentBg: colors.grey[900].value,
   barBg: colors.grey[950].value,
   bodyBg: colors.grey[950].value,
   inputBg: colors.grey[900].value,
