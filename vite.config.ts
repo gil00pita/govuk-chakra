@@ -66,7 +66,18 @@ export default defineConfig({
     sourcemap: true,
   },
   test: {
+    globals: true,
+    setupFiles: ['src/setupTests.ts'],
     projects: [
+      {
+        extends: true,
+        test: {
+          name: 'unit',
+          environment: 'jsdom',
+          include: ['src/**/*.test.{ts,tsx}'],
+          exclude: ['src/**/*.stories.{ts,tsx}'],
+        },
+      },
       {
         extends: true,
         plugins: [

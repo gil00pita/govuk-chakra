@@ -1,5 +1,5 @@
 import { Box, Input as ChakraInput, chakra, type BoxProps, type InputProps } from '@chakra-ui/react'
-import { createContext, forwardRef, useContext, type ReactNode } from 'react'
+import { createContext, forwardRef, useContext, useId, type ReactNode } from 'react'
 
 import { pxToRem } from '@/utils'
 import { Text } from '@/components/Text'
@@ -12,10 +12,22 @@ interface DateInputContextValue {
   showHint?: boolean
   hideLegend?: boolean
   asPageHeading?: boolean
+  hintId: string
+  errorId: string
+  describedBy?: string
 }
 
-const DateInputContext = createContext<DateInputContextValue>({})
+interface DateInputFieldContextValue {
+  inputId: string
+}
+
+const DateInputContext = createContext<DateInputContextValue>({
+  hintId: '',
+  errorId: '',
+})
+const DateInputFieldContext = createContext<DateInputFieldContextValue | null>(null)
 const useDateInputContext = () => useContext(DateInputContext)
+const useDateInputFieldContext = () => useContext(DateInputFieldContext)
 
 // ─── Types ───────────────────────────────────────────────────────────
 
@@ -74,6 +86,17 @@ export const DateInput = {
     { children, invalid, hideLegend = false, asPageHeading = false, showHint = false, ...props },
     ref
   ) {
+    const generatedId = useId()
+    const baseId = `govuk-date-input-${generatedId}`
+    const hintId = `${baseId}-hint`
+    const errorId = `${baseId}-error`
+    const describedBy = [
+      showHint ? hintId : undefined,
+      invalid ? errorId : undefined,
+    ]
+      .filter(Boolean)
+      .join(' ') || undefined
+
     return (
       <DateInputContext.Provider
         value={{
@@ -81,6 +104,9 @@ export const DateInput = {
           showHint: Boolean(showHint),
           hideLegend: Boolean(hideLegend),
           asPageHeading: Boolean(asPageHeading),
+          hintId,
+          errorId,
+          describedBy,
         }}
       >
         <Box
@@ -123,11 +149,11 @@ export const DateInput = {
     { children, ...props },
     ref
   ) {
-    const { showHint } = useDateInputContext()
+    const { hintId, showHint } = useDateInputContext()
     if (!showHint) return null
 
     return (
-      <Text ref={ref} fontSize={19} color="fg.muted" mb={pxToRem(15)} {...props}>
+      <Text ref={ref} id={hintId} fontSize={19} color="fg.muted" mb={pxToRem(15)} {...props}>
         {children}
       </Text>
     )
@@ -137,11 +163,19 @@ export const DateInput = {
     { children, ...props },
     ref
   ) {
-    const { invalid } = useDateInputContext()
+    const { errorId, invalid } = useDateInputContext()
     if (!invalid) return null
 
     return (
-      <Text ref={ref} fontSize={19} color="border.error" fontWeight="700" mb={3} {...props}>
+      <Text
+        ref={ref}
+        id={errorId}
+        fontSize={19}
+        color="border.error"
+        fontWeight="700"
+        mb={3}
+        {...props}
+      >
         {children}
       </Text>
     )
@@ -162,10 +196,15 @@ export const DateInput = {
     { children, ...props },
     ref
   ) {
+    const generatedId = useId()
+    const inputId = `govuk-date-input-field-${generatedId}`
+
     return (
-      <Box ref={ref} display="flex" flexDirection="column" gap={pxToRem(10)} {...props}>
-        {children}
-      </Box>
+      <DateInputFieldContext.Provider value={{ inputId }}>
+        <Box ref={ref} display="flex" flexDirection="column" gap={pxToRem(10)} {...props}>
+          {children}
+        </Box>
+      </DateInputFieldContext.Provider>
     )
   }),
 
@@ -173,9 +212,12 @@ export const DateInput = {
     { children, ...props },
     ref
   ) {
+    const field = useDateInputFieldContext()
+
     return (
       <chakra.label
         ref={ref}
+        htmlFor={props.htmlFor ?? field?.inputId}
         fontSize={pxToRem(19)}
         lineHeight={pxToRem(25)}
         color="fg"
@@ -188,14 +230,19 @@ export const DateInput = {
   }),
 
   Input: forwardRef<HTMLInputElement, DateInputInputProps>(function DateInputInput(
-    { inputWidth = '2', ...props },
+    { id, inputWidth = '2', ...props },
     ref
   ) {
-    const { invalid } = useDateInputContext()
+    const { describedBy, invalid } = useDateInputContext()
+    const field = useDateInputFieldContext()
+    const describedByIds =
+      [describedBy, props['aria-describedby']].filter(Boolean).join(' ') || undefined
 
     return (
       <ChakraInput
         ref={ref}
+        id={id ?? field?.inputId}
+        aria-describedby={describedByIds}
         w="100%"
         maxW={WIDTH_MAX[inputWidth]}
         inputMode="numeric"

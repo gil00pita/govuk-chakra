@@ -29,7 +29,7 @@
     "isolatedModules": true,
     "noEmit": true,
     "jsx": "react-jsx",
-    "types": ["react"]
+    "types": ["react", "vitest/globals"]
   },
   "include": ["src", ".storybook", "src/stories/.tsx"]
 }

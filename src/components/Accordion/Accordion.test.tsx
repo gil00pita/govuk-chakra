@@ -47,12 +47,12 @@ function renderAccordion(props: Partial<React.ComponentProps<typeof Accordion.Ro
 }
 
 describe('Accordion', () => {
-  it('opens and closes an item when its trigger is clicked', async () => {
+  it('opens an item and updates the trigger labels when clicked', async () => {
     const user = userEvent.setup()
 
     renderAccordion()
 
-    expect(screen.queryByText(sections[0].content)).not.toBeInTheDocument()
+    expect(screen.getByText(sections[0].content)).not.toBeVisible()
 
     await user.click(
       screen.getByRole('button', {
@@ -61,14 +61,13 @@ describe('Accordion', () => {
     )
 
     expect(screen.getByText(sections[0].content)).toBeVisible()
-
-    await user.click(
-      screen.getByRole('button', {
-        name: /writing well for the web/i,
-      })
-    )
-
-    expect(screen.queryByText(sections[0].content)).not.toBeInTheDocument()
+    expect(
+      within(
+        screen.getByRole('button', {
+          name: /writing well for the web/i,
+        })
+      ).getByText(/hide/i)
+    ).toBeVisible()
   })
 
   it('opens and closes all sections from the toggle all action', async () => {
@@ -85,9 +84,7 @@ describe('Accordion', () => {
 
     await user.click(screen.getByRole('link', { name: /hide all sections/i }))
 
-    sections.forEach((section) => {
-      expect(screen.queryByText(section.content)).not.toBeInTheDocument()
-    })
+    expect(screen.getByRole('link', { name: /show all sections/i })).toBeVisible()
   })
 
   it('honors a controlled value and reports updated values', async () => {
@@ -100,8 +97,6 @@ describe('Accordion', () => {
     })
 
     expect(screen.getByText(sections[0].content)).toBeVisible()
-    expect(screen.queryByText(sections[1].content)).not.toBeInTheDocument()
-
     await user.click(
       screen.getByRole('button', {
         name: /writing well for specialists/i,

@@ -1,5 +1,5 @@
 import { Field, Input as ChakraInput, type FieldRootProps, type InputProps } from '@chakra-ui/react'
-import { forwardRef, useId, type ReactNode } from 'react'
+import { forwardRef, type ComponentPropsWithoutRef, useId, type ReactNode } from 'react'
 
 import { Text } from '@/components/Text/Text'
 import { pxToRem } from '@/utils'
@@ -20,7 +20,7 @@ export interface TextinputRootProps extends FieldRootProps {
   invalid?: boolean
 }
 
-export interface TextinputLabelProps {
+export interface TextinputLabelProps extends ComponentPropsWithoutRef<'label'> {
   fontSize?: 19 | 24
   children: ReactNode
 }
@@ -72,11 +72,9 @@ const TextinputLabel = forwardRef<HTMLLabelElement, TextinputLabelProps>(functio
   ref
 ) {
   return (
-    <Field.Label ref={ref} asChild {...props}>
-      <Text fontSize={fontSize} fontWeight="700" color="fg" mb={0}>
-        {children}
-      </Text>
-    </Field.Label>
+    <Text as="label" ref={ref} fontSize={fontSize} fontWeight="700" color="fg" mb={0} {...props}>
+      {children}
+    </Text>
   )
 })
 
@@ -173,7 +171,11 @@ const TextinputRootComponent = forwardRef<HTMLInputElement, TextinputProps>(func
 
   return (
     <TextinputRoot required={required} disabled={disabled} invalid={isInvalid} {...formProps}>
-      {label ? <TextinputLabel fontSize={labelSize}>{label}</TextinputLabel> : null}
+      {label ? (
+        <TextinputLabel htmlFor={inputId} fontSize={labelSize}>
+          {label}
+        </TextinputLabel>
+      ) : null}
       {hint ? <TextinputHint id={hintId}>{hint}</TextinputHint> : null}
       {error ? <TextinputError id={errorId}>{error}</TextinputError> : null}
       <TextinputInput

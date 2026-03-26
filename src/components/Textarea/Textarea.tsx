@@ -4,7 +4,13 @@ import {
   type FieldRootProps,
   type TextareaProps as ChakraTextareaProps,
 } from '@chakra-ui/react'
-import { forwardRef, type ReactNode } from 'react'
+import {
+  createContext,
+  forwardRef,
+  useContext,
+  useId,
+  type ReactNode,
+} from 'react'
 
 import { Text } from '@/components/Text/Text'
 import { pxToRem } from '@/utils'
@@ -36,6 +42,8 @@ export interface TextareaErrorProps {
 
 export type TextareaInputProps = Omit<ChakraTextareaProps, 'size'>
 
+const TextareaFieldContext = createContext<{ inputId: string } | null>(null)
+
 // ─── Subcomponents ───────────────────────────────────────────────────
 
 export const Textarea = {
@@ -44,21 +52,25 @@ export const Textarea = {
     ref
   ) {
     const isInvalid = Boolean(invalid)
+    const generatedId = useId()
+    const inputId = `govuk-textarea-${generatedId}`
 
     return (
-      <Field.Root
-        ref={ref}
-        invalid={isInvalid}
-        display="flex"
-        alignItems="flex-start"
-        gap={pxToRem(8)}
-        borderLeftWidth={isInvalid ? pxToRem(5) : 0}
-        borderLeftColor={isInvalid ? 'fg.error' : 'transparent'}
-        pl={isInvalid ? pxToRem(15) : 0}
-        {...props}
-      >
-        {children}
-      </Field.Root>
+      <TextareaFieldContext.Provider value={{ inputId }}>
+        <Field.Root
+          ref={ref}
+          invalid={isInvalid}
+          display="flex"
+          alignItems="flex-start"
+          gap={pxToRem(8)}
+          borderLeftWidth={isInvalid ? pxToRem(5) : 0}
+          borderLeftColor={isInvalid ? 'fg.error' : 'transparent'}
+          pl={isInvalid ? pxToRem(15) : 0}
+          {...props}
+        >
+          {children}
+        </Field.Root>
+      </TextareaFieldContext.Provider>
     )
   }),
 
@@ -66,12 +78,21 @@ export const Textarea = {
     { fontSize = 19, children, ...props },
     ref
   ) {
+    const field = useContext(TextareaFieldContext)
+
     return (
-      <Field.Label ref={ref} asChild {...props}>
-        <Text fontSize={fontSize} fontWeight="700" color="fg" mb={0}>
-          {children}
-        </Text>
-      </Field.Label>
+      <Text
+        as="label"
+        ref={ref}
+        htmlFor={field?.inputId}
+        fontSize={fontSize}
+        fontWeight="700"
+        color="fg"
+        mb={0}
+        {...props}
+      >
+        {children}
+      </Text>
     )
   }),
 
@@ -102,12 +123,15 @@ export const Textarea = {
   }),
 
   Input: forwardRef<HTMLTextAreaElement, TextareaInputProps>(function TextareaInput(
-    { rows = 5, ...props },
+    { rows = 5, id, ...props },
     ref
   ) {
+    const field = useContext(TextareaFieldContext)
+
     return (
       <ChakraTextarea
         ref={ref}
+        id={id ?? field?.inputId}
         rows={rows}
         resize="vertical"
         borderRadius="0"

@@ -236,21 +236,12 @@ export const Checkbox = {
         {...props}
       >
         <Fieldset.Legend
-          // fontSize={legendAsHeading ? '1.5rem' : '1.1875rem'}
-          // fontWeight={legendAsHeading ? 'bold' : 'normal'}
-          // lineHeight={legendAsHeading ? '1.875rem' : '1.5625rem'}
+          legendAsHeading={legendAsHeading}
           mb={hint || error ? 1 : 3}
           float="left"
           width="100%"
-          asChild
         >
-          {legendAsHeading ? (
-            <Heading as="h1" size={36}>
-              {legend}
-            </Heading>
-          ) : (
-            <Text fontSize={24}>{legend}</Text>
-          )}
+          {legend}
         </Fieldset.Legend>
 
         {hint ? (
