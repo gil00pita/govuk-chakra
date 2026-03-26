@@ -258,7 +258,7 @@ const PaginationPrevious = forwardRef<HTMLAnchorElement, PaginationNavLinkProps>
       >
         <ChevronIcon direction="previous" />
         {children ? (
-          <VStack align="start" spacing={0}>
+          <VStack align="start" gap={0}>
             <Text as="span" fontSize={27} color="inherit" fontWeight="700" mb={0}>
               {children ?? 'Previous'}
             </Text>
@@ -340,7 +340,7 @@ const PaginationNext = forwardRef<HTMLAnchorElement, PaginationNavLinkProps>(
       >
         <ChevronIcon direction="next" />
         {children ? (
-          <VStack align="start" spacing={0}>
+          <VStack align="start" gap={0}>
             <Text as="span" fontSize={27} color="inherit" fontWeight="700" mb={0}>
               {children ?? 'Previous'}
             </Text>

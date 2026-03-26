@@ -1,7 +1,6 @@
 import type { Meta, StoryObj } from '@storybook/react-vite'
 
 import { Pagination } from './Pagination'
-import { Separator } from '../Separator'
 
 const meta: Meta = {
   title: 'GOV.UK/Components/Pagination',

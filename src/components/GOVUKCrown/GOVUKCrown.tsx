@@ -1,7 +1,7 @@
-import { Icon } from '@chakra-ui/react'
+import { Icon, type IconProps } from '@chakra-ui/react'
 import { forwardRef, useId } from 'react'
 
-export interface GOVUKCrownProps extends React.ComponentPropsWithoutRef<'svg'> {
+export interface GOVUKCrownProps extends Omit<IconProps, 'children'> {
   title?: string
   titleId?: string
 }

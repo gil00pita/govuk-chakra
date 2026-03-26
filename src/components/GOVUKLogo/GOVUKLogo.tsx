@@ -1,8 +1,8 @@
 import { pxToRem } from '@/utils'
-import { Icon } from '@chakra-ui/react'
+import { Icon, type IconProps } from '@chakra-ui/react'
 import { forwardRef, useId } from 'react'
 
-export interface GOVUKLogoProps extends React.ComponentPropsWithoutRef<'svg'> {
+export interface GOVUKLogoProps extends Omit<IconProps, 'children'> {
   title?: string
   titleId?: string
   dotColor?: string
