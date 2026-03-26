@@ -11,7 +11,7 @@
   },
   "include": [
     "src/lib.ts",
-    "src/chakra.ts",
+    "src/govuk-chakra.ts",
     "src/provider.tsx",
     "src/components/**/*.ts",
     "src/components/**/*.tsx",

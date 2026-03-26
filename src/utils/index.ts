@@ -1,2 +1,4 @@
 export * from './px-to-rem'
 export * from './example-usage'
+export * from './react-icon'
+export * from './shiki-adapter'
