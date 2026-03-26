@@ -1,7 +1,7 @@
 import { screen, within } from '@testing-library/react'
 
-import { renderWithProvider } from '@/test/renderWithProvider'
 import { Pagination } from './Pagination'
+import { renderWithProvider } from '@/test/renderWithProvider'
 
 describe('Pagination', () => {
   it('renders the pagination landmark with current page semantics', () => {
@@ -66,7 +66,10 @@ describe('Pagination', () => {
   it('renders block navigation labels', () => {
     renderWithProvider(
       <Pagination block>
-        <Pagination.Previous href="/previous" label="Applying for a provisional lorry or bus licence">
+        <Pagination.Previous
+          href="/previous"
+          label="Applying for a provisional lorry or bus licence"
+        >
           Previous
         </Pagination.Previous>
         <Pagination.Next href="/next" label="Driver CPC part 1 test: theory">
@@ -75,9 +78,7 @@ describe('Pagination', () => {
       </Pagination>
     )
 
-    expect(
-      screen.getByText(/applying for a provisional lorry or bus licence/i)
-    ).toBeVisible()
+    expect(screen.getByText(/applying for a provisional lorry or bus licence/i)).toBeVisible()
     expect(screen.getByText(/driver cpc part 1 test: theory/i)).toBeVisible()
   })
 })

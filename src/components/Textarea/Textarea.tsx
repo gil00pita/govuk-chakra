@@ -1,19 +1,14 @@
 import {
   Field,
   Textarea as ChakraTextarea,
+  chakra,
   type FieldRootProps,
   type TextareaProps as ChakraTextareaProps,
 } from '@chakra-ui/react'
-import {
-  createContext,
-  forwardRef,
-  useContext,
-  useId,
-  type ReactNode,
-} from 'react'
+import { createContext, forwardRef, useContext, useId, type ReactNode } from 'react'
 
 import { Text } from '@/components/Text/Text'
-import { pxToRem } from '@/utils'
+import { govukFont, pxToRem } from '@/utils'
 
 // ─── Types ───────────────────────────────────────────────────────────
 
@@ -81,18 +76,17 @@ export const Textarea = {
     const field = useContext(TextareaFieldContext)
 
     return (
-      <Text
-        as="label"
+      <chakra.label
         ref={ref}
         htmlFor={field?.inputId}
-        fontSize={fontSize}
+        {...govukFont(fontSize)}
         fontWeight="700"
         color="fg"
-        mb={0}
+        marginBottom={0}
         {...props}
       >
         {children}
-      </Text>
+      </chakra.label>
     )
   }),
 

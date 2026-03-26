@@ -1,7 +1,6 @@
 import { Checkbox as ChakraCheckbox, type CheckboxRootProps } from '@chakra-ui/react'
 import React, { forwardRef, type ReactNode } from 'react'
 import { Fieldset, type FieldsetRootProps } from '@/components/Fieldset'
-import { Heading } from '@/components/Heading/Heading'
 import { Text } from '@/components/Text/Text'
 import { pxToRem } from '@/utils'
 

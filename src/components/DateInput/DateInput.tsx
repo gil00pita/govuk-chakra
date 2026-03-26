@@ -90,12 +90,9 @@ export const DateInput = {
     const baseId = `govuk-date-input-${generatedId}`
     const hintId = `${baseId}-hint`
     const errorId = `${baseId}-error`
-    const describedBy = [
-      showHint ? hintId : undefined,
-      invalid ? errorId : undefined,
-    ]
-      .filter(Boolean)
-      .join(' ') || undefined
+    const describedBy =
+      [showHint ? hintId : undefined, invalid ? errorId : undefined].filter(Boolean).join(' ') ||
+      undefined
 
     return (
       <DateInputContext.Provider

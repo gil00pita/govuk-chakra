@@ -1,8 +1,7 @@
-import { screen, within } from '@testing-library/react'
-import userEvent from '@testing-library/user-event'
-
-import { renderWithProvider } from '@/test/renderWithProvider'
 import { FileUpload } from './FileUpload'
+import { renderWithProvider } from '@/test/renderWithProvider'
+import { screen } from '@testing-library/react'
+import userEvent from '@testing-library/user-event'
 
 function renderFileUpload(props: Partial<React.ComponentProps<typeof FileUpload.Root>> = {}) {
   return renderWithProvider(

@@ -1,7 +1,6 @@
-import { screen } from '@testing-library/react'
-
-import { renderWithProvider } from '@/test/renderWithProvider'
 import { Link } from './Link'
+import { renderWithProvider } from '@/test/renderWithProvider'
+import { screen } from '@testing-library/react'
 
 describe('Link', () => {
   it('renders an anchor with the provided href', () => {
@@ -29,7 +28,11 @@ describe('Link', () => {
   it('preserves link semantics when noStyle is enabled', () => {
     renderWithProvider(
       <p>
-        See the <Link noStyle href="/service-manual">Service Manual</Link> for more information.
+        See the{' '}
+        <Link noStyle href="/service-manual">
+          Service Manual
+        </Link>{' '}
+        for more information.
       </p>
     )
 

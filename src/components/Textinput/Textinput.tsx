@@ -1,8 +1,14 @@
-import { Field, Input as ChakraInput, type FieldRootProps, type InputProps } from '@chakra-ui/react'
+import {
+  Field,
+  Input as ChakraInput,
+  chakra,
+  type FieldRootProps,
+  type InputProps,
+} from '@chakra-ui/react'
 import { forwardRef, type ComponentPropsWithoutRef, useId, type ReactNode } from 'react'
 
-import { Text } from '@/components/Text/Text'
-import { pxToRem } from '@/utils'
+import { Text } from '@/components/Text'
+import { govukFont, pxToRem } from '@/utils'
 
 export type TextinputWidth = 'full' | '30' | '20' | '10' | '5' | '4' | '3' | '2'
 
@@ -72,9 +78,16 @@ const TextinputLabel = forwardRef<HTMLLabelElement, TextinputLabelProps>(functio
   ref
 ) {
   return (
-    <Text as="label" ref={ref} fontSize={fontSize} fontWeight="700" color="fg" mb={0} {...props}>
+    <chakra.label
+      ref={ref}
+      {...govukFont(fontSize)}
+      fontWeight="700"
+      color="fg"
+      marginBottom={0}
+      {...props}
+    >
       {children}
-    </Text>
+    </chakra.label>
   )
 })
 

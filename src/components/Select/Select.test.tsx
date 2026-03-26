@@ -33,7 +33,9 @@ describe('Select', () => {
     await user.selectOptions(select, 'us')
 
     expect(select).toHaveValue('us')
-    expect(screen.getByRole('option', { name: /united states/i }).selected).toBe(true)
+    expect(screen.getByRole('option', { name: /united states/i } as const)).toEqual(
+      expect.objectContaining({ selected: true } satisfies Partial<HTMLOptionElement>)
+    )
   })
 
   it('exposes error text through the accessible description', () => {

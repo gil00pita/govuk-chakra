@@ -1,7 +1,7 @@
 import { screen, waitFor, within } from '@testing-library/react'
 
-import { renderWithProvider } from '@/test/renderWithProvider'
 import { ErrorSummary } from './ErrorSummary'
+import { renderWithProvider } from '@/test/renderWithProvider'
 
 describe('ErrorSummary', () => {
   it('renders the alert region with a labelled title and links', () => {
@@ -26,9 +26,7 @@ describe('ErrorSummary', () => {
 
     const summary = screen.getByRole('alert', { name: /there is a problem/i })
 
-    expect(
-      within(summary).getByText(/fix the following errors before continuing:/i)
-    ).toBeVisible()
+    expect(within(summary).getByText(/fix the following errors before continuing:/i)).toBeVisible()
     expect(within(summary).getByRole('link', { name: /enter your full name/i })).toHaveAttribute(
       'href',
       '#full-name'

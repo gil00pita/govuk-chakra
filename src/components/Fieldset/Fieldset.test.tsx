@@ -1,8 +1,8 @@
 import { screen, within } from '@testing-library/react'
 
-import { renderWithProvider } from '@/test/renderWithProvider'
 import { Fieldset } from './Fieldset'
 import { Radio } from '@/components/Radio'
+import { renderWithProvider } from '@/test/renderWithProvider'
 
 describe('Fieldset', () => {
   it('renders a grouped fieldset with legend, hint, and content', () => {
@@ -69,8 +69,6 @@ describe('Fieldset', () => {
       name: /how would you prefer to be contacted\?/i,
     })
 
-    expect(
-      within(fieldset).getByText(/select how you would prefer to be contacted/i)
-    ).toBeVisible()
+    expect(within(fieldset).getByText(/select how you would prefer to be contacted/i)).toBeVisible()
   })
 })

@@ -1,16 +1,12 @@
 import { screen, within } from '@testing-library/react'
-import userEvent from '@testing-library/user-event'
 
-import { renderWithProvider } from '@/test/renderWithProvider'
 import { Radio } from './Radio'
+import { renderWithProvider } from '@/test/renderWithProvider'
+import userEvent from '@testing-library/user-event'
 
 function renderRadioGroup(props: Partial<React.ComponentProps<typeof Radio.Root>> = {}) {
   return renderWithProvider(
-    <Radio.Group
-      legend="Where do you live?"
-      hint="Select one option"
-      error="Select where you live"
-    >
+    <Radio.Group legend="Where do you live?" hint="Select one option" error="Select where you live">
       <Radio.Root name="where-do-you-live" {...props}>
         <Radio.Item value="england">
           <Radio.ItemHiddenInput />
