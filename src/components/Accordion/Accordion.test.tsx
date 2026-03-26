@@ -1,4 +1,6 @@
 import { render, screen, within } from '@testing-library/react'
+import { describe, expect, it, vi } from 'vitest'
+import '@testing-library/jest-dom/vitest'
 
 import { Accordion } from './Accordion'
 import { Box } from '@chakra-ui/react'
@@ -90,7 +92,7 @@ describe('Accordion', () => {
 
   it('honors a controlled value and reports updated values', async () => {
     const user = userEvent.setup()
-    const onValueChange = jest.fn()
+    const onValueChange = vi.fn()
 
     renderAccordion({
       onValueChange,
