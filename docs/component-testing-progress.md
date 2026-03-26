@@ -9,9 +9,9 @@ Add reliable automated test coverage for every public component exported from `s
 ## Current Baseline
 
 - Public exported components: 39
-- Components with dedicated component tests: 14
-- Completed so far: `Accordion`, `Button`, `Checkbox`, `DateInput`, `ErrorSummary`, `Fieldset`, `FileUpload`, `Link`, `Pagination`, `Radio`, `Select`, `Tabs`, `Textarea`, `Textinput`
-- Existing component test file: `src/components/Accordion/Accordion.test.tsx`
+- Components with dedicated component tests: 39
+- Completed so far: `Accordion`, `BackLink`, `Breadcrumbs`, `Button`, `Card`, `Checkbox`, `CodeBlock`, `CookieBanner`, `DateInput`, `Details`, `ErrorSummary`, `Fieldset`, `FileUpload`, `GOVUKCrest`, `GOVUKCrown`, `GOVUKFooter`, `GOVUKHeader`, `GOVUKOGL`, `Heading`, `InsetText`, `Link`, `NotificationBanner`, `Pagination`, `Panel`, `PhaseBanner`, `Radio`, `Select`, `Separator`, `ServiceNavigation`, `SkipLink`, `SummaryList`, `Table`, `Tabs`, `Tag`, `TaskList`, `Text`, `Textarea`, `Textinput`, `WarningText`
+- Existing component test files live alongside components under `src/components/*/*.test.tsx`
 
 ## What The Repo Already Has
 
@@ -103,50 +103,50 @@ Status legend:
 | Component | Priority | Status | Notes |
 | --- | --- | --- | --- |
 | Accordion | P1 | done | Updated to run cleanly under Vitest |
-| BackLink | P2 | planned | Link semantics and content rendering |
-| Breadcrumbs | P2 | planned | Navigation landmark and current item handling |
+| BackLink | P2 | done | Default/custom text and anchor semantics |
+| Breadcrumbs | P2 | done | Navigation landmark, ancestor links, current item handling |
 | Button | P1 | done | Click handling, disabled state, start button icon |
-| Card | P2 | planned | Structure and link/content rendering |
+| Card | P2 | done | Region structure, linked card path, group rendering |
 | Checkbox | P1 | done | Checked state, disabled state, group semantics |
-| CodeBlock | P1 | planned | Copy action, collapse behavior, title/header rendering |
-| CookieBanner | P1 | planned | Visibility, actions, dismiss logic |
+| CodeBlock | P1 | done | Copy action, collapse behavior, title/header rendering |
+| CookieBanner | P1 | done | Visibility, actions, dismiss logic |
 | DateInput | P1 | done | Labels, shared descriptions, field entry, page heading legend |
-| Details | P2 | planned | Open/close behavior and summary text |
+| Details | P2 | done | Summary/content rendering and native open toggle |
 | ErrorSummary | P1 | done | Alert semantics, links, autofocus behavior |
 | Fieldset | P1 | done | Group semantics, heading legend, error content |
 | FileUpload | P1 | done | Input wiring, file selection, multiple mode, disabled state |
-| GOVUKCrest | P3 | planned | SVG render smoke test |
-| GOVUKCrown | P3 | planned | SVG render smoke test |
-| GOVUKFooter | P2 | planned | Landmark, meta links, content slots |
-| GOVUKHeader | P2 | planned | Branding, navigation, menu behavior if present |
-| GOVUKOGL | P3 | planned | SVG render smoke test |
-| Heading | P3 | planned | Semantic heading level rendering |
-| InsetText | P3 | planned | Content rendering and structure |
+| GOVUKCrest | P3 | done | Accessible/decorative SVG render coverage |
+| GOVUKCrown | P3 | done | Accessible/decorative SVG render coverage |
+| GOVUKFooter | P2 | done | Footer landmark, section links, meta content |
+| GOVUKHeader | P2 | done | Header landmark and logo link labeling |
+| GOVUKOGL | P3 | done | Accessible/decorative SVG render coverage |
+| Heading | P3 | done | Semantic heading level rendering |
+| InsetText | P3 | done | Content rendering and nested link support |
 | Link | P2 | done | Anchor semantics, href, noStyle path |
-| NotificationBanner | P2 | planned | Title, role, body content |
+| NotificationBanner | P2 | done | Region or alert semantics, title, body content |
 | Pagination | P1 | done | Landmark semantics, current page, previous/next links, block mode |
-| Panel | P2 | planned | Title/body structure |
-| PhaseBanner | P2 | planned | Phase label and message rendering |
+| Panel | P2 | done | Title/body structure and confirmation content |
+| PhaseBanner | P2 | done | Default/custom phase label, message, feedback link |
 | Radio | P1 | done | Selection, disabled state, grouping behavior |
 | Select | P1 | done | Labeling, selected option, disabled and error states |
-| Separator | P3 | planned | Orientation and role expectations |
-| ServiceNavigation | P2 | planned | Navigation structure and active item |
-| SkipLink | P2 | planned | Target href and accessible name |
-| SummaryList | P2 | planned | Row rendering and action links |
-| Table | P2 | planned | Header and cell semantics |
+| Separator | P3 | done | Separator role and vertical orientation semantics |
+| ServiceNavigation | P2 | done | Service name, current item, mobile toggle state |
+| SkipLink | P2 | done | Default/custom target href and accessible name |
+| SummaryList | P2 | done | Row rendering, action links, summary card layout |
+| Table | P2 | done | Caption, header, row header, and cell semantics |
 | Tabs | P1 | done | Items API defaults, selection changes, compound API coverage |
-| Tag | P3 | planned | Variant render smoke test |
-| TaskList | P2 | planned | Rows, statuses, links |
-| Text | P3 | planned | Element/variant rendering |
+| Tag | P3 | done | Content rendering, formatting options, custom variants |
+| TaskList | P2 | done | Heading, task rows, hints, statuses, items API |
+| Text | P3 | done | Default/alternate element rendering and type scale usage |
 | Textarea | P1 | done | Label wiring, value changes, disabled and error states |
 | Textinput | P1 | done | Label wiring, descriptions, value changes, disabled state |
-| WarningText | P2 | planned | Warning icon text and accessible content |
+| WarningText | P2 | done | Note semantics, assistive text, custom icon text |
 
 ## Recommended Order For The Next Sessions
 
-1. Add tests for `CodeBlock` and `CookieBanner`.
-2. Add tests for `BackLink`, `Breadcrumbs`, `Details`, and `NotificationBanner`.
-3. Continue through the tracker from highest to lowest priority.
+1. Investigate whether the noisy jsdom stylesheet warnings can be suppressed or isolated.
+2. Review the completed suite for any shallow assertions that should be strengthened.
+3. Extend the same testing pattern to non-component areas such as provider behavior, utilities, or integration flows.
 
 ## Session Notes
 
@@ -178,6 +178,49 @@ Status legend:
 - Added component tests for `DateInput`, `FileUpload`, `Pagination`, and `Tabs`
 - Fixed `DateInput` label and description wiring so each field gets stable IDs and shared hint/error descriptions
 - Verified the current unit suite passes: 14 files, 45 tests
+
+### 2026-03-26, fourth implementation pass
+
+- Added component tests for `CodeBlock` and `CookieBanner`
+
+### 2026-03-26, fifth implementation pass
+
+- Added component tests for `BackLink`, `Breadcrumbs`, `Details`, and `NotificationBanner`
+- Updated the `CodeBlock` copy-button test to match the current accessible name exposed by the component
+- Verified the current unit suite passes: 20 files, 60 tests
+
+### 2026-03-26, sixth implementation pass
+
+- Added component tests for `Card`, `GOVUKFooter`, `GOVUKHeader`, and `PhaseBanner`
+- Verified the current unit suite passes: 24 files, 69 tests
+
+### 2026-03-26, seventh implementation pass
+
+- Added component tests for `Panel`, `ServiceNavigation`, `SkipLink`, and `SummaryList`
+- Verified the focused batch passes: 4 files, 8 tests
+- Full-suite verification was re-run, but the command output remained dominated by the known jsdom stylesheet noise during summary capture
+
+### 2026-03-26, eighth implementation pass
+
+- Added component tests for `Table`, `TaskList`, and `WarningText`
+- Verified the focused batch passes: 3 files, 6 tests
+
+### 2026-03-26, ninth implementation pass
+
+- Added component tests for `Heading`, `InsetText`, `Separator`, and `Tag`
+- Verified the focused batch passes: 4 files, 10 tests
+
+### 2026-03-26, tenth implementation pass
+
+- Added component tests for `Text`, `GOVUKCrest`, `GOVUKCrown`, and `GOVUKOGL`
+- Completed dedicated component-test coverage for all 39 public exports from `src/components/index.ts`
+- Verified the focused batch passes: 4 files, 9 tests
+
+### 2026-03-26, final verification pass
+
+- Re-ran the full Vitest `unit` project after completing coverage for all public component exports
+- Verified the full unit suite passes: 39 files, 102 tests
+- The known jsdom stylesheet warnings are still present during the run, but they did not prevent a clean pass summary
 
 ## How To Use This File Later
 
