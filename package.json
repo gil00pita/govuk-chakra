@@ -5,12 +5,12 @@
   "license": "MIT",
   "repository": {
     "type": "git",
-    "url": "git+ssh://git@github.com/gil00pita/GOV.UK-GDS-react-chakra.git"
+    "url": "git+ssh://git@github.com:gil00pita/govuk-chakra.git"
   },
   "bugs": {
-    "url": "https://github.com/gil00pita/GOV.UK-GDS-react-chakra/issues"
+    "url": "https://github.com/gil00pita/govuk-chakra/issues"
   },
-  "homepage": "https://github.com/gil00pita/GOV.UK-GDS-react-chakra#readme",
+  "homepage": "https://github.com/gil00pita/govuk-chakra#readme",
   "sideEffects": false,
   "files": [
     "dist",
