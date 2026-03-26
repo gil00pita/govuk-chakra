@@ -329,7 +329,7 @@ function TabsSyncExample({ storageKey, ...props }: RootArgs & { storageKey: stri
       size="sm"
     >
       <CodeBlock.Root code={activeFile.code} language={activeFile.language} maxW="760px" {...props}>
-        <CodeBlock.Header borderBottomWidth="1px">
+        <CodeBlock.Header borderBottomWidth="1px" bg={'transparent'} pb="0">
           <Tabs.List w="full" border="0">
             {installFiles.map((file) => (
               <Tabs.Trigger key={file.title} value={file.title}>
@@ -337,7 +337,7 @@ function TabsSyncExample({ storageKey, ...props }: RootArgs & { storageKey: stri
               </Tabs.Trigger>
             ))}
           </Tabs.List>
-          <CodeBlock.CopyButton />
+          <CodeBlock.CopyButton size={'sm'} />
         </CodeBlock.Header>
         <CodeBlock.Content>
           <CodeBlock.Code>

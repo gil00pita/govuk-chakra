@@ -31,6 +31,11 @@ const config: StorybookConfig = {
     disableTelemetry: true,
     disableProjectJson: true,
   },
+  refs: {
+    '@chakra-ui/react': {
+      disable: true,
+    },
+  },
   async viteFinal(config) {
     return {
       ...config,
