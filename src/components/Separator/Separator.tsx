@@ -38,7 +38,7 @@ const SeparatorRoot = forwardRef<HTMLHRElement, SeparatorProps>(function Separat
       minHeight={isVertical ? pxToRem(24) : undefined}
       width={isVertical ? 'auto' : '100%'}
       _dark={{
-        borderColor: visible ? 'primary.100' : 'transparent',
+        borderColor: visible ? 'primary.900' : 'transparent',
       }}
       {...props}
     />

@@ -33,7 +33,7 @@ export type SummaryCardActionsProps = BoxProps
 
 export type SummaryCardContentProps = BoxProps
 
-const rowBorderColor = 'grey.100'
+const rowBorderColor = 'border'
 
 const SummaryListRoot = forwardRef<HTMLDListElement, SummaryListRootProps>(
   function SummaryListRoot(props, ref) {
@@ -43,7 +43,7 @@ const SummaryListRoot = forwardRef<HTMLDListElement, SummaryListRootProps>(
         as="dl"
         width="100%"
         m={0}
-        color="grey.950"
+        color="fg"
         fontSize={19}
         lineHeight={1.3157894737}
         {...props}
@@ -81,7 +81,7 @@ const SummaryListKey = forwardRef<HTMLElement, SummaryListKeyProps>(
         as="dt"
         m={0}
         fontWeight="700"
-        color="grey.950"
+        color="fg"
         pr={{ md: pxToRem(20) }}
         {...props}
       />
@@ -91,7 +91,7 @@ const SummaryListKey = forwardRef<HTMLElement, SummaryListKeyProps>(
 
 const SummaryListValue = forwardRef<HTMLElement, SummaryListValueProps>(
   function SummaryListValue(props, ref) {
-    return <Box ref={ref} as="dd" m={0} color="grey.950" overflowWrap="break-word" {...props} />
+    return <Box ref={ref} as="dd" m={0} color="fg" overflowWrap="break-word" {...props} />
   }
 )
 
@@ -105,7 +105,7 @@ const SummaryListActions = forwardRef<HTMLElement, SummaryListActionsProps>(
         mt={{ base: pxToRem(6), md: 0 }}
         textAlign={{ md: 'right' }}
         whiteSpace={{ md: 'nowrap' }}
-        color="grey.950"
+        color="fg"
         {...props}
       />
     )

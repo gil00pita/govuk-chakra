@@ -73,7 +73,7 @@ const TextinputLabel = forwardRef<HTMLLabelElement, TextinputLabelProps>(functio
 ) {
   return (
     <Field.Label ref={ref} asChild {...props}>
-      <Text fontSize={fontSize} fontWeight="700" color="grey.950" mb={0}>
+      <Text fontSize={fontSize} fontWeight="700" color="fg" mb={0}>
         {children}
       </Text>
     </Field.Label>
@@ -86,7 +86,7 @@ const TextinputHint = forwardRef<HTMLDivElement, TextinputHintProps>(function Te
 ) {
   return (
     <Field.HelperText ref={ref} asChild {...props}>
-      <Text fontSize={19} color="grey.400" mb={0}>
+      <Text fontSize={19} color="fg.muted" mb={0}>
         {children}
       </Text>
     </Field.HelperText>
@@ -99,7 +99,7 @@ const TextinputError = forwardRef<HTMLDivElement, TextinputErrorProps>(function 
 ) {
   return (
     <Field.ErrorText ref={ref} asChild {...props}>
-      <Text fontSize={19} color="red.500" fontWeight="700" mb={0}>
+      <Text fontSize={19} color="fg.error" fontWeight="700" mb={0}>
         {`Error: ${children}`}
       </Text>
     </Field.ErrorText>
@@ -115,7 +115,7 @@ const TextinputInput = forwardRef<HTMLInputElement, TextinputInputProps>(functio
       ref={ref}
       borderRadius="0"
       borderWidth={pxToRem(2)}
-      borderColor={invalid ? 'red.500' : 'border.input'}
+      borderColor={invalid ? 'fg.error' : 'border.input'}
       fontFamily="body"
       bg="transparent"
       color="fg"
@@ -127,7 +127,7 @@ const TextinputInput = forwardRef<HTMLInputElement, TextinputInputProps>(functio
       w={width === 'full' ? '100%' : 'auto'}
       maxW={width === 'full' ? undefined : WIDTH_MAX[width]}
       _placeholder={{ color: 'fg.muted', opacity: 1 }}
-      _hover={{ borderColor: invalid ? 'red.500' : 'border.input' }}
+      _hover={{ borderColor: invalid ? 'fg.error' : 'border.input' }}
       _focusVisible={{
         outline: `${pxToRem(3)} solid`,
         outlineColor: 'yellow.500',
@@ -135,12 +135,12 @@ const TextinputInput = forwardRef<HTMLInputElement, TextinputInputProps>(functio
         borderColor: 'border.input',
         boxShadow: 'inset 0 0 0 2px var(--chakra-colors-border-input)',
       }}
-      _invalid={{ borderColor: 'red.500' }}
+      _invalid={{ borderColor: 'fg.error' }}
       _disabled={{
         opacity: 1,
         cursor: 'not-allowed',
-        color: 'grey.700',
-        bg: 'grey.100',
+        color: 'fg.disabled',
+        bg: 'bg.disabled',
       }}
       {...props}
     />

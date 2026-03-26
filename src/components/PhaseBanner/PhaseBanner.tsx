@@ -27,7 +27,7 @@ const PhaseBannerRoot = forwardRef<HTMLDivElement, PhaseBannerProps>(function Ph
   ref
 ) {
   return (
-    <Box ref={ref} borderBottom="1px solid" borderColor="grey.100" py={pxToRem(10)} {...props}>
+    <Box ref={ref} borderBottom="1px solid" borderColor="border" py={pxToRem(10)} {...props}>
       <PhaseBannerContent>
         <PhaseBannerTag variant={phaseVariant}>{phase}</PhaseBannerTag>
         {children}
@@ -42,12 +42,12 @@ const PhaseBannerContent = forwardRef<HTMLParagraphElement, PhaseBannerContentPr
       <Box
         ref={ref}
         as="p"
-        display="flex"
-        alignItems="flex-start"
+        display="inline-flex"
+        alignItems="center"
         flexWrap="wrap"
-        gap={pxToRem(10)}
+        gap={0}
         m={0}
-        color="grey.950"
+        color="fg"
         fontSize={pxToRem(16)}
         lineHeight={pxToRem(20)}
         {...props}
@@ -68,13 +68,25 @@ const PhaseBannerTag = forwardRef<HTMLParagraphElement, PhaseBannerTagProps>(
 
 const PhaseBannerText = forwardRef<HTMLParagraphElement, PhaseBannerTextProps>(
   function PhaseBannerText(props, ref) {
-    return <Text ref={ref} as="span" fontSize={16} color="grey.950" mb={0} {...props} />
+    return (
+      <Text
+        ref={ref}
+        as="span"
+        fontSize={16}
+        color="fg"
+        mb={0}
+        ml={pxToRem(10)}
+        alignItems={'center'}
+        display="inline-flex"
+        {...props}
+      />
+    )
   }
 )
 
 const PhaseBannerLink = forwardRef<HTMLAnchorElement, PhaseBannerLinkProps>(
   function PhaseBannerLink(props, ref) {
-    return <Link ref={ref} {...props} />
+    return <Link ref={ref} ml={pxToRem(10)} {...props} />
   }
 )
 

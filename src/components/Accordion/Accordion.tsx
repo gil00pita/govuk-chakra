@@ -250,13 +250,13 @@ const AccordionToggleAll = forwardRef<HTMLAnchorElement, AccordionToggleAllProps
           width={pxToRem(20)}
           height={pxToRem(20)}
           border="1px solid"
-          borderColor="brand.500"
+          borderColor="primary.500"
           borderRadius="50%"
           verticalAlign="middle"
           transition="transform 0.2s ease-in-out"
           _after={{
             content: '""',
-            color: 'brand.500',
+            color: 'primary.500',
             boxSizing: 'border-box',
             display: 'block',
             position: 'absolute',
@@ -269,11 +269,11 @@ const AccordionToggleAll = forwardRef<HTMLAnchorElement, AccordionToggleAllProps
             borderRight: `${pxToRem(2)} solid`,
           }}
           _dark={{
-            borderColor: 'brand.300',
-            color: 'brand.300',
+            borderColor: 'primary.300',
+            color: 'primary.300',
             _after: {
-              color: 'brand.300',
-              borderColor: 'brand.300',
+              color: 'primary.300',
+              borderColor: 'primary.300',
             },
           }}
         />
@@ -462,7 +462,7 @@ const AccordionTrigger = forwardRef<HTMLButtonElement, AccordionTriggerProps>(
               width={pxToRem(20)}
               height={pxToRem(20)}
               border="1px solid"
-              borderColor="brand.500"
+              borderColor="primary.500"
               borderRadius="50%"
               verticalAlign="middle"
               transition="transform 0.2s ease-in-out"
@@ -473,7 +473,7 @@ const AccordionTrigger = forwardRef<HTMLButtonElement, AccordionTriggerProps>(
               }}
               _after={{
                 content: '""',
-                color: 'brand.500',
+                color: 'primary.500',
                 boxSizing: 'border-box',
                 display: 'block',
                 position: 'absolute',
@@ -484,22 +484,22 @@ const AccordionTrigger = forwardRef<HTMLButtonElement, AccordionTriggerProps>(
                 transform: 'rotate(-45deg)',
                 borderTop: `${pxToRem(2)} solid`,
                 borderRight: `${pxToRem(2)} solid`,
-                borderColor: 'brand.500',
+                borderColor: 'primary.500',
               }}
               _dark={{
-                borderColor: 'brand.300',
+                borderColor: 'primary.300',
                 _after: {
-                  color: 'brand.300',
-                  borderColor: 'brand.300',
+                  color: 'primary.300',
+                  borderColor: 'primary.300',
                 },
               }}
             />
             <Text
               className="chevron-text"
               fontSize={19}
-              color="brand.500"
+              color="primary.500"
               _dark={{
-                color: 'brand.300',
+                color: 'primary.300',
               }}
               css={{
                 "[data-state='closed'] &": {
@@ -515,9 +515,9 @@ const AccordionTrigger = forwardRef<HTMLButtonElement, AccordionTriggerProps>(
             <Text
               className="chevron-text"
               fontSize={19}
-              color="brand.500"
+              color="primary.500"
               _dark={{
-                color: 'brand.300',
+                color: 'primary.300',
               }}
               css={{
                 "[data-state='closed'] &": {

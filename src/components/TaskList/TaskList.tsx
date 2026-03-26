@@ -72,15 +72,7 @@ export interface TaskListStatusProps extends BoxProps {
 const TaskListHeading = forwardRef<HTMLHeadingElement, TaskListHeadingProps>(
   function TaskListHeading({ children, ...props }, ref) {
     return (
-      <Text
-        ref={ref}
-        as="h2"
-        fontSize={24}
-        fontWeight="700"
-        color="grey.950"
-        mb={pxToRem(15)}
-        {...props}
-      >
+      <Text ref={ref} as="h2" fontSize={24} fontWeight="700" color="fg" mb={pxToRem(15)} {...props}>
         {children}
       </Text>
     )
@@ -108,7 +100,7 @@ const TaskListRoot = forwardRef<HTMLDivElement, TaskListProps>(function TaskList
       <Stack ref={ref} gap={0} as="section" width="100%" {...props}>
         {headingChild ?? (heading ? <TaskListHeading>{heading}</TaskListHeading> : null)}
 
-        <Box as="ul" listStyleType="none" m={0} p={0} borderTop="1px solid" borderColor="grey.100">
+        <Box as="ul" listStyleType="none" m={0} p={0}>
           {items
             ? items.map((item) => (
                 <TaskListItem
@@ -141,10 +133,10 @@ const TaskListItem = forwardRef<HTMLLIElement, TaskListItemProps>(function TaskL
       ref={ref}
       as="li"
       borderBottom="1px solid"
-      borderColor="grey.100"
+      borderColor="border.muted"
       px={{ base: pxToRem(10), md: pxToRem(15) }}
       py={{ base: pxToRem(12), md: pxToRem(15) }}
-      _hover={{ bg: 'grey.50' }}
+      _hover={{ bg: 'bg.emphasized' }}
       {...props}
     >
       <LinkBox>
@@ -152,14 +144,14 @@ const TaskListItem = forwardRef<HTMLLIElement, TaskListItemProps>(function TaskL
           <Box flex="1" minW={0}>
             <LinkOverlay
               href={href}
-              color="brand.500"
+              color="fg.link"
               fontSize={19}
               lineHeight={pxToRem(25)}
               textDecoration="underline"
               textUnderlineOffset="0.1578em"
               textDecorationThickness="max(1px, 0.0625rem)"
               aria-describedby={hint ? `${statusId}-hint ${statusId}` : statusId}
-              _hover={{ color: 'brand.700', textDecorationThickness: 'max(3px, 0.1875rem)' }}
+              _hover={{ color: 'primary.700', textDecorationThickness: 'max(3px, 0.1875rem)' }}
               _focus={{
                 bg: 'yellow.500',
                 color: 'common.black',
@@ -168,12 +160,17 @@ const TaskListItem = forwardRef<HTMLLIElement, TaskListItemProps>(function TaskL
                 outlineOffset: 0,
                 textDecorationThickness: 'max(3px, 0.1875rem)',
               }}
+              _dark={{
+                _hover: {
+                  color: 'primary.300',
+                },
+              }}
             >
               {title}
             </LinkOverlay>
 
             {hint ? (
-              <Text id={`${statusId}-hint`} fontSize={16} color="grey.400" mt={pxToRem(4)} mb={0}>
+              <Text id={`${statusId}-hint`} fontSize={16} color="fg.muted" mt={pxToRem(4)} mb={0}>
                 {hint}
               </Text>
             ) : null}

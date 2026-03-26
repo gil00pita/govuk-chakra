@@ -53,7 +53,7 @@ export const Textarea = {
         alignItems="flex-start"
         gap={pxToRem(8)}
         borderLeftWidth={isInvalid ? pxToRem(5) : 0}
-        borderLeftColor={isInvalid ? 'red.500' : 'transparent'}
+        borderLeftColor={isInvalid ? 'fg.error' : 'transparent'}
         pl={isInvalid ? pxToRem(15) : 0}
         {...props}
       >
@@ -68,7 +68,7 @@ export const Textarea = {
   ) {
     return (
       <Field.Label ref={ref} asChild {...props}>
-        <Text fontSize={fontSize} fontWeight="700" color="grey.950" mb={0}>
+        <Text fontSize={fontSize} fontWeight="700" color="fg" mb={0}>
           {children}
         </Text>
       </Field.Label>
@@ -81,7 +81,7 @@ export const Textarea = {
   ) {
     return (
       <Field.HelperText ref={ref} asChild {...props}>
-        <Text fontSize={19} color="grey.400" mb={0}>
+        <Text fontSize={19} color="fg.muted" mb={0}>
           {children}
         </Text>
       </Field.HelperText>
@@ -94,7 +94,7 @@ export const Textarea = {
   ) {
     return (
       <Field.ErrorText ref={ref} asChild {...props}>
-        <Text fontSize={19} color="red.500" fontWeight="700" mb={0}>
+        <Text fontSize={19} color="fg.error" fontWeight="700" mb={0}>
           {`Error: ${children}`}
         </Text>
       </Field.ErrorText>
@@ -114,7 +114,7 @@ export const Textarea = {
         borderWidth={pxToRem(2)}
         fontFamily="body"
         borderColor="border.input"
-        bg="common.white"
+        bg="transparent"
         color="fg"
         fontSize={pxToRem(19)}
         lineHeight={pxToRem(25)}
@@ -122,7 +122,6 @@ export const Textarea = {
         py={pxToRem(8)}
         w="100%"
         _placeholder={{ color: 'fg.muted', opacity: 1 }}
-        _hover={{ borderColor: 'common.black' }}
         _focusVisible={{
           outline: `${pxToRem(3)} solid`,
           outlineColor: 'yellow.500',
@@ -130,7 +129,7 @@ export const Textarea = {
           borderColor: 'border.input',
           boxShadow: 'inset 0 0 0 2px var(--chakra-colors-border-input)',
         }}
-        _invalid={{ borderColor: 'red.500' }}
+        _invalid={{ borderColor: 'fg.error' }}
         _disabled={{
           opacity: 1,
           cursor: 'not-allowed',

@@ -93,6 +93,10 @@ const ServiceNavigationRoot = forwardRef<HTMLDivElement, ServiceNavigationRootPr
           color="fg"
           bgColor={'primary.50'}
           w={'full'}
+          _dark={{
+            bgColor: 'primary.950',
+            borderColor: 'primary.900',
+          }}
           {...props}
         >
           <HStack
@@ -279,10 +283,15 @@ const ServiceNavigationItem = forwardRef<HTMLLIElement, ServiceNavigationItemPro
           bottom: { base: '50%', md: 0 },
           right: { base: 0, md: 'auto' },
           width: { base: pxToRem(4), md: '100%' },
-          backgroundColor: 'primary.500',
+          bgColor: 'primary.500',
           display: isCurrent ? 'block' : 'none',
           visibility: isCurrent ? 'visible' : 'hidden',
           transform: { base: 'translateY(50%)', md: 'none' },
+        }}
+        _dark={{
+          _after: {
+            bgColor: 'primary.300',
+          },
         }}
         {...props}
       />

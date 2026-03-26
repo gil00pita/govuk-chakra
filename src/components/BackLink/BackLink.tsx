@@ -9,11 +9,12 @@ export interface BackLinkProps extends LinkProps {
 
 export const BackLink = forwardRef<HTMLAnchorElement, BackLinkProps>(
   ({ children = 'Back', href = '#', inverse = false, ...props }, ref) => {
-    const linkColor = inverse ? 'common.white' : 'common.black'
-    const hoverColor = inverse ? 'common.white' : 'common.black'
+    const linkColor = inverse ? 'common.white' : 'fg'
+    const hoverColor = inverse ? 'common.white' : 'fg'
 
     return (
       <Link
+        noStyle
         ref={ref}
         href={href}
         display="inline-flex"
@@ -36,17 +37,16 @@ export const BackLink = forwardRef<HTMLAnchorElement, BackLinkProps>(
           outlineColor: 'yellow.500',
           outlineOffset: 0,
           bgColor: 'yellow.500',
-          color: 'grey.950',
+          color: 'common.black',
           textDecoration: 'underline',
           textDecorationThickness: 'max(3px, 0.1875rem)',
           _hover: {
-            color: 'grey.950',
+            color: 'common.black',
           },
         }}
         _visited={{
           color: linkColor,
         }}
-        _dark={undefined}
         {...props}
         _after={{
           content: '""',

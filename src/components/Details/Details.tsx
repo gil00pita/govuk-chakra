@@ -41,16 +41,16 @@ const DetailsSummary = forwardRef<HTMLElement, DetailsSummaryProps>(function Det
       alignItems="center"
       gap={pxToRem(8)}
       cursor="pointer"
-      color="brand.500"
+      color="fg.link"
       borderRadius={2}
       textDecoration="underline"
       textDecorationThickness="max(1px, 0.0625rem)"
       textUnderlineOffset="0.1578em"
       _hover={{
-        color: 'brand.500',
+        color: 'fg.link',
         textDecorationThickness: 'max(3px, 0.1875rem)',
         '&:focus': {
-          color: 'black',
+          color: 'common.black',
         },
       }}
       _focus={{
@@ -64,13 +64,13 @@ const DetailsSummary = forwardRef<HTMLElement, DetailsSummaryProps>(function Det
       }}
       _dark={{
         _hover: {
-          color: 'brand.200',
+          color: 'primary.200',
           '&:focus': {
-            color: 'black',
+            color: 'common.black',
           },
         },
         _focus: {
-          color: 'black',
+          color: 'common.black',
         },
       }}
       css={{

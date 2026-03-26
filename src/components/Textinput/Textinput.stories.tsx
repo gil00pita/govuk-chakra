@@ -4,7 +4,7 @@ import { Textinput, type TextinputProps } from './Textinput'
 import { VStack } from '@chakra-ui/react'
 
 const meta: Meta<typeof Textinput> = {
-  title: 'GOV.UK/Components/Text input',
+  title: 'GOV.UK/Components/Textinput',
   component: Textinput,
   parameters: {
     layout: 'centered',

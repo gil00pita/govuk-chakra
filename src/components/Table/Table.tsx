@@ -32,7 +32,7 @@ const TableRoot = forwardRef<HTMLTableElement, TableRootProps>(function TableRoo
       ref={ref}
       width="100%"
       borderCollapse="collapse"
-      color="grey.950"
+      color="fg"
       fontSize={19}
       lineHeight={1.3157894737}
       {...props}
@@ -47,7 +47,7 @@ const TableCaption = forwardRef<HTMLTableCaptionElement, TableCaptionProps>(
         ref={ref}
         captionSide="top"
         textAlign="left"
-        color="grey.950"
+        color="fg"
         fontSize={24}
         fontWeight="700"
         lineHeight={1.25}
@@ -77,7 +77,15 @@ const TableFooter = forwardRef<HTMLTableSectionElement, TableFooterProps>(
 )
 
 const TableRow = forwardRef<HTMLTableRowElement, TableRowProps>(function TableRow(props, ref) {
-  return <ChakraTable.Row ref={ref} borderBottom="1px solid" borderColor="grey.100" {...props} />
+  return (
+    <ChakraTable.Row
+      ref={ref}
+      borderBottom="1px solid"
+      borderColor="border"
+      bgColor={'transparent'}
+      {...props}
+    />
+  )
 })
 
 const TableColumnHeader = forwardRef<HTMLTableCellElement, TableColumnHeaderProps>(
@@ -89,7 +97,7 @@ const TableColumnHeader = forwardRef<HTMLTableCellElement, TableColumnHeaderProp
         pe={0}
         ps={0}
         padding={cellPadding}
-        color="grey.950"
+        color="fg"
         fontWeight="700"
         textAlign={numeric ? 'right' : 'left'}
         verticalAlign="top"
@@ -110,7 +118,7 @@ const TableCell = forwardRef<HTMLTableCellElement, TableCellProps>(function Tabl
       pe={0}
       ps={0}
       padding={cellPadding}
-      color="grey.950"
+      color="fg"
       textAlign={numeric ? 'right' : 'left'}
       verticalAlign="top"
       {...props}
@@ -129,7 +137,7 @@ const TableRowHeader = forwardRef<HTMLTableCellElement, TableRowHeaderProps>(
         pe={0}
         ps={0}
         padding={cellPadding}
-        color="grey.950"
+        color="fg"
         fontWeight="700"
         textAlign={numeric ? 'right' : 'left'}
         verticalAlign="top"

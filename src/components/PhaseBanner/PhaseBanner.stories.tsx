@@ -24,10 +24,8 @@ type Story = StoryObj<typeof meta>
 export const Beta: Story = {
   render: () => (
     <PhaseBanner width="720px">
-      <PhaseBanner.Text>
-        This is a new service. Help us improve it and{' '}
-        <PhaseBanner.Link href="#">give your feedback by email</PhaseBanner.Link>.
-      </PhaseBanner.Text>
+      <PhaseBanner.Text>This is a new service. Help us improve it and </PhaseBanner.Text>
+      <PhaseBanner.Link href="#">give your feedback by email</PhaseBanner.Link>.
     </PhaseBanner>
   ),
 }

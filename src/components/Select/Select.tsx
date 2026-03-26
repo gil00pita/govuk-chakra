@@ -74,7 +74,7 @@ export const Select = forwardRef<HTMLSelectElement, SelectProps>(function Select
           fontSize={pxToRem(labelSize)}
           lineHeight={labelSize === 24 ? pxToRem(30) : pxToRem(25)}
           fontWeight="700"
-          color="grey.950"
+          color="fg"
           mb={0}
         >
           {label}
@@ -87,7 +87,7 @@ export const Select = forwardRef<HTMLSelectElement, SelectProps>(function Select
           as="div"
           fontSize={pxToRem(19)}
           lineHeight={pxToRem(25)}
-          color="grey.400"
+          color="fg.muted"
           mb={0}
         >
           {hint}
@@ -100,7 +100,7 @@ export const Select = forwardRef<HTMLSelectElement, SelectProps>(function Select
           as="div"
           fontSize={pxToRem(19)}
           lineHeight={pxToRem(25)}
-          color="red.500"
+          color="fg.error"
           fontWeight="700"
           mb={0}
         >
@@ -120,9 +120,9 @@ export const Select = forwardRef<HTMLSelectElement, SelectProps>(function Select
           aria-describedby={describedBy}
           borderRadius="0"
           borderWidth={pxToRem(2)}
-          borderColor={isInvalid ? 'red.500' : 'grey.950'}
-          bg="common.white"
-          color="grey.950"
+          borderColor={isInvalid ? 'fg.error' : 'border.input'}
+          bg="bg"
+          color="fg"
           fontSize={pxToRem(19)}
           lineHeight={pxToRem(25)}
           ps={pxToRem(8)}
@@ -130,7 +130,7 @@ export const Select = forwardRef<HTMLSelectElement, SelectProps>(function Select
           py={pxToRem(5)}
           h={pxToRem(40)}
           w="100%"
-          _hover={{ borderColor: isInvalid ? 'red.500' : 'common.black' }}
+          _hover={{ borderColor: isInvalid ? 'fg.error' : 'border.input' }}
           _focusVisible={{
             outline: `${pxToRem(3)} solid`,
             outlineColor: 'yellow.500',
@@ -157,7 +157,7 @@ export const Select = forwardRef<HTMLSelectElement, SelectProps>(function Select
         </NativeSelect.Field>
 
         <NativeSelect.Indicator
-          color={disabled ? 'grey.700' : 'grey.950'}
+          color={disabled ? 'fg.disabled' : 'fg'}
           fontSize={pxToRem(18)}
           insetEnd={pxToRem(10)}
         />

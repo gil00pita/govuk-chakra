@@ -174,6 +174,11 @@ export const FileUpload = {
               bg: 'bg.subtle',
               borderColor: invalid ? 'border.error' : 'border',
             },
+            _dark: {
+              '& button': {
+                bgColor: 'grey.700',
+              },
+            },
           }}
           {...props}
         >
@@ -337,11 +342,6 @@ export const FileUpload = {
         aria-label={promptLabel}
         {...props}
       >
-        {/* {prompt ? (
-          <Text fontSize={19} color="fg" marginBottom={0}>
-            {prompt}
-          </Text>
-        ) : null} */}
         <Box
           display="flex"
           className="dropzone-container"
@@ -420,6 +420,9 @@ export const FileUpload = {
         overflowWrap="break-word"
         className="file-text"
         w="full"
+        _dark={{
+          bgColor: 'primary.900',
+        }}
       >
         <Text ref={ref} fontSize={19} color="fg" marginBottom={0} {...props}>
           {fileText === getEmptyFileText(multiple) ? nextEmptyText : fileText}

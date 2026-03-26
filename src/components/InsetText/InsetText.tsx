@@ -22,7 +22,7 @@ export const InsetText = forwardRef<HTMLDivElement, InsetTextProps>(function Ins
       my={{ base: pxToRem(20), md: pxToRem(30) }}
       color="fg"
       _dark={{
-        borderLeftColor: 'grey.800',
+        borderLeftColor: 'grey.500',
       }}
       {...props}
     >

@@ -71,13 +71,13 @@ export function CookieBanner({
   return (
     <Box
       width="100%"
-      bg="brand.50"
+      bg="primary.50"
       borderBottom="1px solid"
       borderColor="grey.100"
       role="region"
       aria-label={computedHeading}
       _dark={{
-        bgColor: 'brand.950',
+        bgColor: 'primary.950',
         borderColor: 'grey.900',
       }}
       {...props}

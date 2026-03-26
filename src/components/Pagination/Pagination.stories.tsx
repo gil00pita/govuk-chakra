@@ -1,6 +1,7 @@
 import type { Meta, StoryObj } from '@storybook/react-vite'
 
 import { Pagination } from './Pagination'
+import { Separator } from '../Separator'
 
 const meta: Meta = {
   title: 'GOV.UK/Components/Pagination',
@@ -89,7 +90,6 @@ export const Block: Story = {
       <Pagination.Previous href="#" label="Applying for a provisional lorry or bus licence">
         Previous
       </Pagination.Previous>
-
       <Pagination.Next href="#" label="Driver CPC part 1 test: theory">
         Next
       </Pagination.Next>

@@ -82,6 +82,11 @@ const BreadcrumbsItem = forwardRef<HTMLLIElement, BreadcrumbsItemProps>(function
       pe={pxToRem(5)}
       // me={pxToRem(10)}
       // mb={pxToRem(5)}
+      _dark={{
+        '&:not(:first-of-type)::before': {
+          borderColor: inverse ? 'common.white' : 'common.white/70',
+        },
+      }}
       css={{
         '&:not(:first-of-type)': {
           paddingInlineStart: pxToRem(15),
@@ -114,13 +119,13 @@ const BreadcrumbsLink = forwardRef<HTMLAnchorElement, BreadcrumbsLinkProps>(
     return (
       <Link
         ref={ref}
-        color={inverse ? 'fg.inverted' : 'fg'}
+        color={inverse ? 'common.white' : 'fg'}
         _hover={{
-          color: inverse ? 'fg.inverted' : 'fg',
+          color: inverse ? 'common.white' : 'fg',
           textDecorationThickness: '3px',
         }}
         _visited={{
-          color: inverse ? 'fg.inverted' : 'fg',
+          color: inverse ? 'common.white' : 'fg',
         }}
         _dark={undefined}
         {...props}
@@ -143,7 +148,7 @@ const BreadcrumbsCurrent = forwardRef<HTMLSpanElement, BreadcrumbsCurrentProps>(
         as="span"
         fontSize={pxToRem(16)}
         lineHeight={1.25}
-        color={inverse ? 'fg.inverted' : 'fg'}
+        color={inverse ? 'common.white' : 'fg'}
         whiteSpace="nowrap"
         {...props}
       />

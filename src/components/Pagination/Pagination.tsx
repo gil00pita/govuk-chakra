@@ -1,5 +1,5 @@
-import { Box, type BoxProps } from '@chakra-ui/react'
-import { forwardRef, type ReactNode } from 'react'
+import { Box, Icon, VStack, type BoxProps } from '@chakra-ui/react'
+import { createContext, forwardRef, useContext, type ReactNode } from 'react'
 
 import { Link } from '@/components/Link'
 import { Text } from '@/components/Text'
@@ -27,17 +27,25 @@ export interface PaginationNavLinkProps extends React.ComponentProps<typeof Link
   label?: ReactNode
 }
 
+interface PaginationContextValue {
+  block: boolean
+}
+
+const PaginationContext = createContext<PaginationContextValue | null>(null)
+
+function usePaginationContext() {
+  return useContext(PaginationContext)
+}
+
 const ChevronIcon = ({ direction }: { direction: 'previous' | 'next' }) => (
-  <svg
+  <Icon
+    as="svg"
     aria-hidden="true"
     focusable="false"
     viewBox="0 0 15 13"
-    style={{
-      width: pxToRem(15),
-      height: pxToRem(13),
-      flexShrink: 0,
-      marginTop: pxToRem(6),
-    }}
+    width={pxToRem(15)}
+    height={pxToRem(13)}
+    flexShrink={0}
   >
     <path
       fill="currentColor"
@@ -47,7 +55,7 @@ const ChevronIcon = ({ direction }: { direction: 'previous' | 'next' }) => (
           : 'm8.107-0.0078125-1.4136 1.414 4.2926 4.293h-12.986v2h12.896l-4.1855 3.9766 1.377 1.4492 6.7441-6.4062-6.7246-6.7266z'
       }
     />
-  </svg>
+  </Icon>
 )
 
 const PaginationRoot = forwardRef<HTMLElement, PaginationProps>(function Pagination(
@@ -56,15 +64,17 @@ const PaginationRoot = forwardRef<HTMLElement, PaginationProps>(function Paginat
 ) {
   return (
     <Box ref={ref} as="nav" aria-label={landmarkLabel} width="100%" {...props}>
-      <Box
-        display="flex"
-        flexDirection={block ? 'column' : { base: 'column', md: 'row' }}
-        alignItems={block ? 'stretch' : { md: 'center' }}
-        justifyContent="space-between"
-        gap={block ? pxToRem(15) : pxToRem(10)}
-      >
-        {children}
-      </Box>
+      <PaginationContext.Provider value={{ block }}>
+        <Box
+          display="flex"
+          flexDirection={block ? 'column' : { base: 'column', md: 'row' }}
+          alignItems={block ? 'stretch' : { md: 'center' }}
+          justifyContent="space-between"
+          gap={block ? 0 : pxToRem(10)}
+        >
+          {children}
+        </Box>
+      </PaginationContext.Provider>
     </Box>
   )
 })
@@ -100,13 +110,17 @@ const PaginationItem = forwardRef<HTMLLIElement, PaginationItemProps>(function P
       display="flex"
       alignItems="center"
       justifyContent="center"
-      bg={current ? 'common.white' : 'transparent'}
-      border={current ? '1px solid' : 'none'}
-      borderColor={current ? 'grey.950' : 'transparent'}
+      bgColor={current ? 'primary.600' : 'transparent'}
+      _hover={{ bgColor: current ? 'primary.600' : !ellipsis ? 'grey.50' : 'transparent' }}
+      _dark={{
+        _hover: {
+          bgColor: !ellipsis ? 'common.black' : current ? 'primary.600' : 'transparent',
+        },
+      }}
       {...props}
     >
       {ellipsis ? (
-        <Text as="span" fontSize={19} color="grey.950" mb={0}>
+        <Text as="span" fontSize={19} color="fg" mb={0}>
           ...
         </Text>
       ) : (
@@ -127,28 +141,57 @@ const PaginationLink = forwardRef<HTMLAnchorElement, PaginationLinkProps>(functi
       ref={ref}
       aria-current={current ? 'page' : undefined}
       aria-label={visuallyHiddenText}
+      className="page-link"
       display="inline-flex"
       alignItems="center"
       justifyContent="center"
       minW={pxToRem(38)}
       h={pxToRem(38)}
       px={pxToRem(10)}
-      color="grey.950"
+      color={current ? 'common.white' : 'fg.link'}
       fontSize={19}
       fontWeight={current ? '700' : '400'}
-      textDecoration={current ? 'none' : 'underline'}
+      textDecoration={'underline'}
       _hover={{
-        color: 'grey.950',
-        textDecoration: current ? 'none' : 'underline',
-        textDecorationThickness: current ? undefined : 'max(3px, 0.1875rem)',
+        textDecoration: 'underline',
+        textDecorationThickness: 'max(3px, 0.1875rem)',
       }}
       _focus={{
         outline: '3px solid',
         outlineColor: 'yellow.500',
         outlineOffset: 0,
         bgColor: 'yellow.500',
-        color: 'common.black',
-        textDecoration: 'none',
+        color: 'fg',
+        textDecoration: 'underline',
+        textDecorationThickness: 'max(3px, 0.1875rem)',
+        _hover: {
+          color: 'fg',
+          bgColor: 'yellow.500',
+          textDecorationThickness: 'max(3px, 0.1875rem)',
+        },
+      }}
+      _visited={{
+        color: 'fg',
+      }}
+      _dark={{
+        color: current ? 'common.white' : 'fg.link',
+        _hover: {
+          color: current ? 'common.white' : 'primary.300',
+          bgColor: 'common.black',
+        },
+        _focus: {
+          color: 'common.black',
+          _hover: {
+            color: 'common.black',
+            bgColor: 'yellow.500',
+          },
+          _visited: {
+            color: 'common.black',
+          },
+        },
+        _visited: {
+          color: 'fg',
+        },
       }}
       {...props}
     >
@@ -159,37 +202,83 @@ const PaginationLink = forwardRef<HTMLAnchorElement, PaginationLinkProps>(functi
 
 const PaginationPrevious = forwardRef<HTMLAnchorElement, PaginationNavLinkProps>(
   function PaginationPrevious({ label, children, ...props }, ref) {
+    const context = usePaginationContext()
+    const block = context?.block ?? false
+
     return (
       <Link
         ref={ref}
         rel="prev"
         display="inline-flex"
-        alignItems="flex-start"
+        alignItems="center"
+        width={block ? 'full' : undefined}
         gap={pxToRem(15)}
-        color="grey.950"
-        textDecoration="none"
-        _hover={{ color: 'grey.950', textDecoration: 'none' }}
+        h={children ? 'auto' : pxToRem(40)}
+        pr={children ? '0' : pxToRem(15)}
+        py={block ? pxToRem(15) : 0}
+        borderBottom={block ? '1px solid {colors.grey.100}' : 'none'}
+        _hover={{ bgColor: 'grey.50' }}
         _focus={{
-          outline: '3px solid',
-          outlineColor: 'yellow.500',
-          outlineOffset: 0,
+          outline: 'none',
           bgColor: 'yellow.500',
-          color: 'common.black',
-          textDecoration: 'none',
+          color: 'fg',
+          textDecoration: 'underline',
+          textDecorationThickness: 'max(3px, 0.1875rem)',
+          _hover: {
+            color: 'fg',
+            bgColor: 'yellow.500',
+            textDecorationThickness: 'max(3px, 0.1875rem)',
+          },
+        }}
+        _visited={{
+          color: 'fg',
+        }}
+        _dark={{
+          color: 'fg.link',
+          borderBottom: block ? '1px solid {colors.grey.700}' : 'none',
+          _hover: {
+            color: 'primary.300',
+            bgColor: 'common.black',
+          },
+          _focus: {
+            color: 'common.black',
+            _hover: {
+              color: 'common.black',
+              bgColor: 'yellow.500',
+            },
+            _visited: {
+              color: 'common.black',
+            },
+          },
+          _visited: {
+            color: 'fg',
+          },
         }}
         {...props}
       >
         <ChevronIcon direction="previous" />
-        <Box>
-          <Text as="span" fontSize={27} color="inherit" fontWeight="700" mb={0}>
-            {children ?? 'Previous'}
-          </Text>
-          {label ? (
-            <Text as="span" display="block" fontSize={16} color="inherit" mb={0}>
-              {label}
+        {children ? (
+          <VStack align="start" spacing={0}>
+            <Text as="span" fontSize={27} color="inherit" fontWeight="700" mb={0}>
+              {children ?? 'Previous'}
             </Text>
-          ) : null}
-        </Box>
+            <>
+              {label ? (
+                <Text as="span" display="block" fontSize={16} color="inherit" mb={0}>
+                  {label}
+                </Text>
+              ) : null}
+            </>
+          </VStack>
+        ) : (
+          <>
+            {label ? (
+              <Text as="span" display="block" fontSize={16} color="inherit" mb={0}>
+                {label}
+              </Text>
+            ) : null}
+          </>
+        )}
       </Link>
     )
   }
@@ -197,37 +286,81 @@ const PaginationPrevious = forwardRef<HTMLAnchorElement, PaginationNavLinkProps>
 
 const PaginationNext = forwardRef<HTMLAnchorElement, PaginationNavLinkProps>(
   function PaginationNext({ label, children, ...props }, ref) {
+    const context = usePaginationContext()
+    const block = context?.block ?? false
+
     return (
       <Link
         ref={ref}
         rel="next"
         display="inline-flex"
-        alignItems="flex-start"
+        alignItems="center"
+        width={block ? 'full' : undefined}
         gap={pxToRem(15)}
-        color="grey.950"
-        textDecoration="none"
-        _hover={{ color: 'grey.950', textDecoration: 'none' }}
+        h={children ? 'auto' : pxToRem(40)}
+        pl={children ? '0' : pxToRem(15)}
+        py={block ? pxToRem(15) : 0}
+        _hover={{ bgColor: 'grey.50' }}
         _focus={{
-          outline: '3px solid',
-          outlineColor: 'yellow.500',
-          outlineOffset: 0,
+          outline: 'none',
           bgColor: 'yellow.500',
-          color: 'common.black',
-          textDecoration: 'none',
+          color: 'fg',
+          textDecoration: 'underline',
+          textDecorationThickness: 'max(3px, 0.1875rem)',
+          _hover: {
+            color: 'fg',
+            bgColor: 'yellow.500',
+            textDecorationThickness: 'max(3px, 0.1875rem)',
+          },
+        }}
+        _visited={{
+          color: 'fg',
+        }}
+        _dark={{
+          color: 'fg.link',
+          _hover: {
+            color: 'primary.300',
+            bgColor: 'common.black',
+          },
+          _focus: {
+            color: 'common.black',
+            _hover: {
+              color: 'common.black',
+              bgColor: 'yellow.500',
+            },
+            _visited: {
+              color: 'common.black',
+            },
+          },
+          _visited: {
+            color: 'fg',
+          },
         }}
         {...props}
       >
-        <Box>
-          <Text as="span" fontSize={27} color="inherit" fontWeight="700" mb={0}>
-            {children ?? 'Next'}
-          </Text>
-          {label ? (
-            <Text as="span" display="block" fontSize={16} color="inherit" mb={0}>
-              {label}
-            </Text>
-          ) : null}
-        </Box>
         <ChevronIcon direction="next" />
+        {children ? (
+          <VStack align="start" spacing={0}>
+            <Text as="span" fontSize={27} color="inherit" fontWeight="700" mb={0}>
+              {children ?? 'Previous'}
+            </Text>
+            <>
+              {label ? (
+                <Text as="span" display="block" fontSize={16} color="inherit" mb={0}>
+                  {label}
+                </Text>
+              ) : null}
+            </>
+          </VStack>
+        ) : (
+          <>
+            {label ? (
+              <Text as="span" display="block" fontSize={16} color="inherit" mb={0}>
+                {label}
+              </Text>
+            ) : null}
+          </>
+        )}
       </Link>
     )
   }

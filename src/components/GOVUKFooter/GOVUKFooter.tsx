@@ -34,13 +34,16 @@ const GOVUKFooterRoot = forwardRef<HTMLElement, GOVUKFooterProps>(function GOVUK
       ref={ref}
       as="footer"
       borderTop="10px solid"
-      borderColor="brand.500"
-      bg="primary.50"
+      borderColor="primary.500"
+      bgColor="primary.50"
       color="fg"
       w={'full'}
       mt={pxToRem(60)}
       pt={{ base: pxToRem(40), md: pxToRem(48) }}
       pb={{ base: pxToRem(24), md: pxToRem(32) }}
+      _dark={{
+        bgColor: 'primary.950',
+      }}
       {...props}
     />
   )
@@ -100,7 +103,7 @@ const GOVUKFooterSectionTitle = forwardRef<HTMLHeadingElement, GOVUKFooterSectio
         ref={ref}
         as="h2"
         size={24}
-        color="grey.950"
+        color="fg"
         mb={{ base: pxToRem(16), md: pxToRem(20) }}
         {...props}
       />
@@ -186,8 +189,7 @@ const GOVUKFooterMetaText = forwardRef<HTMLParagraphElement, GOVUKFooterMetaText
         ref={ref}
         className="text"
         fontSize={16}
-        color="grey.950"
-        lineHeight={pxToRem(20)}
+        color="fg"
         mb={0}
         justifySelf={{ md: 'end' }}
         textAlign={{ md: 'right' }}

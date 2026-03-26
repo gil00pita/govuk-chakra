@@ -66,7 +66,7 @@ const govUkThemeConfig = defineConfig({
         'fg.muted': {
           value: {
             base: '{colors.govuk.secondaryText}',
-            _dark: '{colors.grey.200}',
+            _dark: '{colors.grey.100/80}',
           },
         },
         'fg.inverted': {
@@ -79,6 +79,18 @@ const govUkThemeConfig = defineConfig({
           value: {
             base: '{colors.grey.700}',
             _dark: '{colors.grey.300}',
+          },
+        },
+        'fg.link': {
+          value: {
+            base: '{colors.primary.600}',
+            _dark: '{colors.primary.200}',
+          },
+        },
+        'fg.error': {
+          value: {
+            base: '{colors.red.500}',
+            _dark: '{colors.red.400}',
           },
         },
         border: {
@@ -99,6 +111,12 @@ const govUkThemeConfig = defineConfig({
             _dark: '{colors.grey.600}',
           },
         },
+        'border.muted': {
+          value: {
+            base: '{colors.grey.300}',
+            _dark: '{colors.grey.600}',
+          },
+        },
         'border.subtle': {
           value: {
             base: '{colors.grey.200}',
@@ -114,13 +132,13 @@ const govUkThemeConfig = defineConfig({
         link: {
           value: {
             base: '{colors.govuk.link}',
-            _dark: '{colors.brand.200}',
+            _dark: '{colors.primary.200}',
           },
         },
         'link.hover': {
           value: {
             base: '{colors.govuk.linkHover}',
-            _dark: '{colors.brand.100}',
+            _dark: '{colors.primary.100}',
           },
         },
         'link.visited': {
@@ -156,7 +174,7 @@ const govUkThemeConfig = defineConfig({
         info: {
           value: {
             base: '{colors.govuk.blue}',
-            _dark: '{colors.brand.200}',
+            _dark: '{colors.primary.200}',
           },
         },
         success: {

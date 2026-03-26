@@ -92,8 +92,15 @@ const RadioItem = forwardRef<HTMLDivElement, RadioItemProps>(function RadioItem(
       data-govuk-radio-item=""
       _hover={{
         '& [data-govuk-radio-control]': {
-          borderColor: 'common.black',
-          boxShadow: `0 0 0 10px var(--govuk-color-hover, #cecece)`,
+          borderColor: 'border.input',
+          boxShadow: `0 0 0 10px {colors.grey.100}`,
+        },
+      }}
+      _dark={{
+        _hover: {
+          '& [data-govuk-radio-control]': {
+            boxShadow: `0 0 0 10px {colors.grey.700}`,
+          },
         },
       }}
       {...props}
@@ -121,9 +128,9 @@ const RadioItemControl = forwardRef<HTMLDivElement, RadioControlProps>(
       <RadioItemControlPrimitive
         ref={ref}
         data-govuk-radio-control=""
-        bg="common.white"
+        bgColor="transparent"
         borderRadius="full"
-        borderColor="common.black"
+        borderColor="border.input"
         borderWidth="2px"
         borderStyle="solid"
         width={pxToRem(40)}
@@ -156,7 +163,7 @@ const RadioItemIndicator: RadioItemIndicatorComponent = forwardRef<
     <ChakraRadioGroup.ItemIndicator
       ref={ref}
       className="check-indicator"
-      bg="transparent"
+      bgColor="transparent"
       borderRadius="full"
       borderColor="transparent"
       borderWidth={0}
@@ -169,12 +176,12 @@ const RadioItemIndicator: RadioItemIndicatorComponent = forwardRef<
       transition="background-color 0.2s ease, border-color 0.2s ease"
       css={{
         '&[data-state=checked]': {
-          bg: 'common.black',
-          color: 'common.black',
+          bg: 'border.input',
+          color: 'border.input',
         },
         '[data-state=checked] &': {
-          bg: 'common.black',
-          color: 'common.black',
+          bg: 'border.input',
+          color: 'border.input',
         },
       }}
       {...props}

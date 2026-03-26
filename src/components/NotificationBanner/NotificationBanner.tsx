@@ -28,8 +28,8 @@ export type NotificationBannerBodyProps = React.ComponentProps<typeof Text>
 const variantStyles: Record<NotificationBannerVariant, { borderColor: string; headerBg: string }> =
   {
     info: {
-      borderColor: 'brand.500',
-      headerBg: 'brand.500',
+      borderColor: 'primary.500',
+      headerBg: 'primary.500',
     },
     success: {
       borderColor: 'green.500',

@@ -26,30 +26,46 @@ export interface TagProps extends Omit<BoxProps, 'color'> {
 }
 
 export const defaultTagVariantStyles: Record<TagVariant, SystemStyleObject> = {
-  grey: { bg: 'grey.50', color: 'grey.950', _dark: { bg: 'grey.950', color: 'grey.100' } },
-  green: { bg: 'green.100', color: 'green.900', _dark: { bg: 'green.900', color: 'green.100' } },
-  teal: { bg: 'teal.100', color: 'teal.900', _dark: { bg: 'teal.900', color: 'teal.100' } },
-  blue: { bg: 'brand.100', color: 'brand.900', _dark: { bg: 'brand.900', color: 'brand.100' } },
+  grey: {
+    bgColor: 'grey.50',
+    color: 'fg',
+    _dark: { bgColor: 'grey.700', color: 'common.white' },
+  },
+  green: {
+    bgColor: 'green.100',
+    color: 'green.900',
+    _dark: { bgColor: 'green.900', color: 'green.100' },
+  },
+  teal: {
+    bgColor: 'teal.100',
+    color: 'teal.900',
+    _dark: { bgColor: 'teal.900', color: 'teal.100' },
+  },
+  blue: {
+    bgColor: 'primary.100',
+    color: 'primary.900',
+    _dark: { bgColor: 'primary.900', color: 'primary.100' },
+  },
   purple: {
-    bg: 'purple.100',
+    bgColor: 'purple.100',
     color: 'purple.900',
-    _dark: { bg: 'purple.900', color: 'purple.100' },
+    _dark: { bgColor: 'purple.900', color: 'purple.100' },
   },
   magenta: {
-    bg: 'magenta.100',
+    bgColor: 'magenta.100',
     color: 'magenta.900',
-    _dark: { bg: 'magenta.900', color: 'magenta.100' },
+    _dark: { bgColor: 'magenta.900', color: 'magenta.100' },
   },
-  red: { bg: 'red.100', color: 'red.900', _dark: { bg: 'red.900', color: 'red.100' } },
+  red: { bgColor: 'red.100', color: 'red.900', _dark: { bgColor: 'red.900', color: 'red.100' } },
   orange: {
-    bg: 'orange.100',
+    bgColor: 'orange.100',
     color: 'orange.900',
-    _dark: { bg: 'orange.900', color: 'orange.100' },
+    _dark: { bgColor: 'orange.900', color: 'orange.100' },
   },
   yellow: {
-    bg: 'yellow.200',
+    bgColor: 'yellow.200',
     color: 'yellow.950',
-    _dark: { bg: 'yellow.950', color: 'yellow.200' },
+    _dark: { bgColor: 'yellow.950', color: 'yellow.200' },
   },
 }
 
@@ -66,12 +82,13 @@ export const Tag = forwardRef<HTMLParagraphElement, TagProps>(function Tag(
     <Text
       ref={ref}
       fontSize={19}
-      display="inline-block"
+      display="inline-flex"
+      alignItems="center"
+      justifyContent="flex-start"
       px={pxToRem(8)}
       py={pxToRem(5)}
       borderRadius={pxToRem(2)}
       fontWeight={bold ? '700' : '400'}
-      letterSpacing={pxToRem(0.5)}
       textTransform={uppercase ? 'uppercase' : 'none'}
       {...mergedVariantStyles[variant]}
       {...props}
