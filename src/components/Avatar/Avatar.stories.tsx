@@ -1,6 +1,7 @@
 import type { ComponentType } from 'react'
 import type { Meta, StoryObj } from '@storybook/react-vite'
 
+import { selectArgType } from '@/stories/storybookControls'
 import { Avatar } from './Avatar'
 
 type AvatarStoryArgs = {
@@ -15,10 +16,7 @@ const meta: Meta<AvatarStoryArgs> = {
     size: 'md',
   },
   argTypes: {
-    size: {
-      control: 'select',
-      options: ['2xs', 'xs', 'sm', 'md', 'lg', 'xl', '2xl', 'full'],
-    },
+    size: selectArgType(['2xs', 'xs', 'sm', 'md', 'lg', 'xl', '2xl', 'full']),
   },
 }
 

@@ -3,6 +3,7 @@ import { Avatar, Badge, Span, Stack, Text } from '@chakra-ui/react'
 import type { Meta, StoryObj } from '@storybook/react-vite'
 import { LuCheck, LuPackage, LuShip } from 'react-icons/lu'
 
+import { selectArgType } from '@/stories/storybookControls'
 import { Timeline } from './Timeline'
 
 type TimelineStoryArgs = {
@@ -17,6 +18,13 @@ const meta: Meta<TimelineStoryArgs> = {
   args: {
     size: 'md',
     variant: 'solid',
+  },
+  argTypes: {
+    size: selectArgType(['sm', 'md', 'lg', 'xl'], 'The size of the component.'),
+    variant: selectArgType(
+      ['subtle', 'solid', 'outline', 'plain'],
+      'The variant of the component.'
+    ),
   },
 }
 

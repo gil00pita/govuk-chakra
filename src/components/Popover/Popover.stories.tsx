@@ -2,6 +2,7 @@ import { Button, Portal } from '@chakra-ui/react'
 import type { ComponentType } from 'react'
 import type { Meta, StoryObj } from '@storybook/react-vite'
 
+import { selectArgType } from '@/stories/storybookControls'
 import { Popover } from './Popover'
 
 type PopoverStoryArgs = {
@@ -14,6 +15,9 @@ const meta: Meta<PopoverStoryArgs> = {
   tags: ['autodocs'],
   args: {
     size: 'md',
+  },
+  argTypes: {
+    size: selectArgType(['xs', 'sm', 'md', 'lg'], 'The size of the popover.'),
   },
 }
 

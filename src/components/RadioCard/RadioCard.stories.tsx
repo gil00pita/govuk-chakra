@@ -10,6 +10,7 @@ import {
   LuTrendingUp,
 } from 'react-icons/lu'
 
+import { selectArgType } from '@/stories/storybookControls'
 import { RadioCard } from './RadioCard'
 
 type RadioCardStoryArgs = {
@@ -32,6 +33,17 @@ const meta: Meta<RadioCardStoryArgs> = {
     size: 'md',
     variant: 'outline',
     orientation: 'horizontal',
+  },
+  argTypes: {
+    size: selectArgType(['sm', 'md', 'lg'], 'The size of the component.'),
+    variant: selectArgType(
+      ['surface', 'subtle', 'outline', 'solid'],
+      'The variant of the component.'
+    ),
+    orientation: selectArgType(
+      ['horizontal', 'vertical'],
+      'The orientation of the radio card group.'
+    ),
   },
 }
 

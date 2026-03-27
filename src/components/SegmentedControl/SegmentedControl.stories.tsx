@@ -1,6 +1,7 @@
 import type { ComponentType } from 'react'
 import type { Meta, StoryObj } from '@storybook/react-vite'
 
+import { chakraColorPaletteOptions, selectArgType } from '@/stories/storybookControls'
 import { SegmentedControl } from './SegmentedControl'
 
 type SegmentedControlStoryArgs = {
@@ -27,6 +28,14 @@ const meta: Meta<SegmentedControlStoryArgs> = {
     colorPalette: 'teal',
     size: 'md',
     orientation: 'horizontal',
+  },
+  argTypes: {
+    colorPalette: selectArgType(chakraColorPaletteOptions, 'The color palette of the component.'),
+    size: selectArgType(['xs', 'sm', 'md', 'lg'], 'The size of the component.'),
+    orientation: selectArgType(
+      ['horizontal', 'vertical'],
+      'The orientation of the segmented control.'
+    ),
   },
 }
 

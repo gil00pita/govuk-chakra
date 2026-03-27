@@ -1,6 +1,7 @@
 import type { ComponentType } from 'react'
 import type { Meta, StoryObj } from '@storybook/react-vite'
 
+import { selectArgType } from '@/stories/storybookControls'
 import { TagsInput } from './TagsInput'
 
 type TagsInputStoryArgs = {
@@ -13,6 +14,9 @@ const meta: Meta<TagsInputStoryArgs> = {
   tags: ['autodocs'],
   args: {
     size: 'md',
+  },
+  argTypes: {
+    size: selectArgType(['sm', 'md', 'lg'], 'The size of the component.'),
   },
 }
 

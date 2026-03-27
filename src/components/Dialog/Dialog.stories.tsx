@@ -2,6 +2,7 @@ import { Box, Button, CloseButton, Portal } from '@chakra-ui/react'
 import type { ComponentType } from 'react'
 import type { Meta, StoryObj } from '@storybook/react-vite'
 
+import { selectArgType } from '@/stories/storybookControls'
 import { Dialog } from './Dialog'
 
 type DialogStoryArgs = {
@@ -14,6 +15,9 @@ const meta: Meta<DialogStoryArgs> = {
   tags: ['autodocs'],
   args: {
     size: 'md',
+  },
+  argTypes: {
+    size: selectArgType(['xs', 'sm', 'md', 'lg', 'xl', 'cover', 'full'], 'The size of the dialog.'),
   },
 }
 

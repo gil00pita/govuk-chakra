@@ -7,6 +7,21 @@ const meta: Meta = {
   title: 'GOV.UK/About',
   parameters: {
     layout: 'fullscreen',
+    controls: {
+      disable: true,
+    },
+    actions: {
+      disable: true,
+    },
+    interactions: {
+      disable: true,
+    },
+    bottomPanelHeight: 0,
+    addons: {
+      backgrounds: {
+        disable: true,
+      },
+    },
   },
 }
 

@@ -1,6 +1,7 @@
 import type { ComponentType } from 'react'
 import type { Meta, StoryObj } from '@storybook/react-vite'
 
+import { chakraColorPaletteOptions, selectArgType } from '@/stories/storybookControls'
 import { Progress } from './Progress'
 
 type ProgressStoryArgs = {
@@ -27,6 +28,10 @@ const meta: Meta<ProgressStoryArgs> = {
     value: 65,
     colorPalette: 'teal',
     size: 'md',
+  },
+  argTypes: {
+    colorPalette: selectArgType(chakraColorPaletteOptions, 'The color palette of the component.'),
+    size: selectArgType(['xs', 'sm', 'md', 'lg'], 'The size of the component.'),
   },
 }
 

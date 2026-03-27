@@ -2,6 +2,7 @@ import type { ComponentType } from 'react'
 import { HStack, Stack } from '@chakra-ui/react'
 import type { Meta, StoryObj } from '@storybook/react-vite'
 
+import { selectArgType } from '@/stories/storybookControls'
 import { Skeleton } from './Skeleton'
 import type { SkeletonProps } from './Skeleton'
 
@@ -14,6 +15,9 @@ const meta: Meta<SkeletonStoryArgs> = {
   args: {
     loading: true,
     variant: 'pulse',
+  },
+  argTypes: {
+    variant: selectArgType(['pulse', 'shine'], 'The animation variant of the skeleton.'),
   },
 }
 

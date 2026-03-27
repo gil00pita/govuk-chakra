@@ -1,6 +1,7 @@
 import type { ComponentType } from 'react'
 import type { Meta, StoryObj } from '@storybook/react-vite'
 
+import { chakraColorPaletteOptions, selectArgType } from '@/stories/storybookControls'
 import { Code } from './Code'
 
 type CodeStoryArgs = {
@@ -27,6 +28,14 @@ const meta: Meta<CodeStoryArgs> = {
     colorPalette: 'gray',
     size: 'sm',
     variant: 'subtle',
+  },
+  argTypes: {
+    colorPalette: selectArgType(chakraColorPaletteOptions, 'The color palette of the component.'),
+    size: selectArgType(['xs', 'sm', 'md', 'lg'], 'The size of the component.'),
+    variant: selectArgType(
+      ['solid', 'subtle', 'outline', 'surface', 'plain'],
+      'The variant of the component.'
+    ),
   },
 }
 

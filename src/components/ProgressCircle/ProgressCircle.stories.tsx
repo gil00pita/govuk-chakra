@@ -2,6 +2,7 @@ import type { ComponentType } from 'react'
 import { Center } from '@chakra-ui/react'
 import type { Meta, StoryObj } from '@storybook/react-vite'
 
+import { chakraColorPaletteOptions, selectArgType } from '@/stories/storybookControls'
 import { ProgressCircle } from './ProgressCircle'
 
 type ProgressCircleStoryArgs = {
@@ -26,6 +27,9 @@ const meta: Meta<ProgressCircleStoryArgs> = {
   args: {
     value: 72,
     colorPalette: 'teal',
+  },
+  argTypes: {
+    colorPalette: selectArgType(chakraColorPaletteOptions, 'The color palette of the component.'),
   },
 }
 

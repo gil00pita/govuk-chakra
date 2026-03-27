@@ -10,9 +10,11 @@ import {
   IoLogoVimeo,
 } from 'react-icons/io5'
 
+import { htmlElementOptions, rangeArgType, selectArgType } from '@/stories/storybookControls'
 import { Marquee } from './Marquee'
 
 type MarqueeStoryArgs = {
+  as?: (typeof htmlElementOptions)[number]
   autoFill?: boolean
   reverse?: boolean
   speed?: number
@@ -27,14 +29,26 @@ const iconItems = [
   { icon: IoLogoJavascript, label: 'JavaScript', color: '#f7df1e' },
 ]
 
+const diagonalItems = Array.from({ length: 10 }, (_, index) => `Chakra Conf 2026 ${index + 1}`)
+
 const meta: Meta<MarqueeStoryArgs> = {
   title: 'Chakra Components/Data Display/Marquee',
   component: Marquee.Root as unknown as ComponentType<MarqueeStoryArgs>,
   tags: ['autodocs'],
   args: {
+    as: 'div',
     autoFill: true,
     reverse: false,
     speed: 50,
+  },
+  argTypes: {
+    as: selectArgType(htmlElementOptions, 'The underlying element to render.'),
+    speed: rangeArgType({
+      min: 10,
+      max: 120,
+      step: 5,
+      description: 'The speed of the marquee animation in pixels per second.',
+    }),
   },
 }
 
@@ -46,8 +60,8 @@ export const Default: Story = {
     <Marquee.Root {...args} spacing="2rem">
       <Marquee.Viewport>
         <Marquee.Content>
-          {iconItems.map((item, index) => (
-            <Marquee.Item key={index} px="2rem">
+          {iconItems.map((item) => (
+            <Marquee.Item key={item.label} px="2rem">
               <item.icon size="3rem" aria-label={item.label} color={item.color} />
             </Marquee.Item>
           ))}
@@ -63,8 +77,8 @@ export const EdgeGradient: Story = {
       <Marquee.Edge side="start" />
       <Marquee.Viewport>
         <Marquee.Content>
-          {iconItems.map((item, index) => (
-            <Marquee.Item key={index} px="2rem">
+          {iconItems.map((item) => (
+            <Marquee.Item key={item.label} px="2rem">
               <item.icon size="3rem" aria-label={item.label} color={item.color} />
             </Marquee.Item>
           ))}
@@ -87,10 +101,10 @@ export const Diagonal: Story = {
     >
       <Marquee.Viewport>
         <Marquee.Content>
-          {[...Array(10)].map((_, index) => (
-            <Marquee.Item key={index} pr="4">
+          {diagonalItems.map((item) => (
+            <Marquee.Item key={item} pr="4">
               <HStack gap="8" textStyle="3xl" fontWeight="medium">
-                Chakra Conf 2026
+                {item}
                 <Circle size="1.5" bg="colorPalette.solid" />
               </HStack>
             </Marquee.Item>

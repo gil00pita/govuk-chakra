@@ -2,6 +2,7 @@ import type { ComponentType } from 'react'
 import { Flex } from '@chakra-ui/react'
 import type { Meta, StoryObj } from '@storybook/react-vite'
 
+import { chakraSizeOptions, selectArgType } from '@/stories/storybookControls'
 import { QRCode } from './QRCode'
 
 type QRCodeStoryArgs = {
@@ -16,6 +17,9 @@ const meta: Meta<QRCodeStoryArgs> = {
   args: {
     value: 'https://www.google.com',
     size: 'md',
+  },
+  argTypes: {
+    size: selectArgType(chakraSizeOptions, 'The size of the QR code.'),
   },
 }
 

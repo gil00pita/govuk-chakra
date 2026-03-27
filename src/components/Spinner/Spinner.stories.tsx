@@ -1,9 +1,15 @@
 import type { ComponentType } from 'react'
 import type { Meta, StoryObj } from '@storybook/react-vite'
 
+import {
+  htmlElementOptions,
+  selectArgType,
+  chakraColorPaletteOptions,
+} from '@/stories/storybookControls'
 import { Spinner } from './Spinner'
 
 type SpinnerStoryArgs = {
+  as?: (typeof htmlElementOptions)[number]
   colorPalette?:
     | 'gray'
     | 'red'
@@ -15,7 +21,7 @@ type SpinnerStoryArgs = {
     | 'cyan'
     | 'purple'
     | 'pink'
-  size?: 'xs' | 'sm' | 'md' | 'lg' | 'xl'
+  size?: 'inherit' | 'xs' | 'sm' | 'md' | 'lg' | 'xl'
 }
 
 const meta: Meta<SpinnerStoryArgs> = {
@@ -23,8 +29,14 @@ const meta: Meta<SpinnerStoryArgs> = {
   component: Spinner.Root as unknown as ComponentType<SpinnerStoryArgs>,
   tags: ['autodocs'],
   args: {
+    as: 'div',
     colorPalette: 'teal',
     size: 'md',
+  },
+  argTypes: {
+    as: selectArgType(htmlElementOptions, 'The underlying element to render.'),
+    colorPalette: selectArgType(chakraColorPaletteOptions, 'The color palette of the component.'),
+    size: selectArgType(['inherit', 'xs', 'sm', 'md', 'lg', 'xl'], 'The size of the component.'),
   },
 }
 

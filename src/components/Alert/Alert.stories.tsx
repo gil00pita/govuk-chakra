@@ -1,6 +1,7 @@
 import type { ComponentType } from 'react'
 import type { Meta, StoryObj } from '@storybook/react-vite'
 
+import { selectArgType } from '@/stories/storybookControls'
 import { Alert } from './Alert'
 
 type AlertStoryArgs = {
@@ -22,12 +23,10 @@ const meta: Meta<AlertStoryArgs> = {
   },
   argTypes: {
     status: {
-      control: 'select',
-      options: ['info', 'warning', 'success', 'error', 'neutral'],
+      ...selectArgType(['info', 'warning', 'success', 'error', 'neutral']),
     },
     variant: {
-      control: 'select',
-      options: ['subtle', 'surface', 'outline', 'solid'],
+      ...selectArgType(['subtle', 'surface', 'outline', 'solid']),
     },
     title: {
       control: 'text',

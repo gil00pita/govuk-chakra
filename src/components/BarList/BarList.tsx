@@ -24,12 +24,7 @@ function useBarListChart() {
 
 export type BarListProps = ComponentPropsWithoutRef<typeof ChakraBarList.Root>
 
-export const BarListRoot = ({
-  chart,
-  barSize = '10',
-  children,
-  ...rest
-}: BarListProps) => {
+export const BarListRoot = ({ chart, barSize = '10', children, ...rest }: BarListProps) => {
   return (
     <Box {...rest} css={{ '--bar-size': chart.size(barSize) }}>
       <BarListChartContext.Provider value={chart}>{children}</BarListChartContext.Provider>
@@ -86,7 +81,7 @@ const BarListBar = ({
 
   const getPercent = useCallback(
     (value: number) => chart.getValuePercent('value', value, (domain) => [0, domain.max]),
-    [chart],
+    [chart]
   )
 
   const getBarColor = useCallback(
@@ -99,7 +94,7 @@ const BarListBar = ({
 
       return configuredColor ? chart.color(configuredColor) : chart.color('blue.500')
     },
-    [chart, primarySeries?.color],
+    [chart, primarySeries?.color]
   )
 
   return (

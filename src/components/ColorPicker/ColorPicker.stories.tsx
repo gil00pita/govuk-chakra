@@ -2,6 +2,7 @@ import { useState, type ComponentType } from 'react'
 import { HStack, Portal, parseColor } from '@chakra-ui/react'
 import type { Meta, StoryObj } from '@storybook/react-vite'
 
+import { selectArgType, chakraSizeOptions } from '@/stories/storybookControls'
 import { ColorPicker } from './ColorPicker'
 
 type ColorPickerStoryArgs = {
@@ -20,6 +21,10 @@ const meta: Meta<ColorPickerStoryArgs> = {
     size: 'md',
     variant: 'outline',
     disabled: false,
+  },
+  argTypes: {
+    size: selectArgType(chakraSizeOptions, 'The size of the component.'),
+    variant: selectArgType(['outline', 'subtle'], 'The variant of the component.'),
   },
 }
 
@@ -67,40 +72,42 @@ export const Inline: Story = {
 }
 
 export const WithSwatches: Story = {
-  render: () => {
-    const [value, setValue] = useState(parseColor('#eb5e41'))
+  render: () => <WithSwatchesPreview />,
+}
 
-    return (
-      <ColorPicker.Root
-        defaultValue={value}
-        maxW="200px"
-        onValueChange={(event) => setValue(event.value)}
-      >
-        <ColorPicker.HiddenInput />
-        <ColorPicker.Label>Color</ColorPicker.Label>
-        <ColorPicker.Control>
-          <ColorPicker.Input />
-          <ColorPicker.Trigger />
-        </ColorPicker.Control>
-        <Portal>
-          <ColorPicker.Positioner>
-            <ColorPicker.Content>
-              <ColorPicker.Area />
-              <HStack>
-                <ColorPicker.EyeDropper size="xs" variant="outline" />
-                <ColorPicker.Sliders />
-              </HStack>
-              <ColorPicker.SwatchGroup>
-                {swatches.map((item) => (
-                  <ColorPicker.SwatchTrigger key={item} value={item}>
-                    <ColorPicker.Swatch boxSize="4.5" value={item} />
-                  </ColorPicker.SwatchTrigger>
-                ))}
-              </ColorPicker.SwatchGroup>
-            </ColorPicker.Content>
-          </ColorPicker.Positioner>
-        </Portal>
-      </ColorPicker.Root>
-    )
-  },
+function WithSwatchesPreview() {
+  const [value, setValue] = useState(() => parseColor('#eb5e41'))
+
+  return (
+    <ColorPicker.Root
+      defaultValue={value}
+      maxW="200px"
+      onValueChange={(event) => setValue(event.value)}
+    >
+      <ColorPicker.HiddenInput />
+      <ColorPicker.Label>Color</ColorPicker.Label>
+      <ColorPicker.Control>
+        <ColorPicker.Input />
+        <ColorPicker.Trigger />
+      </ColorPicker.Control>
+      <Portal>
+        <ColorPicker.Positioner>
+          <ColorPicker.Content>
+            <ColorPicker.Area />
+            <HStack>
+              <ColorPicker.EyeDropper size="xs" variant="outline" />
+              <ColorPicker.Sliders />
+            </HStack>
+            <ColorPicker.SwatchGroup>
+              {swatches.map((item) => (
+                <ColorPicker.SwatchTrigger key={item} value={item}>
+                  <ColorPicker.Swatch boxSize="4.5" value={item} />
+                </ColorPicker.SwatchTrigger>
+              ))}
+            </ColorPicker.SwatchGroup>
+          </ColorPicker.Content>
+        </ColorPicker.Positioner>
+      </Portal>
+    </ColorPicker.Root>
+  )
 }
