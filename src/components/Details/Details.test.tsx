@@ -10,7 +10,9 @@ describe('Details', () => {
       <Details.Root>
         <Details.Summary>Help with nationality</Details.Summary>
         <Details.Content>
-          <Details.Text>We use this information to work out which elections you can vote in.</Details.Text>
+          <Details.Text>
+            We use this information to work out which elections you can vote in.
+          </Details.Text>
         </Details.Content>
       </Details.Root>
     )

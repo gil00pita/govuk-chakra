@@ -136,7 +136,7 @@ type CodeBlockStoryArgs = {
 }
 
 const meta: Meta<CodeBlockStoryArgs> = {
-  title: 'Unofficial Components/Code Block',
+  title: 'Chakra Components/Typography/Code Block',
   component: CodeBlock.Root as unknown as ComponentType<CodeBlockStoryArgs>,
   tags: ['autodocs'],
   args: {

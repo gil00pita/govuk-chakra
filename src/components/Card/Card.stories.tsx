@@ -14,7 +14,7 @@ interface CardStoryArgs extends CardRootProps {
 }
 
 const meta: Meta<CardStoryArgs> = {
-  title: 'Unofficial Components/Card',
+  title: 'Chakra Components/Data Display/Card',
   component: Card.Root,
   parameters: {
     layout: 'centered',

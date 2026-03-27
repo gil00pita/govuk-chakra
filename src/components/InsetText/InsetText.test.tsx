@@ -7,8 +7,8 @@ describe('InsetText', () => {
   it('renders inset text content', () => {
     renderWithProvider(
       <InsetText>
-        It can take up to 8 weeks to register a lasting power of attorney if there are no
-        mistakes in the application.
+        It can take up to 8 weeks to register a lasting power of attorney if there are no mistakes
+        in the application.
       </InsetText>
     )
 
@@ -28,9 +28,10 @@ describe('InsetText', () => {
 
     const container = screen.getByText(/if you’ve already applied/i).closest('div')
 
-    expect(within(container ?? document.body).getByRole('link', { name: /track your application online/i })).toHaveAttribute(
-      'href',
-      'https://www.gov.uk'
-    )
+    expect(
+      within(container ?? document.body).getByRole('link', {
+        name: /track your application online/i,
+      })
+    ).toHaveAttribute('href', 'https://www.gov.uk')
   })
 })

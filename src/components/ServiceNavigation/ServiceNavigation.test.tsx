@@ -9,7 +9,9 @@ describe('ServiceNavigation', () => {
     renderWithProvider(
       <ServiceNavigation.Root>
         <ServiceNavigation.ServiceContainer>
-          <ServiceNavigation.ServiceName href="/service">Apply for a passport</ServiceNavigation.ServiceName>
+          <ServiceNavigation.ServiceName href="/service">
+            Apply for a passport
+          </ServiceNavigation.ServiceName>
         </ServiceNavigation.ServiceContainer>
         <ServiceNavigation.Nav>
           <ServiceNavigation.List>
@@ -40,7 +42,9 @@ describe('ServiceNavigation', () => {
     renderWithProvider(
       <ServiceNavigation.Root>
         <ServiceNavigation.ServiceContainer>
-          <ServiceNavigation.ServiceName href="/service">Register to vote</ServiceNavigation.ServiceName>
+          <ServiceNavigation.ServiceName href="/service">
+            Register to vote
+          </ServiceNavigation.ServiceName>
           <ServiceNavigation.Toggle />
         </ServiceNavigation.ServiceContainer>
         <ServiceNavigation.Nav>

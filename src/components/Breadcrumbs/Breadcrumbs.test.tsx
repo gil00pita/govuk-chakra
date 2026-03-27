@@ -25,10 +25,7 @@ describe('Breadcrumbs', () => {
 
     expect(within(nav).getByRole('list')).toBeVisible()
     expect(within(nav).getByRole('link', { name: 'Home' })).toHaveAttribute('href', '/')
-    expect(within(nav).getByRole('link', { name: 'Guidance' })).toHaveAttribute(
-      'href',
-      '/guidance'
-    )
+    expect(within(nav).getByRole('link', { name: 'Guidance' })).toHaveAttribute('href', '/guidance')
     expect(within(nav).getByText('Current page').closest('li')).toHaveAttribute(
       'aria-current',
       'page'

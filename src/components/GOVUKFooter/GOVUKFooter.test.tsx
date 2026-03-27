@@ -27,7 +27,9 @@ describe('GOVUKFooter', () => {
 
     const footer = screen.getByRole('contentinfo')
 
-    expect(within(footer).getByRole('heading', { level: 2, name: /services and information/i })).toBeVisible()
+    expect(
+      within(footer).getByRole('heading', { level: 2, name: /services and information/i })
+    ).toBeVisible()
     expect(within(footer).getByRole('list')).toBeVisible()
     expect(within(footer).getByRole('link', { name: /benefits/i })).toHaveAttribute(
       'href',

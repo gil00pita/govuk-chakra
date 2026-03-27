@@ -31,14 +31,12 @@ describe('SummaryList', () => {
     const list = screen.getByText('Name').closest('dl')
 
     expect(within(list ?? document.body).getByText('Firstname Lastname')).toBeVisible()
-    expect(within(list ?? document.body).getByRole('link', { name: /change name/i })).toHaveAttribute(
-      'href',
-      '/change-name'
-    )
-    expect(within(list ?? document.body).getByRole('link', { name: /change date of birth/i })).toHaveAttribute(
-      'href',
-      '/change-dob'
-    )
+    expect(
+      within(list ?? document.body).getByRole('link', { name: /change name/i })
+    ).toHaveAttribute('href', '/change-name')
+    expect(
+      within(list ?? document.body).getByRole('link', { name: /change date of birth/i })
+    ).toHaveAttribute('href', '/change-dob')
   })
 
   it('renders the summary card layout with header actions', () => {
@@ -47,7 +45,10 @@ describe('SummaryList', () => {
         <SummaryList.CardHeader>
           <SummaryList.CardTitle>University of Gloucestershire</SummaryList.CardTitle>
           <SummaryList.CardActions>
-            <SummaryList.ActionLink href="/change-university" visuallyHiddenText="University of Gloucestershire">
+            <SummaryList.ActionLink
+              href="/change-university"
+              visuallyHiddenText="University of Gloucestershire"
+            >
               Change
             </SummaryList.ActionLink>
           </SummaryList.CardActions>

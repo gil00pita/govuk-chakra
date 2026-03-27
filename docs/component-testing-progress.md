@@ -1,6 +1,6 @@
 # Component Testing Plan And Progress
 
-Last updated: 2026-03-26
+Last updated: 2026-03-27
 
 ## Goal
 
@@ -8,8 +8,8 @@ Add reliable automated test coverage for every public component exported from `s
 
 ## Current Baseline
 
-- Public exported components: 39
-- Components with dedicated component tests: 39
+- Public exported components: 92
+- Components with dedicated component tests: 92
 - Completed so far: `Accordion`, `BackLink`, `Breadcrumbs`, `Button`, `Card`, `Checkbox`, `CodeBlock`, `CookieBanner`, `DateInput`, `Details`, `ErrorSummary`, `Fieldset`, `FileUpload`, `GOVUKCrest`, `GOVUKCrown`, `GOVUKFooter`, `GOVUKHeader`, `GOVUKOGL`, `Heading`, `InsetText`, `Link`, `NotificationBanner`, `Pagination`, `Panel`, `PhaseBanner`, `Radio`, `Select`, `Separator`, `ServiceNavigation`, `SkipLink`, `SummaryList`, `Table`, `Tabs`, `Tag`, `TaskList`, `Text`, `Textarea`, `Textinput`, `WarningText`
 - Existing component test files live alongside components under `src/components/*/*.test.tsx`
 
@@ -84,6 +84,14 @@ These should be done first because they carry the highest behavior risk.
 - `Separator`
 - `Tag`
 - `Text`
+
+### Phase 4: Chakra Wrapper Expansion
+
+Status: completed on 2026-03-27
+
+- Added dedicated test files for the newer Chakra wrapper surface, including display primitives, interactive inputs, overlays, and chart wrappers.
+- Coverage now includes: `Alert`, `AreaChart`, `Avatar`, `BarChart`, `BarList`, `BarSegment`, `Calendar`, `Carousel`, `Code`, `ColorPicker`, `ColorSwatch`, `Combobox`, `DonutChart`, `EmptyState`, `Highlight`, `HoverCard`, `IconButton`, `Image`, `Kbd`, `LineChart`, `Listbox`, `Marquee`, `Menu`, `PieChart`, `Progress`, `ProgressCircle`, `QRCode`, `RadarChart`, `RadioCard`, `Rating`, `ScatterChart`, `Skeleton`, `Sparkline`, `Spinner`, `Stat`, `Status`, `TagsInput`, `Timeline`, and `TreeView`.
+- Added test-only observer shims for Chakra components that depend on `ResizeObserver`, `IntersectionObserver`, and `scrollTo`.
 
 ## Minimum Test Expectations Per Component
 
@@ -217,6 +225,14 @@ Status legend:
 - Verified the focused batch passes: 4 files, 9 tests
 
 ### 2026-03-26, final verification pass
+
+### 2026-03-27, wrapper expansion pass
+
+- Added 40 new component test files for the Chakra wrapper expansion batch.
+- Fixed brittle chart and picker assertions so the tests verify wrapper contracts without depending on unsupported jsdom layout behavior.
+- Extended `src/test/mockResizeObserver.ts` with `IntersectionObserver` and `scrollTo` shims for carousel- and marquee-style components.
+- Verified the focused previously failing batch passes under Node 24: 10 files, 11 tests.
+- Confirmed there are no remaining component folders missing a sibling `ComponentName.test.tsx` file, excluding the internal `src/components/ui` directory.
 
 - Re-ran the full Vitest `unit` project after completing coverage for all public component exports
 - Verified the full unit suite passes: 39 files, 102 tests

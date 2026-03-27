@@ -1,8 +1,5 @@
 import { renderWithProvider } from '@/test/renderWithProvider'
-import {
-  screen,
-  within,
-} from '@testing-library/react'
+import { screen, within } from '@testing-library/react'
 import userEvent from '@testing-library/user-event'
 
 import { CookieBanner } from './CookieBanner'

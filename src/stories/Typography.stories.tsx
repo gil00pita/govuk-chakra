@@ -65,7 +65,11 @@ export const HeadingStory: StoryObj<TypographyStoryArgs> = {
     },
   },
   render: ({ componentType, ...rest }) =>
-    componentType === 'Heading' ? <Heading {...rest} /> : <Text {...rest} />,
+    componentType === 'Heading' ? (
+      <Heading color={rest.error ? 'fg.error' : rest.color} {...rest} />
+    ) : (
+      <Text fontSize={rest.size} color={rest.error ? 'fg.error' : rest.color} {...rest} />
+    ),
 }
 
 export const TextStory: StoryObj<typeof Text> = {

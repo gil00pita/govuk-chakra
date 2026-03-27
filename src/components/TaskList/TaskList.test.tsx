@@ -48,18 +48,19 @@ describe('TaskList', () => {
       />
     )
 
-    const section = screen.getByRole('heading', { level: 2, name: /application tasks/i }).closest(
-      'section'
-    )
+    const section = screen
+      .getByRole('heading', { level: 2, name: /application tasks/i })
+      .closest('section')
 
-    expect(within(section ?? document.body).getByRole('link', { name: /company directors/i })).toHaveAttribute(
-      'href',
-      '/directors'
-    )
+    expect(
+      within(section ?? document.body).getByRole('link', { name: /company directors/i })
+    ).toHaveAttribute('href', '/directors')
     expect(within(section ?? document.body).getByText(/ready/i)).toBeVisible()
     expect(within(section ?? document.body).getByText(/needs review/i)).toBeVisible()
     expect(
-      within(section ?? document.body).getByText(/include 5 years of the company's relevant financial information/i)
+      within(section ?? document.body).getByText(
+        /include 5 years of the company's relevant financial information/i
+      )
     ).toBeVisible()
   })
 })

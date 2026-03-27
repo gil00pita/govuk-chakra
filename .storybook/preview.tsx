@@ -68,6 +68,8 @@ export const parameters = {
   options: {
     storySort: {
       method: 'alphabetical',
+      order: ['GOV.UK', 'About', ['Styles', 'Patterns', 'Components'], 'Chakra Components', '*'],
+      locales: '',
     },
   },
   backgrounds: {

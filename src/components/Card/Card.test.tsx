@@ -15,7 +15,9 @@ describe('Card', () => {
 
     const card = screen.getByRole('region', { name: /passport service/i })
 
-    expect(within(card).getByRole('heading', { level: 2, name: /apply for a passport/i })).toBeVisible()
+    expect(
+      within(card).getByRole('heading', { level: 2, name: /apply for a passport/i })
+    ).toBeVisible()
     expect(within(card).getByText(/renew or replace a british passport/i)).toBeVisible()
     expect(within(card).getByRole('contentinfo')).toHaveTextContent(/start now/i)
   })
@@ -59,8 +61,6 @@ describe('Card', () => {
     expect(cards).toHaveLength(2)
     expect(within(cards[0]).getByRole('heading', { name: /register to vote/i })).toBeVisible()
     expect(within(cards[0]).getByText(/takes about 5 minutes/i)).toBeVisible()
-    expect(
-      within(cards[1]).getByText(/apply for or renew a british passport/i)
-    ).toBeVisible()
+    expect(within(cards[1]).getByText(/apply for or renew a british passport/i)).toBeVisible()
   })
 })
