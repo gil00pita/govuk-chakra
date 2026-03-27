@@ -85,6 +85,10 @@ export const parameters = {
   docs: {
     container: ThemedDocsContainer,
   },
+  // Stories opt out with parameters.a11y.disable only for intentional, documented exceptions.
+  a11y: {
+    test: 'error',
+  },
 }
 
 export const decorators = [

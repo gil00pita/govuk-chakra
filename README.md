@@ -167,6 +167,28 @@ yarn pack --dry-run
 yarn publish
 ```
 
+## Storybook Accessibility Tests
+
+Storybook accessibility checks run as part of the existing browser-based Storybook Vitest project:
+
+```bash
+yarn test:storybook
+```
+
+By default, every story is expected to pass Storybook's built-in accessibility checks and failures will fail the test run.
+
+Use `parameters.a11y` on a story or story meta only when you need an intentional exception:
+
+```tsx
+parameters: {
+  a11y: {
+    disable: true,
+  },
+}
+```
+
+Keep opt-outs rare and document why they are needed inline. For interactive components such as dialogs, menus, and popovers, prefer a `play` function that opens the component first so accessibility checks run against the meaningful state users actually reach.
+
 ## Compared With GOV.UK Prototype Kit
 
 ### ✅ Pros

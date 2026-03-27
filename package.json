@@ -107,6 +107,7 @@
     "@emotion/react": "^11.14.0",
     "@emotion/styled": "^11.14.1",
     "@storybook/addon-docs": "10.3.3",
+    "@storybook/addon-a11y": "10.3.3",
     "@storybook/addon-links": "10.3.3",
     "@storybook/addon-mcp": "^0.4.2",
     "@storybook/addon-onboarding": "10.3.3",

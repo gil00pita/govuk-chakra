@@ -1,6 +1,7 @@
 import { Box, Button, CloseButton, Portal } from '@chakra-ui/react'
 import type { ComponentType } from 'react'
 import type { Meta, StoryObj } from '@storybook/react-vite'
+import { expect, userEvent, within } from 'storybook/test'
 
 import { selectArgType } from '@/stories/storybookControls'
 import { Dialog } from './Dialog'
@@ -48,4 +49,12 @@ export const Default: Story = {
       </Dialog.Root>
     </Box>
   ),
+  play: async ({ canvasElement }) => {
+    const canvas = within(canvasElement)
+
+    await userEvent.click(canvas.getByRole('button', { name: /open dialog/i }))
+
+    await expect(canvas.getByRole('dialog', { hidden: true })).toBeInTheDocument()
+    await expect(canvas.getByText('Dialog title')).toBeInTheDocument()
+  },
 }
