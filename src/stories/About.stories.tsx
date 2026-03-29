@@ -123,8 +123,9 @@ export const Overview: Story = {
           <HStack gap={4} wrap="wrap">
             <Link href="https://gov-uk-gds-react-chakra.vercel.app">Live demo</Link>
             <Link href="https://github.com/gil00pita/govuk-chakra">GitHub repository</Link>
+            <Link href="https://www.npmjs.com/package/govuk-chakra">Npm Page</Link>
             <Link href="https://www.figma.com/community/file/1550623138170727031/gov-uk-design-system-2025">
-              Figma File in Community
+              GOV.UK Design System Figma File in Community
             </Link>
           </HStack>
         </VStack>

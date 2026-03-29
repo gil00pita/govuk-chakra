@@ -1,4 +1,6 @@
-# GOV.UK Chakra 🚧 Work in Progress 🚧
+# GOV.UK Chakra
+
+🚧 Work in Progress 🚧
 
 `govuk-chakra` is a React component library that applies a GOV.UK-style skin on top of Chakra UI.
 
@@ -7,6 +9,8 @@ It is not a replacement for Chakra. The point is to keep Chakra's composability,
 ![Screenshot](public/screenshot.png)
 
 See it in action [Here](https://gov-uk-gds-react-chakra.vercel.app 'Live demo')
+npm page [Here](https://www.npmjs.com/package/govuk-chakra)
+GOV.UK Design System Figma File in Community [Here](https://www.figma.com/community/file/1550623138170727031/gov-uk-design-system-2025)
 
 ## What This Project Is
 
