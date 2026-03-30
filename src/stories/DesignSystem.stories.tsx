@@ -24,7 +24,7 @@ import type { SelectItemData } from '@/components/Select'
 import { GoAlert, GoCheck, GoInfo } from 'react-icons/go'
 
 const meta: Meta = {
-  title: 'GOV.UK/Styles/Design System Overview',
+  title: 'GOV.UK/Styles/Design System',
   parameters: {
     layout: 'fullscreen',
   },

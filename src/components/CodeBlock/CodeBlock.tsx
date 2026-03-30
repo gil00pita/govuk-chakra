@@ -5,11 +5,12 @@ import {
   type SystemStyleObject,
 } from '@chakra-ui/react'
 import { forwardRef, type ComponentPropsWithoutRef, type ElementRef, type ReactNode } from 'react'
-import { LuCheck, LuClipboard } from 'react-icons/lu'
+import { LuCheck } from 'react-icons/lu'
 
 import { pxToRem, shikiAdapter } from '@/utils'
 import { Button, type ButtonProps } from '@/components/Button'
 import { useColorMode } from '@/components/ui/color-mode'
+import { FaCopy } from 'react-icons/fa'
 
 export type CodeBlockProps = ComponentPropsWithoutRef<typeof ChakraCodeBlock.Root>
 export type CodeBlockHeaderProps = ComponentPropsWithoutRef<typeof ChakraCodeBlock.Header>
@@ -155,7 +156,7 @@ const CodeBlockCopyIndicator = forwardRef<
 >(function CodeBlockCopyIndicator(props, ref) {
   return (
     <ChakraCodeBlock.CopyIndicator ref={ref} copied={<LuCheck />} {...props}>
-      <LuClipboard />
+      <FaCopy />
     </ChakraCodeBlock.CopyIndicator>
   )
 })

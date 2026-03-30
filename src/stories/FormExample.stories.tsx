@@ -1,11 +1,9 @@
 import { HStack, Portal, Separator, VStack, createListCollection } from '@chakra-ui/react'
 import type { Meta, StoryObj } from '@storybook/react-vite'
 
-import { Alert } from '@/components/Alert'
 import { Button } from '@/components/Button'
 import { Checkbox } from '@/components/Checkbox'
 import { Fieldset } from '@/components/Fieldset'
-import { GoAlert } from 'react-icons/go'
 import { Heading } from '@/components/Heading'
 import { Radio } from '@/components/Radio'
 import { Select } from '@/components/Select'
@@ -13,7 +11,7 @@ import type { SelectItemData } from '@/components/Select'
 import { Text } from '@/components/Text'
 import { Textinput } from '@/components/Textinput'
 import { Textarea } from '@/components/Textarea'
-import { ErrorSummary } from '@/components'
+import { ErrorSummary, NotificationBanner } from '@/components'
 
 const meta: Meta = {
   title: 'GOV.UK/Patterns/Form Examples',
@@ -76,15 +74,12 @@ export const CompleteForm: Story = {
 
       <Text fontSize="lg">You can apply for a provisional driving licence online.</Text>
 
-      <Alert.Root status="info">
-        <Alert.Indicator>
-          <GoAlert />
-        </Alert.Indicator>
-        <Alert.Title>Error</Alert.Title>
-        <Alert.Description>
+      <NotificationBanner.Root variant="info">
+        <NotificationBanner.Heading>Info</NotificationBanner.Heading>
+        <NotificationBanner.Body>
           You must be at least 15 years and 9 months old to apply.
-        </Alert.Description>
-      </Alert.Root>
+        </NotificationBanner.Body>
+      </NotificationBanner.Root>
 
       <Separator />
 

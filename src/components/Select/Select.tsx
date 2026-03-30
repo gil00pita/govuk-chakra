@@ -275,6 +275,13 @@ const SelectTrigger = forwardRef<HTMLButtonElement, SelectTriggerProps>(function
         borderColor: 'common.black',
         boxShadow: 'inset 0 0 0 2px var(--chakra-colors-common-black)',
       }}
+      _focus={{
+        outline: `${pxToRem(3)} solid`,
+        outlineColor: 'yellow.500',
+        outlineOffset: '0',
+        borderColor: 'common.black',
+        boxShadow: 'inset 0 0 0 2px var(--chakra-colors-common-black)',
+      }}
       _invalid={{ borderColor: 'fg.error' }}
       _disabled={{
         opacity: 1,
@@ -326,12 +333,13 @@ const SelectContent = forwardRef<HTMLDivElement, SelectContentProps>(
       <ChakraSelect.Content
         ref={ref}
         borderRadius="0"
-        borderWidth="1px"
-        borderColor="border"
+        borderWidth={pxToRem(2)}
+        borderColor="border.input"
         bg="bg"
         color="fg"
         boxShadow="md"
-        py={pxToRem(4)}
+        py={0}
+        px={0}
         {...props}
       />
     )
@@ -383,7 +391,9 @@ const SelectItem = forwardRef<HTMLDivElement, SelectItemProps>(function SelectIt
     >
       {children ?? (
         <>
-          <ChakraSelect.ItemText>{item.label}</ChakraSelect.ItemText>
+          <ChakraSelect.ItemText asChild>
+            <Text fontSize={16}>{item.label}</Text>
+          </ChakraSelect.ItemText>
           <ChakraSelect.ItemIndicator />
         </>
       )}
