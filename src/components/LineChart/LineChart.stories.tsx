@@ -1,7 +1,8 @@
 import type { Meta, StoryObj } from '@storybook/react-vite'
-import { Chart, useChart } from '@chakra-ui/charts'
-import { CartesianGrid, Legend, Line, Tooltip, XAxis, YAxis } from 'recharts'
+import { useChart } from '@chakra-ui/charts'
+import { CartesianGrid, Line, XAxis, YAxis } from 'recharts'
 
+import { Chart } from '@/components/Chart'
 import { LineChart } from './LineChart'
 
 const meta = {
@@ -37,7 +38,7 @@ export const Default: Story = {
           stroke={chart.color('border')}
         />
         <YAxis axisLine={false} tickLine={false} tickMargin={10} stroke={chart.color('border')} />
-        <Tooltip animationDuration={100} cursor={false} content={<Chart.Tooltip />} />
+        <Chart.Tooltip animationDuration={100} cursor={false} />
         {chart.series.map((item) => (
           <Line
             key={item.name}
@@ -80,8 +81,8 @@ export const Multiple: Story = {
           stroke={chart.color('border')}
         />
         <YAxis axisLine={false} tickLine={false} tickMargin={10} stroke={chart.color('border')} />
-        <Tooltip animationDuration={100} cursor={false} content={<Chart.Tooltip />} />
-        <Legend content={<Chart.Legend />} />
+        <Chart.Tooltip animationDuration={100} cursor={false} />
+        <Chart.Legend />
         {chart.series.map((item) => (
           <Line
             key={item.name}
@@ -128,7 +129,7 @@ export const WithAxesLabel: Story = {
           stroke={chart.color('border')}
           label={{ value: 'Customers', position: 'left', angle: -90 }}
         />
-        <Tooltip animationDuration={100} cursor={false} content={<Chart.Tooltip />} />
+        <Chart.Tooltip animationDuration={100} cursor={false} />
         {chart.series.map((item) => (
           <Line
             key={item.name}

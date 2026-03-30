@@ -1,6 +1,7 @@
-import { Chart, useChart } from '@chakra-ui/charts'
-import { Area, CartesianGrid, Tooltip, XAxis } from 'recharts'
+import { useChart } from '@chakra-ui/charts'
+import { Area, CartesianGrid, XAxis } from 'recharts'
 
+import { Chart } from '@/components/Chart'
 import { renderWithProvider } from '@/test/renderWithProvider'
 import { AreaChart } from './AreaChart'
 
@@ -18,7 +19,7 @@ function AreaChartHarness() {
     <AreaChart.Root chart={chart} chartRootProps={{ maxH: 'sm' }} width={420} height={240}>
       <CartesianGrid stroke={chart.color('border.muted')} vertical={false} />
       <XAxis dataKey={chart.key('month')} />
-      <Tooltip content={<Chart.Tooltip />} />
+      <Chart.Tooltip />
       <Area
         dataKey={chart.key('users')}
         fill={chart.color('teal.solid')}

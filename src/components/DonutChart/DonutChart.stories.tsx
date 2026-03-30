@@ -1,7 +1,8 @@
-import { Chart, useChart } from '@chakra-ui/charts'
-import { Label, Pie, Sector, Tooltip } from 'recharts'
+import { useChart } from '@chakra-ui/charts'
+import { Label, Pie, Sector } from 'recharts'
 import type { Meta, StoryObj } from '@storybook/react-vite'
 
+import { Chart } from '@/components/Chart'
 import { DonutChart } from './DonutChart'
 
 const meta: Meta = {
@@ -25,7 +26,7 @@ export const Default: Story = {
 
     return (
       <DonutChart.Root chart={chart} chartRootProps={{ boxSize: '200px', mx: 'auto' }} responsive>
-        <Tooltip cursor={false} animationDuration={100} content={<Chart.Tooltip hideLabel />} />
+        <Chart.Tooltip cursor={false} animationDuration={100} hideLabel />
         <Pie
           innerRadius={80}
           outerRadius={100}
@@ -46,7 +47,7 @@ export const WithCenteredText: Story = {
 
     return (
       <DonutChart.Root chart={chart} chartRootProps={{ boxSize: '200px', mx: 'auto' }} responsive>
-        <Tooltip cursor={false} animationDuration={100} content={<Chart.Tooltip hideLabel />} />
+        <Chart.Tooltip cursor={false} animationDuration={100} hideLabel />
         <Pie
           innerRadius={80}
           outerRadius={100}
@@ -77,7 +78,7 @@ export const WithAnglePadding: Story = {
 
     return (
       <DonutChart.Root chart={chart} chartRootProps={{ boxSize: '200px', mx: 'auto' }} responsive>
-        <Tooltip cursor={false} animationDuration={100} content={<Chart.Tooltip hideLabel />} />
+        <Chart.Tooltip cursor={false} animationDuration={100} hideLabel />
         <Pie
           innerRadius={80}
           outerRadius={100}

@@ -1,5 +1,5 @@
 Style the components according with GOV.UK Design system:
-[] Table
+[x] Table
 [] Listbox
 [] Combobox
 [] Treeview
@@ -7,6 +7,10 @@ Style the components according with GOV.UK Design system:
 [] Timeline
 [] Pin input
 [] Radio card
+[] PieChart
+[] Radar Chart
+[] Scatter Chart
+[] Sparkline
 
 Add in:
 [] Visual test

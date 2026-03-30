@@ -88,7 +88,15 @@ export const govukTypeScale = {
   },
 } as const
 
-type GovukTypeScalePoint = keyof typeof govukTypeScale
+export type GovukTypeScalePoint = keyof typeof govukTypeScale
+
+export function getGovukTypeScale(size: unknown) {
+  if (typeof size !== 'number') {
+    return null
+  }
+
+  return size in govukTypeScale ? govukTypeScale[size as GovukTypeScalePoint] : null
+}
 
 /**
  * Returns Chakra-ready responsive fontSize and lineHeight props

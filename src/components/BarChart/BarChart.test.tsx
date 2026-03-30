@@ -1,6 +1,7 @@
-import { Chart, useChart } from '@chakra-ui/charts'
-import { Bar, CartesianGrid, Tooltip, XAxis, YAxis } from 'recharts'
+import { useChart } from '@chakra-ui/charts'
+import { Bar, CartesianGrid, XAxis, YAxis } from 'recharts'
 
+import { Chart } from '@/components/Chart'
 import { renderWithProvider } from '@/test/renderWithProvider'
 import { BarChart } from './BarChart'
 
@@ -19,7 +20,7 @@ function BarChartHarness() {
       <CartesianGrid stroke={chart.color('border.muted')} vertical={false} />
       <XAxis dataKey={chart.key('month')} />
       <YAxis />
-      <Tooltip content={<Chart.Tooltip />} />
+      <Chart.Tooltip />
       <Bar dataKey={chart.key('users')} fill={chart.color('teal.solid')} radius={4} />
     </BarChart.Root>
   )

@@ -1,7 +1,8 @@
-import { Chart, useChart } from '@chakra-ui/charts'
-import { Legend, Scatter, Tooltip, XAxis, YAxis } from 'recharts'
+import { useChart } from '@chakra-ui/charts'
+import { Scatter, XAxis, YAxis } from 'recharts'
 import type { Meta, StoryObj } from '@storybook/react-vite'
 
+import { Chart } from '@/components/Chart'
 import { ScatterChart } from './ScatterChart'
 
 const meta: Meta = {
@@ -87,7 +88,7 @@ export const Multiple: Story = {
           domain={['dataMin - 10', 'dataMax + 10']}
         />
         <YAxis type="number" dataKey={chart.key('y')} stroke={chart.color('border')} />
-        <Tooltip cursor={{ strokeDasharray: '3 3' }} content={<Chart.Tooltip hideLabel />} />
+        <Chart.Tooltip cursor={{ strokeDasharray: '3 3' }} hideLabel />
         {chart.series.map((series, index) => (
           <Scatter
             name={series.label?.toString()}
@@ -124,7 +125,7 @@ export const WithLegend: Story = {
         responsive
       >
         <XAxis type="number" dataKey={chart.key('x')} stroke={chart.color('border')} />
-        <Legend content={<Chart.Legend />} />
+        <Chart.Legend />
         <YAxis type="number" dataKey={chart.key('y')} stroke={chart.color('border')} />
         {chart.series.map((series, index) => (
           <Scatter

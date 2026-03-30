@@ -1,6 +1,7 @@
-import { Chart, useChart } from '@chakra-ui/charts'
-import { CartesianGrid, Line, Tooltip, XAxis, YAxis } from 'recharts'
+import { useChart } from '@chakra-ui/charts'
+import { CartesianGrid, Line, XAxis, YAxis } from 'recharts'
 
+import { Chart } from '@/components/Chart'
 import { renderWithProvider } from '@/test/renderWithProvider'
 import { LineChart } from './LineChart'
 
@@ -19,7 +20,7 @@ function LineChartHarness() {
       <CartesianGrid stroke={chart.color('border')} vertical={false} />
       <XAxis dataKey={chart.key('month')} />
       <YAxis />
-      <Tooltip content={<Chart.Tooltip />} />
+      <Chart.Tooltip />
       <Line dataKey={chart.key('sale')} stroke={chart.color('teal.solid')} />
     </LineChart.Root>
   )

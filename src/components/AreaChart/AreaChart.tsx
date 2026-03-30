@@ -15,11 +15,7 @@ export interface AreaChartProps<T> extends Omit<
 function AreaChartRoot<T>({ chart, chartRootProps, style, ...props }: AreaChartProps<T>) {
   return (
     <Chart.Root chart={chart} {...chartRootProps}>
-      <ChakraAreaChart
-        data={chart.data}
-        style={{ fontFamily: 'var(--chakra-fonts-body)', ...style }}
-        {...props}
-      />
+      <ChakraAreaChart data={chart.data} style={{ ...style }} {...props} />
     </Chart.Root>
   )
 }

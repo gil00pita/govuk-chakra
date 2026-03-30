@@ -1,7 +1,8 @@
-import { Chart, useChart } from '@chakra-ui/charts'
-import { Legend, PolarAngleAxis, PolarGrid, PolarRadiusAxis, Radar, Tooltip } from 'recharts'
+import { useChart } from '@chakra-ui/charts'
+import { PolarAngleAxis, PolarGrid, PolarRadiusAxis, Radar } from 'recharts'
 import type { Meta, StoryObj } from '@storybook/react-vite'
 
+import { Chart } from '@/components/Chart'
 import { RadarChart } from './RadarChart'
 
 const meta: Meta = {
@@ -66,7 +67,7 @@ export const Multiple: Story = {
     return (
       <RadarChart.Root chart={chart} chartRootProps={{ maxW: 'sm', mx: 'auto' }} responsive>
         <PolarGrid stroke={chart.color('border')} />
-        <Legend content={<Chart.Legend />} />
+        <Chart.Legend />
         {chart.series.map((item) => (
           <Radar
             isAnimationActive={false}
@@ -101,7 +102,7 @@ export const WithTooltip: Story = {
       <RadarChart.Root chart={chart} chartRootProps={{ maxW: 'sm', mx: 'auto' }} responsive>
         <PolarGrid stroke={chart.color('border')} />
         <PolarAngleAxis dataKey={chart.key('month')} />
-        <Tooltip content={<Chart.Tooltip />} />
+        <Chart.Tooltip />
         {chart.series.map((item) => (
           <Radar
             isAnimationActive={false}

@@ -4,11 +4,8 @@ import {
 } from '@chakra-ui/react'
 import { forwardRef } from 'react'
 
-import { pxToRem } from '@/utils'
+import { getGovukTypeScale, pxToRem } from '@/utils'
 import { buttonVariantStyles, type ButtonVariant } from '@/components/Button/buttonVariants'
-import { govukTypeScale } from '@/utils'
-
-type GovukFontSize = keyof typeof govukTypeScale
 
 export interface IconButtonProps extends Omit<ChakraIconButtonProps, 'variant'> {
   variant?: ButtonVariant
@@ -16,10 +13,7 @@ export interface IconButtonProps extends Omit<ChakraIconButtonProps, 'variant'> 
 
 const IconButtonRoot = forwardRef<HTMLButtonElement, IconButtonProps>(
   ({ variant = 'primary', fontSize = 16, ...props }, ref) => {
-    const scale =
-      typeof fontSize === 'number' && fontSize in govukTypeScale
-        ? govukTypeScale[fontSize as GovukFontSize]
-        : null
+    const scale = getGovukTypeScale(fontSize)
 
     if (scale) {
       return (

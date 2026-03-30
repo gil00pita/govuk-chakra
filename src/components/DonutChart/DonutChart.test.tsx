@@ -1,6 +1,7 @@
-import { Chart, useChart } from '@chakra-ui/charts'
-import { Pie, Tooltip } from 'recharts'
+import { useChart } from '@chakra-ui/charts'
+import { Pie } from 'recharts'
 
+import { Chart } from '@/components/Chart'
 import { renderWithProvider } from '@/test/renderWithProvider'
 import { DonutChart } from './DonutChart'
 
@@ -15,7 +16,7 @@ function DonutChartHarness() {
 
   return (
     <DonutChart.Root chart={chart} chartRootProps={{ boxSize: '200px' }} width={200} height={200}>
-      <Tooltip cursor={false} animationDuration={100} content={<Chart.Tooltip hideLabel />} />
+      <Chart.Tooltip cursor={false} animationDuration={100} hideLabel />
       <Pie
         innerRadius={80}
         outerRadius={100}

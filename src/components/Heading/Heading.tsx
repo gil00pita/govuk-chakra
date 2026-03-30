@@ -1,11 +1,9 @@
 import { Heading as ChakraHeading, type HeadingProps as ChakraHeadingProps } from '@chakra-ui/react'
 import { forwardRef } from 'react'
-import { govukTypeScale } from '@/utils'
-
-type GovukFontSize = keyof typeof govukTypeScale
+import { getGovukTypeScale, govukTypeScale, type GovukTypeScalePoint } from '@/utils'
 
 export interface HeadingProps extends Omit<ChakraHeadingProps, 'size'> {
-  size?: GovukFontSize | ChakraHeadingProps['size']
+  size?: GovukTypeScalePoint | ChakraHeadingProps['size']
 }
 
 export const Heading = forwardRef<HTMLHeadingElement, HeadingProps>(function Heading(
@@ -18,10 +16,7 @@ export const Heading = forwardRef<HTMLHeadingElement, HeadingProps>(function Hea
     )
   }
 
-  const scale =
-    typeof size === 'number' && size in govukTypeScale
-      ? govukTypeScale[size as GovukFontSize]
-      : null
+  const scale = getGovukTypeScale(size)
 
   if (scale) {
     return (

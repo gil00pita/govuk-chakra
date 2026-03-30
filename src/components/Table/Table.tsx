@@ -1,7 +1,7 @@
 import { Table as ChakraTable, type HTMLChakraProps } from '@chakra-ui/react'
 import { createContext, forwardRef, useContext, type ComponentProps } from 'react'
 
-import { govukTypeScale, pxToRem } from '@/utils'
+import { getGovukTypeScale, pxToRem } from '@/utils'
 
 type ChakraTableRootProps = ComponentProps<typeof ChakraTable.Root>
 type ChakraTableSectionProps = ComponentProps<typeof ChakraTable.Header>
@@ -44,8 +44,6 @@ interface TableContextValue {
   size?: TableSize
 }
 
-type GovukFontSize = keyof typeof govukTypeScale
-
 const TableContext = createContext<TableContextValue>({ striped: false, size: 'lg' })
 
 const useTableContext = () => useContext(TableContext)
@@ -58,10 +56,7 @@ const TableRoot = forwardRef<HTMLTableElement, TableRootProps>(function TableRoo
   const isStriped = striped === true
   const tableSize = props.size === 'sm' || props.size === 'lg' ? props.size : 'md'
 
-  const scale =
-    typeof fontSize === 'number' && fontSize in govukTypeScale
-      ? govukTypeScale[fontSize as GovukFontSize]
-      : null
+  const scale = getGovukTypeScale(fontSize)
 
   return (
     <TableContext.Provider value={{ striped: isStriped, size: tableSize }}>

@@ -1,2 +1,21 @@
-export { BarSegment, BarSegmentRoot } from './BarSegment'
-export type { BarSegmentProps } from './BarSegment'
+export {
+  BarSegment,
+  BarSegmentRoot,
+  BarSegmentContent,
+  BarSegmentLabel,
+  BarSegmentBar,
+  BarSegmentReference,
+  BarSegmentValue,
+  BarSegmentLegend,
+  BarSegmentTooltip,
+} from './BarSegment'
+export type {
+  BarSegmentProps,
+  BarSegmentContentProps,
+  BarSegmentLabelProps,
+  BarSegmentBarProps,
+  BarSegmentReferenceProps,
+  BarSegmentValueProps,
+  BarSegmentLegendProps,
+  BarSegmentTooltipProps,
+} from './BarSegment'

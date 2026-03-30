@@ -1,11 +1,9 @@
 import { Text as ChakraText, type TextProps as ChakraTextProps } from '@chakra-ui/react'
 import { forwardRef } from 'react'
-import { govukTypeScale } from '@/utils'
-
-type GovukFontSize = keyof typeof govukTypeScale
+import { getGovukTypeScale, govukTypeScale, type GovukTypeScalePoint } from '@/utils'
 
 export interface TextProps extends Omit<ChakraTextProps, 'fontSize' | 'fontWeight'> {
-  fontSize?: GovukFontSize | ChakraTextProps['fontSize']
+  fontSize?: GovukTypeScalePoint | ChakraTextProps['fontSize']
   fontWeight?: ChakraTextProps['fontWeight']
 }
 
@@ -19,10 +17,7 @@ export const Text = forwardRef<HTMLParagraphElement, TextProps>(function Text(
     )
   }
 
-  const scale =
-    typeof fontSize === 'number' && fontSize in govukTypeScale
-      ? govukTypeScale[fontSize as GovukFontSize]
-      : null
+  const scale = getGovukTypeScale(fontSize)
 
   if (scale) {
     return (
