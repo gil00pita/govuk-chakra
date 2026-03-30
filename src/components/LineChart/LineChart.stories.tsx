@@ -28,29 +28,27 @@ export const Default: Story = {
     })
 
     return (
-      <Chart.Root maxH="sm" chart={chart}>
-        <LineChart.Root data={chart.data} responsive>
-          <CartesianGrid stroke={chart.color('border')} vertical={false} />
-          <XAxis
-            axisLine={false}
-            dataKey={chart.key('month')}
-            tickFormatter={(value) => value.slice(0, 3)}
-            stroke={chart.color('border')}
+      <LineChart.Root chart={chart} chartRootProps={{ maxH: 'sm' }} responsive>
+        <CartesianGrid stroke={chart.color('border')} vertical={false} />
+        <XAxis
+          axisLine={false}
+          dataKey={chart.key('month')}
+          tickFormatter={(value) => value.slice(0, 3)}
+          stroke={chart.color('border')}
+        />
+        <YAxis axisLine={false} tickLine={false} tickMargin={10} stroke={chart.color('border')} />
+        <Tooltip animationDuration={100} cursor={false} content={<Chart.Tooltip />} />
+        {chart.series.map((item) => (
+          <Line
+            key={item.name}
+            isAnimationActive={false}
+            dataKey={chart.key(item.name)}
+            stroke={chart.color(item.color)}
+            strokeWidth={2}
+            dot={false}
           />
-          <YAxis axisLine={false} tickLine={false} tickMargin={10} stroke={chart.color('border')} />
-          <Tooltip animationDuration={100} cursor={false} content={<Chart.Tooltip />} />
-          {chart.series.map((item) => (
-            <Line
-              key={item.name}
-              isAnimationActive={false}
-              dataKey={chart.key(item.name)}
-              stroke={chart.color(item.color)}
-              strokeWidth={2}
-              dot={false}
-            />
-          ))}
-        </LineChart.Root>
-      </Chart.Root>
+        ))}
+      </LineChart.Root>
     )
   },
 }
@@ -73,30 +71,28 @@ export const Multiple: Story = {
     })
 
     return (
-      <Chart.Root maxH="sm" chart={chart}>
-        <LineChart.Root data={chart.data} responsive>
-          <CartesianGrid stroke={chart.color('border')} vertical={false} />
-          <XAxis
-            axisLine={false}
-            dataKey={chart.key('month')}
-            tickFormatter={(value) => value.slice(0, 3)}
-            stroke={chart.color('border')}
+      <LineChart.Root chart={chart} chartRootProps={{ maxH: 'sm' }} responsive>
+        <CartesianGrid stroke={chart.color('border')} vertical={false} />
+        <XAxis
+          axisLine={false}
+          dataKey={chart.key('month')}
+          tickFormatter={(value) => value.slice(0, 3)}
+          stroke={chart.color('border')}
+        />
+        <YAxis axisLine={false} tickLine={false} tickMargin={10} stroke={chart.color('border')} />
+        <Tooltip animationDuration={100} cursor={false} content={<Chart.Tooltip />} />
+        <Legend content={<Chart.Legend />} />
+        {chart.series.map((item) => (
+          <Line
+            key={item.name}
+            isAnimationActive={false}
+            dataKey={chart.key(item.name)}
+            fill={chart.color(item.color)}
+            stroke={chart.color(item.color)}
+            strokeWidth={2}
           />
-          <YAxis axisLine={false} tickLine={false} tickMargin={10} stroke={chart.color('border')} />
-          <Tooltip animationDuration={100} cursor={false} content={<Chart.Tooltip />} />
-          <Legend content={<Chart.Legend />} />
-          {chart.series.map((item) => (
-            <Line
-              key={item.name}
-              isAnimationActive={false}
-              dataKey={chart.key(item.name)}
-              fill={chart.color(item.color)}
-              stroke={chart.color(item.color)}
-              strokeWidth={2}
-            />
-          ))}
-        </LineChart.Root>
-      </Chart.Root>
+        ))}
+      </LineChart.Root>
     )
   },
 }
@@ -116,36 +112,34 @@ export const WithAxesLabel: Story = {
     })
 
     return (
-      <Chart.Root maxH="sm" chart={chart}>
-        <LineChart.Root data={chart.data} responsive>
-          <CartesianGrid stroke={chart.color('border')} vertical={false} />
-          <XAxis
-            axisLine={false}
-            dataKey={chart.key('month')}
-            tickFormatter={(value) => value.slice(0, 3)}
-            stroke={chart.color('border')}
-            label={{ value: 'Month', position: 'bottom' }}
+      <LineChart.Root chart={chart} chartRootProps={{ maxH: 'sm' }} responsive>
+        <CartesianGrid stroke={chart.color('border')} vertical={false} />
+        <XAxis
+          axisLine={false}
+          dataKey={chart.key('month')}
+          tickFormatter={(value) => value.slice(0, 3)}
+          stroke={chart.color('border')}
+          label={{ value: 'Month', position: 'bottom' }}
+        />
+        <YAxis
+          axisLine={false}
+          tickLine={false}
+          tickMargin={10}
+          stroke={chart.color('border')}
+          label={{ value: 'Customers', position: 'left', angle: -90 }}
+        />
+        <Tooltip animationDuration={100} cursor={false} content={<Chart.Tooltip />} />
+        {chart.series.map((item) => (
+          <Line
+            key={item.name}
+            isAnimationActive={false}
+            dataKey={chart.key(item.name)}
+            stroke={chart.color(item.color)}
+            strokeWidth={2}
+            dot={false}
           />
-          <YAxis
-            axisLine={false}
-            tickLine={false}
-            tickMargin={10}
-            stroke={chart.color('border')}
-            label={{ value: 'Customers', position: 'left', angle: -90 }}
-          />
-          <Tooltip animationDuration={100} cursor={false} content={<Chart.Tooltip />} />
-          {chart.series.map((item) => (
-            <Line
-              key={item.name}
-              isAnimationActive={false}
-              dataKey={chart.key(item.name)}
-              stroke={chart.color(item.color)}
-              strokeWidth={2}
-              dot={false}
-            />
-          ))}
-        </LineChart.Root>
-      </Chart.Root>
+        ))}
+      </LineChart.Root>
     )
   },
 }

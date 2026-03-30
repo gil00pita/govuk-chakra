@@ -24,19 +24,17 @@ export const Default: Story = {
     })
 
     return (
-      <Chart.Root chart={chart} maxH="sm">
-        <AreaChart.Root data={chart.data} width={420} height={240}>
-          <CartesianGrid stroke={chart.color('border.muted')} vertical={false} />
-          <XAxis dataKey={chart.key('month')} />
-          <Tooltip content={<Chart.Tooltip />} />
-          <Area
-            dataKey={chart.key('users')}
-            fill={chart.color('teal.solid')}
-            stroke={chart.color('teal.solid')}
-            fillOpacity={0.2}
-          />
-        </AreaChart.Root>
-      </Chart.Root>
+      <AreaChart.Root chart={chart} chartRootProps={{ maxH: 'sm' }} width={420} height={240}>
+        <CartesianGrid stroke={chart.color('border.muted')} vertical={false} />
+        <XAxis dataKey={chart.key('month')} />
+        <Tooltip content={<Chart.Tooltip />} />
+        <Area
+          dataKey={chart.key('users')}
+          fill={chart.color('teal.solid')}
+          stroke={chart.color('teal.solid')}
+          fillOpacity={0.2}
+        />
+      </AreaChart.Root>
     )
   },
 }

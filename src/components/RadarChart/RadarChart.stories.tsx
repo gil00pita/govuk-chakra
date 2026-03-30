@@ -26,24 +26,22 @@ export const Default: Story = {
     })
 
     return (
-      <Chart.Root maxW="sm" chart={chart} mx="auto">
-        <RadarChart.Root data={chart.data} responsive>
-          <PolarGrid stroke={chart.color('border')} />
-          <PolarAngleAxis dataKey={chart.key('month')} />
-          <PolarRadiusAxis />
-          {chart.series.map((item) => (
-            <Radar
-              isAnimationActive={false}
-              key={item.name}
-              name={item.name}
-              dataKey={chart.key(item.name)}
-              stroke={chart.color(item.color)}
-              fill={chart.color(item.color)}
-              fillOpacity={0.2}
-            />
-          ))}
-        </RadarChart.Root>
-      </Chart.Root>
+      <RadarChart.Root chart={chart} chartRootProps={{ maxW: 'sm', mx: 'auto' }} responsive>
+        <PolarGrid stroke={chart.color('border')} />
+        <PolarAngleAxis dataKey={chart.key('month')} />
+        <PolarRadiusAxis />
+        {chart.series.map((item) => (
+          <Radar
+            isAnimationActive={false}
+            key={item.name}
+            name={item.name}
+            dataKey={chart.key(item.name)}
+            stroke={chart.color(item.color)}
+            fill={chart.color(item.color)}
+            fillOpacity={0.2}
+          />
+        ))}
+      </RadarChart.Root>
     )
   },
 }
@@ -66,24 +64,22 @@ export const Multiple: Story = {
     })
 
     return (
-      <Chart.Root maxW="sm" chart={chart} mx="auto">
-        <RadarChart.Root data={chart.data} responsive>
-          <PolarGrid stroke={chart.color('border')} />
-          <Legend content={<Chart.Legend />} />
-          {chart.series.map((item) => (
-            <Radar
-              isAnimationActive={false}
-              key={item.name}
-              name={item.name}
-              dataKey={chart.key(item.name)}
-              strokeWidth={2}
-              stroke={chart.color(item.color)}
-              fill={chart.color(item.color)}
-              fillOpacity={0.2}
-            />
-          ))}
-        </RadarChart.Root>
-      </Chart.Root>
+      <RadarChart.Root chart={chart} chartRootProps={{ maxW: 'sm', mx: 'auto' }} responsive>
+        <PolarGrid stroke={chart.color('border')} />
+        <Legend content={<Chart.Legend />} />
+        {chart.series.map((item) => (
+          <Radar
+            isAnimationActive={false}
+            key={item.name}
+            name={item.name}
+            dataKey={chart.key(item.name)}
+            strokeWidth={2}
+            stroke={chart.color(item.color)}
+            fill={chart.color(item.color)}
+            fillOpacity={0.2}
+          />
+        ))}
+      </RadarChart.Root>
     )
   },
 }
@@ -102,24 +98,22 @@ export const WithTooltip: Story = {
     })
 
     return (
-      <Chart.Root maxW="sm" chart={chart} mx="auto">
-        <RadarChart.Root data={chart.data} responsive>
-          <PolarGrid stroke={chart.color('border')} />
-          <PolarAngleAxis dataKey={chart.key('month')} />
-          <Tooltip content={<Chart.Tooltip />} />
-          {chart.series.map((item) => (
-            <Radar
-              isAnimationActive={false}
-              key={item.name}
-              name={item.name}
-              dataKey={chart.key(item.name)}
-              stroke={chart.color(item.color)}
-              fill={chart.color(item.color)}
-              fillOpacity={0.2}
-            />
-          ))}
-        </RadarChart.Root>
-      </Chart.Root>
+      <RadarChart.Root chart={chart} chartRootProps={{ maxW: 'sm', mx: 'auto' }} responsive>
+        <PolarGrid stroke={chart.color('border')} />
+        <PolarAngleAxis dataKey={chart.key('month')} />
+        <Tooltip content={<Chart.Tooltip />} />
+        {chart.series.map((item) => (
+          <Radar
+            isAnimationActive={false}
+            key={item.name}
+            name={item.name}
+            dataKey={chart.key(item.name)}
+            stroke={chart.color(item.color)}
+            fill={chart.color(item.color)}
+            fillOpacity={0.2}
+          />
+        ))}
+      </RadarChart.Root>
     )
   },
 }

@@ -1,4 +1,4 @@
-import { Chart, useChart } from '@chakra-ui/charts'
+import { useChart } from '@chakra-ui/charts'
 import { Scatter, XAxis, YAxis } from 'recharts'
 
 import { renderWithProvider } from '@/test/renderWithProvider'
@@ -15,13 +15,11 @@ function ScatterChartHarness() {
   })
 
   return (
-    <Chart.Root maxH="sm" chart={chart}>
-      <ScatterChart.Root width={400} height={240}>
-        <XAxis type="number" dataKey={chart.key('temperature')} />
-        <YAxis type="number" dataKey={chart.key('sales')} />
-        <Scatter data={chart.data} fill={chart.color('teal.solid')} isAnimationActive={false} />
-      </ScatterChart.Root>
-    </Chart.Root>
+    <ScatterChart.Root chart={chart} chartRootProps={{ maxH: 'sm' }} width={400} height={240}>
+      <XAxis type="number" dataKey={chart.key('temperature')} />
+      <YAxis type="number" dataKey={chart.key('sales')} />
+      <Scatter data={chart.data} fill={chart.color('teal.solid')} isAnimationActive={false} />
+    </ScatterChart.Root>
   )
 }
 

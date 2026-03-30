@@ -1,10 +1,31 @@
+import type { UseChartReturn } from '@chakra-ui/charts'
 import { PieChart as ChakraDonutChart } from 'recharts'
 import type { ComponentPropsWithoutRef } from 'react'
 
-export type DonutChartProps = ComponentPropsWithoutRef<typeof ChakraDonutChart>
+import { Chart, type ChartRootProps } from '@/components/Chart'
 
-export const DonutChartRoot = ChakraDonutChart
+export interface DonutChartProps<T> extends Omit<
+  ComponentPropsWithoutRef<typeof ChakraDonutChart>,
+  'data'
+> {
+  chart: UseChartReturn<T>
+  chartRootProps?: Omit<ChartRootProps<T>, 'chart' | 'children'>
+}
 
-export const DonutChart = Object.assign(ChakraDonutChart, {
-  Root: ChakraDonutChart,
+function DonutChartRoot<T>({ chart, chartRootProps, style, ...props }: DonutChartProps<T>) {
+  return (
+    <Chart.Root chart={chart} {...chartRootProps}>
+      <ChakraDonutChart
+        data={chart.data}
+        style={{ fontFamily: 'var(--chakra-fonts-body)', ...style }}
+        {...props}
+      />
+    </Chart.Root>
+  )
+}
+
+export { DonutChartRoot }
+
+export const DonutChart = Object.assign(DonutChartRoot, {
+  Root: DonutChartRoot,
 })

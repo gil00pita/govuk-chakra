@@ -1,4 +1,4 @@
-import { Chart, useChart } from '@chakra-ui/charts'
+import { useChart } from '@chakra-ui/charts'
 import { PolarAngleAxis, PolarGrid, PolarRadiusAxis, Radar } from 'recharts'
 
 import { renderWithProvider } from '@/test/renderWithProvider'
@@ -15,21 +15,19 @@ function RadarChartHarness() {
   })
 
   return (
-    <Chart.Root maxW="sm" chart={chart}>
-      <RadarChart.Root data={chart.data} width={320} height={240}>
-        <PolarGrid stroke={chart.color('border')} />
-        <PolarAngleAxis dataKey={chart.key('month')} />
-        <PolarRadiusAxis />
-        <Radar
-          isAnimationActive={false}
-          name="windows"
-          dataKey={chart.key('windows')}
-          stroke={chart.color('teal.solid')}
-          fill={chart.color('teal.solid')}
-          fillOpacity={0.2}
-        />
-      </RadarChart.Root>
-    </Chart.Root>
+    <RadarChart.Root chart={chart} chartRootProps={{ maxW: 'sm' }} width={320} height={240}>
+      <PolarGrid stroke={chart.color('border')} />
+      <PolarAngleAxis dataKey={chart.key('month')} />
+      <PolarRadiusAxis />
+      <Radar
+        isAnimationActive={false}
+        name="windows"
+        dataKey={chart.key('windows')}
+        stroke={chart.color('teal.solid')}
+        fill={chart.color('teal.solid')}
+        fillOpacity={0.2}
+      />
+    </RadarChart.Root>
   )
 }
 

@@ -1,33 +1,15 @@
-import type { ComponentType } from 'react'
-import { LuSettings } from 'react-icons/lu'
 import type { Meta, StoryObj } from '@storybook/react-vite'
 
 import { IconButton } from './IconButton'
+import { govukButtonIconVariantOptions, selectArgType } from '@/stories/storybookControls'
+import { FaCog } from 'react-icons/fa'
 
-type IconButtonStoryArgs = {
-  colorPalette?:
-    | 'gray'
-    | 'red'
-    | 'orange'
-    | 'yellow'
-    | 'green'
-    | 'teal'
-    | 'blue'
-    | 'cyan'
-    | 'purple'
-    | 'pink'
-  size?: '2xs' | 'xs' | 'sm' | 'md' | 'lg' | 'xl' | '2xl'
-  variant?: 'solid' | 'subtle' | 'surface' | 'outline' | 'ghost' | 'plain'
-}
-
-const meta: Meta<IconButtonStoryArgs> = {
+const meta: Meta<typeof IconButton> = {
   title: 'Chakra Components/Buttons/Icon Button',
-  component: IconButton.Root as unknown as ComponentType<IconButtonStoryArgs>,
+  component: IconButton,
   tags: ['autodocs'],
   args: {
-    colorPalette: 'gray',
-    size: 'md',
-    variant: 'outline',
+    variant: 'primary',
   },
 }
 
@@ -35,9 +17,12 @@ export default meta
 type Story = StoryObj<typeof meta>
 
 export const Default: Story = {
+  argTypes: {
+    variant: selectArgType(govukButtonIconVariantOptions),
+  },
   render: (args) => (
-    <IconButton.Root aria-label="Open settings" {...args}>
-      <LuSettings />
-    </IconButton.Root>
+    <IconButton aria-label="Open settings" {...args}>
+      <FaCog />
+    </IconButton>
   ),
 }

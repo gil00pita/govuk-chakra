@@ -1,10 +1,31 @@
+import type { UseChartReturn } from '@chakra-ui/charts'
 import { LineChart as ChakraLineChart } from 'recharts'
 import type { ComponentPropsWithoutRef } from 'react'
 
-export type LineChartProps = ComponentPropsWithoutRef<typeof ChakraLineChart>
+import { Chart, type ChartRootProps } from '@/components/Chart'
 
-export const LineChartRoot = ChakraLineChart
+export interface LineChartProps<T> extends Omit<
+  ComponentPropsWithoutRef<typeof ChakraLineChart>,
+  'data'
+> {
+  chart: UseChartReturn<T>
+  chartRootProps?: Omit<ChartRootProps<T>, 'chart' | 'children'>
+}
 
-export const LineChart = Object.assign(ChakraLineChart, {
-  Root: ChakraLineChart,
+function LineChartRoot<T>({ chart, chartRootProps, style, ...props }: LineChartProps<T>) {
+  return (
+    <Chart.Root chart={chart} {...chartRootProps}>
+      <ChakraLineChart
+        data={chart.data}
+        style={{ fontFamily: 'var(--chakra-fonts-body)', ...style }}
+        {...props}
+      />
+    </Chart.Root>
+  )
+}
+
+export { LineChartRoot }
+
+export const LineChart = Object.assign(LineChartRoot, {
+  Root: LineChartRoot,
 })

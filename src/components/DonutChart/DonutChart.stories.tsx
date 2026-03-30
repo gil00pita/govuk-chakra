@@ -24,20 +24,18 @@ export const Default: Story = {
     const chart = useChart({ data: donutData })
 
     return (
-      <Chart.Root boxSize="200px" chart={chart} mx="auto">
-        <DonutChart.Root responsive>
-          <Tooltip cursor={false} animationDuration={100} content={<Chart.Tooltip hideLabel />} />
-          <Pie
-            innerRadius={80}
-            outerRadius={100}
-            isAnimationActive={false}
-            data={chart.data}
-            dataKey={chart.key('value')}
-            nameKey="name"
-            shape={(props) => <Sector {...props} fill={chart.color(props.payload!.color)} />}
-          />
-        </DonutChart.Root>
-      </Chart.Root>
+      <DonutChart.Root chart={chart} chartRootProps={{ boxSize: '200px', mx: 'auto' }} responsive>
+        <Tooltip cursor={false} animationDuration={100} content={<Chart.Tooltip hideLabel />} />
+        <Pie
+          innerRadius={80}
+          outerRadius={100}
+          isAnimationActive={false}
+          data={chart.data}
+          dataKey={chart.key('value')}
+          nameKey="name"
+          shape={(props) => <Sector {...props} fill={chart.color(props.payload!.color)} />}
+        />
+      </DonutChart.Root>
     )
   },
 }
@@ -47,30 +45,28 @@ export const WithCenteredText: Story = {
     const chart = useChart({ data: donutData })
 
     return (
-      <Chart.Root boxSize="200px" chart={chart} mx="auto">
-        <DonutChart.Root responsive>
-          <Tooltip cursor={false} animationDuration={100} content={<Chart.Tooltip hideLabel />} />
-          <Pie
-            innerRadius={80}
-            outerRadius={100}
-            isAnimationActive={false}
-            data={chart.data}
-            dataKey={chart.key('value')}
-            nameKey="name"
-            shape={(props) => <Sector {...props} fill={chart.color(props.payload!.color)} />}
-          >
-            <Label
-              content={({ viewBox }) => (
-                <Chart.RadialText
-                  viewBox={viewBox}
-                  title={chart.getTotal('value').toLocaleString()}
-                  description="users"
-                />
-              )}
-            />
-          </Pie>
-        </DonutChart.Root>
-      </Chart.Root>
+      <DonutChart.Root chart={chart} chartRootProps={{ boxSize: '200px', mx: 'auto' }} responsive>
+        <Tooltip cursor={false} animationDuration={100} content={<Chart.Tooltip hideLabel />} />
+        <Pie
+          innerRadius={80}
+          outerRadius={100}
+          isAnimationActive={false}
+          data={chart.data}
+          dataKey={chart.key('value')}
+          nameKey="name"
+          shape={(props) => <Sector {...props} fill={chart.color(props.payload!.color)} />}
+        >
+          <Label
+            content={({ viewBox }) => (
+              <Chart.RadialText
+                viewBox={viewBox}
+                title={chart.getTotal('value').toLocaleString()}
+                description="users"
+              />
+            )}
+          />
+        </Pie>
+      </DonutChart.Root>
     )
   },
 }
@@ -80,21 +76,19 @@ export const WithAnglePadding: Story = {
     const chart = useChart({ data: donutData.slice(0, 3) })
 
     return (
-      <Chart.Root boxSize="200px" chart={chart} mx="auto">
-        <DonutChart.Root responsive>
-          <Tooltip cursor={false} animationDuration={100} content={<Chart.Tooltip hideLabel />} />
-          <Pie
-            innerRadius={80}
-            outerRadius={100}
-            isAnimationActive={false}
-            data={chart.data}
-            dataKey={chart.key('value')}
-            paddingAngle={8}
-            cornerRadius={4}
-            shape={(props) => <Sector {...props} fill={chart.color(props.payload!.color)} />}
-          />
-        </DonutChart.Root>
-      </Chart.Root>
+      <DonutChart.Root chart={chart} chartRootProps={{ boxSize: '200px', mx: 'auto' }} responsive>
+        <Tooltip cursor={false} animationDuration={100} content={<Chart.Tooltip hideLabel />} />
+        <Pie
+          innerRadius={80}
+          outerRadius={100}
+          isAnimationActive={false}
+          data={chart.data}
+          dataKey={chart.key('value')}
+          paddingAngle={8}
+          cornerRadius={4}
+          shape={(props) => <Sector {...props} fill={chart.color(props.payload!.color)} />}
+        />
+      </DonutChart.Root>
     )
   },
 }

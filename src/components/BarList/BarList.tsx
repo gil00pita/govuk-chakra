@@ -1,5 +1,5 @@
 import { BarList as ChakraBarList } from '@chakra-ui/charts'
-import { AbsoluteCenter, Box, Flex, HStack, Show, Stack, Text } from '@chakra-ui/react'
+import { AbsoluteCenter, Box, Flex, HStack, Show, Stack } from '@chakra-ui/react'
 import {
   createContext,
   useCallback,
@@ -7,6 +7,7 @@ import {
   type ComponentPropsWithoutRef,
   type ReactNode,
 } from 'react'
+import { Text } from '../Text'
 
 type BarListChart = ComponentPropsWithoutRef<typeof ChakraBarList.Root>['chart']
 
@@ -102,6 +103,7 @@ const BarListBar = ({
       {chart.data.map((item, index) => (
         <HStack
           key={item.name}
+          className="bar-list_item"
           flex={1}
           minH="var(--bar-size)"
           w="full"
@@ -125,7 +127,7 @@ const BarListBar = ({
               insetStart="0"
               top="0"
               bottom="0"
-              bg={getBarColor(item)}
+              bgColor={getBarColor(item) ? getBarColor(item) : 'blue.500'}
               rounded="l2"
               width="var(--bar-width)"
               style={{ ['--bar-width' as string]: `${getPercent(item.value)}%` }}
@@ -139,10 +141,13 @@ const BarListBar = ({
               w="full"
               minH="var(--bar-size)"
               px="2.5"
+              className="barlist-value"
             >
-              <Show when={label} fallback={item.name}>
-                {label?.({ payload: item, index }) as ReactNode}
-              </Show>
+              <Text fontSize={16} color={'white'}>
+                <Show when={label} fallback={item.name}>
+                  {label?.({ payload: item, index }) as ReactNode}
+                </Show>
+              </Text>
             </HStack>
           </Box>
         </HStack>
@@ -172,8 +177,11 @@ const BarListValue = ({
           justify="flex-end"
           textStyle="sm"
           fontWeight="medium"
+          className="list_value"
         >
-          {formatter(item.value)}
+          <Text color="fg" fontSize={16}>
+            {formatter(item.value)}
+          </Text>
         </HStack>
       ))}
     </Stack>
@@ -187,8 +195,8 @@ const BarListLabel = ({
   ...rest
 }: ComponentPropsWithoutRef<typeof ChakraBarList.Label>) => {
   return (
-    <Stack {...rest}>
-      <Text textStyle="xs" fontWeight="medium" color="fg.muted" textAlign={titleAlignment}>
+    <Stack className="bar_list_label" {...rest}>
+      <Text fontSize={19} fontWeight="medium" color="fg" textAlign={titleAlignment}>
         {title}
       </Text>
       {children}

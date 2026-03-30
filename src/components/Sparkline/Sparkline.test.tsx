@@ -1,4 +1,4 @@
-import { Chart, useChart } from '@chakra-ui/charts'
+import { useChart } from '@chakra-ui/charts'
 import { Line } from 'recharts'
 
 import { renderWithProvider } from '@/test/renderWithProvider'
@@ -11,11 +11,14 @@ function SparklineHarness() {
   })
 
   return (
-    <Chart.Root width="28" height="12" chart={chart}>
-      <Sparkline.Root data={chart.data} width={112} height={48}>
-        <Line dataKey={chart.key('value')} stroke={chart.color('teal.solid')} dot={false} />
-      </Sparkline.Root>
-    </Chart.Root>
+    <Sparkline.Root
+      chart={chart}
+      chartRootProps={{ width: '28', height: '12' }}
+      width={112}
+      height={48}
+    >
+      <Line dataKey={chart.key('value')} stroke={chart.color('teal.solid')} dot={false} />
+    </Sparkline.Root>
   )
 }
 

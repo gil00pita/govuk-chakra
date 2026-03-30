@@ -29,27 +29,25 @@ export const Default: Story = {
     })
 
     return (
-      <Chart.Root maxH="sm" chart={chart}>
-        <ScatterChart.Root responsive>
-          <XAxis
-            type="number"
-            dataKey={chart.key('temperature')}
-            stroke={chart.color('border')}
-            tickFormatter={(value) => `${value}°C`}
-            domain={[10, 'dataMax + 3']}
+      <ScatterChart.Root chart={chart} chartRootProps={{ maxH: 'sm' }} responsive>
+        <XAxis
+          type="number"
+          dataKey={chart.key('temperature')}
+          stroke={chart.color('border')}
+          tickFormatter={(value) => `${value}°C`}
+          domain={[10, 'dataMax + 3']}
+        />
+        <YAxis type="number" dataKey={chart.key('sales')} stroke={chart.color('border')} />
+        {chart.series.map((series, index) => (
+          <Scatter
+            name={series.name?.toString()}
+            key={index}
+            data={chart.data}
+            fill={chart.color(series.color)}
+            isAnimationActive={false}
           />
-          <YAxis type="number" dataKey={chart.key('sales')} stroke={chart.color('border')} />
-          {chart.series.map((series, index) => (
-            <Scatter
-              name={series.name?.toString()}
-              key={index}
-              data={chart.data}
-              fill={chart.color(series.color)}
-              isAnimationActive={false}
-            />
-          ))}
-        </ScatterChart.Root>
-      </Chart.Root>
+        ))}
+      </ScatterChart.Root>
     )
   },
 }
@@ -76,27 +74,30 @@ export const Multiple: Story = {
     const groupedData = chart.groupBy('id')
 
     return (
-      <Chart.Root maxH="sm" chart={chart}>
-        <ScatterChart.Root margin={{ top: 20, right: 30, bottom: 5, left: 0 }} responsive>
-          <XAxis
-            type="number"
-            dataKey={chart.key('x')}
-            stroke={chart.color('border')}
-            domain={['dataMin - 10', 'dataMax + 10']}
+      <ScatterChart.Root
+        chart={chart}
+        chartRootProps={{ maxH: 'sm' }}
+        margin={{ top: 20, right: 30, bottom: 5, left: 0 }}
+        responsive
+      >
+        <XAxis
+          type="number"
+          dataKey={chart.key('x')}
+          stroke={chart.color('border')}
+          domain={['dataMin - 10', 'dataMax + 10']}
+        />
+        <YAxis type="number" dataKey={chart.key('y')} stroke={chart.color('border')} />
+        <Tooltip cursor={{ strokeDasharray: '3 3' }} content={<Chart.Tooltip hideLabel />} />
+        {chart.series.map((series, index) => (
+          <Scatter
+            name={series.label?.toString()}
+            key={index}
+            data={groupedData[index]}
+            fill={chart.color(series.color)}
+            isAnimationActive={false}
           />
-          <YAxis type="number" dataKey={chart.key('y')} stroke={chart.color('border')} />
-          <Tooltip cursor={{ strokeDasharray: '3 3' }} content={<Chart.Tooltip hideLabel />} />
-          {chart.series.map((series, index) => (
-            <Scatter
-              name={series.label?.toString()}
-              key={index}
-              data={groupedData[index]}
-              fill={chart.color(series.color)}
-              isAnimationActive={false}
-            />
-          ))}
-        </ScatterChart.Root>
-      </Chart.Root>
+        ))}
+      </ScatterChart.Root>
     )
   },
 }
@@ -116,22 +117,25 @@ export const WithLegend: Story = {
     })
 
     return (
-      <Chart.Root maxH="sm" chart={chart}>
-        <ScatterChart.Root margin={{ top: 20, right: 30, bottom: 5, left: 0 }} responsive>
-          <XAxis type="number" dataKey={chart.key('x')} stroke={chart.color('border')} />
-          <Legend content={<Chart.Legend />} />
-          <YAxis type="number" dataKey={chart.key('y')} stroke={chart.color('border')} />
-          {chart.series.map((series, index) => (
-            <Scatter
-              name={series.label?.toString()}
-              key={index}
-              data={chart.data}
-              fill={chart.color(series.color)}
-              isAnimationActive={false}
-            />
-          ))}
-        </ScatterChart.Root>
-      </Chart.Root>
+      <ScatterChart.Root
+        chart={chart}
+        chartRootProps={{ maxH: 'sm' }}
+        margin={{ top: 20, right: 30, bottom: 5, left: 0 }}
+        responsive
+      >
+        <XAxis type="number" dataKey={chart.key('x')} stroke={chart.color('border')} />
+        <Legend content={<Chart.Legend />} />
+        <YAxis type="number" dataKey={chart.key('y')} stroke={chart.color('border')} />
+        {chart.series.map((series, index) => (
+          <Scatter
+            name={series.label?.toString()}
+            key={index}
+            data={chart.data}
+            fill={chart.color(series.color)}
+            isAnimationActive={false}
+          />
+        ))}
+      </ScatterChart.Root>
     )
   },
 }

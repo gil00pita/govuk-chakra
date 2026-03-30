@@ -24,6 +24,23 @@ export const chakraVariantOptions = [
   'plain',
 ] as const
 
+export const govukButtonVariantOptions = [
+  'primary',
+  'secondary',
+  'error',
+  'inverse',
+  'link',
+] as const
+
+export const govukButtonIconVariantOptions = [
+  'primary',
+  'secondary',
+  'flat',
+  'error',
+  'inverse',
+  'link',
+] as const
+
 export const htmlElementOptions = [
   'div',
   'span',

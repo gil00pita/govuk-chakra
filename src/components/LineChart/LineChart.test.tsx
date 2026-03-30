@@ -15,15 +15,13 @@ function LineChartHarness() {
   })
 
   return (
-    <Chart.Root maxH="sm" chart={chart}>
-      <LineChart.Root data={chart.data} width={400} height={240}>
-        <CartesianGrid stroke={chart.color('border')} vertical={false} />
-        <XAxis dataKey={chart.key('month')} />
-        <YAxis />
-        <Tooltip content={<Chart.Tooltip />} />
-        <Line dataKey={chart.key('sale')} stroke={chart.color('teal.solid')} />
-      </LineChart.Root>
-    </Chart.Root>
+    <LineChart.Root chart={chart} chartRootProps={{ maxH: 'sm' }} width={400} height={240}>
+      <CartesianGrid stroke={chart.color('border')} vertical={false} />
+      <XAxis dataKey={chart.key('month')} />
+      <YAxis />
+      <Tooltip content={<Chart.Tooltip />} />
+      <Line dataKey={chart.key('sale')} stroke={chart.color('teal.solid')} />
+    </LineChart.Root>
   )
 }
 

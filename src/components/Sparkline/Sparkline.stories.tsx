@@ -1,4 +1,4 @@
-import { Chart, useChart } from '@chakra-ui/charts'
+import { useChart } from '@chakra-ui/charts'
 import { Area, Bar, Line, Rectangle, ReferenceLine } from 'recharts'
 import type { Meta, StoryObj } from '@storybook/react-vite'
 
@@ -29,21 +29,19 @@ export const Default: Story = {
     })
 
     return (
-      <Chart.Root width="28" height="12" chart={chart}>
-        <AreaChart.Root data={chart.data} responsive>
-          {chart.series.map((item) => (
-            <Area
-              key={item.name}
-              isAnimationActive={false}
-              dataKey={chart.key(item.name)}
-              fill={chart.color(item.color)}
-              fillOpacity={0.2}
-              stroke={chart.color(item.color)}
-              strokeWidth={2}
-            />
-          ))}
-        </AreaChart.Root>
-      </Chart.Root>
+      <AreaChart.Root chart={chart} chartRootProps={{ width: '28', height: '12' }} responsive>
+        {chart.series.map((item) => (
+          <Area
+            key={item.name}
+            isAnimationActive={false}
+            dataKey={chart.key(item.name)}
+            fill={chart.color(item.color)}
+            fillOpacity={0.2}
+            stroke={chart.color(item.color)}
+            strokeWidth={2}
+          />
+        ))}
+      </AreaChart.Root>
     )
   },
 }
@@ -63,20 +61,18 @@ export const LineVariant: Story = {
     })
 
     return (
-      <Chart.Root width="28" height="12" chart={chart}>
-        <Sparkline.Root data={chart.data} responsive>
-          {chart.series.map((item) => (
-            <Line
-              key={item.name}
-              isAnimationActive={false}
-              dataKey={chart.key(item.name)}
-              stroke={chart.color(item.color)}
-              strokeWidth={2}
-              dot={false}
-            />
-          ))}
-        </Sparkline.Root>
-      </Chart.Root>
+      <Sparkline.Root chart={chart} chartRootProps={{ width: '28', height: '12' }} responsive>
+        {chart.series.map((item) => (
+          <Line
+            key={item.name}
+            isAnimationActive={false}
+            dataKey={chart.key(item.name)}
+            stroke={chart.color(item.color)}
+            strokeWidth={2}
+            dot={false}
+          />
+        ))}
+      </Sparkline.Root>
     )
   },
 }
@@ -95,17 +91,20 @@ export const BarVariant: Story = {
     })
 
     return (
-      <Chart.Root width="28" height="12" chart={chart}>
-        <BarChart.Root data={chart.data} barSize={8} responsive>
-          <Bar
-            isAnimationActive={false}
-            dataKey={chart.key('value')}
-            fill={chart.color('teal.solid')}
-            stroke=""
-            shape={(props) => <Rectangle {...props} fill={chart.color(props.payload!.fill)} />}
-          />
-        </BarChart.Root>
-      </Chart.Root>
+      <BarChart.Root
+        chart={chart}
+        chartRootProps={{ width: '28', height: '12' }}
+        barSize={8}
+        responsive
+      >
+        <Bar
+          isAnimationActive={false}
+          dataKey={chart.key('value')}
+          fill={chart.color('teal.solid')}
+          stroke=""
+          shape={(props) => <Rectangle {...props} fill={chart.color(props.payload!.fill)} />}
+        />
+      </BarChart.Root>
     )
   },
 }
@@ -125,40 +124,38 @@ export const WithReference: Story = {
     })
 
     return (
-      <Chart.Root maxW="200px" chart={chart}>
-        <Sparkline.Root data={chart.data} responsive>
-          {chart.series.map((item) => (
-            <Line
-              key={item.name}
-              isAnimationActive={false}
-              dataKey={chart.key(item.name)}
-              dot={false}
-              stroke={chart.color(item.color)}
-              strokeWidth={2}
-            />
-          ))}
-          <ReferenceLine
-            y={chart.getMin('value')}
-            stroke={chart.color('border.emphasized')}
-            strokeDasharray="4 4"
-            label={{
-              value: chart.getMin('value'),
-              position: 'left',
-              fill: chart.color('fg.muted'),
-            }}
+      <Sparkline.Root chart={chart} chartRootProps={{ maxW: '200px' }} responsive>
+        {chart.series.map((item) => (
+          <Line
+            key={item.name}
+            isAnimationActive={false}
+            dataKey={chart.key(item.name)}
+            dot={false}
+            stroke={chart.color(item.color)}
+            strokeWidth={2}
           />
-          <ReferenceLine
-            y={chart.getMax('value')}
-            stroke={chart.color('border.emphasized')}
-            strokeDasharray="4 4"
-            label={{
-              value: chart.getMax('value'),
-              position: 'right',
-              fill: chart.color('fg.muted'),
-            }}
-          />
-        </Sparkline.Root>
-      </Chart.Root>
+        ))}
+        <ReferenceLine
+          y={chart.getMin('value')}
+          stroke={chart.color('border.emphasized')}
+          strokeDasharray="4 4"
+          label={{
+            value: chart.getMin('value'),
+            position: 'left',
+            fill: chart.color('fg.muted'),
+          }}
+        />
+        <ReferenceLine
+          y={chart.getMax('value')}
+          stroke={chart.color('border.emphasized')}
+          strokeDasharray="4 4"
+          label={{
+            value: chart.getMax('value'),
+            position: 'right',
+            fill: chart.color('fg.muted'),
+          }}
+        />
+      </Sparkline.Root>
     )
   },
 }

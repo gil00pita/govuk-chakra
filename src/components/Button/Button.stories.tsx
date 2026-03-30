@@ -3,7 +3,7 @@ import type { Meta, StoryObj } from '@storybook/react-vite'
 import { Button } from '@/components'
 import { Stack } from '@chakra-ui/react'
 import { pxToRem } from '@/utils'
-import { selectArgType } from '@/stories/storybookControls'
+import { govukButtonVariantOptions, selectArgType } from '@/stories/storybookControls'
 
 const meta: Meta<typeof Button> = {
   title: 'GOV.UK/Components/Button',
@@ -27,7 +27,7 @@ type Story = StoryObj<typeof meta>
 
 export const Default: Story = {
   argTypes: {
-    variant: selectArgType(['primary', 'secondary', 'error', 'inverse', 'link']),
+    variant: selectArgType(govukButtonVariantOptions),
     startButton: { control: 'boolean' },
   },
   args: {

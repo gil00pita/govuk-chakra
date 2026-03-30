@@ -14,19 +14,17 @@ function DonutChartHarness() {
   })
 
   return (
-    <Chart.Root boxSize="200px" chart={chart}>
-      <DonutChart.Root width={200} height={200}>
-        <Tooltip cursor={false} animationDuration={100} content={<Chart.Tooltip hideLabel />} />
-        <Pie
-          innerRadius={80}
-          outerRadius={100}
-          isAnimationActive={false}
-          data={chart.data}
-          dataKey={chart.key('value')}
-          fill={chart.color('blue.solid')}
-        />
-      </DonutChart.Root>
-    </Chart.Root>
+    <DonutChart.Root chart={chart} chartRootProps={{ boxSize: '200px' }} width={200} height={200}>
+      <Tooltip cursor={false} animationDuration={100} content={<Chart.Tooltip hideLabel />} />
+      <Pie
+        innerRadius={80}
+        outerRadius={100}
+        isAnimationActive={false}
+        data={chart.data}
+        dataKey={chart.key('value')}
+        fill={chart.color('blue.solid')}
+      />
+    </DonutChart.Root>
   )
 }
 

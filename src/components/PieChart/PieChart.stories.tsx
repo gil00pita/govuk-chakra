@@ -24,16 +24,14 @@ export const Default: Story = {
     const chart = useChart({ data: pieData })
 
     return (
-      <Chart.Root boxSize="200px" mx="auto" chart={chart}>
-        <PieChart.Root responsive>
-          <Pie
-            isAnimationActive={false}
-            data={chart.data}
-            dataKey={chart.key('value')}
-            shape={(props) => <Sector {...props} fill={chart.color(props.payload!.color)} />}
-          />
-        </PieChart.Root>
-      </Chart.Root>
+      <PieChart.Root chart={chart} chartRootProps={{ boxSize: '200px', mx: 'auto' }} responsive>
+        <Pie
+          isAnimationActive={false}
+          data={chart.data}
+          dataKey={chart.key('value')}
+          shape={(props) => <Sector {...props} fill={chart.color(props.payload!.color)} />}
+        />
+      </PieChart.Root>
     )
   },
 }
@@ -49,18 +47,16 @@ export const WithLegend: Story = {
     })
 
     return (
-      <Chart.Root boxSize="200px" mx="auto" chart={chart}>
-        <PieChart.Root responsive>
-          <Legend content={<Chart.Legend />} />
-          <Pie
-            isAnimationActive={false}
-            data={chart.data}
-            dataKey={chart.key('value')}
-            nameKey="name"
-            shape={(props) => <Sector {...props} fill={chart.color(props.payload!.color)} />}
-          />
-        </PieChart.Root>
-      </Chart.Root>
+      <PieChart.Root chart={chart} chartRootProps={{ boxSize: '200px', mx: 'auto' }} responsive>
+        <Legend content={<Chart.Legend />} />
+        <Pie
+          isAnimationActive={false}
+          data={chart.data}
+          dataKey={chart.key('value')}
+          nameKey="name"
+          shape={(props) => <Sector {...props} fill={chart.color(props.payload!.color)} />}
+        />
+      </PieChart.Root>
     )
   },
 }
@@ -70,19 +66,17 @@ export const WithLabelInside: Story = {
     const chart = useChart({ data: pieData })
 
     return (
-      <Chart.Root boxSize="320px" mx="auto" chart={chart}>
-        <PieChart.Root responsive>
-          <Tooltip cursor={false} animationDuration={100} content={<Chart.Tooltip hideLabel />} />
-          <Pie
-            isAnimationActive={false}
-            data={chart.data}
-            dataKey={chart.key('value')}
-            shape={(props) => <Sector {...props} fill={chart.color(props.payload!.color)} />}
-          >
-            <LabelList position="inside" fill="white" stroke="none" />
-          </Pie>
-        </PieChart.Root>
-      </Chart.Root>
+      <PieChart.Root chart={chart} chartRootProps={{ boxSize: '320px', mx: 'auto' }} responsive>
+        <Tooltip cursor={false} animationDuration={100} content={<Chart.Tooltip hideLabel />} />
+        <Pie
+          isAnimationActive={false}
+          data={chart.data}
+          dataKey={chart.key('value')}
+          shape={(props) => <Sector {...props} fill={chart.color(props.payload!.color)} />}
+        >
+          <LabelList position="inside" fill="white" stroke="none" />
+        </Pie>
+      </PieChart.Root>
     )
   },
 }

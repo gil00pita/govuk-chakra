@@ -3,8 +3,13 @@ import type { ComponentPropsWithoutRef } from 'react'
 
 export type BarSegmentProps = ComponentPropsWithoutRef<typeof ChakraBarSegment.Root>
 
-export const BarSegmentRoot = ChakraBarSegment.Root
+const BarSegmentRoot = ({ fontFamily = 'body', ...props }: BarSegmentProps) => {
+  return <ChakraBarSegment.Root fontFamily={fontFamily} {...props} />
+}
 
-export const BarSegment = Object.assign(ChakraBarSegment.Root, {
+export { BarSegmentRoot }
+
+export const BarSegment = Object.assign(BarSegmentRoot, {
   ...ChakraBarSegment,
+  Root: BarSegmentRoot,
 })

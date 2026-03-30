@@ -15,15 +15,13 @@ function BarChartHarness() {
   })
 
   return (
-    <Chart.Root chart={chart} maxH="sm">
-      <BarChart.Root data={chart.data} width={420} height={240}>
-        <CartesianGrid stroke={chart.color('border.muted')} vertical={false} />
-        <XAxis dataKey={chart.key('month')} />
-        <YAxis />
-        <Tooltip content={<Chart.Tooltip />} />
-        <Bar dataKey={chart.key('users')} fill={chart.color('teal.solid')} radius={4} />
-      </BarChart.Root>
-    </Chart.Root>
+    <BarChart.Root chart={chart} chartRootProps={{ maxH: 'sm' }} width={420} height={240}>
+      <CartesianGrid stroke={chart.color('border.muted')} vertical={false} />
+      <XAxis dataKey={chart.key('month')} />
+      <YAxis />
+      <Tooltip content={<Chart.Tooltip />} />
+      <Bar dataKey={chart.key('users')} fill={chart.color('teal.solid')} radius={4} />
+    </BarChart.Root>
   )
 }
 
