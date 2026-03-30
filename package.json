@@ -83,9 +83,12 @@
     "format": "prettier --write .",
     "format:check": "prettier --check .",
     "format:all": "yarn lint:fix && yarn format",
-    "push": "npm version patch && git push",
-    "push-minor": "npm version minor && git push",
-    "push-major": "npm version major && git push"
+    "release:patch": "npm version patch && git push --follow-tags && npm publish",
+    "release:minor": "npm version minor && git push --follow-tags && npm publish",
+    "release:major": "npm version major && git push --follow-tags && npm publish",
+    "push": "npm run release:patch",
+    "push-minor": "npm run release:minor",
+    "push-major": "npm run release:major"
   },
   "browserslist": {
     "production": [
