@@ -5,6 +5,7 @@ import { selectArgType } from '@/stories/storybookControls'
 import { Alert } from './Alert'
 
 type AlertStoryArgs = {
+  showIndicator?: boolean
   status?: 'info' | 'warning' | 'success' | 'error' | 'neutral'
   variant?: 'subtle' | 'surface' | 'outline' | 'solid'
   title?: string
@@ -18,6 +19,7 @@ const meta: Meta<AlertStoryArgs> = {
   args: {
     status: 'info',
     variant: 'subtle',
+    showIndicator: true,
     title: 'Application incomplete',
     description: 'You have 7 days left to send your application.',
   },
@@ -34,6 +36,9 @@ const meta: Meta<AlertStoryArgs> = {
     description: {
       control: 'text',
     },
+    showIndicator: {
+      control: 'boolean',
+    },
   },
 }
 
@@ -44,10 +49,8 @@ export const Default: Story = {
   render: (args) => (
     <Alert.Root {...args}>
       <Alert.Indicator />
-      <Alert.Content>
-        <Alert.Title>{args.title}</Alert.Title>
-        <Alert.Description>{args.description}</Alert.Description>
-      </Alert.Content>
+      <Alert.Title>{args.title}</Alert.Title>
+      <Alert.Description>{args.description}</Alert.Description>
     </Alert.Root>
   ),
 }

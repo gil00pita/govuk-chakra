@@ -1,0 +1,182 @@
+import { Meta, Canvas, Unstyled } from '@storybook/addon-docs/blocks';
+import * as TypographyStories from './Typography.stories';
+import { CodeBlock, Table } from '@/components';
+
+<Meta title="MDX/Typography" of={TypographyStories} />
+
+# Typography
+
+[Text](https://www.chakra-ui.com/docs/components/text) component is used to render text and paragraphs within an interface.
+
+The [Heading](https://www.chakra-ui.com/docs/components/heading) component is used to render headings and titles.
+
+[GOV.UK Design System Typography guidelines](https://design-system.service.gov.uk/styles/typeface/).
+
+## Type Scale
+
+GOV.UK Type Scale: **16**, **19**, **24**, **27**, **36**, **48**, **80**.
+
+### Responsive behaviour
+
+The type scale changes based on screen size.
+
+The scale for **large screens** is used when the screen is wider than the tablet breakpoint (640px).
+
+The component will auto adjust the font size depending of the screen size.
+
+## Heading
+
+<Unstyled>
+  <Table.Root mb={8} variant="striped" size="sm">
+    <Table.Header>
+      <Table.Row>
+        <Table.ColumnHeader>Size</Table.ColumnHeader>
+        <Table.ColumnHeader>Used by</Table.ColumnHeader>
+        <Table.ColumnHeader>Output Size [Tablet - Desktop]</Table.ColumnHeader>
+      </Table.Row>
+    </Table.Header>
+    <Table.Body>
+      <Table.Row>
+        <Table.RowHeader>80</Table.RowHeader>
+        <Table.Cell>Only used in exceptional circumstances</Table.Cell>
+        <Table.Cell>53px - 80px</Table.Cell>
+      </Table.Row>
+      <Table.Row>
+        <Table.RowHeader>48</Table.RowHeader>
+        <Table.Cell>Extra Large Heading</Table.Cell>
+        <Table.Cell>32px - 48px</Table.Cell>
+      </Table.Row>
+      <Table.Row>
+        <Table.RowHeader>36</Table.RowHeader>
+        <Table.Cell>Large Heading</Table.Cell>
+        <Table.Cell>27px - 36px</Table.Cell>
+      </Table.Row>
+      <Table.Row>
+        <Table.RowHeader>24</Table.RowHeader>
+        <Table.Cell>Medium Heading</Table.Cell>
+        <Table.Cell>21px - 24px</Table.Cell>
+      </Table.Row>
+      <Table.Row>
+        <Table.RowHeader>19</Table.RowHeader>
+        <Table.Cell>Small Heading</Table.Cell>
+        <Table.Cell>19px - 19px</Table.Cell>
+      </Table.Row>
+      <Table.Row>
+        <Table.RowHeader>16</Table.RowHeader>
+        <Table.Cell>Extra Small Heading</Table.Cell>
+        <Table.Cell>16px - 16px</Table.Cell>
+      </Table.Row>
+    </Table.Body>
+  </Table.Root>
+</Unstyled>
+
+
+<CodeBlock.Root code={`import { Heading } from "@chakra-ui/react"`} language="tsx" maxW="100%" mb={8}>
+  <CodeBlock.Header>
+    <CodeBlock.Title>Heading import</CodeBlock.Title>
+    <CodeBlock.Control>
+      <CodeBlock.CopyButton copyLabel="Copy" copiedLabel="Copied" />
+    </CodeBlock.Control>
+  </CodeBlock.Header>
+  <CodeBlock.Content>
+    <CodeBlock.Code>
+      <CodeBlock.CodeText />
+    </CodeBlock.Code>
+  </CodeBlock.Content>
+</CodeBlock.Root>
+
+<CodeBlock.Root
+  code={`<Heading fontSize={48}>
+  This is a heading component. It can be used for titles and section headings.
+</Heading>`}
+  language="tsx"
+  maxW="100%"
+  mb={8}
+>
+  <CodeBlock.Header>
+    <CodeBlock.Title>Heading usage</CodeBlock.Title>
+    <CodeBlock.Control>
+      <CodeBlock.CopyButton copyLabel="Copy" copiedLabel="Copied" />
+    </CodeBlock.Control>
+  </CodeBlock.Header>
+  <CodeBlock.Content>
+    <CodeBlock.Code>
+      <CodeBlock.CodeText />
+    </CodeBlock.Code>
+  </CodeBlock.Content>
+</CodeBlock.Root>
+
+<Canvas of={TypographyStories.Headings} />
+
+## Text
+
+<Unstyled>
+  <Table.Root mb={8}>
+    <Table.Header>
+      <Table.Row>
+        <Table.ColumnHeader>Font Size</Table.ColumnHeader>
+        <Table.ColumnHeader>Used by</Table.ColumnHeader>
+        <Table.ColumnHeader>Output Size [Tablet - Desktop]</Table.ColumnHeader>
+      </Table.Row>
+    </Table.Header>
+    <Table.Body>
+      <Table.Row>
+        <Table.RowHeader>27</Table.RowHeader>
+        <Table.Cell>Only used in exceptional circumstances</Table.Cell>
+        <Table.Cell>27px - 21px</Table.Cell>
+      </Table.Row>
+      <Table.Row>
+        <Table.RowHeader>24</Table.RowHeader>
+        <Table.Cell>Large Body</Table.Cell>
+        <Table.Cell>24px - 21px</Table.Cell>
+      </Table.Row>
+      <Table.Row>
+        <Table.RowHeader>19</Table.RowHeader>
+        <Table.Cell>Medium Body</Table.Cell>
+        <Table.Cell>19px - 19px</Table.Cell>
+      </Table.Row>
+      <Table.Row>
+        <Table.RowHeader>16</Table.RowHeader>
+        <Table.Cell>Small Body</Table.Cell>
+        <Table.Cell>16px - 16px</Table.Cell>
+      </Table.Row>
+    </Table.Body>
+  </Table.Root>
+</Unstyled>
+
+<CodeBlock.Root code={`import { Text } from "@chakra-ui/react"`} language="tsx" maxW="100%" mb={8}>
+  <CodeBlock.Header>
+    <CodeBlock.Title>Text import</CodeBlock.Title>
+    <CodeBlock.Control>
+      <CodeBlock.CopyButton copyLabel="Copy" copiedLabel="Copied" />
+    </CodeBlock.Control>
+  </CodeBlock.Header>
+  <CodeBlock.Content>
+    <CodeBlock.Code>
+      <CodeBlock.CodeText />
+    </CodeBlock.Code>
+  </CodeBlock.Content>
+</CodeBlock.Root>
+
+<CodeBlock.Root
+  code={`<Text fontSize="24">
+  This is a text component. It can be used for paragraphs, labels, and other text content.
+</Text>`}
+  language="tsx"
+  maxW="100%"
+  mb={8}
+>
+  <CodeBlock.Header>
+    <CodeBlock.Title>Text usage</CodeBlock.Title>
+    <CodeBlock.Control>
+      <CodeBlock.CopyButton copyLabel="Copy" copiedLabel="Copied" />
+    </CodeBlock.Control>
+  </CodeBlock.Header>
+  <CodeBlock.Content>
+    <CodeBlock.Code>
+      <CodeBlock.CodeText />
+    </CodeBlock.Code>
+  </CodeBlock.Content>
+</CodeBlock.Root>
+
+<Canvas of={TypographyStories.TextVariants} />

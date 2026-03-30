@@ -1,4 +1,4 @@
-import { Box, Card, Grid, HStack, Separator, VStack } from '@chakra-ui/react'
+import { Box, Card, Grid, HStack, Image, Separator, VStack } from '@chakra-ui/react'
 import type { Meta, StoryObj } from '@storybook/react-vite'
 
 import { Heading, Link, Text } from '@/components'
@@ -108,10 +108,29 @@ export const Overview: Story = {
     <Box px={{ base: 6, md: 10 }} py={{ base: 8, md: 12 }}>
       <VStack align="stretch" gap={10} maxW="1100px" mx="auto">
         <VStack align="start" gap={4}>
-          <Text fontSize="sm" fontWeight="bold" textTransform="uppercase" letterSpacing="wide">
+          <Heading fontWeight="bold" textTransform="uppercase" letterSpacing="wide">
             GOV.UK Chakra
-          </Text>
-          <Heading size="xl">A GOV.UK-flavoured skin for Chakra UI</Heading>
+          </Heading>
+          <Heading size="md">A GOV.UK-flavoured skin for Chakra UI</Heading>
+          <HStack gap={4} wrap="wrap">
+            <Link href="https://gov-uk-gds-react-chakra.vercel.app">
+              <Image
+                src="https://cdn.jsdelivr.net/gh/storybookjs/brand@main/badge/badge-storybook.svg"
+                title="Live Demo Storybook"
+              />
+            </Link>
+            <Image
+              src="https://vercelbadge.vercel.app/api/gil00pita/govuk-chakra"
+              title="Build Status"
+            />
+            <Image src="https://img.shields.io/npm/v/govuk-chakra" title="NPM Version" />
+            <Image src="https://img.shields.io/npm/dm/govuk-chakra" title="NPM Downloads" />
+            <Image
+              src="https://img.shields.io/npm/last-update/govuk-chakra"
+              title="NPM Last Update"
+            />
+            <Image src="https://img.shields.io/npm/l/govuk-chakra" title="NPM License" />
+          </HStack>
           <Text fontSize="lg" maxW="4xl">
             <Box as="span" fontFamily="mono">
               govuk-chakra
@@ -126,6 +145,9 @@ export const Overview: Story = {
             <Link href="https://www.npmjs.com/package/govuk-chakra">Npm Page</Link>
             <Link href="https://www.figma.com/community/file/1550623138170727031/gov-uk-design-system-2025">
               GOV.UK Design System Figma File in Community
+            </Link>
+            <Link href="https://design-system.service.gov.uk/get-started/">
+              GOV.UK Design System
             </Link>
           </HStack>
         </VStack>

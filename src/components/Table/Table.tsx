@@ -1,7 +1,7 @@
 import { Table as ChakraTable, type HTMLChakraProps } from '@chakra-ui/react'
-import { forwardRef, type ComponentProps } from 'react'
+import { createContext, forwardRef, useContext, type ComponentProps } from 'react'
 
-import { pxToRem } from '@/utils'
+import { govukTypeScale, pxToRem } from '@/utils'
 
 type ChakraTableRootProps = ComponentProps<typeof ChakraTable.Root>
 type ChakraTableSectionProps = ComponentProps<typeof ChakraTable.Header>
@@ -24,19 +24,61 @@ export type TableColumnHeaderProps = ChakraTableColumnHeaderProps & NumericAlign
 export type TableCellProps = ChakraTableCellProps & NumericAlignmentProps
 export type TableRowHeaderProps = HTMLChakraProps<'th'> & NumericAlignmentProps
 
-const cellPadding = `${pxToRem(10)} ${pxToRem(20)} ${pxToRem(10)} 0`
+type TableSize = 'sm' | 'md' | 'lg'
 
-const TableRoot = forwardRef<HTMLTableElement, TableRootProps>(function TableRoot(props, ref) {
+const cellPadding = (size: TableSize = 'md') => {
+  const paddingBySize = {
+    sm: pxToRem(10),
+    md: pxToRem(15),
+    lg: pxToRem(20),
+  } satisfies Record<TableSize, string>
+
+  const padding = paddingBySize[size]
+  return `${padding} ${pxToRem(20)} ${padding} ${pxToRem(20)}`
+}
+
+const cellPaddingPlain = `${pxToRem(10)} ${pxToRem(20)} ${pxToRem(10)} 0`
+
+interface TableContextValue {
+  striped?: boolean
+  size?: TableSize
+}
+
+type GovukFontSize = keyof typeof govukTypeScale
+
+const TableContext = createContext<TableContextValue>({ striped: false, size: 'lg' })
+
+const useTableContext = () => useContext(TableContext)
+
+const TableRoot = forwardRef<HTMLTableElement, TableRootProps>(function TableRoot(
+  { fontSize = 16, ...props },
+  ref
+) {
+  const { striped, ...restProps } = props
+  const isStriped = striped === true
+  const tableSize = props.size === 'sm' || props.size === 'lg' ? props.size : 'md'
+
+  const scale =
+    typeof fontSize === 'number' && fontSize in govukTypeScale
+      ? govukTypeScale[fontSize as GovukFontSize]
+      : null
+
   return (
-    <ChakraTable.Root
-      ref={ref}
-      width="100%"
-      borderCollapse="collapse"
-      color="fg"
-      fontSize={19}
-      lineHeight={1.3157894737}
-      {...props}
-    />
+    <TableContext.Provider value={{ striped: isStriped, size: tableSize }}>
+      <ChakraTable.Root
+        ref={ref}
+        width="100%"
+        borderCollapse="collapse"
+        color="fg"
+        fontSize={scale ? { base: scale.small.fontSize, md: scale.large.fontSize } : undefined}
+        lineHeight={
+          scale ? { base: scale.small.lineHeight, md: scale.large.lineHeight } : undefined
+        }
+        fontFamily="body"
+        striped={striped}
+        {...restProps}
+      />
+    </TableContext.Provider>
   )
 })
 
@@ -60,7 +102,7 @@ const TableCaption = forwardRef<HTMLTableCaptionElement, TableCaptionProps>(
 
 const TableHeader = forwardRef<HTMLTableSectionElement, TableHeaderProps>(
   function TableHeader(props, ref) {
-    return <ChakraTable.Header ref={ref} {...props} />
+    return <ChakraTable.Header ref={ref} borderBottomWidth="1px" {...props} />
   }
 )
 
@@ -77,30 +119,22 @@ const TableFooter = forwardRef<HTMLTableSectionElement, TableFooterProps>(
 )
 
 const TableRow = forwardRef<HTMLTableRowElement, TableRowProps>(function TableRow(props, ref) {
-  return (
-    <ChakraTable.Row
-      ref={ref}
-      borderBottom="1px solid"
-      borderColor="border"
-      bgColor={'transparent'}
-      {...props}
-    />
-  )
+  return <ChakraTable.Row ref={ref} {...props} />
 })
 
 const TableColumnHeader = forwardRef<HTMLTableCellElement, TableColumnHeaderProps>(
   function TableColumnHeader({ numeric = false, ...props }, ref) {
+    const { striped, size } = useTableContext()
+
     return (
       <ChakraTable.ColumnHeader
         ref={ref}
-        py={pxToRem(10)}
-        pe={0}
-        ps={0}
-        padding={cellPadding}
+        padding={striped ? cellPadding(size) : cellPaddingPlain}
         color="fg"
         fontWeight="700"
         textAlign={numeric ? 'right' : 'left'}
         verticalAlign="top"
+        borderColor="border"
         {...props}
       />
     )
@@ -111,16 +145,18 @@ const TableCell = forwardRef<HTMLTableCellElement, TableCellProps>(function Tabl
   { numeric = false, ...props },
   ref
 ) {
+  const { striped, size } = useTableContext()
+
   return (
     <ChakraTable.Cell
       ref={ref}
       py={pxToRem(10)}
-      pe={0}
-      ps={0}
-      padding={cellPadding}
+      padding={striped ? cellPadding(size) : cellPaddingPlain}
       color="fg"
       textAlign={numeric ? 'right' : 'left'}
       verticalAlign="top"
+      borderColor="border"
+      borderBottomWidth="1px"
       {...props}
     />
   )
@@ -128,6 +164,8 @@ const TableCell = forwardRef<HTMLTableCellElement, TableCellProps>(function Tabl
 
 const TableRowHeader = forwardRef<HTMLTableCellElement, TableRowHeaderProps>(
   function TableRowHeader({ numeric = false, ...props }, ref) {
+    const { striped, size } = useTableContext()
+
     return (
       <ChakraTable.Cell
         ref={ref}
@@ -136,11 +174,13 @@ const TableRowHeader = forwardRef<HTMLTableCellElement, TableRowHeaderProps>(
         py={pxToRem(10)}
         pe={0}
         ps={0}
-        padding={cellPadding}
+        padding={striped ? cellPadding(size) : cellPaddingPlain}
         color="fg"
         fontWeight="700"
         textAlign={numeric ? 'right' : 'left'}
         verticalAlign="top"
+        borderColor="border"
+        borderBottomWidth="1px"
         {...props}
       />
     )

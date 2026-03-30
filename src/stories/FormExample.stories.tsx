@@ -1,6 +1,7 @@
-import { Alert, HStack, Separator, VStack } from '@chakra-ui/react'
+import { HStack, Portal, Separator, VStack, createListCollection } from '@chakra-ui/react'
 import type { Meta, StoryObj } from '@storybook/react-vite'
 
+import { Alert } from '@/components/Alert'
 import { Button } from '@/components/Button'
 import { Checkbox } from '@/components/Checkbox'
 import { Fieldset } from '@/components/Fieldset'
@@ -8,6 +9,7 @@ import { GoAlert } from 'react-icons/go'
 import { Heading } from '@/components/Heading'
 import { Radio } from '@/components/Radio'
 import { Select } from '@/components/Select'
+import type { SelectItemData } from '@/components/Select'
 import { Text } from '@/components/Text'
 import { Textinput } from '@/components/Textinput'
 import { Textarea } from '@/components/Textarea'
@@ -22,6 +24,14 @@ const meta: Meta = {
 
 export default meta
 type Story = StoryObj<typeof meta>
+
+const contactOptions = createListCollection<SelectItemData>({
+  items: [
+    { label: 'Email', value: 'email' },
+    { label: 'Post', value: 'post' },
+    { label: 'Phone', value: 'phone' },
+  ],
+})
 
 function ContactMethodRadios() {
   return (
@@ -66,7 +76,9 @@ export const CompleteForm: Story = {
       <Text fontSize="lg">You can apply for a provisional driving licence online.</Text>
 
       <Alert.Root status="info">
-        <GoAlert />
+        <Alert.Indicator>
+          <GoAlert />
+        </Alert.Indicator>
         <Alert.Title>Error</Alert.Title>
         <Alert.Description>
           You must be at least 15 years and 9 months old to apply.
@@ -146,14 +158,23 @@ export const CompleteForm: Story = {
 
         <Fieldset.Root>
           <Fieldset.Legend mb={3}>How would you like to be contacted?</Fieldset.Legend>
-          <Select placeholder="Choose an option" defaultValue="">
-            <option value="" disabled>
-              Choose an option
-            </option>
-            <option value="email">Email</option>
-            <option value="post">Post</option>
-            <option value="phone">Phone</option>
-          </Select>
+          <Select.Root collection={contactOptions}>
+            <Select.HiddenSelect />
+            <Select.Control>
+              <Select.Trigger>
+                <Select.ValueText placeholder="Choose an option" />
+              </Select.Trigger>
+            </Select.Control>
+            <Portal>
+              <Select.Positioner>
+                <Select.Content>
+                  {contactOptions.items.map((item) => (
+                    <Select.Item key={item.value} item={item} />
+                  ))}
+                </Select.Content>
+              </Select.Positioner>
+            </Portal>
+          </Select.Root>
         </Fieldset.Root>
 
         <Fieldset.Root>
@@ -197,7 +218,9 @@ export const ErrorForm: Story = {
     <VStack gap={6} align="stretch" width="600px" p={6}>
       <Heading size="xl">There is a problem</Heading>
       <Alert.Root status="error" variant="subtle">
-        <GoAlert />
+        <Alert.Indicator>
+          <GoAlert />
+        </Alert.Indicator>
         <Alert.Title>You must fix the errors on this page</Alert.Title>
         <Alert.Description>
           <VStack align="start" gap={1} mt={2}>

@@ -6,6 +6,8 @@ const srcPath = (relativePath = '.') =>
 
 const config: StorybookConfig = {
   stories: [
+    '../src/stories/**/*.docs.mdx',
+    '../src/components/**/*.docs.mdx',
     '../src/stories/**/*.stories.@(js|jsx|mjs|ts|tsx)',
     '../src/components/**/*.stories.@(js|jsx|mjs|ts|tsx)',
   ],

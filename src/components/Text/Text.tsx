@@ -28,8 +28,8 @@ export const Text = forwardRef<HTMLParagraphElement, TextProps>(function Text(
     return (
       <ChakraText
         ref={ref}
-        fontSize={{ base: scale.small.fontSize, sm: scale.large.fontSize }}
-        lineHeight={{ base: scale.small.lineHeight, sm: scale.large.lineHeight }}
+        fontSize={{ base: scale.small.fontSize, md: scale.large.fontSize }}
+        lineHeight={{ base: scale.small.lineHeight, md: scale.large.lineHeight }}
         fontWeight={fontWeight}
         fontFamily="body"
         {...props}

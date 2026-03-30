@@ -15,6 +15,13 @@ const govUkThemeConfig = defineConfig({
     },
   },
   theme: {
+    breakpoints: {
+      sm: '480px',
+      md: '640px', // default in GOV.UK but in chakra-ui is 768px, left it 640px to match GOV.UK
+      lg: '1024px',
+      xl: '1280px',
+      '2xl': '1536px',
+    },
     tokens: {
       colors,
       fonts,

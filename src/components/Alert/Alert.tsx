@@ -1,7 +1,9 @@
 import { Box, type BoxProps } from '@chakra-ui/react'
 import {
+  Children,
   createContext,
   forwardRef,
+  isValidElement,
   useContext,
   useId,
   type ComponentPropsWithoutRef,
@@ -12,6 +14,9 @@ import {
 import { Heading } from '@/components/Heading'
 import { Text } from '@/components/Text'
 import { pxToRem } from '@/utils'
+import { FaCircleCheck } from 'react-icons/fa6'
+import { IoMdInformationCircle, IoMdWarning } from 'react-icons/io'
+import { MdOutlineError } from 'react-icons/md'
 
 export type AlertStatus = 'info' | 'warning' | 'success' | 'error' | 'neutral'
 export type AlertVariant = 'subtle' | 'surface' | 'outline' | 'solid'
@@ -74,26 +79,67 @@ const statusStyles: Record<
   },
 }
 
+const statusIcons: Record<AlertStatus, ReactNode> = {
+  info: <IoMdInformationCircle />,
+  warning: <IoMdWarning />,
+  success: <FaCircleCheck />,
+  error: <MdOutlineError />,
+  neutral: <IoMdInformationCircle />,
+}
+
 export interface AlertProps extends Omit<BoxProps, 'title'> {
   children?: ReactNode
+  showIndicator?: boolean
   status?: AlertStatus
   variant?: AlertVariant
 }
-
-export type AlertContentProps = BoxProps
 
 export type AlertTitleProps = ComponentPropsWithoutRef<typeof Heading>
 
 export type AlertDescriptionProps = ComponentPropsWithoutRef<typeof Text>
 
-export type AlertIndicatorProps = HTMLAttributes<HTMLSpanElement>
+export type AlertIndicatorProps = HTMLAttributes<HTMLSpanElement> & {
+  children?: ReactNode
+}
+
+const AlertIndicator = forwardRef<HTMLSpanElement, AlertIndicatorProps>(function AlertIndicator(
+  { children, ...props },
+  ref
+) {
+  const { status } = useAlertContext('Alert.Indicator')
+
+  return (
+    <Box
+      ref={ref}
+      as="span"
+      display="inline-flex"
+      alignItems="center"
+      justifyContent="center"
+      flexShrink={0}
+      fontSize={pxToRem(24)}
+      lineHeight="1"
+      color="common.white"
+      aria-hidden="true"
+      {...props}
+    >
+      {children ?? statusIcons[status]}
+    </Box>
+  )
+})
+
+AlertIndicator.displayName = 'AlertIndicator'
 
 const AlertRoot = forwardRef<HTMLDivElement, AlertProps>(function AlertRoot(
-  { children, status = 'info', variant, ...props },
+  { children, showIndicator = true, status = 'info', variant, ...props },
   ref
 ) {
   const titleId = useId()
   const styles = statusStyles[status]
+  const childArray = Children.toArray(children)
+  const indicatorChild = childArray.find(
+    (child) => isValidElement(child) && child.type === AlertIndicator
+  )
+  const bodyChildren = childArray.filter((child) => child !== indicatorChild)
 
   void variant
 
@@ -109,33 +155,37 @@ const AlertRoot = forwardRef<HTMLDivElement, AlertProps>(function AlertRoot(
         color="fg"
         {...props}
       >
-        <Box bg={styles.headerBg} px={pxToRem(15)} py={pxToRem(10)}>
+        <Box
+          bg={styles.headerBg}
+          px={pxToRem(15)}
+          py={pxToRem(10)}
+          display="flex"
+          alignItems="center"
+          gap={pxToRem(10)}
+        >
+          {showIndicator ? (
+            isValidElement(indicatorChild) ? (
+              indicatorChild
+            ) : (
+              <AlertIndicator />
+            )
+          ) : null}
           <Heading as="h2" id={titleId} size={24} color="common.white" mb={0}>
             {styles.label}
           </Heading>
         </Box>
-        {children}
+        <Box
+          px={{ base: pxToRem(15), md: pxToRem(20) }}
+          py={{ base: pxToRem(15), md: pxToRem(20) }}
+        >
+          {bodyChildren}
+        </Box>
       </Box>
     </AlertContext.Provider>
   )
 })
 
 AlertRoot.displayName = 'Alert'
-
-const AlertContent = forwardRef<HTMLDivElement, AlertContentProps>(
-  function AlertContent(props, ref) {
-    return (
-      <Box
-        ref={ref}
-        px={{ base: pxToRem(15), md: pxToRem(20) }}
-        py={{ base: pxToRem(15), md: pxToRem(20) }}
-        {...props}
-      />
-    )
-  }
-)
-
-AlertContent.displayName = 'AlertContent'
 
 const AlertTitle = forwardRef<HTMLHeadingElement, AlertTitleProps>(function AlertTitle(
   { as = 'h3', color = 'fg', mb = pxToRem(15), size = 24, ...props },
@@ -158,19 +208,10 @@ const AlertDescription = forwardRef<HTMLParagraphElement, AlertDescriptionProps>
 
 AlertDescription.displayName = 'AlertDescription'
 
-const AlertIndicator = forwardRef<HTMLSpanElement, AlertIndicatorProps>(
-  function AlertIndicator(props, ref) {
-    return <Box ref={ref} as="span" display="none" aria-hidden="true" {...props} />
-  }
-)
-
-AlertIndicator.displayName = 'AlertIndicator'
-
-export { AlertRoot, AlertContent, AlertTitle, AlertDescription, AlertIndicator }
+export { AlertRoot, AlertTitle, AlertDescription, AlertIndicator }
 
 export const Alert = Object.assign(AlertRoot, {
   Root: AlertRoot,
-  Content: AlertContent,
   Title: AlertTitle,
   Description: AlertDescription,
   Indicator: AlertIndicator,

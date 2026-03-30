@@ -6,16 +6,13 @@ import type { HeadingProps } from '@/components/Heading/Heading'
 
 interface TypographyStoryArgs extends HeadingProps {
   componentType: 'Heading' | 'Text'
-  error?: boolean
-  errorMsg?: string
 }
 
 const meta: Meta = {
   title: 'GOV.UK/Styles/Typography',
   parameters: {
-    layout: 'centered',
+    layout: 'fullscreen',
   },
-  tags: ['autodocs'],
 }
 
 export default meta
@@ -33,8 +30,7 @@ export const HeadingStory: StoryObj<TypographyStoryArgs> = {
     size: 'xl',
     as: 'h1',
     children: 'Extra Large Heading (H1)',
-    error: false,
-    errorMsg: 'This is an error message',
+    color: '#000',
   },
   argTypes: {
     componentType: {
@@ -59,16 +55,18 @@ export const HeadingStory: StoryObj<TypographyStoryArgs> = {
     fontWeight: {
       control: 'select',
       options: ['normal', 'medium', 'semibold', 'bold'],
+      description: 'Font weight for the heading',
     },
     color: {
       control: 'text',
+      description: 'Text color (can use theme colors or custom hex values)',
     },
   },
   render: ({ componentType, ...rest }) =>
     componentType === 'Heading' ? (
-      <Heading color={rest.error ? 'fg.error' : rest.color} {...rest} />
+      <Heading color={rest.color} {...rest} />
     ) : (
-      <Text fontSize={rest.size} color={rest.error ? 'fg.error' : rest.color} {...rest} />
+      <Text fontSize={rest.size} color={rest.color} {...rest} />
     ),
 }
 
@@ -99,30 +97,29 @@ export const TextStory: StoryObj<typeof Text> = {
 
 export const Headings: Story = {
   render: () => (
-    <VStack gap={4} align="start" width="600px">
-      <Heading size="xl">Extra Large Heading (H1)</Heading>
-      <Heading size="lg">Large Heading (H2)</Heading>
-      <Heading size="md">Medium Heading (H3)</Heading>
-      <Heading size="sm">Small Heading (H4)</Heading>
-      <Heading size="xs">Extra Small Heading (H5)</Heading>
+    <VStack gap={4} align="start" w="full" p={8}>
+      <Heading size={80}>H1 - 80 Only used in exceptional circumstances</Heading>
+      <Heading size={48}>H1 - 48 Extra Large Heading</Heading>
+      <Heading size={36}>H2 - 36 Large Heading</Heading>
+      <Heading size={27}>H4 - 27 Medium Heading</Heading>
+      <Heading size={24}>H5 - 24 Small Heading</Heading>
+      <Heading size={19}>H6 - 19 Extra Small Heading</Heading>
     </VStack>
   ),
 }
 
 export const TextVariants: Story = {
   render: () => (
-    <VStack gap={4} align="start" width="600px">
-      <Text fontSize="lg">
-        This is lead text. Use this for important information that you need users to notice.
+    <VStack gap={4} align="start" w="full" p={8}>
+      <Text fontSize={24}>
+        This is lead text size 24. Use this for important information that you need users to notice.
       </Text>
-      <Text fontSize="md">
-        This is body text. The default text size is 19px and it should be used for all body content.
+      <Text fontSize={19}>
+        This is body text size 19. The default text size is 19px and it should be used for all body
+        content.
       </Text>
-      <Text fontSize="sm">
-        This is small text. Use this sparingly for less important information.
-      </Text>
-      <Text fontSize="xs">
-        This is caption text. Use this for image captions or additional context.
+      <Text fontSize={16}>
+        This is caption text size 16. Use this for image captions or additional context.
       </Text>
     </VStack>
   ),

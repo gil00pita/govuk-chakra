@@ -1,4 +1,8 @@
 import {
+  Box,
+  Grid,
+  HStack,
+  VStack,
   Button,
   Card,
   Heading,
@@ -8,14 +12,9 @@ import {
   Text,
   Textinput,
   Alert,
-  Box,
-  Grid,
-  HStack,
-  VStack,
   GOVUKHeader,
   ServiceNavigation,
 } from './govuk-chakra'
-import { GoAlert } from 'react-icons/go'
 
 function App() {
   return (
@@ -154,22 +153,22 @@ function App() {
               </Heading>
               <VStack gap={3} align="stretch">
                 <Alert.Root status="info">
-                  <GoAlert />
+                  <Alert.Indicator />
                   <Alert.Title>Information</Alert.Title>
                   <Alert.Description>Information message</Alert.Description>
                 </Alert.Root>
                 <Alert.Root status="success">
-                  <GoAlert />
+                  <Alert.Indicator />
                   <Alert.Title>Success</Alert.Title>
                   <Alert.Description>Success message</Alert.Description>
                 </Alert.Root>
                 <Alert.Root status="warning">
-                  <GoAlert />
+                  <Alert.Indicator />
                   <Alert.Title>Warning</Alert.Title>
                   <Alert.Description>Warning message</Alert.Description>
                 </Alert.Root>
                 <Alert.Root status="error">
-                  <GoAlert />
+                  <Alert.Indicator />
                   <Alert.Title>Error</Alert.Title>
                   <Alert.Description>Error message</Alert.Description>
                 </Alert.Root>
@@ -257,7 +256,7 @@ function App() {
               <Text>Clear error messages with visual and text indicators.</Text>
 
               <Alert.Root status="error">
-                <GoAlert />
+                <Alert.Indicator />
                 <Alert.Title>Error</Alert.Title>
                 <Alert.Description>Enter your full name.</Alert.Description>
               </Alert.Root>

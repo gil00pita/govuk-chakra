@@ -8,10 +8,8 @@ describe('Alert', () => {
     renderWithProvider(
       <Alert.Root status="info" variant="subtle">
         <Alert.Indicator />
-        <Alert.Content>
-          <Alert.Title>Application incomplete</Alert.Title>
-          <Alert.Description>You have 7 days left to send your application.</Alert.Description>
-        </Alert.Content>
+        <Alert.Title>Application incomplete</Alert.Title>
+        <Alert.Description>You have 7 days left to send your application.</Alert.Description>
       </Alert.Root>
     )
 
@@ -27,12 +25,11 @@ describe('Alert', () => {
   it('uses alert semantics and a success label for successful messages', () => {
     renderWithProvider(
       <Alert.Root status="success">
-        <Alert.Content>
-          <Alert.Title>Training outcome recorded and trainee withdrawn</Alert.Title>
-          <Alert.Description>
-            Contact example@department.gov.uk if you think there&apos;s a problem.
-          </Alert.Description>
-        </Alert.Content>
+        <Alert.Indicator />
+        <Alert.Title>Training outcome recorded and trainee withdrawn</Alert.Title>
+        <Alert.Description>
+          Contact example@department.gov.uk if you think there&apos;s a problem.
+        </Alert.Description>
       </Alert.Root>
     )
 

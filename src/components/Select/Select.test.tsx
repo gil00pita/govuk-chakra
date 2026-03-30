@@ -1,27 +1,48 @@
+import { createListCollection } from '@chakra-ui/react'
 import type { ComponentProps } from 'react'
-import { screen } from '@testing-library/react'
+import { screen, waitFor } from '@testing-library/react'
 import userEvent from '@testing-library/user-event'
 
+import '@/test/mockResizeObserver'
 import { renderWithProvider } from '@/test/renderWithProvider'
-import { Select } from './Select'
+import { Select, type SelectItemData } from './Select'
 
-function renderSelect(props: Partial<ComponentProps<typeof Select>> = {}) {
+const countries = createListCollection<SelectItemData>({
+  items: [
+    { label: 'United Kingdom', value: 'uk' },
+    { label: 'United States', value: 'us' },
+  ],
+})
+
+function renderSelect(props: Partial<ComponentProps<typeof Select.Root>> = {}) {
   return renderWithProvider(
-    <Select label="Country" placeholder="Select a country" {...props}>
-      <option value="uk">United Kingdom</option>
-      <option value="us">United States</option>
-    </Select>
+    <Select.Root collection={countries} {...props}>
+      <Select.Label>Country</Select.Label>
+      <Select.HiddenSelect />
+      <Select.Hint>Choose the country shown on your passport.</Select.Hint>
+      <Select.Control>
+        <Select.Trigger>
+          <Select.ValueText placeholder="Select a country" />
+        </Select.Trigger>
+      </Select.Control>
+      <Select.Positioner>
+        <Select.Content>
+          {countries.items.map((item) => (
+            <Select.Item key={item.value} item={item} />
+          ))}
+        </Select.Content>
+      </Select.Positioner>
+    </Select.Root>
   )
 }
 
 describe('Select', () => {
-  it('renders a labelled select with placeholder content', () => {
+  it('renders a labelled select trigger with placeholder content', () => {
     renderSelect()
 
-    const select = screen.getByRole('combobox', { name: /country/i })
-
-    expect(select).toHaveValue('')
-    expect(screen.getByRole('option', { name: /select a country/i })).toHaveValue('')
+    expect(screen.getByRole('combobox', { name: /country/i })).toHaveTextContent(
+      /select a country/i
+    )
   })
 
   it('updates the selected option when the user makes a choice', async () => {
@@ -29,31 +50,36 @@ describe('Select', () => {
 
     renderSelect()
 
-    const select = screen.getByRole('combobox', { name: /country/i })
-    await user.selectOptions(select, 'us')
+    await user.click(screen.getByRole('combobox', { name: /country/i }))
+    await user.click(screen.getByRole('option', { name: /united states/i }))
 
-    expect(select).toHaveValue('us')
-    expect(screen.getByRole('option', { name: /united states/i } as const)).toEqual(
-      expect.objectContaining({ selected: true } satisfies Partial<HTMLOptionElement>)
-    )
+    await waitFor(() => {
+      expect(screen.getByRole('combobox', { name: /country/i })).toHaveTextContent(/united states/i)
+    })
   })
 
-  it('exposes error text through the accessible description', () => {
-    renderSelect({
-      hint: 'Choose the country shown on your passport.',
-      error: 'Select the country you live in',
-    })
+  it('exposes hint and error text through the accessible description', () => {
+    renderWithProvider(
+      <Select.Root collection={countries} invalid>
+        <Select.Label>Country</Select.Label>
+        <Select.HiddenSelect />
+        <Select.Hint>Choose the country shown on your passport.</Select.Hint>
+        <Select.Error>Select the country you live in</Select.Error>
+        <Select.Control>
+          <Select.Trigger>
+            <Select.ValueText placeholder="Select a country" />
+          </Select.Trigger>
+        </Select.Control>
+      </Select.Root>
+    )
 
-    const select = screen.getByRole('combobox', { name: /country/i })
-
-    expect(select).toHaveAccessibleDescription(
+    expect(screen.getByRole('combobox', { name: /country/i })).toHaveAccessibleDescription(
       'Choose the country shown on your passport. Error: Select the country you live in'
     )
-    expect(select).toHaveAttribute('aria-invalid', 'true')
   })
 
   it('supports disabled selects', () => {
-    renderSelect({ disabled: true, defaultValue: 'uk' })
+    renderSelect({ disabled: true, defaultValue: ['uk'] })
 
     expect(screen.getByRole('combobox', { name: /country/i })).toBeDisabled()
   })

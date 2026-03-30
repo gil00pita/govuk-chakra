@@ -1,25 +1,27 @@
 import {
-  Alert,
   Box,
+  Alert,
   Button,
   Card,
   Checkbox,
   Fieldset,
-  Grid,
-  HStack,
   Heading,
-  Input,
+  Textinput,
   Link,
-  RadioGroup,
+  Radio,
   Select,
   Separator,
   Table,
   Text,
+  Grid,
+  HStack,
   VStack,
-} from '@chakra-ui/react'
+} from '../govuk-chakra'
 import type { Meta, StoryObj } from '@storybook/react-vite'
+import { Portal, createListCollection } from '@chakra-ui/react'
+import type { SelectItemData } from '@/components/Select'
 
-import { GoAlert } from 'react-icons/go'
+import { GoAlert, GoCheck, GoInfo } from 'react-icons/go'
 
 const meta: Meta = {
   title: 'GOV.UK/Styles/Design System Overview',
@@ -31,6 +33,14 @@ const meta: Meta = {
 
 export default meta
 type Story = StoryObj<typeof meta>
+
+const contactOptions = createListCollection<SelectItemData>({
+  items: [
+    { label: 'Email', value: 'email' },
+    { label: 'Post', value: 'post' },
+    { label: 'Phone', value: 'phone' },
+  ],
+})
 
 export const ColorPalette: Story = {
   render: () => (
@@ -112,24 +122,39 @@ export const ComponentShowcase: Story = {
               Form Controls
             </Heading>
             <VStack gap={4} align="stretch">
-              <Input placeholder="Text input" />
+              <Textinput placeholder="Text input" />
               <Fieldset.Root>
                 <Fieldset.Legend>How would you like to be contacted?</Fieldset.Legend>
-                <Select.Trigger>
-                  <Select.ValueText placeholder="Choose an option" />
-                </Select.Trigger>
-                <Select.Content>
-                  <Select.Item item="option1">Email</Select.Item>
-                  <Select.Item item="option2">Post</Select.Item>
-                  <Select.Item item="option3">Phone</Select.Item>
-                </Select.Content>
+                <Select.Root collection={contactOptions}>
+                  <Select.HiddenSelect />
+                  <Select.Control>
+                    <Select.Trigger>
+                      <Select.ValueText placeholder="Choose an option" />
+                    </Select.Trigger>
+                  </Select.Control>
+                  <Portal>
+                    <Select.Positioner>
+                      <Select.Content>
+                        {contactOptions.items.map((item) => (
+                          <Select.Item key={item.value} item={item} />
+                        ))}
+                      </Select.Content>
+                    </Select.Positioner>
+                  </Portal>
+                </Select.Root>
               </Fieldset.Root>
 
               <HStack>
                 <Checkbox.Root>Checkbox</Checkbox.Root>
-                <RadioGroup.Root>
-                  <RadioGroup.Item value="england">Radio</RadioGroup.Item>
-                </RadioGroup.Root>
+                <Radio.Root defaultValue="england">
+                  <Radio.Item value="england">
+                    <Radio.ItemHiddenInput />
+                    <Radio.ItemControl>
+                      <Radio.ItemIndicator />
+                    </Radio.ItemControl>
+                    <Radio.ItemText>Radio</Radio.ItemText>
+                  </Radio.Item>
+                </Radio.Root>
               </HStack>
             </VStack>
           </Card.Body>
@@ -142,10 +167,10 @@ export const ComponentShowcase: Story = {
               Typography
             </Heading>
             <VStack gap={3} align="start">
-              <Heading size="lg">Large Heading</Heading>
-              <Text fontSize="lg">Lead paragraph text</Text>
-              <Text fontSize="md">Body text paragraph</Text>
-              <Text fontSize="sm">Small text</Text>
+              <Heading size={48}>Large Heading</Heading>
+              <Text fontSize={24}>Lead paragraph text</Text>
+              <Text fontSize={19}>Body text paragraph</Text>
+              <Text fontSize={16}>Small text</Text>
               <Link href="#">Standard link</Link>
             </VStack>
           </Card.Body>
@@ -159,22 +184,30 @@ export const ComponentShowcase: Story = {
             </Heading>
             <VStack gap={3} align="stretch">
               <Alert.Root status="info">
-                <GoAlert />
+                <Alert.Indicator>
+                  <GoInfo />
+                </Alert.Indicator>
                 <Alert.Title>Information</Alert.Title>
                 <Alert.Description>Information message</Alert.Description>
               </Alert.Root>
               <Alert.Root status="success">
-                <GoAlert />
+                <Alert.Indicator>
+                  <GoCheck />
+                </Alert.Indicator>
                 <Alert.Title>Success</Alert.Title>
                 <Alert.Description>Success message</Alert.Description>
               </Alert.Root>
               <Alert.Root status="warning">
-                <GoAlert />
+                <Alert.Indicator>
+                  <GoAlert />
+                </Alert.Indicator>
                 <Alert.Title>Warning</Alert.Title>
                 <Alert.Description>Warning message</Alert.Description>
               </Alert.Root>
               <Alert.Root status="error">
-                <GoAlert />
+                <Alert.Indicator>
+                  <GoAlert />
+                </Alert.Indicator>
                 <Alert.Title>Error</Alert.Title>
                 <Alert.Description>Error message</Alert.Description>
               </Alert.Root>
@@ -250,7 +283,7 @@ export const AccessibilityFeatures: Story = {
           <Text>Clear yellow focus rings help keyboard users navigate.</Text>
           <HStack mt={2}>
             <Button colorPalette="primary">Tab to focus</Button>
-            <Input placeholder="Focus this input" />
+            <Textinput placeholder="Focus this input" />
           </HStack>
         </Box>
 
@@ -268,7 +301,9 @@ export const AccessibilityFeatures: Story = {
           <Text>Clear error messages with visual and text indicators.</Text>
 
           <Alert.Root status="error">
-            <GoAlert />
+            <Alert.Indicator>
+              <GoAlert />
+            </Alert.Indicator>
             <Alert.Title>Error</Alert.Title>
             <Alert.Description>Enter your full name.</Alert.Description>
           </Alert.Root>

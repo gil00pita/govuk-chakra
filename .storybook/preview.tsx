@@ -7,7 +7,9 @@ import { withThemeByClassName } from '@storybook/addon-themes'
 import { create } from 'storybook/theming'
 
 import { INITIAL_VIEWPORTS } from 'storybook/viewport'
+import { ColorModeProvider } from '@/components/ui/color-mode'
 import { colors } from '@/theme/colors'
+import { fonts } from '@/theme/fonts'
 import { govUkTheme } from '@/theme/govUkTheme'
 
 const docsLightTheme = create({
@@ -16,6 +18,9 @@ const docsLightTheme = create({
   appContentBg: colors.common.white.value,
   barBg: colors.common.white.value,
   bodyBg: colors.common.white.value,
+  fontSize: 16,
+  fontBase: fonts.body.value,
+  fontCode: fonts.mono.value,
   inputBg: colors.grey[50].value,
   inputBorder: colors.grey[100].value,
   textColor: colors.grey[950].value,
@@ -28,6 +33,9 @@ const docsDarkTheme = create({
   appContentBg: colors.grey[900].value,
   barBg: colors.grey[950].value,
   bodyBg: colors.grey[950].value,
+  fontSize: 16,
+  fontBase: fonts.body.value,
+  fontCode: fonts.mono.value,
   inputBg: colors.grey[900].value,
   inputBorder: colors.grey[700].value,
   textColor: colors.common.white.value,
@@ -36,6 +44,32 @@ const docsDarkTheme = create({
 
 const getDocsTheme = () =>
   document.documentElement.classList.contains('dark') ? docsDarkTheme : docsLightTheme
+
+const getColorMode = () => (document.documentElement.classList.contains('dark') ? 'dark' : 'light')
+
+const StorybookProviders: FC<PropsWithChildren> = ({ children }) => {
+  const [forcedTheme, setForcedTheme] = useState<'light' | 'dark'>(getColorMode)
+
+  useEffect(() => {
+    const root = document.documentElement
+    const observer = new MutationObserver(() => {
+      setForcedTheme(getColorMode())
+    })
+
+    observer.observe(root, {
+      attributeFilter: ['class'],
+      attributes: true,
+    })
+
+    return () => observer.disconnect()
+  }, [])
+
+  return (
+    <ChakraProvider value={govUkTheme}>
+      <ColorModeProvider forcedTheme={forcedTheme}>{children}</ColorModeProvider>
+    </ChakraProvider>
+  )
+}
 
 const ThemedDocsContainer: FC<PropsWithChildren<DocsContainerProps<ReactRenderer>>> = ({
   children,
@@ -58,9 +92,11 @@ const ThemedDocsContainer: FC<PropsWithChildren<DocsContainerProps<ReactRenderer
   }, [])
 
   return (
-    <DocsContainer context={context} theme={docsTheme}>
-      {children}
-    </DocsContainer>
+    <StorybookProviders>
+      <DocsContainer context={context} theme={docsTheme}>
+        {children}
+      </DocsContainer>
+    </StorybookProviders>
   )
 }
 
@@ -100,9 +136,9 @@ export const decorators = [
     },
   }),
   (Story: FC) => (
-    <ChakraProvider value={govUkTheme}>
+    <StorybookProviders>
       <Story />
-    </ChakraProvider>
+    </StorybookProviders>
   ),
 ]
 

@@ -1,9 +1,18 @@
+import { Portal, createListCollection } from '@chakra-ui/react'
+import type { ComponentType } from 'react'
 import type { Meta, StoryObj } from '@storybook/react-vite'
 
-import { Select } from './Select'
+import { Select, type SelectItemData } from './Select'
 
-const meta: Meta = {
+type SelectStoryArgs = {
+  disabled?: boolean
+  invalid?: boolean
+  width?: 'full' | '20' | '10' | '5'
+}
+
+const meta: Meta<SelectStoryArgs> = {
   title: 'GOV.UK/Components/Select',
+  component: Select.Root as unknown as ComponentType<SelectStoryArgs>,
   parameters: {
     layout: 'centered',
     docs: {
@@ -16,85 +25,143 @@ const meta: Meta = {
     },
   },
   tags: ['autodocs'],
+  args: {
+    width: '20',
+  },
 }
 
 export default meta
 type Story = StoryObj<typeof meta>
 
+const sortOptions = createListCollection<SelectItemData>({
+  items: [
+    { label: 'Last updated', value: 'updated' },
+    { label: 'Name', value: 'name' },
+    { label: 'Status', value: 'status' },
+  ],
+})
+
+const nationalityOptions = createListCollection<SelectItemData>({
+  items: [
+    { label: 'British', value: 'british' },
+    { label: 'Irish', value: 'irish' },
+    { label: 'French', value: 'french' },
+    { label: 'Spanish', value: 'spanish' },
+    { label: 'Other', value: 'other' },
+  ],
+})
+
+const countryOptions = createListCollection<SelectItemData>({
+  items: [
+    { label: 'United Kingdom', value: 'united-kingdom' },
+    { label: 'France', value: 'france' },
+    { label: 'Germany', value: 'germany' },
+    { label: 'Spain', value: 'spain' },
+    { label: 'Italy', value: 'italy' },
+    { label: 'United States', value: 'united-states' },
+    { label: 'Canada', value: 'canada' },
+  ],
+})
+
+function renderItems(collection: typeof sortOptions) {
+  return collection.items.map((item) => <Select.Item key={item.value} item={item} />)
+}
+
 export const Default: Story = {
-  render: () => (
-    <Select label="Sort by" width="10" defaultValue="">
-      <option value="" disabled>
-        Select an option
-      </option>
-      <option value="updated">Last updated</option>
-      <option value="name">Name</option>
-      <option value="status">Status</option>
-    </Select>
+  render: (args) => (
+    <Select.Root collection={sortOptions} defaultValue={['updated']} {...args}>
+      <Select.Label>Sort by</Select.Label>
+      <Select.HiddenSelect />
+      <Select.Control>
+        <Select.Trigger>
+          <Select.ValueText placeholder="Select an option" />
+        </Select.Trigger>
+      </Select.Control>
+      <Portal>
+        <Select.Positioner>
+          <Select.Content>{renderItems(sortOptions)}</Select.Content>
+        </Select.Positioner>
+      </Portal>
+    </Select.Root>
   ),
 }
 
 export const WithLabel: Story = {
-  render: () => (
-    <Select
-      label="Nationality"
-      hint="If you have dual nationality, select the nationality shown on your passport."
-      width="20"
-      defaultValue=""
-    >
-      <option value="" disabled>
-        Select nationality
-      </option>
-      <option value="british">British</option>
-      <option value="irish">Irish</option>
-      <option value="french">French</option>
-      <option value="spanish">Spanish</option>
-      <option value="other">Other</option>
-    </Select>
+  render: (args) => (
+    <Select.Root collection={nationalityOptions} {...args}>
+      <Select.Label>Nationality</Select.Label>
+      <Select.Hint>
+        If you have dual nationality, select the nationality shown on your passport.
+      </Select.Hint>
+      <Select.HiddenSelect />
+      <Select.Control>
+        <Select.Trigger>
+          <Select.ValueText placeholder="Select nationality" />
+        </Select.Trigger>
+      </Select.Control>
+      <Portal>
+        <Select.Positioner>
+          <Select.Content>{renderItems(nationalityOptions)}</Select.Content>
+        </Select.Positioner>
+      </Portal>
+    </Select.Root>
   ),
 }
 
 export const Countries: Story = {
-  render: () => (
-    <Select label="Country" width="20" defaultValue="united-kingdom">
-      <optgroup label="Europe">
-        <option value="united-kingdom">United Kingdom</option>
-        <option value="france">France</option>
-        <option value="germany">Germany</option>
-        <option value="spain">Spain</option>
-        <option value="italy">Italy</option>
-      </optgroup>
-      <optgroup label="North America">
-        <option value="united-states">United States</option>
-        <option value="canada">Canada</option>
-      </optgroup>
-    </Select>
+  render: (args) => (
+    <Select.Root collection={countryOptions} defaultValue={['united-kingdom']} {...args}>
+      <Select.Label>Country</Select.Label>
+      <Select.HiddenSelect />
+      <Select.Control>
+        <Select.Trigger>
+          <Select.ValueText />
+        </Select.Trigger>
+      </Select.Control>
+      <Portal>
+        <Select.Positioner>
+          <Select.Content>{renderItems(countryOptions)}</Select.Content>
+        </Select.Positioner>
+      </Portal>
+    </Select.Root>
   ),
 }
 
 export const Error: Story = {
-  render: () => (
-    <Select
-      label="Country"
-      error="Select the country you live in"
-      width="20"
-      defaultValue=""
-      required
-    >
-      <option value="" disabled hidden>
-        Select a country
-      </option>
-      <option value="uk">United Kingdom</option>
-      <option value="us">United States</option>
-    </Select>
+  render: (args) => (
+    <Select.Root collection={countryOptions} invalid {...args}>
+      <Select.Label>Country</Select.Label>
+      <Select.Error>Select the country you live in</Select.Error>
+      <Select.HiddenSelect />
+      <Select.Control>
+        <Select.Trigger>
+          <Select.ValueText placeholder="Select a country" />
+        </Select.Trigger>
+      </Select.Control>
+      <Portal>
+        <Select.Positioner>
+          <Select.Content>{renderItems(countryOptions)}</Select.Content>
+        </Select.Positioner>
+      </Portal>
+    </Select.Root>
   ),
 }
 
 export const Disabled: Story = {
-  render: () => (
-    <Select label="Country" width="20" defaultValue="uk" disabled>
-      <option value="uk">United Kingdom</option>
-      <option value="us">United States</option>
-    </Select>
+  render: (args) => (
+    <Select.Root collection={countryOptions} defaultValue={['united-kingdom']} disabled {...args}>
+      <Select.Label>Country</Select.Label>
+      <Select.HiddenSelect />
+      <Select.Control>
+        <Select.Trigger>
+          <Select.ValueText />
+        </Select.Trigger>
+      </Select.Control>
+      <Portal>
+        <Select.Positioner>
+          <Select.Content>{renderItems(countryOptions)}</Select.Content>
+        </Select.Positioner>
+      </Portal>
+    </Select.Root>
   ),
 }
