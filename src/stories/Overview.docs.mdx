@@ -1,0 +1,418 @@
+import { Meta, Unstyled } from '@storybook/addon-docs/blocks'
+import { Box, Card, Grid, HStack, Image, Separator, VStack } from '@chakra-ui/react'
+import { CodeBlock, Heading, Link, Text } from '@/components'
+
+<Meta title="GOV.UK/Overview" />
+
+# About
+
+🚧 Work in Progress 🚧
+
+<Unstyled>
+  <HStack gap={2} wrap="wrap" mb={8}>
+    <Link href="https://gov-uk-gds-react-chakra.vercel.app">
+      <Image
+        src="https://cdn.jsdelivr.net/gh/storybookjs/brand@main/badge/badge-storybook.svg"
+        title="Live Demo Storybook"
+      />
+    </Link>
+    <Image src="https://vercelbadge.vercel.app/api/gil00pita/govuk-chakra" title="Build Status" />
+    <Image src="https://img.shields.io/npm/v/govuk-chakra" title="NPM Version" />
+    <Image src="https://img.shields.io/npm/dm/govuk-chakra" title="NPM Downloads" />
+    <Image src="https://img.shields.io/npm/last-update/govuk-chakra" title="NPM Last Update" />
+    <Image src="https://img.shields.io/npm/l/govuk-chakra" title="NPM License" />
+  </HStack>
+
+<VStack gap={4} wrap="wrap" mb={8}>
+  **govuk-chakra** is a React component library that applies a
+  [GOV.UK](https://design-system.service.gov.uk/get-started)-style skin on top of [Chakra
+  UI](https://www.chakra-ui.com). It is not a replacement for Chakra. The point is to keep Chakra's
+  composability, theme system, and React ergonomics, while shipping a set of opinionated components
+  and tokens that feel closer to the GOV.UK Design System. Current Chakra version **3.34.0**.
+</VStack>
+
+ <Heading size={27} mb={4}>Links</Heading>
+<HStack gap={4} wrap="wrap" mb={8}>
+  <Link href="https://gov-uk-gds-react-chakra.vercel.app">Live demo</Link>
+  <Link href="https://github.com/gil00pita/govuk-chakra">GitHub repository</Link>
+  <Link href="https://www.npmjs.com/package/govuk-chakra">Npm Page</Link>
+
+  <Link href="https://design-system.service.gov.uk/get-started/">GOV.UK Design System</Link>
+  <Link href="https://www.figma.com/community/file/1550623138170727031/gov-uk-design-system-2025">
+      GOV.UK Design System Figma File in Community
+    </Link>
+</HStack>
+
+<Box  py={{ base: 8, md: 12 }}>
+  <VStack align="stretch" gap={10} maxW="1100px" mx="auto">
+    <Grid templateColumns={{ base: '1fr', md: '1fr 1fr' }} gap={6}>
+      <Card.Root>
+        <Card.Body>
+          <VStack align="start" gap={4}>
+            <Heading size={27}>What this project is</Heading>
+            <VStack as="ul" align="start" gap={2} pl={5} css={{ listStyleType: 'disc' }}>
+              <Text as="li">A Chakra-based design skin for React applications</Text>
+              <Text as="li">
+                A set of GOV.UK-flavoured components such as GOVUKHeader, GOVUKFooter,
+                CookieBanner, TaskList, SummaryList, and form primitives
+              </Text>
+              <Text as="li">A reusable Chakra system theme exported as govUkTheme</Text>
+              <Text as="li">A package that can be published and consumed as a library</Text>
+            </VStack>
+          </VStack>
+        </Card.Body>
+      </Card.Root>
+
+      <Card.Root>
+        <Card.Body>
+          <VStack align="start" gap={4}>
+            <Heading size={27}>What this project is not</Heading>
+            <VStack as="ul" align="start" gap={2} pl={5} css={{ listStyleType: 'disc' }}>
+              <Text as="li">An official GOV.UK Design System package</Text>
+              <Text as="li">A drop-in clone of govuk-frontend</Text>
+              <Text as="li">A full application framework</Text>
+              <Text as="li">A replacement for the GOV.UK Prototype Kit</Text>
+            </VStack>
+          </VStack>
+        </Card.Body>
+      </Card.Root>
+    </Grid>
+
+    <Card.Root>
+      <Card.Body>
+        <VStack align="start" gap={4}>
+          <Heading size={27}>Why build it this way</Heading>
+          <VStack as="ul" align="start" gap={2} pl={5} css={{ listStyleType: 'disc' }}>
+            <Text as="li">
+              Chakra already solves composition, theming, tokens, accessibility primitives, and
+              styling ergonomics well.
+            </Text>
+            <Text as="li">
+              GOV.UK provides a strong visual language and interaction baseline that many public
+              sector products want.
+            </Text>
+            <Text as="li">
+              Combining both gives teams a React-first developer experience without moving back to
+              macro-driven or prototype-first workflows.
+            </Text>
+          </VStack>
+        </VStack>
+      </Card.Body>
+    </Card.Root>
+
+    <Separator />
+
+    <Grid
+      templateColumns={{ base: '1fr', xl: 'minmax(0,1.2fr) minmax(0,0.8fr)' }}
+      gap={8}
+      alignItems="start"
+    >
+      <VStack align="stretch" gap={6}>
+        <Box>
+          <Heading size={27} mb={3}>
+            Installation
+          </Heading>
+          <CodeBlock.Root
+            code={`yarn add govuk-chakra @emotion/react @emotion/styled framer-motion react react-dom`}
+            language="bash"
+            minWidth="0"
+            maxW="100%"
+            mb={8}
+          >
+            <CodeBlock.Header>
+              <CodeBlock.Title>Installation</CodeBlock.Title>
+              <CodeBlock.Control>
+                <CodeBlock.CopyButton copyLabel="Copy" copiedLabel="Copied" />
+              </CodeBlock.Control>
+            </CodeBlock.Header>
+            <CodeBlock.Content>
+              <CodeBlock.Code>
+                <CodeBlock.CodeText />
+              </CodeBlock.Code>
+            </CodeBlock.Content>
+          </CodeBlock.Root>
+        </Box>
+
+        <Box>
+          <Heading size={27} mb={3}>
+            Wrap your app with the provider
+          </Heading>
+          <CodeBlock.Root
+            code={`import { GOVUKProvider } from 'govuk-chakra'
+
+export function AppRoot() {
+  return (
+    <GOVUKProvider>
+      <App />
+    </GOVUKProvider>
+    )
+}`}
+            language="tsx"
+            minWidth="0"
+            maxW="100%"
+            mb={8}
+          >
+            <CodeBlock.Header>
+              <CodeBlock.Title>Wrap your app with the provider</CodeBlock.Title>
+              <CodeBlock.Control>
+                <CodeBlock.CopyButton copyLabel="Copy" copiedLabel="Copied" />
+              </CodeBlock.Control>
+            </CodeBlock.Header>
+            <CodeBlock.Content>
+              <CodeBlock.Code>
+                <CodeBlock.CodeText />
+              </CodeBlock.Code>
+            </CodeBlock.Content>
+          </CodeBlock.Root>
+        </Box>
+
+        <Box>
+          <Heading size={27} mb={3}>
+            Importing components
+          </Heading>
+          <Text mb={3}>
+            Import everything from the main package entry. Chakra primitives and local GOV.UK
+            wrappers share the same import surface.
+          </Text>
+          <CodeBlock.Root
+            code={`
+    import {
+      Box,
+      Stack,
+      Heading,
+      Text,
+      Button,
+      Link,
+      Table,
+      GOVUKHeader,
+      GOVUKFooter,
+      Textinput,
+      Separator,
+    } from 'govuk-chakra'`}
+            language="tsx"
+            minWidth="0"
+            maxW="100%"
+            mb={8}>
+
+            <CodeBlock.Header>
+              <CodeBlock.Title>Import example</CodeBlock.Title>
+              <CodeBlock.Control>
+                <CodeBlock.CopyButton copyLabel="Copy" copiedLabel="Copied" />
+              </CodeBlock.Control>
+            </CodeBlock.Header>
+            <CodeBlock.Content>
+              <CodeBlock.Code>
+                <CodeBlock.CodeText />
+              </CodeBlock.Code>
+            </CodeBlock.Content>
+          </CodeBlock.Root>
+        </Box>
+
+        <Box>
+          <Heading size={27} mb={3}>
+            Example usage
+          </Heading>
+          <CodeBlock.Root
+            code={`import { Box, Heading, Button, Text, GOVUKHeader } from 'govuk-chakra'
+
+export function ExamplePage() {
+  return (
+    <Box>
+      <GOVUKHeader />
+      <Heading size={48}>Service title</Heading>
+      <Text fontSize={19}>
+        This page uses Chakra layout primitives and GOV.UK-styled wrappers
+        from the same package.
+      </Text>
+      <Button>Continue</Button>
+    </Box>
+  )
+}`}
+            language="tsx"
+            minWidth="0"
+            maxW="100%"
+            mb={8}
+          >
+            <CodeBlock.Header>
+              <CodeBlock.Title>Example usage</CodeBlock.Title>
+              <CodeBlock.Control>
+                <CodeBlock.CopyButton copyLabel="Copy" copiedLabel="Copied" />
+              </CodeBlock.Control>
+            </CodeBlock.Header>
+            <CodeBlock.Content>
+              <CodeBlock.Code>
+                <CodeBlock.CodeText />
+              </CodeBlock.Code>
+            </CodeBlock.Content>
+          </CodeBlock.Root>
+        </Box>
+      </VStack>
+
+      <VStack align="stretch" gap={6}>
+        <Card.Root>
+          <Card.Body>
+            <VStack align="start" gap={4}>
+              <Heading size={27}>How exports work</Heading>
+              <Text>
+                The main package re-exports all Chakra UI components and then overlays local
+                GOV.UK-styled wrapper components with the same names.
+              </Text>
+              <VStack as="ul" align="start" gap={2} pl={5} css={{ listStyleType: 'disc' }}>
+                <Text as="li">If a local wrapper exists, consumers receive the wrapper.</Text>
+                <Text as="li">If no wrapper exists, the Chakra UI export is used as-is.</Text>
+                <Text as="li">
+                  This keeps the import model simple while allowing local overrides.
+                </Text>
+              </VStack>
+            </VStack>
+          </Card.Body>
+        </Card.Root>
+
+        <Card.Root>
+          <Card.Body>
+            <VStack align="start" gap={4}>
+              <Heading size={27}>Entry points</Heading>
+              <Box>
+                <Text fontWeight="bold">govuk-chakra</Text>
+                <Text>Combined barrel with Chakra exports plus local GOV.UK-styled overrides</Text>
+              </Box>
+              <Box>
+                <Text fontWeight="bold">govuk-chakra/chakra</Text>
+                <Text>Raw Chakra UI passthrough when you want the unmodified export surface</Text>
+              </Box>
+            </VStack>
+          </Card.Body>
+        </Card.Root>
+
+        <Card.Root>
+          <Card.Body>
+            <VStack align="start" gap={4}>
+              <Heading size={27}>Publishing</Heading>
+              <VStack as="ul" align="start" gap={2} pl={5} css={{ listStyleType: 'disc' }}>
+                <Text as="li">ESM bundle: dist/index.mjs</Text>
+                <Text as="li">CommonJS bundle: dist/index.cjs</Text>
+                <Text as="li">Chakra passthrough bundle: dist/chakra.mjs</Text>
+                <Text as="li">Type declarations: dist/types</Text>
+              </VStack>
+              <CodeBlock.Root
+                code={`
+
+yarn build
+yarn pack --dry-run
+yarn publish
+`}
+
+                language="bash"
+                maxW="100%"
+                mb={8}>
+
+                <CodeBlock.Header>
+                  <CodeBlock.Title>Publishing commands</CodeBlock.Title>
+                  <CodeBlock.Control>
+                    <CodeBlock.CopyButton copyLabel="Copy" copiedLabel="Copied" />
+                  </CodeBlock.Control>
+                </CodeBlock.Header>
+                <CodeBlock.Content>
+                  <CodeBlock.Code>
+                    <CodeBlock.CodeText />
+                  </CodeBlock.Code>
+                </CodeBlock.Content>
+              </CodeBlock.Root>
+            </VStack>
+          </Card.Body>
+        </Card.Root>
+      </VStack>
+    </Grid>
+
+    <Separator />
+
+    <Grid templateColumns={{ base: '1fr', md: '1fr 1fr' }} gap={6}>
+      <Card.Root>
+        <Card.Body>
+          <VStack align="start" gap={4}>
+            <Heading size={27}>Compared with GOV.UK Prototype Kit</Heading>
+            <Box>
+              <Text fontWeight="bold" mb={2}>
+                Pros
+              </Text>
+              <VStack as="ul" align="start" gap={2} pl={5} css={{ listStyleType: 'disc' }}>
+                <Text as="li">Better fit for production React apps</Text>
+                <Text as="li">Native TypeScript support across the component surface</Text>
+                <Text as="li">Chakra theming and composition remain available</Text>
+                <Text as="li">Easier to integrate with modern React app architectures</Text>
+                <Text as="li">
+                  A more natural path for design-system ownership inside a React codebase
+                </Text>
+              </VStack>
+            </Box>
+            <Box>
+              <Text fontWeight="bold" mb={2}>
+                Cons
+              </Text>
+              <VStack as="ul" align="start" gap={2} pl={5} css={{ listStyleType: 'disc' }}>
+                <Text as="li">Less batteries-included than the Prototype Kit</Text>
+                <Text as="li">
+                  You do not get the same ready-made templates or workflow conventions
+                </Text>
+                <Text as="li">Teams must make more application architecture decisions</Text>
+                <Text as="li">Visual parity with GOV.UK needs ongoing maintenance</Text>
+              </VStack>
+            </Box>
+          </VStack>
+        </Card.Body>
+      </Card.Root>
+
+      <Card.Root>
+        <Card.Body>
+          <VStack align="start" gap={4}>
+            <Heading size={27}>When to use it</Heading>
+            <Box>
+              <Text fontWeight="bold" mb={2}>
+                Use this project when
+              </Text>
+              <VStack as="ul" align="start" gap={2} pl={5} css={{ listStyleType: 'disc' }}>
+                <Text as="li">You are building a React product, not just a prototype</Text>
+                <Text as="li">
+                  Your team already uses Chakra UI or wants a component-driven front-end stack
+                </Text>
+                <Text as="li">
+                  You want GOV.UK visual language without adopting the full Prototype Kit workflow
+                </Text>
+                <Text as="li">You need a publishable internal or public package</Text>
+              </VStack>
+            </Box>
+            <Box>
+              <Text fontWeight="bold" mb={2}>
+                Use the Prototype Kit when
+              </Text>
+              <VStack as="ul" align="start" gap={2} pl={5} css={{ listStyleType: 'disc' }}>
+                <Text as="li">The primary goal is fast service prototyping</Text>
+                <Text as="li">
+                  Your team is working in the standard GOV.UK prototype workflow
+                </Text>
+                <Text as="li">
+                  You want the shortest path to testing service flows with minimal front-end setup
+                </Text>
+              </VStack>
+            </Box>
+          </VStack>
+        </Card.Body>
+      </Card.Root>
+    </Grid>
+
+    <Card.Root>
+      <Card.Body>
+        <VStack align="start" gap={3}>
+          <Heading size={27}>Status</Heading>
+          <Text>
+            This project should be treated as a custom design-system layer built on Chakra UI. That
+            is useful, but consumers should expect to maintain alignment with both Chakra and the
+            GOV.UK Design System over time.
+          </Text>
+        </VStack>
+      </Card.Body>
+    </Card.Root>
+
+  </VStack>
+</Box>
+</Unstyled>

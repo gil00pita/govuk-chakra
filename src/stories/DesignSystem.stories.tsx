@@ -28,7 +28,6 @@ const meta: Meta = {
   parameters: {
     layout: 'fullscreen',
   },
-  tags: ['autodocs'],
 }
 
 export default meta
@@ -461,10 +460,8 @@ function PaletteScaleCard({
 export const ColorPalette: Story = {
   render: () => (
     <VStack gap={6} align="stretch" p={8}>
-      <Heading size="xl">GOV.UK Colour</Heading>
-
       <VStack gap={3} align="stretch">
-        <Heading size="lg">Core GOV.UK colours</Heading>
+        <Heading size={27}>Core GOV.UK colours</Heading>
         <Text>
           These are the main GOV.UK colours exposed directly through this theme as Chakra tokens.
         </Text>
@@ -477,7 +474,7 @@ export const ColorPalette: Story = {
       </Grid>
 
       <VStack gap={3} align="stretch">
-        <Heading size="lg">Functional colours</Heading>
+        <Heading size={27}>Functional colours</Heading>
         <Text>
           These match the GOV.UK Design System functional colour roles and show both the hex value
           and the Chakra theme token used in this library.
@@ -491,7 +488,7 @@ export const ColorPalette: Story = {
       </Grid>
 
       <VStack gap={3} align="stretch">
-        <Heading size="lg">Chakra palette colours</Heading>
+        <Heading size={27}>Chakra palette colours</Heading>
         <Text>
           These show the full Chakra theme scales available in this library from `50` to `950`.
         </Text>
@@ -634,7 +631,7 @@ export const ComponentShowcase: Story = {
 
       {/* Data Table */}
       <Box>
-        <Heading size="lg" mb={4}>
+        <Heading size={27} mb={4}>
           Data Table
         </Heading>
 
@@ -678,7 +675,7 @@ export const AccessibilityFeatures: Story = {
     <VStack gap={6} align="stretch" p={8} maxW="800px">
       <Heading size="xl">Accessibility Features</Heading>
 
-      <Text fontSize="lg">
+      <Text fontSize={27}>
         All components follow GOV.UK accessibility standards and WCAG 2.1 AA guidelines.
       </Text>
 

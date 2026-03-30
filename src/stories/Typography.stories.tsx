@@ -1,4 +1,4 @@
-import { VStack } from '@chakra-ui/react'
+import { Box, VStack } from '@chakra-ui/react'
 import type { Meta, StoryObj } from '@storybook/react-vite'
 import { Heading, Text } from '@/components'
 import { Link } from '@/components/Link/Link'
@@ -65,9 +65,13 @@ export const HeadingStory: StoryObj<TypographyStoryArgs> = {
   },
   render: ({ componentType, ...rest }) =>
     componentType === 'Heading' ? (
-      <Heading color={rest.color} {...rest} />
+      <Box p={8}>
+        <Heading color={rest.color} {...rest} />
+      </Box>
     ) : (
-      <Text fontSize={rest.size} color={rest.color} {...rest} />
+      <Box p={8}>
+        <Text fontSize={rest.size} color={rest.color} {...rest} />
+      </Box>
     ),
 }
 
