@@ -82,7 +82,10 @@
     "lint:fix": "eslint . --no-color --cache --fix",
     "format": "prettier --write .",
     "format:check": "prettier --check .",
-    "format:all": "yarn lint:fix && yarn format"
+    "format:all": "yarn lint:fix && yarn format",
+    "push": "npm version patch && git push",
+    "push-minor": "npm version minor && git push",
+    "push-major": "npm version major && git push"
   },
   "browserslist": {
     "production": [

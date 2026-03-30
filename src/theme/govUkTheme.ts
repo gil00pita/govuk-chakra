@@ -103,7 +103,7 @@ const govUkThemeConfig = defineConfig({
         border: {
           value: {
             base: '{colors.govuk.border}',
-            _dark: '{colors.grey.200}',
+            _dark: '{colors.grey.600}',
           },
         },
         'border.input': {

@@ -13,6 +13,7 @@ import type { SelectItemData } from '@/components/Select'
 import { Text } from '@/components/Text'
 import { Textinput } from '@/components/Textinput'
 import { Textarea } from '@/components/Textarea'
+import { ErrorSummary } from '@/components'
 
 const meta: Meta = {
   title: 'GOV.UK/Patterns/Form Examples',
@@ -111,35 +112,72 @@ export const CompleteForm: Story = {
           </Fieldset.Root>
         </HStack>
 
-        <Fieldset.Root>
-          <Fieldset.Legend mb={3}>Where do you live?</Fieldset.Legend>
-          <Fieldset.Content>
-            <Radio.Root defaultValue="england">
-              <ContactMethodRadios />
-            </Radio.Root>
-          </Fieldset.Content>
-        </Fieldset.Root>
+        <Radio.Group legend="Where do you live?" hint="Select one option" legendAsHeading>
+          <Radio.Root defaultValue="england" name="where-do-you-live">
+            <Radio.Item value="england">
+              <Radio.ItemHiddenInput />
+              <Radio.ItemControl>
+                <Radio.ItemIndicator />
+              </Radio.ItemControl>
+              <Radio.ItemText>England</Radio.ItemText>
+            </Radio.Item>
 
-        <Fieldset.Root>
-          <Fieldset.Legend mb={3}>What do you want to drive?</Fieldset.Legend>
-          <VStack align="start" gap={3}>
-            <Checkbox.Root required>
-              <Checkbox.HiddenInput />
-              <Checkbox.Control />
-              <Checkbox.Label>Car</Checkbox.Label>
-            </Checkbox.Root>
-            <Checkbox.Root required>
-              <Checkbox.HiddenInput />
-              <Checkbox.Control />
-              <Checkbox.Label>Motorcycle</Checkbox.Label>
-            </Checkbox.Root>
-            <Checkbox.Root required>
-              <Checkbox.HiddenInput />
-              <Checkbox.Control />
-              <Checkbox.Label>Moped or light quad bike</Checkbox.Label>
-            </Checkbox.Root>
-          </VStack>
-        </Fieldset.Root>
+            <Radio.Item value="scotland">
+              <Radio.ItemHiddenInput />
+              <Radio.ItemControl>
+                <Radio.ItemIndicator />
+              </Radio.ItemControl>
+              <Radio.ItemText>Scotland</Radio.ItemText>
+            </Radio.Item>
+
+            <Radio.Item value="wales">
+              <Radio.ItemHiddenInput />
+              <Radio.ItemControl>
+                <Radio.ItemIndicator />
+              </Radio.ItemControl>
+              <Radio.ItemText>Wales</Radio.ItemText>
+            </Radio.Item>
+
+            <Radio.Item value="northern-ireland">
+              <Radio.ItemHiddenInput />
+              <Radio.ItemControl>
+                <Radio.ItemIndicator />
+              </Radio.ItemControl>
+              <Radio.ItemText>Northern Ireland</Radio.ItemText>
+            </Radio.Item>
+          </Radio.Root>
+        </Radio.Group>
+
+        <Checkbox.Group
+          legendAsHeading
+          legend="Which types of waste do you transport?"
+          hint="Select all that apply."
+        >
+          <Checkbox.Root value="waste-animal">
+            <Checkbox.HiddenInput />
+            <Checkbox.Control />
+            <VStack align="start" gap={0}>
+              <Checkbox.Label>Waste from animal carcasses</Checkbox.Label>
+              <Checkbox.Hint>Including abattoir waste and dead animals</Checkbox.Hint>
+            </VStack>
+          </Checkbox.Root>
+          <Checkbox.Root value="waste-mines">
+            <Checkbox.HiddenInput />
+            <Checkbox.Control />
+            <VStack align="start" gap={0}>
+              <Checkbox.Label>Waste from mines or quarries</Checkbox.Label>
+              <Checkbox.Hint>Ite waste and ite tailings</Checkbox.Hint>
+            </VStack>
+          </Checkbox.Root>
+          <Checkbox.Root value="waste-farm">
+            <Checkbox.HiddenInput />
+            <Checkbox.Control />
+            <VStack align="start" gap={0}>
+              <Checkbox.Label>Farm or agricultural waste</Checkbox.Label>
+              <Checkbox.Hint>For example, slurry</Checkbox.Hint>
+            </VStack>
+          </Checkbox.Root>
+        </Checkbox.Group>
 
         <Fieldset.Root>
           <Fieldset.Legend mb={1}>Additional information</Fieldset.Legend>
@@ -217,19 +255,30 @@ export const ErrorForm: Story = {
   render: () => (
     <VStack gap={6} align="stretch" width="600px" p={6}>
       <Heading size="xl">There is a problem</Heading>
-      <Alert.Root status="error" variant="subtle">
-        <Alert.Indicator>
-          <GoAlert />
-        </Alert.Indicator>
-        <Alert.Title>You must fix the errors on this page</Alert.Title>
-        <Alert.Description>
-          <VStack align="start" gap={1} mt={2}>
-            <Text>• Enter your full name</Text>
-            <Text>• Enter a valid email address</Text>
-            <Text>• Select where you live</Text>
-          </VStack>
-        </Alert.Description>
-      </Alert.Root>
+      <ErrorSummary.Root>
+        <ErrorSummary.Title>There is a problem</ErrorSummary.Title>
+        <ErrorSummary.Description>
+          Fix the following errors before continuing:
+        </ErrorSummary.Description>
+        <ErrorSummary.List>
+          <ErrorSummary.Item>
+            <ErrorSummary.Link href="#full-name">Enter your full name</ErrorSummary.Link>
+          </ErrorSummary.Item>
+          <ErrorSummary.Item>
+            <ErrorSummary.Link href="#national-insurance-number">
+              Enter a valid email address
+            </ErrorSummary.Link>
+          </ErrorSummary.Item>
+          <ErrorSummary.Item>
+            <ErrorSummary.Link href="#where-do-you-live">Select where you live</ErrorSummary.Link>
+          </ErrorSummary.Item>
+          <ErrorSummary.Item>
+            <ErrorSummary.Link href="#waste-types">
+              Which types of waste do you transport
+            </ErrorSummary.Link>
+          </ErrorSummary.Item>
+        </ErrorSummary.List>
+      </ErrorSummary.Root>
       <Fieldset.Root invalid>
         <Fieldset.Legend mb={1}>Full name</Fieldset.Legend>
         <Fieldset.Error>Enter your full name</Fieldset.Error>
@@ -252,43 +301,28 @@ export const ErrorForm: Story = {
         </Fieldset.Content>
       </Fieldset.Root>
 
-      <Fieldset.Root>
-        <Fieldset.Legend mb={3}>Where do you live?</Fieldset.Legend>
-        <Fieldset.Content>
-          <Radio.Root defaultValue="england">
-            <VStack align="start" gap={3}>
-              <Radio.Item value={'england'}>
-                <Radio.ItemHiddenInput />
-                <Radio.ItemControl>
-                  <Radio.ItemIndicator />
-                </Radio.ItemControl>
-                <Radio.ItemText>England</Radio.ItemText>
-              </Radio.Item>
-              <Radio.Item value={'scotland'}>
-                <Radio.ItemHiddenInput />
-                <Radio.ItemControl>
-                  <Radio.ItemIndicator />
-                </Radio.ItemControl>
-                <Radio.ItemText>Scotland</Radio.ItemText>
-              </Radio.Item>
-              <Radio.Item value={'wales'}>
-                <Radio.ItemHiddenInput />
-                <Radio.ItemControl>
-                  <Radio.ItemIndicator />
-                </Radio.ItemControl>
-                <Radio.ItemText>Wales</Radio.ItemText>
-              </Radio.Item>
-              <Radio.Item value={'northern-ireland'}>
-                <Radio.ItemHiddenInput />
-                <Radio.ItemControl>
-                  <Radio.ItemIndicator />
-                </Radio.ItemControl>
-                <Radio.ItemText>Northern Ireland</Radio.ItemText>
-              </Radio.Item>
-            </VStack>
-          </Radio.Root>
-        </Fieldset.Content>
-      </Fieldset.Root>
+      <Checkbox.Group
+        legend="Which types of waste do you transport?"
+        hint="Select all that apply."
+        error="Select the types of waste you transport"
+        legendAsHeading
+      >
+        <Checkbox.Root value="waste-animal">
+          <Checkbox.HiddenInput />
+          <Checkbox.Control />
+          <Checkbox.Label>Waste from animal carcasses</Checkbox.Label>
+        </Checkbox.Root>
+        <Checkbox.Root value="waste-mines">
+          <Checkbox.HiddenInput />
+          <Checkbox.Control />
+          <Checkbox.Label>Waste from mines or quarries</Checkbox.Label>
+        </Checkbox.Root>
+        <Checkbox.Root value="waste-farm">
+          <Checkbox.HiddenInput />
+          <Checkbox.Control />
+          <Checkbox.Label>Farm or agricultural waste</Checkbox.Label>
+        </Checkbox.Root>
+      </Checkbox.Group>
 
       <Button variant="primary">Continue</Button>
     </VStack>

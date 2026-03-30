@@ -1,4 +1,4 @@
-import { Meta, Canvas, Unstyled } from '@storybook/addon-docs/blocks';
+import { Meta, Canvas,Controls, Unstyled } from '@storybook/addon-docs/blocks';
 import * as TypographyStories from './Typography.stories';
 import { CodeBlock, Table } from '@/components';
 
@@ -107,6 +107,9 @@ The component will auto adjust the font size depending of the screen size.
 </CodeBlock.Root>
 
 <Canvas of={TypographyStories.Headings} />
+
+<Canvas of={TypographyStories.HeadingStory} />
+<Controls of={TypographyStories.HeadingStory} />
 
 ## Text
 

@@ -18,7 +18,8 @@ const meta: Meta = {
 export default meta
 type Story = StoryObj<typeof meta>
 
-const govukSizeOptions = [16, 19, 24, 27, 36, 48, 80]
+const govukHeadingSizeOptions = [19, 24, 27, 36, 48, 80]
+const govukTextSizeOptions = [16, 19, 24]
 const headingOptions = ['h1', 'h2', 'h3', 'h4', 'h5', 'h6', 'span', 'p']
 // const textOptions = ['span', 'p']
 const componentTypeOptions = ['Heading', 'Text']
@@ -40,8 +41,8 @@ export const HeadingStory: StoryObj<TypographyStoryArgs> = {
     },
     size: {
       control: 'select',
-      options: [...govukSizeOptions],
-      description: 'GOV.UK type scale number (16, 19, 24, 27, 36, 48, 80)',
+      options: govukHeadingSizeOptions,
+      description: 'GOV.UK type scale number',
     },
     as: {
       control: 'select',
@@ -73,14 +74,14 @@ export const HeadingStory: StoryObj<TypographyStoryArgs> = {
 export const TextStory: StoryObj<typeof Text> = {
   name: 'Text',
   args: {
-    fontSize: 'md',
+    fontSize: 19,
     children:
       'This is body text. The default text size is 19px and it should be used for all body content.',
   },
   argTypes: {
     fontSize: {
       control: 'select',
-      options: [...govukSizeOptions],
+      options: govukTextSizeOptions,
       description: 'GOV.UK type scale number (16, 19, 24, 27, 36, 48, 80)',
     },
     children: {
