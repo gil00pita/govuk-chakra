@@ -1,11 +1,11 @@
 Style the components according with GOV.UK Design system:
-[] Feedback/Skeleton
-[] Feedback/Spinner
-[] Feedback/Stat
-[] Feedback/Status
-[] Feedback/Toast
-[] Forms/ColorSwatch
-[] Forms/ColorPicker
+[x] Feedback/Skeleton
+[x] Feedback/Spinner
+[x] Feedback/Stat
+[x] Feedback/Status
+[x] Feedback/Toast
+[x] Forms/ColorSwatch
+[x] Forms/ColorPicker
 [] Forms/Editable
 [] Forms/Pininput
 [] Forms/RadioCard

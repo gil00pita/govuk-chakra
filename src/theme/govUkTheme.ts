@@ -9,11 +9,13 @@ import carouselRecipe from '@/components/Carousel/Carousel.recipe'
 import comboboxRecipe from '@/components/Combobox/Combobox.recipe'
 import colorPickerRecipe from '@/components/ColorPicker/ColorPicker.recipe'
 import colorSwatchRecipe from '@/components/ColorSwatch/ColorSwatch.recipe'
+import editableRecipe from '@/components/Editable/Editable.recipe'
 import emptyStateRecipe from '@/components/EmptyState/EmptyState.recipe'
 import kbdRecipe from '@/components/Kbd/Kbd.recipe'
 import listboxRecipe from '@/components/Listbox/Listbox.recipe'
 import highlightRecipe from '@/components/Highlight/Highlight.recipe'
 import codeRecipe from '@/components/Code/Code.recipe'
+import pinInputRecipe from '@/components/PinInput/PinInput.recipe'
 import progressCircleRecipe from '@/components/ProgressCircle/ProgressCircle.recipe'
 import skeletonRecipe from '@/components/Skeleton/Skeleton.recipe'
 import spinnerRecipe from '@/components/Spinner/Spinner.recipe'
@@ -41,8 +43,10 @@ const govUkThemeConfig = defineConfig({
       carousel: carouselRecipe,
       combobox: comboboxRecipe,
       colorPicker: colorPickerRecipe,
+      editable: editableRecipe,
       emptyState: emptyStateRecipe,
       listbox: listboxRecipe,
+      pinInput: pinInputRecipe,
       progressCircle: progressCircleRecipe,
       stat: statRecipe,
       steps: stepsRecipe,
