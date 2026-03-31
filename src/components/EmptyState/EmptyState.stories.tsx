@@ -2,10 +2,10 @@ import type { ComponentType } from 'react'
 import { Button, ButtonGroup, List, VStack } from '@/govuk-chakra'
 import type { Meta, StoryObj } from '@storybook/react-vite'
 import { HiColorSwatch } from 'react-icons/hi'
-import { LuShoppingCart } from 'react-icons/lu'
 
 import { chakraColorPaletteOptions, selectArgType } from '@/utils/storybookControls'
 import { EmptyState } from './EmptyState'
+import { FaCartShopping } from 'react-icons/fa6'
 
 type EmptyStateStoryArgs = {
   colorPalette?: (typeof chakraColorPaletteOptions)[number]
@@ -40,7 +40,7 @@ export const Default: Story = {
     <EmptyState.Root {...args}>
       <EmptyState.Content>
         <EmptyState.Indicator>
-          <LuShoppingCart />
+          <FaCartShopping />
         </EmptyState.Indicator>
         <VStack textAlign="center">
           <EmptyState.Title>Your cart is empty</EmptyState.Title>
@@ -84,7 +84,7 @@ export const WithList: Story = {
           <EmptyState.Title>No results found</EmptyState.Title>
           <EmptyState.Description>Try adjusting your search</EmptyState.Description>
         </VStack>
-        <List.Root variant="marker">
+        <List.Root variant="marker" alignItems={'flex-start'} pt={2}>
           <List.Item>Try removing filters</List.Item>
           <List.Item>Try different keywords</List.Item>
         </List.Root>

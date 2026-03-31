@@ -1,6 +1,6 @@
 import { defineSlotRecipe } from '@chakra-ui/react'
 import { emptyStateAnatomy } from '@chakra-ui/react/anatomy'
-import { govukFontSizes } from '@/utils/px-to-rem'
+import { govukFontSizes, pxToRem } from '@/utils/px-to-rem'
 import { getAccessiblePaletteForeground, resolvePaletteToken } from '@/utils/color-contrast'
 
 const emptyStateColorPalettes = [
@@ -56,18 +56,12 @@ function createEmptyStateCompoundVariants(colorPalette: (typeof emptyStateColorP
           },
         },
         indicator: {
-          bg: {
-            base: `${paletteToken}.100`,
-            _dark: `${paletteToken}.900`,
-          },
+          bg: 'transparent',
           color: {
             base: subtleForeground,
             _dark: subtleForegroundDark,
           },
-          borderColor: {
-            base: `${paletteToken}.200`,
-            _dark: `${paletteToken}.800`,
-          },
+          border: 0,
         },
         title: {
           color: {
@@ -92,18 +86,12 @@ function createEmptyStateCompoundVariants(colorPalette: (typeof emptyStateColorP
           },
         },
         indicator: {
-          bg: {
-            base: `${paletteToken}.50`,
-            _dark: `${paletteToken}.950`,
-          },
+          bg: 'transparent',
           color: {
             base: solidForeground,
             _dark: solidForegroundDark,
           },
-          borderColor: {
-            base: `${paletteToken}.100`,
-            _dark: `${paletteToken}.900`,
-          },
+          border: 0,
         },
         title: {
           color: {
@@ -137,10 +125,7 @@ function createEmptyStateCompoundVariants(colorPalette: (typeof emptyStateColorP
             base: outlineForeground,
             _dark: outlineForegroundDark,
           },
-          borderColor: {
-            base: `${paletteToken}.300`,
-            _dark: `${paletteToken}.800`,
-          },
+          border: 0,
         },
         title: {
           color: {
@@ -159,18 +144,12 @@ function createEmptyStateCompoundVariants(colorPalette: (typeof emptyStateColorP
           bg: 'transparent',
         },
         indicator: {
-          bg: {
-            base: `${paletteToken}.50`,
-            _dark: `${paletteToken}.950`,
-          },
+          bg: 'transparent',
           color: {
             base: plainForeground,
             _dark: plainForegroundDark,
           },
-          borderColor: {
-            base: `${paletteToken}.200`,
-            _dark: `${paletteToken}.900`,
-          },
+          border: 0,
         },
         title: {
           color: {
@@ -203,6 +182,7 @@ const emptyStateRecipe = defineSlotRecipe({
       alignItems: 'center',
       justifyContent: 'center',
       textAlign: 'center',
+      gap: pxToRem(8),
     },
     indicator: {
       display: 'flex',
@@ -210,14 +190,12 @@ const emptyStateRecipe = defineSlotRecipe({
       justifyContent: 'center',
       width: 'var(--empty-state-indicator-size)',
       height: 'var(--empty-state-indicator-size)',
-      borderWidth: '2px',
-      borderColor: 'border.input',
       bg: 'bg.muted',
       color: 'fg',
       fontFamily: 'body',
       fontWeight: 'bold',
       _icon: {
-        boxSize: '1em',
+        boxSize: 'calc(var(--empty-state-indicator-size) * 0.6)',
       },
     },
     title: {
@@ -247,11 +225,10 @@ const emptyStateRecipe = defineSlotRecipe({
           lineHeight: '1.25',
         },
         content: {
-          gap: '16px',
+          gap: pxToRem(8),
         },
         indicator: {
-          '--empty-state-indicator-size': '48px',
-          fontSize: govukFontSizes[24],
+          '--empty-state-indicator-size': pxToRem(48),
         },
       },
       md: {
@@ -268,11 +245,10 @@ const emptyStateRecipe = defineSlotRecipe({
           lineHeight: '1.3157894737',
         },
         content: {
-          gap: '24px',
+          gap: pxToRem(10),
         },
         indicator: {
-          '--empty-state-indicator-size': '56px',
-          fontSize: govukFontSizes[27],
+          '--empty-state-indicator-size': pxToRem(56),
         },
       },
       lg: {
@@ -289,11 +265,10 @@ const emptyStateRecipe = defineSlotRecipe({
           lineHeight: '1.3157894737',
         },
         content: {
-          gap: '24px',
+          gap: pxToRem(15),
         },
         indicator: {
-          '--empty-state-indicator-size': '64px',
-          fontSize: govukFontSizes[36],
+          '--empty-state-indicator-size': pxToRem(80),
         },
       },
     },
