@@ -4,22 +4,31 @@ import type { Meta, StoryObj } from '@storybook/react-vite'
 import { HiColorSwatch } from 'react-icons/hi'
 import { LuShoppingCart } from 'react-icons/lu'
 
-import { selectArgType } from '@/utils/storybookControls'
+import { chakraColorPaletteOptions, selectArgType } from '@/utils/storybookControls'
 import { EmptyState } from './EmptyState'
 
 type EmptyStateStoryArgs = {
+  colorPalette?: (typeof chakraColorPaletteOptions)[number]
   size?: 'sm' | 'md' | 'lg'
+  variant?: 'subtle' | 'solid' | 'outline' | 'plain'
 }
 
 const meta: Meta<EmptyStateStoryArgs> = {
-  title: 'Chakra Components/Feedback/EmptyState',
+  title: 'Chakra Components/Feedback/Empty State',
   component: EmptyState.Root as unknown as ComponentType<EmptyStateStoryArgs>,
   tags: ['autodocs'],
   args: {
+    colorPalette: 'blue',
     size: 'md',
+    variant: 'subtle',
   },
   argTypes: {
+    colorPalette: selectArgType(chakraColorPaletteOptions, 'The color palette of the component.'),
     size: selectArgType(['sm', 'md', 'lg'], 'The size of the component.'),
+    variant: selectArgType(
+      ['subtle', 'solid', 'outline', 'plain'],
+      'The variant of the component.'
+    ),
   },
 }
 
@@ -45,8 +54,8 @@ export const Default: Story = {
 }
 
 export const WithAction: Story = {
-  render: () => (
-    <EmptyState.Root>
+  render: (args) => (
+    <EmptyState.Root {...args}>
       <EmptyState.Content>
         <EmptyState.Indicator>
           <HiColorSwatch />
@@ -65,8 +74,8 @@ export const WithAction: Story = {
 }
 
 export const WithList: Story = {
-  render: () => (
-    <EmptyState.Root>
+  render: (args) => (
+    <EmptyState.Root {...args}>
       <EmptyState.Content>
         <EmptyState.Indicator>
           <HiColorSwatch />

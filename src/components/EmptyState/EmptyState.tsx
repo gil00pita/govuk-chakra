@@ -1,11 +1,40 @@
 import { EmptyState as ChakraEmptyState } from '@chakra-ui/react'
-import type { ComponentPropsWithoutRef } from 'react'
+import type { ComponentPropsWithoutRef, ForwardRefExoticComponent, RefAttributes } from 'react'
 
-export type EmptyStateProps = ComponentPropsWithoutRef<typeof ChakraEmptyState.Root>
-type EmptyStateComponent = typeof ChakraEmptyState.Root & typeof ChakraEmptyState
+type EmptyStateColorPalette =
+  | 'gray'
+  | 'red'
+  | 'orange'
+  | 'yellow'
+  | 'green'
+  | 'teal'
+  | 'blue'
+  | 'cyan'
+  | 'purple'
+  | 'pink'
 
-export const EmptyStateRoot = ChakraEmptyState.Root
+type EmptyStateSize = 'sm' | 'md' | 'lg'
+type EmptyStateVariant = 'subtle' | 'solid' | 'outline' | 'plain'
 
-export const EmptyState: EmptyStateComponent = Object.assign(ChakraEmptyState.Root, {
+type ChakraEmptyStateRootProps = Omit<
+  ComponentPropsWithoutRef<typeof ChakraEmptyState.Root>,
+  'colorPalette' | 'size' | 'variant'
+>
+
+export interface EmptyStateProps extends ChakraEmptyStateRootProps {
+  colorPalette?: EmptyStateColorPalette
+  size?: EmptyStateSize
+  variant?: EmptyStateVariant
+}
+
+type EmptyStateRootComponent = ForwardRefExoticComponent<
+  EmptyStateProps & RefAttributes<HTMLDivElement>
+>
+type EmptyStateComponent = typeof ChakraEmptyState & { Root: EmptyStateRootComponent }
+
+export const EmptyStateRoot = ChakraEmptyState.Root as unknown as EmptyStateRootComponent
+
+export const EmptyState = Object.assign(EmptyStateRoot, {
   ...ChakraEmptyState,
-})
+  Root: EmptyStateRoot,
+}) as EmptyStateComponent

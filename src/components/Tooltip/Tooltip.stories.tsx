@@ -1,4 +1,4 @@
-import { Button, Portal } from '@chakra-ui/react'
+import { Button, Portal } from '@/govuk-chakra'
 import type { ComponentType } from 'react'
 import type { Meta, StoryObj } from '@storybook/react-vite'
 
@@ -26,7 +26,7 @@ export const Default: Story = {
   render: (args) => (
     <Tooltip.Root {...args}>
       <Tooltip.Trigger asChild>
-        <Button variant="outline">Hover me</Button>
+        <Button variant="secondary">Hover me</Button>
       </Tooltip.Trigger>
       <Portal>
         <Tooltip.Positioner>

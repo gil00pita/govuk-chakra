@@ -1,4 +1,4 @@
-import { Button, Portal } from '@chakra-ui/react'
+import { Button, Portal } from '@/govuk-chakra'
 import type { ComponentType } from 'react'
 import type { Meta, StoryObj } from '@storybook/react-vite'
 
@@ -28,7 +28,7 @@ export const Default: Story = {
   render: (args) => (
     <Popover.Root {...args}>
       <Popover.Trigger asChild>
-        <Button variant="outline">Open popover</Button>
+        <Button variant="secondary">Open popover</Button>
       </Popover.Trigger>
       <Portal>
         <Popover.Positioner>

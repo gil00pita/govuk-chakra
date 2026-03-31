@@ -1,4 +1,4 @@
-import { Button, Portal, Text } from '@chakra-ui/react'
+import { Button, Portal, Text } from '@/govuk-chakra'
 import type { ComponentType } from 'react'
 import type { Meta, StoryObj } from '@storybook/react-vite'
 
@@ -19,7 +19,7 @@ export const Default: Story = {
   render: () => (
     <HoverCard.Root>
       <HoverCard.Trigger asChild>
-        <Button variant="outline">Hover me</Button>
+        <Button variant="secondary">Hover me</Button>
       </HoverCard.Trigger>
       <Portal>
         <HoverCard.Positioner>

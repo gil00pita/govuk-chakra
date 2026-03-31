@@ -1,4 +1,4 @@
-import { Button, Portal } from '@chakra-ui/react'
+import { Button, Portal } from '@/govuk-chakra'
 import type { ComponentType } from 'react'
 import type { Meta, StoryObj } from '@storybook/react-vite'
 
@@ -19,7 +19,7 @@ export const Default: Story = {
   render: () => (
     <Menu.Root>
       <Menu.Trigger asChild>
-        <Button variant="outline">Open menu</Button>
+        <Button variant="secondary">Open menu</Button>
       </Menu.Trigger>
       <Portal>
         <Menu.Positioner>

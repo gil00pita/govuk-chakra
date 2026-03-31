@@ -1,4 +1,4 @@
-import { Box, Button, CloseButton, Portal } from '@chakra-ui/react'
+import { Box, Button, CloseButton, Portal } from '@/govuk-chakra'
 import type { ComponentType } from 'react'
 import type { Meta, StoryObj } from '@storybook/react-vite'
 import { expect, userEvent, within } from 'storybook/test'
@@ -30,7 +30,7 @@ export const Default: Story = {
     <Box position="relative" minH="320px" p="8" overflow="hidden">
       <Dialog.Root {...args}>
         <Dialog.Trigger asChild>
-          <Button variant="outline">Open dialog</Button>
+          <Button variant="secondary">Open dialog</Button>
         </Dialog.Trigger>
         <Portal disabled>
           <Dialog.Backdrop pos="absolute" inset="0" />

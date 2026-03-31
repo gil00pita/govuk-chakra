@@ -7,6 +7,7 @@ import avatarRecipe from '@/components/Avatar/Avatar.recipe'
 import calendarRecipe from '@/components/Calendar/Calendar.recipe'
 import carouselRecipe from '@/components/Carousel/Carousel.recipe'
 import comboboxRecipe from '@/components/Combobox/Combobox.recipe'
+import emptyStateRecipe from '@/components/EmptyState/EmptyState.recipe'
 import kbdRecipe from '@/components/Kbd/Kbd.recipe'
 import listboxRecipe from '@/components/Listbox/Listbox.recipe'
 import highlightRecipe from '@/components/Highlight/Highlight.recipe'
@@ -32,6 +33,7 @@ const govUkThemeConfig = defineConfig({
       datePicker: calendarRecipe,
       carousel: carouselRecipe,
       combobox: comboboxRecipe,
+      emptyState: emptyStateRecipe,
       listbox: listboxRecipe,
       steps: stepsRecipe,
       timeline: timelineRecipe,
