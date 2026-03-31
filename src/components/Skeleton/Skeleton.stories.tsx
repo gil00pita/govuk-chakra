@@ -2,11 +2,11 @@ import type { ComponentType } from 'react'
 import { HStack, Stack } from '@chakra-ui/react'
 import type { Meta, StoryObj } from '@storybook/react-vite'
 
-import { selectArgType } from '@/utils/storybookControls'
+import { chakraColorPaletteOptions, selectArgType } from '@/utils/storybookControls'
 import { Skeleton } from './Skeleton'
 import type { SkeletonProps } from './Skeleton'
 
-type SkeletonStoryArgs = Pick<SkeletonProps, 'loading' | 'variant'>
+type SkeletonStoryArgs = Pick<SkeletonProps, 'loading' | 'variant' | 'colorPalette'>
 
 const meta: Meta<SkeletonStoryArgs> = {
   title: 'Chakra Components/Feedback/Skeleton',
@@ -15,8 +15,10 @@ const meta: Meta<SkeletonStoryArgs> = {
   args: {
     loading: true,
     variant: 'pulse',
+    colorPalette: 'gray',
   },
   argTypes: {
+    colorPalette: selectArgType(chakraColorPaletteOptions, 'The color palette of the component.'),
     variant: selectArgType(['pulse', 'shine'], 'The animation variant of the skeleton.'),
   },
 }
