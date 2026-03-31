@@ -2,7 +2,7 @@ import type { ComponentType } from 'react'
 import { HStack, Stack } from '@chakra-ui/react'
 import type { Meta, StoryObj } from '@storybook/react-vite'
 
-import { selectArgType } from '@/stories/storybookControls'
+import { selectArgType } from '@/utils/storybookControls'
 import { Skeleton } from './Skeleton'
 import type { SkeletonProps } from './Skeleton'
 

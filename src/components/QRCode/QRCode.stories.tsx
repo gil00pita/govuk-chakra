@@ -2,7 +2,7 @@ import type { ComponentType } from 'react'
 import { Flex } from '@chakra-ui/react'
 import type { Meta, StoryObj } from '@storybook/react-vite'
 
-import { chakraSizeOptions, selectArgType } from '@/stories/storybookControls'
+import { chakraSizeOptions, selectArgType } from '@/utils/storybookControls'
 import { QRCode } from './QRCode'
 
 type QRCodeStoryArgs = {

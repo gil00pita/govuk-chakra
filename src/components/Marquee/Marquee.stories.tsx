@@ -10,7 +10,7 @@ import {
   IoLogoVimeo,
 } from 'react-icons/io5'
 
-import { htmlElementOptions, rangeArgType, selectArgType } from '@/stories/storybookControls'
+import { htmlElementOptions, rangeArgType, selectArgType } from '@/utils/storybookControls'
 import { Marquee } from './Marquee'
 
 type MarqueeStoryArgs = {

@@ -4,7 +4,7 @@ import type { Meta, StoryObj } from '@storybook/react-vite'
 import { HiColorSwatch } from 'react-icons/hi'
 import { LuShoppingCart } from 'react-icons/lu'
 
-import { selectArgType } from '@/stories/storybookControls'
+import { selectArgType } from '@/utils/storybookControls'
 import { EmptyState } from './EmptyState'
 
 type EmptyStateStoryArgs = {

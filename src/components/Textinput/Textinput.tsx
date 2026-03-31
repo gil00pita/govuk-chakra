@@ -8,7 +8,7 @@ import {
 import { forwardRef, type ComponentPropsWithoutRef, useId, type ReactNode } from 'react'
 
 import { Text } from '@/components/Text'
-import { govukFont, pxToRem } from '@/utils'
+import { getGovukTypeScale, govukFont, pxToRem } from '@/utils'
 
 export type TextinputWidth = 'full' | '30' | '20' | '10' | '5' | '4' | '3' | '2'
 
@@ -118,44 +118,48 @@ const TextinputError = forwardRef<HTMLDivElement, TextinputErrorProps>(function 
 })
 
 const TextinputInput = forwardRef<HTMLInputElement, TextinputInputProps>(function TextinputInput(
-  { width = 'full', invalid, ...props },
+  { width = 'full', fontSize = 16, invalid, ...props },
   ref
 ) {
-  return (
-    <ChakraInput
-      ref={ref}
-      borderRadius="0"
-      borderWidth={pxToRem(2)}
-      borderColor={invalid ? 'fg.error' : 'border.input'}
-      fontFamily="body"
-      bg="transparent"
-      color="fg"
-      fontSize={pxToRem(19)}
-      lineHeight={pxToRem(25)}
-      px={pxToRem(12)}
-      py={pxToRem(5)}
-      h={pxToRem(40)}
-      w={width === 'full' ? '100%' : 'auto'}
-      maxW={width === 'full' ? undefined : WIDTH_MAX[width]}
-      _placeholder={{ color: 'fg.muted', opacity: 1 }}
-      _hover={{ borderColor: invalid ? 'fg.error' : 'border.input' }}
-      _focusVisible={{
-        outline: `${pxToRem(3)} solid`,
-        outlineColor: 'yellow.500',
-        outlineOffset: '0',
-        borderColor: 'border.input',
-        boxShadow: 'inset 0 0 0 2px var(--chakra-colors-border-input)',
-      }}
-      _invalid={{ borderColor: 'fg.error' }}
-      _disabled={{
-        opacity: 1,
-        cursor: 'not-allowed',
-        color: 'fg.disabled',
-        bg: 'bg.disabled',
-      }}
-      {...props}
-    />
-  )
+  const scale = getGovukTypeScale(fontSize)
+
+  if (scale) {
+    return (
+      <ChakraInput
+        ref={ref}
+        borderRadius="0"
+        borderWidth={pxToRem(2)}
+        borderColor={invalid ? 'fg.error' : 'border.input'}
+        fontFamily="body"
+        bg="transparent"
+        color="fg"
+        fontSize={{ base: scale.small.fontSize, md: scale.large.fontSize }}
+        lineHeight={{ base: scale.small.lineHeight, md: scale.large.lineHeight }}
+        px={pxToRem(12)}
+        py={pxToRem(5)}
+        h={pxToRem(40)}
+        w={width === 'full' ? '100%' : 'auto'}
+        maxW={width === 'full' ? undefined : WIDTH_MAX[width]}
+        _placeholder={{ color: 'fg.muted', opacity: 1 }}
+        _hover={{ borderColor: invalid ? 'fg.error' : 'border.input' }}
+        _focusVisible={{
+          outline: `${pxToRem(3)} solid`,
+          outlineColor: 'focus',
+          outlineOffset: '0',
+          borderColor: 'border.input',
+          boxShadow: 'inset 0 0 0 2px {colors.border.input}',
+        }}
+        _invalid={{ borderColor: 'fg.error' }}
+        _disabled={{
+          opacity: 1,
+          cursor: 'not-allowed',
+          color: 'fg.disabled',
+          bg: 'bg.disabled',
+        }}
+        {...props}
+      />
+    )
+  }
 })
 
 const TextinputRootComponent = forwardRef<HTMLInputElement, TextinputProps>(function Textinput(

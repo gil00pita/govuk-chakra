@@ -5,7 +5,7 @@ import {
   htmlElementOptions,
   selectArgType,
   chakraColorPaletteOptions,
-} from '@/stories/storybookControls'
+} from '@/utils/storybookControls'
 import { Spinner } from './Spinner'
 
 type SpinnerStoryArgs = {

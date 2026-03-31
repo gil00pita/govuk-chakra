@@ -2,7 +2,7 @@ import type { ComponentType } from 'react'
 import { Center } from '@chakra-ui/react'
 import type { Meta, StoryObj } from '@storybook/react-vite'
 
-import { chakraColorPaletteOptions, selectArgType } from '@/stories/storybookControls'
+import { chakraColorPaletteOptions, selectArgType } from '@/utils/storybookControls'
 import { ProgressCircle } from './ProgressCircle'
 
 type ProgressCircleStoryArgs = {

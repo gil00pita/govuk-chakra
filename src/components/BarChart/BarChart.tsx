@@ -12,14 +12,10 @@ export interface BarChartProps<T> extends Omit<
   chartRootProps?: Omit<ChartRootProps<T>, 'chart' | 'children'>
 }
 
-function BarChartRoot<T>({ chart, chartRootProps, style, ...props }: BarChartProps<T>) {
+function BarChartRoot<T>({ chart, chartRootProps, ...props }: BarChartProps<T>) {
   return (
     <Chart.Root chart={chart} {...chartRootProps}>
-      <ChakraBarChart
-        data={chart.data}
-        style={{ fontFamily: 'var(--chakra-fonts-body)', ...style }}
-        {...props}
-      />
+      <ChakraBarChart data={chart.data} {...props} />
     </Chart.Root>
   )
 }

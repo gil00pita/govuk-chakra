@@ -12,14 +12,10 @@ export interface ScatterChartProps<T> extends Omit<
   chartRootProps?: Omit<ChartRootProps<T>, 'chart' | 'children'>
 }
 
-function ScatterChartRoot<T>({ chart, chartRootProps, style, ...props }: ScatterChartProps<T>) {
+function ScatterChartRoot<T>({ chart, chartRootProps, ...props }: ScatterChartProps<T>) {
   return (
     <Chart.Root chart={chart} {...chartRootProps}>
-      <ChakraScatterChart
-        data={chart.data}
-        style={{ fontFamily: 'var(--chakra-fonts-body)', ...style }}
-        {...props}
-      />
+      <ChakraScatterChart data={chart.data} {...props} />
     </Chart.Root>
   )
 }

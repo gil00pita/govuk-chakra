@@ -3,7 +3,7 @@ import { Avatar, Badge, Span, Stack, Text } from '@chakra-ui/react'
 import type { Meta, StoryObj } from '@storybook/react-vite'
 import { LuCheck, LuPackage, LuShip } from 'react-icons/lu'
 
-import { selectArgType } from '@/stories/storybookControls'
+import { selectArgType } from '@/utils/storybookControls'
 import { Timeline } from './Timeline'
 
 type TimelineStoryArgs = {

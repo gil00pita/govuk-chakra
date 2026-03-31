@@ -12,14 +12,10 @@ export interface DonutChartProps<T> extends Omit<
   chartRootProps?: Omit<ChartRootProps<T>, 'chart' | 'children'>
 }
 
-function DonutChartRoot<T>({ chart, chartRootProps, style, ...props }: DonutChartProps<T>) {
+function DonutChartRoot<T>({ chart, chartRootProps, ...props }: DonutChartProps<T>) {
   return (
     <Chart.Root chart={chart} {...chartRootProps}>
-      <ChakraDonutChart
-        data={chart.data}
-        style={{ fontFamily: 'var(--chakra-fonts-body)', ...style }}
-        {...props}
-      />
+      <ChakraDonutChart data={chart.data} {...props} />
     </Chart.Root>
   )
 }

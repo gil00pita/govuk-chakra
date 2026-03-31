@@ -270,17 +270,17 @@ const SelectTrigger = forwardRef<HTMLButtonElement, SelectTriggerProps>(function
       _hover={{ borderColor: field.invalid ? 'fg.error' : 'border.input' }}
       _focusVisible={{
         outline: `${pxToRem(3)} solid`,
-        outlineColor: 'yellow.500',
+        outlineColor: 'focus',
         outlineOffset: '0',
-        borderColor: 'common.black',
-        boxShadow: 'inset 0 0 0 2px var(--chakra-colors-common-black)',
+        borderColor: field.invalid ? 'fg.error' : 'border.input',
+        boxShadow: 'inset 0 0 0 2px {colors.border.input}',
       }}
       _focus={{
         outline: `${pxToRem(3)} solid`,
-        outlineColor: 'yellow.500',
+        outlineColor: 'focus',
         outlineOffset: '0',
-        borderColor: 'common.black',
-        boxShadow: 'inset 0 0 0 2px var(--chakra-colors-common-black)',
+        borderColor: field.invalid ? 'fg.error' : 'border.input',
+        boxShadow: 'inset 0 0 0 2px {colors.border.input}',
       }}
       _invalid={{ borderColor: 'fg.error' }}
       _disabled={{

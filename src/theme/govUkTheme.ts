@@ -3,6 +3,10 @@ import { createSystem, defaultConfig, defineConfig } from '@chakra-ui/react'
 import { colors } from './colors'
 import { fonts } from './fonts'
 import { govukFontSizes } from '@/utils/px-to-rem'
+import comboboxRecipe from '@/components/Combobox/Combobox.recipe'
+import kbdRecipe from '@/components/Kbd/Kbd.recipe'
+import highlightRecipe from '@/components/Highlight/Highlight.recipe'
+import codeRecipe from '@/components/Code/Code.recipe'
 
 const govUkThemeConfig = defineConfig({
   preflight: true,
@@ -15,6 +19,16 @@ const govUkThemeConfig = defineConfig({
     },
   },
   theme: {
+    // slotRecipe: multiple style objects keyed by slots like root, input, label, item, content.
+    slotRecipes: {
+      combobox: comboboxRecipe,
+    },
+    // recipe: one style object, one component surface.
+    recipes: {
+      code: codeRecipe,
+      highlight: highlightRecipe,
+      kbd: kbdRecipe,
+    },
     breakpoints: {
       sm: '480px',
       md: '640px', // default in GOV.UK but in chakra-ui is 768px, left it 640px to match GOV.UK
@@ -58,9 +72,15 @@ const govUkThemeConfig = defineConfig({
             _dark: '{colors.grey.800}',
           },
         },
+        'bg.panel': {
+          value: {
+            base: '{colors.common.white}',
+            _dark: '{colors.grey.800}',
+          },
+        },
         'bg.disabled': {
           value: {
-            base: '{colors.grey.10}',
+            base: '{colors.grey.100}',
             _dark: '{colors.grey.900}',
           },
         },
@@ -136,6 +156,12 @@ const govUkThemeConfig = defineConfig({
             _dark: '{colors.red.400}',
           },
         },
+        'border.focus': {
+          value: {
+            base: '{colors.yellow.500}',
+            _dark: '{colors.yellow.500}',
+          },
+        },
         link: {
           value: {
             base: '{colors.govuk.link}',
@@ -162,8 +188,8 @@ const govUkThemeConfig = defineConfig({
         },
         focus: {
           value: {
-            base: '{colors.govuk.focusYellow}',
-            _dark: '{colors.yellow.400}',
+            base: '{colors.yellow.500}',
+            _dark: '{colors.yellow.500}',
           },
         },
         'focus.text': {

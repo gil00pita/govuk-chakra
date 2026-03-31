@@ -35,7 +35,7 @@ export const govukButtonVariantOptions = [
 export const govukButtonIconVariantOptions = [
   'primary',
   'secondary',
-  'flat',
+  'plain',
   'error',
   'inverse',
   'link',

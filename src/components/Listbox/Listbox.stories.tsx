@@ -2,7 +2,7 @@ import { createListCollection } from '@chakra-ui/react'
 import type { ComponentType } from 'react'
 import type { Meta, StoryObj } from '@storybook/react-vite'
 
-import { selectArgType } from '@/stories/storybookControls'
+import { selectArgType } from '@/utils/storybookControls'
 import { Listbox } from './Listbox'
 
 type ListboxStoryArgs = {

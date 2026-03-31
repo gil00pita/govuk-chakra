@@ -3,8 +3,10 @@ import type { ComponentPropsWithoutRef } from 'react'
 
 export type KbdProps = ComponentPropsWithoutRef<typeof ChakraKbd>
 
-export const KbdRoot = ChakraKbd
+export function KbdRoot({ ...props }: KbdProps) {
+  return <ChakraKbd {...props} />
+}
 
-export const Kbd = Object.assign(ChakraKbd, {
-  Root: ChakraKbd,
+export const Kbd = Object.assign(KbdRoot, {
+  Root: KbdRoot,
 })

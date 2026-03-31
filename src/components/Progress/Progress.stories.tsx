@@ -1,7 +1,7 @@
 import type { ComponentType } from 'react'
 import type { Meta, StoryObj } from '@storybook/react-vite'
 
-import { chakraColorPaletteOptions, selectArgType } from '@/stories/storybookControls'
+import { chakraColorPaletteOptions, selectArgType } from '@/utils/storybookControls'
 import { Progress } from './Progress'
 
 type ProgressStoryArgs = {

@@ -2,7 +2,7 @@ import { useState, type ComponentType } from 'react'
 import { HStack, Portal, parseColor } from '@chakra-ui/react'
 import type { Meta, StoryObj } from '@storybook/react-vite'
 
-import { selectArgType, chakraSizeOptions } from '@/stories/storybookControls'
+import { selectArgType, chakraSizeOptions } from '@/utils/storybookControls'
 import { ColorPicker } from './ColorPicker'
 
 type ColorPickerStoryArgs = {

@@ -1,7 +1,7 @@
 import type { Meta, StoryObj } from '@storybook/react-vite'
 
 import { IconButton } from './IconButton'
-import { govukButtonIconVariantOptions, selectArgType } from '@/stories/storybookControls'
+import { govukButtonIconVariantOptions, selectArgType } from '@/utils/storybookControls'
 import { FaCog } from 'react-icons/fa'
 
 const meta: Meta<typeof IconButton> = {

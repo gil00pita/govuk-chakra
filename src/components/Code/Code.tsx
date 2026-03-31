@@ -1,10 +1,28 @@
 import { Code as ChakraCode } from '@chakra-ui/react'
 import type { ComponentPropsWithoutRef } from 'react'
 
-export type CodeProps = ComponentPropsWithoutRef<typeof ChakraCode>
+type CodeVariant = 'solid' | 'subtle' | 'surface' | 'outline' | 'plain'
+type CodeColorPalette =
+  | 'gray'
+  | 'red'
+  | 'orange'
+  | 'yellow'
+  | 'green'
+  | 'teal'
+  | 'blue'
+  | 'cyan'
+  | 'purple'
+  | 'pink'
 
-export const CodeRoot = ChakraCode
+export interface CodeProps extends ComponentPropsWithoutRef<typeof ChakraCode> {
+  variant?: CodeVariant
+  colorPalette?: CodeColorPalette
+}
 
-export const Code = Object.assign(ChakraCode, {
-  Root: ChakraCode,
+export function CodeRoot({ ...props }: CodeProps) {
+  return <ChakraCode {...props} />
+}
+
+export const Code = Object.assign(CodeRoot, {
+  Root: CodeRoot,
 })

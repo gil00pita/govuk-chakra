@@ -2,10 +2,12 @@ import { Portal, useFilter, useListCollection } from '@chakra-ui/react'
 import type { ComponentType } from 'react'
 import type { Meta, StoryObj } from '@storybook/react-vite'
 
+import { selectArgType } from '@/utils/storybookControls'
 import { Combobox } from './Combobox'
 
 type ComboboxStoryArgs = {
-  size?: 'xs' | 'sm' | 'md' | 'lg'
+  size?: 'sm' | 'md' | 'lg'
+  variant?: 'outline' | 'subtle'
 }
 
 const meta: Meta<ComboboxStoryArgs> = {
@@ -14,6 +16,11 @@ const meta: Meta<ComboboxStoryArgs> = {
   tags: ['autodocs'],
   args: {
     size: 'md',
+    variant: 'outline',
+  },
+  argTypes: {
+    size: selectArgType(['sm', 'md', 'lg'], 'The size of the combobox.'),
+    variant: selectArgType(['outline', 'subtle'], 'The visual variant of the combobox.'),
   },
 }
 

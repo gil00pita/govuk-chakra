@@ -10,7 +10,7 @@ import {
   LuTrendingUp,
 } from 'react-icons/lu'
 
-import { selectArgType } from '@/stories/storybookControls'
+import { selectArgType } from '@/utils/storybookControls'
 import { RadioCard } from './RadioCard'
 
 type RadioCardStoryArgs = {

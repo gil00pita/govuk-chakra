@@ -140,12 +140,13 @@ export const Textarea = {
         py={pxToRem(8)}
         w="100%"
         _placeholder={{ color: 'fg.muted', opacity: 1 }}
+        _hover={{ borderColor: 'border.input' }}
         _focusVisible={{
           outline: `${pxToRem(3)} solid`,
-          outlineColor: 'yellow.500',
+          outlineColor: 'focus',
           outlineOffset: '0',
           borderColor: 'border.input',
-          boxShadow: 'inset 0 0 0 2px var(--chakra-colors-border-input)',
+          boxShadow: 'inset 0 0 0 2px {colors.border.input}',
         }}
         _invalid={{ borderColor: 'fg.error' }}
         _disabled={{

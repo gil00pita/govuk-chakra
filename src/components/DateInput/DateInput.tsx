@@ -254,13 +254,13 @@ export const DateInput = {
         py={pxToRem(5)}
         h={pxToRem(40)}
         _placeholder={{ color: 'fg.muted', opacity: 1 }}
-        _hover={{ borderColor: 'border.input' }}
+        _hover={{ borderColor: invalid ? 'border.error' : 'border.input' }}
         _focusVisible={{
           outline: `${pxToRem(3)} solid`,
-          outlineColor: 'yellow.500',
+          outlineColor: 'focus',
           outlineOffset: '0',
-          borderColor: 'border.input',
-          boxShadow: 'inset 0 0 0 2px var(--chakra-colors-common-black)',
+          borderColor: invalid ? 'border.error' : 'border.input',
+          boxShadow: 'inset 0 0 0 2px {colors.border.input})',
         }}
         _invalid={{ borderColor: 'border.error' }}
         _disabled={{
