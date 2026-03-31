@@ -5,6 +5,7 @@ import { fonts } from './fonts'
 import { govukFontSizes } from '@/utils/px-to-rem'
 import comboboxRecipe from '@/components/Combobox/Combobox.recipe'
 import kbdRecipe from '@/components/Kbd/Kbd.recipe'
+import listboxRecipe from '@/components/Listbox/Listbox.recipe'
 import highlightRecipe from '@/components/Highlight/Highlight.recipe'
 import codeRecipe from '@/components/Code/Code.recipe'
 
@@ -22,6 +23,7 @@ const govUkThemeConfig = defineConfig({
     // slotRecipe: multiple style objects keyed by slots like root, input, label, item, content.
     slotRecipes: {
       combobox: comboboxRecipe,
+      listbox: listboxRecipe,
     },
     // recipe: one style object, one component surface.
     recipes: {

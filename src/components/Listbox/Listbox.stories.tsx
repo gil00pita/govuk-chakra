@@ -6,7 +6,8 @@ import { selectArgType } from '@/utils/storybookControls'
 import { Listbox } from './Listbox'
 
 type ListboxStoryArgs = {
-  size?: 'xs' | 'sm' | 'md'
+  size?: 'sm' | 'md' | 'lg'
+  variant?: 'subtle' | 'solid' | 'plain'
 }
 
 const meta: Meta<ListboxStoryArgs> = {
@@ -15,9 +16,11 @@ const meta: Meta<ListboxStoryArgs> = {
   tags: ['autodocs'],
   args: {
     size: 'md',
+    variant: 'subtle',
   },
   argTypes: {
-    size: selectArgType(['xs', 'sm', 'md'], 'The size of the listbox.'),
+    size: selectArgType(['sm', 'md', 'lg'], 'The size of the listbox.'),
+    variant: selectArgType(['subtle', 'solid', 'plain'], 'The visual variant of the listbox.'),
   },
 }
 
