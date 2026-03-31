@@ -34,6 +34,9 @@ function createAvatarCompoundVariants(colorPalette: (typeof avatarColorPalettes)
   const subtleForeground = getAccessiblePaletteForeground(colorPalette, '100')
   const solidForeground = getAccessiblePaletteForeground(colorPalette, '600')
   const outlineForeground = getAccessiblePaletteForeground(colorPalette, '50')
+  const subtleForegroundDark = getAccessiblePaletteForeground(colorPalette, '900')
+  const solidForegroundDark = getAccessiblePaletteForeground(colorPalette, '950')
+  const outlineForegroundDark = getAccessiblePaletteForeground(colorPalette, '950')
 
   return [
     {
@@ -43,6 +46,10 @@ function createAvatarCompoundVariants(colorPalette: (typeof avatarColorPalettes)
         root: {
           bg: `${paletteToken}.100`,
           color: subtleForeground,
+          _dark: {
+            bg: `${paletteToken}.950`,
+            color: subtleForegroundDark,
+          },
         },
       },
     },
@@ -51,8 +58,12 @@ function createAvatarCompoundVariants(colorPalette: (typeof avatarColorPalettes)
       colorPalette,
       css: {
         root: {
-          bg: `${paletteToken}.600`,
+          bg: `${paletteToken}.500`,
           color: solidForeground,
+          _dark: {
+            bg: `${paletteToken}.700`,
+            color: solidForegroundDark,
+          },
         },
       },
     },
@@ -64,6 +75,11 @@ function createAvatarCompoundVariants(colorPalette: (typeof avatarColorPalettes)
           bg: 'transparent',
           color: outlineForeground,
           border: `2px solid {colors.${paletteToken}.300}`,
+          _dark: {
+            bg: 'transparent',
+            border: `2px solid {colors.${paletteToken}.950}`,
+            color: outlineForegroundDark,
+          },
         },
       },
     },
