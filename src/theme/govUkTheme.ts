@@ -9,6 +9,7 @@ import kbdRecipe from '@/components/Kbd/Kbd.recipe'
 import listboxRecipe from '@/components/Listbox/Listbox.recipe'
 import highlightRecipe from '@/components/Highlight/Highlight.recipe'
 import codeRecipe from '@/components/Code/Code.recipe'
+import timelineRecipe from '@/components/Timeline/Timeline.recipe'
 import treeViewRecipe from '@/components/TreeView/TreeView.recipe'
 
 const govUkThemeConfig = defineConfig({
@@ -27,6 +28,7 @@ const govUkThemeConfig = defineConfig({
       avatar: avatarRecipe,
       combobox: comboboxRecipe,
       listbox: listboxRecipe,
+      timeline: timelineRecipe,
       treeView: treeViewRecipe,
     },
     // recipe: one style object, one component surface.

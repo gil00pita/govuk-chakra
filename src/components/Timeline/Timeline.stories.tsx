@@ -1,12 +1,14 @@
 import type { ComponentType } from 'react'
-import { Avatar, Badge, Span, Stack, Text } from '@chakra-ui/react'
+import { Avatar, Badge, Icon, Span, Stack, Text } from '@chakra-ui/react'
 import type { Meta, StoryObj } from '@storybook/react-vite'
-import { LuCheck, LuPackage, LuShip } from 'react-icons/lu'
+import { LuCheck } from 'react-icons/lu'
 
-import { selectArgType } from '@/utils/storybookControls'
+import { chakraColorPaletteOptions, selectArgType } from '@/utils/storybookControls'
 import { Timeline } from './Timeline'
+import { FaBox, FaShip } from 'react-icons/fa'
 
 type TimelineStoryArgs = {
+  colorPalette?: (typeof chakraColorPaletteOptions)[number]
   size?: 'sm' | 'md' | 'lg' | 'xl'
   variant?: 'subtle' | 'solid' | 'outline' | 'plain'
 }
@@ -16,10 +18,12 @@ const meta: Meta<TimelineStoryArgs> = {
   component: Timeline.Root as unknown as ComponentType<TimelineStoryArgs>,
   tags: ['autodocs'],
   args: {
+    colorPalette: 'gray',
     size: 'md',
     variant: 'solid',
   },
   argTypes: {
+    colorPalette: selectArgType(chakraColorPaletteOptions, 'The color palette of the component.'),
     size: selectArgType(['sm', 'md', 'lg', 'xl'], 'The size of the component.'),
     variant: selectArgType(
       ['subtle', 'solid', 'outline', 'plain'],
@@ -38,7 +42,7 @@ export const Default: Story = {
         <Timeline.Connector>
           <Timeline.Separator />
           <Timeline.Indicator>
-            <LuShip />
+            <FaShip />
           </Timeline.Indicator>
         </Timeline.Connector>
         <Timeline.Content>
@@ -68,7 +72,9 @@ export const Default: Story = {
         <Timeline.Connector>
           <Timeline.Separator />
           <Timeline.Indicator>
-            <LuPackage />
+            <Icon boxSize="12px">
+              <FaBox />
+            </Icon>
           </Timeline.Indicator>
         </Timeline.Connector>
         <Timeline.Content>
