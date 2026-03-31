@@ -1,7 +1,6 @@
 import { createTreeCollection } from '@chakra-ui/react'
 import { screen } from '@testing-library/react'
 import userEvent from '@testing-library/user-event'
-import { LuFile, LuFolder } from 'react-icons/lu'
 
 import { renderWithProvider } from '@/test/renderWithProvider'
 import { TreeView } from './TreeView'
@@ -31,12 +30,12 @@ describe('TreeView', () => {
             render={({ node, nodeState }) =>
               nodeState.isBranch ? (
                 <TreeView.BranchControl>
-                  <LuFolder />
+                  <TreeView.FolderIcon />
                   <TreeView.BranchText>{node.name}</TreeView.BranchText>
                 </TreeView.BranchControl>
               ) : (
                 <TreeView.Item>
-                  <LuFile />
+                  <TreeView.FileIcon />
                   <TreeView.ItemText>{node.name}</TreeView.ItemText>
                 </TreeView.Item>
               )

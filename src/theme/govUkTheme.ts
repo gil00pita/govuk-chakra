@@ -8,6 +8,7 @@ import kbdRecipe from '@/components/Kbd/Kbd.recipe'
 import listboxRecipe from '@/components/Listbox/Listbox.recipe'
 import highlightRecipe from '@/components/Highlight/Highlight.recipe'
 import codeRecipe from '@/components/Code/Code.recipe'
+import treeViewRecipe from '@/components/TreeView/TreeView.recipe'
 
 const govUkThemeConfig = defineConfig({
   preflight: true,
@@ -24,6 +25,7 @@ const govUkThemeConfig = defineConfig({
     slotRecipes: {
       combobox: comboboxRecipe,
       listbox: listboxRecipe,
+      treeView: treeViewRecipe,
     },
     // recipe: one style object, one component surface.
     recipes: {

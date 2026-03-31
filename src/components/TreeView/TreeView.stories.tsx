@@ -1,12 +1,14 @@
 import { createTreeCollection } from '@chakra-ui/react'
 import type { ComponentType } from 'react'
-import { LuFile, LuFolder } from 'react-icons/lu'
 import type { Meta, StoryObj } from '@storybook/react-vite'
 
+import { selectArgType } from '@/utils/storybookControls'
 import { TreeView } from './TreeView'
 
 type TreeViewStoryArgs = {
-  size?: 'xs' | 'sm' | 'md'
+  size?: 'xs' | 'md'
+  variant?: 'subtle' | 'solid'
+  animateContent?: boolean
 }
 
 const meta: Meta<TreeViewStoryArgs> = {
@@ -14,7 +16,15 @@ const meta: Meta<TreeViewStoryArgs> = {
   component: TreeView.Root as unknown as ComponentType<TreeViewStoryArgs>,
   tags: ['autodocs'],
   args: {
-    size: 'sm',
+    variant: 'subtle',
+    animateContent: true,
+  },
+  argTypes: {
+    variant: selectArgType(['subtle', 'solid'], 'The visual variant of the tree view.'),
+    animateContent: {
+      control: 'boolean',
+      description: 'Whether branch content animations are enabled.',
+    },
   },
 }
 
@@ -43,12 +53,12 @@ export const Default: Story = {
           render={({ node, nodeState }) =>
             nodeState.isBranch ? (
               <TreeView.BranchControl>
-                <LuFolder />
+                <TreeView.FolderIcon />
                 <TreeView.BranchText>{node.name}</TreeView.BranchText>
               </TreeView.BranchControl>
             ) : (
               <TreeView.Item>
-                <LuFile />
+                <TreeView.FileIcon />
                 <TreeView.ItemText>{node.name}</TreeView.ItemText>
               </TreeView.Item>
             )
