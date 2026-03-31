@@ -5,6 +5,7 @@ import { ColorSwatch } from './ColorSwatch'
 
 type ColorSwatchStoryArgs = {
   value: string
+  shape?: 'square' | 'circle' | 'rounded'
 }
 
 const meta: Meta<ColorSwatchStoryArgs> = {
@@ -13,6 +14,14 @@ const meta: Meta<ColorSwatchStoryArgs> = {
   tags: ['autodocs'],
   args: {
     value: '#0F766E',
+    shape: 'rounded',
+  },
+  argTypes: {
+    shape: {
+      control: 'select',
+      options: ['square', 'rounded', 'circle'],
+      description: 'The shape of the color swatch.',
+    },
   },
 }
 

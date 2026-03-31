@@ -8,7 +8,7 @@ const colorSwatchRecipe = defineRecipe({
     alignItems: 'center',
     justifyContent: 'center',
     flexShrink: '0',
-    borderWidth: '1px',
+    borderWidth: '2px',
     borderColor: 'border.input',
     boxShadow: 'inset 0 0 0 1px {colors.white/20}',
     '--checker-size': '8px',
