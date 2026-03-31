@@ -12,6 +12,7 @@ import kbdRecipe from '@/components/Kbd/Kbd.recipe'
 import listboxRecipe from '@/components/Listbox/Listbox.recipe'
 import highlightRecipe from '@/components/Highlight/Highlight.recipe'
 import codeRecipe from '@/components/Code/Code.recipe'
+import progressCircleRecipe from '@/components/ProgressCircle/ProgressCircle.recipe'
 import stepsRecipe from '@/components/Steps/Steps.recipe'
 import timelineRecipe from '@/components/Timeline/Timeline.recipe'
 import treeViewRecipe from '@/components/TreeView/TreeView.recipe'
@@ -35,6 +36,7 @@ const govUkThemeConfig = defineConfig({
       combobox: comboboxRecipe,
       emptyState: emptyStateRecipe,
       listbox: listboxRecipe,
+      progressCircle: progressCircleRecipe,
       steps: stepsRecipe,
       timeline: timelineRecipe,
       treeView: treeViewRecipe,

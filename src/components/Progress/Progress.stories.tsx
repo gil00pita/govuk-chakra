@@ -1,7 +1,7 @@
 import type { ComponentType } from 'react'
 import type { Meta, StoryObj } from '@storybook/react-vite'
 
-import { chakraColorPaletteOptions, selectArgType } from '@/utils/storybookControls'
+import { chakraColorPaletteOptions, rangeArgType, selectArgType } from '@/utils/storybookControls'
 import { Progress } from './Progress'
 
 type ProgressStoryArgs = {
@@ -30,6 +30,12 @@ const meta: Meta<ProgressStoryArgs> = {
     size: 'md',
   },
   argTypes: {
+    value: rangeArgType({
+      min: 0,
+      max: 100,
+      step: 1,
+      description: 'The current value of the progress bar.',
+    }),
     colorPalette: selectArgType(chakraColorPaletteOptions, 'The color palette of the component.'),
     size: selectArgType(['xs', 'sm', 'md', 'lg'], 'The size of the component.'),
   },

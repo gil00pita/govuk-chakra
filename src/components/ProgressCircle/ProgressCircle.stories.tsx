@@ -2,7 +2,7 @@ import type { ComponentType } from 'react'
 import { Center } from '@chakra-ui/react'
 import type { Meta, StoryObj } from '@storybook/react-vite'
 
-import { chakraColorPaletteOptions, selectArgType } from '@/utils/storybookControls'
+import { chakraColorPaletteOptions, rangeArgType, selectArgType } from '@/utils/storybookControls'
 import { ProgressCircle } from './ProgressCircle'
 
 type ProgressCircleStoryArgs = {
@@ -18,6 +18,7 @@ type ProgressCircleStoryArgs = {
     | 'cyan'
     | 'purple'
     | 'pink'
+  size?: 'xs' | 'sm' | 'md' | 'lg' | 'xl'
 }
 
 const meta: Meta<ProgressCircleStoryArgs> = {
@@ -27,9 +28,17 @@ const meta: Meta<ProgressCircleStoryArgs> = {
   args: {
     value: 72,
     colorPalette: 'teal',
+    size: 'xl',
   },
   argTypes: {
+    value: rangeArgType({
+      min: 0,
+      max: 100,
+      step: 1,
+      description: 'The current value of the progress circle.',
+    }),
     colorPalette: selectArgType(chakraColorPaletteOptions, 'The color palette of the component.'),
+    size: selectArgType(['xs', 'sm', 'md', 'lg', 'xl'], 'The size of the component.'),
   },
 }
 
@@ -38,7 +47,7 @@ type Story = StoryObj<typeof meta>
 
 export const Default: Story = {
   render: (args) => (
-    <ProgressCircle.Root {...args} size="xl">
+    <ProgressCircle.Root {...args}>
       <ProgressCircle.Circle>
         <ProgressCircle.Track />
         <ProgressCircle.Range />

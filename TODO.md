@@ -1,16 +1,26 @@
 Style the components according with GOV.UK Design system:
-[x] Table
-[] Listbox
-[] Combobox
-[] Treeview
-[] Avatar
-[] Timeline
-[] Pin input
-[] Radio card
-[x] PieChart
-[x] Radar Chart
-[x] Scatter Chart
-[x] Sparkline
+[] Feedback/Skeleton
+[] Feedback/Spinner
+[] Feedback/Stat
+[] Feedback/Status
+[] Feedback/Toast
+[] Forms/ColorSwatch
+[] Forms/ColorPicker
+[] Forms/Editable
+[] Forms/Pininput
+[] Forms/RadioCard
+[] Forms/Rating
+[] Forms/RichTextEditor
+[] Forms/SegmentedControl
+[] Forms/Slider
+[] Forms/Switch
+[] Forms/TagsInput
+[] Overlays/Dialog
+[] Overlays/Hovercard
+[] Overlays/Menu
+[] Overlays/Popover
+[] Overlays/Toggle Tip
+[] Overlays/Tooltip
 
 Add in:
 [] Visual test
