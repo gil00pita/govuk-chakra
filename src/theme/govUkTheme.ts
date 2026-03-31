@@ -3,6 +3,7 @@ import { createSystem, defaultConfig, defineConfig } from '@chakra-ui/react'
 import { colors } from './colors'
 import { fonts } from './fonts'
 import { govukFontSizes } from '@/utils/px-to-rem'
+import avatarRecipe from '@/components/Avatar/Avatar.recipe'
 import comboboxRecipe from '@/components/Combobox/Combobox.recipe'
 import kbdRecipe from '@/components/Kbd/Kbd.recipe'
 import listboxRecipe from '@/components/Listbox/Listbox.recipe'
@@ -23,6 +24,7 @@ const govUkThemeConfig = defineConfig({
   theme: {
     // slotRecipe: multiple style objects keyed by slots like root, input, label, item, content.
     slotRecipes: {
+      avatar: avatarRecipe,
       combobox: comboboxRecipe,
       listbox: listboxRecipe,
       treeView: treeViewRecipe,
