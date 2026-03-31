@@ -39,7 +39,7 @@ type Story = StoryObj<typeof meta>
 export const Default: Story = {
   render: (args) => (
     <Calendar.Root inline width="fit-content" {...args}>
-      <Calendar.Content unstyled>
+      <Calendar.Content>
         <Calendar.View view="day">
           <Calendar.Header />
           <Calendar.DayTable />

@@ -4,6 +4,7 @@ import { colors } from './colors'
 import { fonts } from './fonts'
 import { govukFontSizes } from '@/utils/px-to-rem'
 import avatarRecipe from '@/components/Avatar/Avatar.recipe'
+import calendarRecipe from '@/components/Calendar/Calendar.recipe'
 import comboboxRecipe from '@/components/Combobox/Combobox.recipe'
 import kbdRecipe from '@/components/Kbd/Kbd.recipe'
 import listboxRecipe from '@/components/Listbox/Listbox.recipe'
@@ -26,6 +27,7 @@ const govUkThemeConfig = defineConfig({
     // slotRecipe: multiple style objects keyed by slots like root, input, label, item, content.
     slotRecipes: {
       avatar: avatarRecipe,
+      datePicker: calendarRecipe,
       combobox: comboboxRecipe,
       listbox: listboxRecipe,
       timeline: timelineRecipe,
