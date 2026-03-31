@@ -1,12 +1,17 @@
-import { Button } from '@chakra-ui/react'
+import { Button } from '@/components'
 import type { ComponentType } from 'react'
 import type { Meta, StoryObj } from '@storybook/react-vite'
 
+import { chakraColorPaletteOptions, selectArgType } from '@/utils/storybookControls'
 import { Steps } from './Steps'
 
 type StepsStoryArgs = {
+  colorPalette?: (typeof chakraColorPaletteOptions)[number]
   defaultStep?: number
   count?: number
+  orientation?: 'horizontal' | 'vertical'
+  size?: 'xs' | 'sm' | 'md' | 'lg'
+  variant?: 'subtle' | 'solid' | 'outline'
 }
 
 const meta: Meta<StepsStoryArgs> = {
@@ -14,8 +19,18 @@ const meta: Meta<StepsStoryArgs> = {
   component: Steps.Root as unknown as ComponentType<StepsStoryArgs>,
   tags: ['autodocs'],
   args: {
+    colorPalette: 'blue',
     defaultStep: 0,
     count: 3,
+    orientation: 'horizontal',
+    size: 'md',
+    variant: 'solid',
+  },
+  argTypes: {
+    colorPalette: selectArgType(chakraColorPaletteOptions, 'The color palette of the component.'),
+    orientation: selectArgType(['horizontal', 'vertical'], 'The orientation of the component.'),
+    size: selectArgType(['xs', 'sm', 'md', 'lg'], 'The size of the component.'),
+    variant: selectArgType(['subtle', 'solid', 'outline'], 'The variant of the component.'),
   },
 }
 
@@ -58,7 +73,7 @@ export const Default: Story = {
       <Steps.Content index={2}>Confirm details</Steps.Content>
       <Steps.CompletedContent>All steps completed</Steps.CompletedContent>
       <Steps.PrevTrigger asChild>
-        <Button variant="outline" size="sm">
+        <Button variant="secondary" size="sm">
           Previous
         </Button>
       </Steps.PrevTrigger>

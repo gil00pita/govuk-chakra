@@ -12,7 +12,7 @@ export const buttonVariantStyles: Record<ButtonVariant, SystemStyleObject> = {
   primary: {
     bgColor: 'green.500',
     color: 'white',
-    boxShadow: '0 2px 0 {colors.green.800})',
+    boxShadow: '0 2px 0 {colors.green.800}',
     _hover: {
       bgColor: 'green.700',
       color: 'white',
@@ -36,7 +36,7 @@ export const buttonVariantStyles: Record<ButtonVariant, SystemStyleObject> = {
       _focus: buttonFocusStyles,
       _focusVisible: buttonFocusStyles,
     },
-    boxShadow: '0 2px 0 {colors.grey.200})',
+    boxShadow: '0 2px 0 {colors.grey.200}',
     _hover: {
       bgColor: 'grey.100',
       _focus: buttonFocusStyles,
@@ -48,7 +48,7 @@ export const buttonVariantStyles: Record<ButtonVariant, SystemStyleObject> = {
   error: {
     bgColor: 'border.error',
     color: 'white',
-    boxShadow: '0 2px 0 {colors.red.800})',
+    boxShadow: '0 2px 0 {colors.red.800}',
     _hover: {
       bgColor: 'red.700',
       _focus: buttonFocusStyles,
@@ -60,7 +60,7 @@ export const buttonVariantStyles: Record<ButtonVariant, SystemStyleObject> = {
   inverse: {
     bgColor: 'bg',
     color: 'blue.500',
-    boxShadow: '0 2px 0 {colors.blue.700)',
+    boxShadow: '0 2px 0 {colors.blue.700}',
     _dark: {
       bgColor: 'blue.900',
       color: 'blue.50',

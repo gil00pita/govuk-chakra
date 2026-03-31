@@ -1,4 +1,4 @@
-import { Button } from '@chakra-ui/react'
+import { Button, Text } from '@/components'
 import type { ComponentType } from 'react'
 import type { Meta, StoryObj } from '@storybook/react-vite'
 
@@ -24,9 +24,11 @@ export const Default: Story = {
   render: (args) => (
     <Collapsible.Root maxW="320px" {...args}>
       <Collapsible.Trigger asChild>
-        <Button variant="outline">Toggle details</Button>
+        <Button variant="secondary">Toggle details</Button>
       </Collapsible.Trigger>
-      <Collapsible.Content>Hidden content</Collapsible.Content>
+      <Collapsible.Content>
+        <Text>Hidden content</Text>
+      </Collapsible.Content>
     </Collapsible.Root>
   ),
 }

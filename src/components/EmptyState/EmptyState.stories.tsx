@@ -1,5 +1,5 @@
 import type { ComponentType } from 'react'
-import { Button, ButtonGroup, List, VStack } from '@chakra-ui/react'
+import { Button, ButtonGroup, List, VStack } from '@/govuk-chakra'
 import type { Meta, StoryObj } from '@storybook/react-vite'
 import { HiColorSwatch } from 'react-icons/hi'
 import { LuShoppingCart } from 'react-icons/lu'
@@ -57,7 +57,7 @@ export const WithAction: Story = {
         </VStack>
         <ButtonGroup>
           <Button>Create token</Button>
-          <Button variant="outline">Import</Button>
+          <Button variant="secondary">Import</Button>
         </ButtonGroup>
       </EmptyState.Content>
     </EmptyState.Root>

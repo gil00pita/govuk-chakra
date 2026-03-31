@@ -1,11 +1,40 @@
 import { Steps as ChakraSteps } from '@chakra-ui/react'
-import type { ComponentPropsWithoutRef } from 'react'
+import type { ComponentPropsWithoutRef, ForwardRefExoticComponent, RefAttributes } from 'react'
 
-export type StepsProps = ComponentPropsWithoutRef<typeof ChakraSteps.Root>
-type StepsComponent = typeof ChakraSteps.Root & typeof ChakraSteps
+type StepsColorPalette =
+  | 'gray'
+  | 'red'
+  | 'orange'
+  | 'yellow'
+  | 'green'
+  | 'teal'
+  | 'blue'
+  | 'cyan'
+  | 'purple'
+  | 'pink'
 
-export const StepsRoot = ChakraSteps.Root
+type StepsSize = 'xs' | 'sm' | 'md' | 'lg'
+type StepsVariant = 'subtle' | 'solid' | 'outline'
+type StepsOrientation = 'horizontal' | 'vertical'
 
-export const Steps: StepsComponent = Object.assign(ChakraSteps.Root, {
+type ChakraStepsRootProps = Omit<
+  ComponentPropsWithoutRef<typeof ChakraSteps.Root>,
+  'colorPalette' | 'orientation' | 'size' | 'variant'
+>
+
+export interface StepsProps extends ChakraStepsRootProps {
+  colorPalette?: StepsColorPalette
+  orientation?: StepsOrientation
+  size?: StepsSize
+  variant?: StepsVariant
+}
+
+type StepsRootComponent = ForwardRefExoticComponent<StepsProps & RefAttributes<HTMLDivElement>>
+type StepsComponent = typeof ChakraSteps & { Root: StepsRootComponent }
+
+export const StepsRoot = ChakraSteps.Root as unknown as StepsRootComponent
+
+export const Steps = Object.assign(StepsRoot, {
   ...ChakraSteps,
-})
+  Root: StepsRoot,
+}) as StepsComponent

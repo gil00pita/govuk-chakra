@@ -3,9 +3,13 @@ import { Box, IconButton } from '@chakra-ui/react'
 import type { Meta, StoryObj } from '@storybook/react-vite'
 import { LuChevronLeft, LuChevronRight, LuPause, LuPlay } from 'react-icons/lu'
 
+import { chakraColorPaletteOptions, selectArgType } from '@/utils/storybookControls'
 import { Carousel } from './Carousel'
+import { IoChevronBackSharp, IoChevronForwardSharp } from 'react-icons/io5'
 
 type CarouselStoryArgs = {
+  colorPalette?: (typeof chakraColorPaletteOptions)[number]
+  variant?: 'subtle' | 'solid' | 'outline' | 'plain'
   slideCount?: number
   slidesPerPage?: number
   gap?: string | number
@@ -18,9 +22,18 @@ const meta: Meta<CarouselStoryArgs> = {
   component: Carousel.Root as unknown as ComponentType<CarouselStoryArgs>,
   tags: ['autodocs'],
   args: {
+    colorPalette: 'teal',
+    variant: 'subtle',
     slideCount: items.length,
     slidesPerPage: 1,
     gap: '4',
+  },
+  argTypes: {
+    colorPalette: selectArgType(chakraColorPaletteOptions, 'The color palette of the component.'),
+    variant: selectArgType(
+      ['subtle', 'solid', 'outline', 'plain'],
+      'The variant of the component.'
+    ),
   },
 }
 
@@ -30,6 +43,8 @@ type Story = StoryObj<typeof meta>
 export const Default: Story = {
   render: (args) => (
     <Carousel.Root
+      colorPalette={args.colorPalette}
+      variant={args.variant}
       slideCount={args.slideCount ?? items.length}
       slidesPerPage={args.slidesPerPage}
       gap={args.gap}
@@ -42,8 +57,8 @@ export const Default: Story = {
             <Box
               w="100%"
               h="300px"
-              rounded="lg"
-              bg="teal.subtle"
+              rounded="none"
+              bg="gray.subtle"
               display="flex"
               alignItems="center"
               justifyContent="center"
@@ -59,7 +74,7 @@ export const Default: Story = {
       <Carousel.Control justifyContent="center" gap="4">
         <Carousel.PrevTrigger asChild>
           <IconButton size="xs" variant="ghost" aria-label="Previous slide">
-            <LuChevronLeft />
+            <IoChevronBackSharp />
           </IconButton>
         </Carousel.PrevTrigger>
 
@@ -67,7 +82,7 @@ export const Default: Story = {
 
         <Carousel.NextTrigger asChild>
           <IconButton size="xs" variant="ghost" aria-label="Next slide">
-            <LuChevronRight />
+            <IoChevronForwardSharp />
           </IconButton>
         </Carousel.NextTrigger>
       </Carousel.Control>
@@ -77,14 +92,14 @@ export const Default: Story = {
 
 export const WithIndicators: Story = {
   render: () => (
-    <Carousel.Root slideCount={items.length} maxW="md" mx="auto" gap="4">
+    <Carousel.Root slideCount={items.length} maxW="md" mx="auto" gap="4" colorPalette="orange">
       <Carousel.ItemGroup>
         {items.map((_, index) => (
           <Carousel.Item key={index} index={index}>
             <Box
               w="100%"
               h="300px"
-              rounded="lg"
+              rounded="none"
               bg="orange.subtle"
               display="flex"
               alignItems="center"
@@ -107,14 +122,21 @@ export const WithIndicators: Story = {
 
 export const WithAutoplay: Story = {
   render: () => (
-    <Carousel.Root autoplay={{ delay: 2000 }} slideCount={items.length} maxW="xl" mx="auto">
+    <Carousel.Root
+      autoplay={{ delay: 2000 }}
+      slideCount={items.length}
+      maxW="xl"
+      mx="auto"
+      colorPalette="blue"
+      variant="outline"
+    >
       <Carousel.ItemGroup>
         {items.map((_, index) => (
           <Carousel.Item key={index} index={index}>
             <Box
               w="100%"
               h="300px"
-              rounded="lg"
+              rounded="none"
               bg="blue.subtle"
               display="flex"
               alignItems="center"

@@ -5,11 +5,13 @@ import { fonts } from './fonts'
 import { govukFontSizes } from '@/utils/px-to-rem'
 import avatarRecipe from '@/components/Avatar/Avatar.recipe'
 import calendarRecipe from '@/components/Calendar/Calendar.recipe'
+import carouselRecipe from '@/components/Carousel/Carousel.recipe'
 import comboboxRecipe from '@/components/Combobox/Combobox.recipe'
 import kbdRecipe from '@/components/Kbd/Kbd.recipe'
 import listboxRecipe from '@/components/Listbox/Listbox.recipe'
 import highlightRecipe from '@/components/Highlight/Highlight.recipe'
 import codeRecipe from '@/components/Code/Code.recipe'
+import stepsRecipe from '@/components/Steps/Steps.recipe'
 import timelineRecipe from '@/components/Timeline/Timeline.recipe'
 import treeViewRecipe from '@/components/TreeView/TreeView.recipe'
 
@@ -28,8 +30,10 @@ const govUkThemeConfig = defineConfig({
     slotRecipes: {
       avatar: avatarRecipe,
       datePicker: calendarRecipe,
+      carousel: carouselRecipe,
       combobox: comboboxRecipe,
       listbox: listboxRecipe,
+      steps: stepsRecipe,
       timeline: timelineRecipe,
       treeView: treeViewRecipe,
     },
