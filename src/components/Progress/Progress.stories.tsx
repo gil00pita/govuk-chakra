@@ -26,7 +26,7 @@ const meta: Meta<ProgressStoryArgs> = {
   tags: ['autodocs'],
   args: {
     value: 65,
-    colorPalette: 'teal',
+    colorPalette: 'blue',
     size: 'md',
   },
   argTypes: {

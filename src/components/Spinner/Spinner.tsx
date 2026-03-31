@@ -1,10 +1,17 @@
 import { Spinner as ChakraSpinner } from '@chakra-ui/react'
-import type { ComponentPropsWithoutRef } from 'react'
+import { forwardRef, type ComponentPropsWithoutRef } from 'react'
 
 export type SpinnerProps = ComponentPropsWithoutRef<typeof ChakraSpinner>
 
-export const SpinnerRoot = ChakraSpinner
+const SpinnerRoot = forwardRef<HTMLSpanElement, SpinnerProps>(function SpinnerRoot(
+  { ...props },
+  ref
+) {
+  return <ChakraSpinner ref={ref} {...props} />
+})
 
-export const Spinner = Object.assign(ChakraSpinner, {
-  Root: ChakraSpinner,
+export { SpinnerRoot }
+
+export const Spinner = Object.assign(SpinnerRoot, {
+  Root: SpinnerRoot,
 })

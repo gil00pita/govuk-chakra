@@ -24,7 +24,7 @@ const meta: Meta<CalendarStoryArgs> = {
   component: Calendar.Root as unknown as ComponentType<CalendarStoryArgs>,
   tags: ['autodocs'],
   args: {
-    colorPalette: 'teal',
+    colorPalette: 'blue',
     size: 'md',
   },
   argTypes: {

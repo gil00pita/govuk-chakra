@@ -110,7 +110,7 @@ const highlightRecipe = defineRecipe({
   compoundVariants: highlightCompoundVariants,
   defaultVariants: {
     variant: 'subtle',
-    colorPalette: 'teal',
+    colorPalette: 'blue',
   },
 })
 

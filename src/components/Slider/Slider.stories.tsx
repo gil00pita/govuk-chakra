@@ -25,7 +25,7 @@ const meta: Meta<SliderStoryArgs> = {
   tags: ['autodocs'],
   args: {
     defaultValue: [40],
-    colorPalette: 'teal',
+    colorPalette: 'blue',
     size: 'md',
   },
 }

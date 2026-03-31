@@ -25,7 +25,7 @@ const meta: Meta<SegmentedControlStoryArgs> = {
   component: SegmentedControl.Root as unknown as ComponentType<SegmentedControlStoryArgs>,
   tags: ['autodocs'],
   args: {
-    colorPalette: 'teal',
+    colorPalette: 'blue',
     size: 'md',
     orientation: 'horizontal',
   },

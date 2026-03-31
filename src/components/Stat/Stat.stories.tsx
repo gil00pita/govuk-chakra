@@ -111,3 +111,17 @@ export const WithProgressBar: Story = {
     </Stat.Root>
   ),
 }
+
+export const AnimatedValue: Story = {
+  render: () => (
+    <Stat.Root>
+      <Stat.Label>Total applications</Stat.Label>
+      <Stat.ValueText
+        value={28451}
+        formatOptions={{ maximumFractionDigits: 0 }}
+        animationDuration={1800}
+      />
+      <Stat.HelpText>updated this week</Stat.HelpText>
+    </Stat.Root>
+  ),
+}

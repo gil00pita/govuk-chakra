@@ -489,7 +489,7 @@ const carouselRecipe = defineSlotRecipe({
   },
   compoundVariants: carouselCompoundVariants,
   defaultVariants: {
-    colorPalette: 'teal',
+    colorPalette: 'blue',
     size: 'md',
     variant: 'subtle',
   },

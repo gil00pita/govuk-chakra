@@ -3,9 +3,23 @@ import { screen } from '@testing-library/react'
 import userEvent from '@testing-library/user-event'
 
 import { renderWithProvider } from '@/test/renderWithProvider'
+import toastRecipe from './Toast.recipe'
 import { Toast, Toaster, createToaster } from './Toast'
 
 describe('Toast', () => {
+  it('uses the expected text styles in the recipe', () => {
+    expect(toastRecipe.base?.title).toMatchObject({
+      textStyle: 'md',
+      fontWeight: 'medium',
+    })
+    expect(toastRecipe.base?.description).toMatchObject({
+      textStyle: 'sm',
+    })
+    expect(toastRecipe.base?.actionTrigger).toMatchObject({
+      textStyle: 'sm',
+    })
+  })
+
   it('renders a toast when the toaster is triggered', async () => {
     const user = userEvent.setup()
     const toaster = createToaster({ placement: 'top-end' })

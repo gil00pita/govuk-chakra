@@ -22,7 +22,7 @@ const meta: Meta<CarouselStoryArgs> = {
   component: Carousel.Root as unknown as ComponentType<CarouselStoryArgs>,
   tags: ['autodocs'],
   args: {
-    colorPalette: 'teal',
+    colorPalette: 'blue',
     variant: 'subtle',
     slideCount: items.length,
     slidesPerPage: 1,

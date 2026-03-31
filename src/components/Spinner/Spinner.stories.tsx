@@ -30,7 +30,7 @@ const meta: Meta<SpinnerStoryArgs> = {
   tags: ['autodocs'],
   args: {
     as: 'div',
-    colorPalette: 'teal',
+    colorPalette: 'blue',
     size: 'md',
   },
   argTypes: {

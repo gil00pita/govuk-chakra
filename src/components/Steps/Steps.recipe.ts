@@ -422,7 +422,7 @@ const stepsRecipe = defineSlotRecipe({
   },
   compoundVariants: stepsCompoundVariants,
   defaultVariants: {
-    colorPalette: 'teal',
+    colorPalette: 'blue',
     size: 'md',
     variant: 'solid',
     orientation: 'horizontal',

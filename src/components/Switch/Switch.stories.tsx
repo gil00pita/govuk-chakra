@@ -24,7 +24,7 @@ const meta: Meta<SwitchStoryArgs> = {
   component: Switch.Root as unknown as ComponentType<SwitchStoryArgs>,
   tags: ['autodocs'],
   args: {
-    colorPalette: 'teal',
+    colorPalette: 'blue',
     size: 'md',
   },
   argTypes: {
