@@ -27,4 +27,25 @@ describe('PinInput', () => {
     expect(inputs.map((input) => (input as HTMLInputElement).value)).toEqual(['1', '2', '3', '4'])
     expect(handleValueComplete).toHaveBeenCalled()
   })
+
+  it('renders the custom mask symbol when masking is enabled', async () => {
+    const user = userEvent.setup()
+
+    renderWithProvider(
+      <PinInput.Root otp mask>
+        <PinInput.HiddenInput />
+        <PinInput.Control>
+          <PinInput.Input index={0} />
+          <PinInput.Input index={1} />
+          <PinInput.Input index={2} />
+          <PinInput.Input index={3} />
+        </PinInput.Control>
+      </PinInput.Root>
+    )
+
+    const inputs = screen.getAllByRole('textbox')
+    await user.type(inputs[0], '1')
+
+    expect(screen.getByText('✲')).toBeVisible()
+  })
 })

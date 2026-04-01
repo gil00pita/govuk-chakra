@@ -3,6 +3,7 @@ import { colorPickerAnatomy } from '@chakra-ui/react/anatomy'
 
 import colorSwatchRecipe from '@/components/ColorSwatch/ColorSwatch.recipe'
 import { govukFont, govukFontSizes, govukTypeScale, pxToRem } from '@/utils'
+import { getFieldFocusStyles } from '@/utils/fieldFocusStyles'
 
 const colorPickerRecipe = defineSlotRecipe({
   className: 'govuk-color-picker',
@@ -42,8 +43,9 @@ const colorPickerRecipe = defineSlotRecipe({
       borderStyle: 'solid',
       borderWidth: pxToRem(2),
       borderColor: 'primary.500',
-      border: { base: '2px solid {colors.primary.600}', _dark: '2px solid {colors.primary.400}' },
+      border: { base: '2px solid {colors.border.input}', _dark: '2px solid {colors.border.input}' },
       boxShadow: 'none',
+      focusVisibleRing: 'none',
       bg: 'transparent',
       color: 'fg',
       _hover: {
@@ -52,12 +54,14 @@ const colorPickerRecipe = defineSlotRecipe({
           _dark: '2px solid {colors.primary.400}',
         },
       },
-      _focusVisible: {
-        outline: `${pxToRem(3)} solid`,
-        outlineColor: 'focus',
-        outlineOffset: '0',
+      '&:focus-visible': getFieldFocusStyles({
         borderColor: 'border.input',
-        boxShadow: 'inset 0 0 0 2px {colors.border.input}',
+      }),
+      '&:focus': {
+        borderWidth: '4px',
+        ...getFieldFocusStyles({
+          borderColor: 'border.input',
+        }),
       },
       _disabled: {
         opacity: 1,
@@ -157,14 +161,8 @@ const colorPickerRecipe = defineSlotRecipe({
       _hover: {
         borderColor: 'border.input',
       },
-      _focusVisible: {
-        borderColor: 'border.input',
-        boxShadow: '0 0 0 3px {colors.focus}',
-      },
-      _focus: {
-        borderColor: 'border.input',
-        boxShadow: '0 0 0 3px {colors.focus}',
-      },
+      _focusVisible: getFieldFocusStyles(),
+      _focus: getFieldFocusStyles(),
       _invalid: {
         borderColor: 'border.error',
       },
@@ -205,11 +203,8 @@ const colorPickerRecipe = defineSlotRecipe({
       justifyContent: 'center',
       borderRadius: '0',
       borderColor: 'primary',
-      _focusVisible: {
-        outline: `${pxToRem(3)} solid`,
-        outlineColor: 'focus',
-        outlineOffset: pxToRem(2),
-      },
+      _focusVisible: getFieldFocusStyles(),
+      _focus: getFieldFocusStyles(),
     },
     swatch: {
       ...colorSwatchRecipe.base,

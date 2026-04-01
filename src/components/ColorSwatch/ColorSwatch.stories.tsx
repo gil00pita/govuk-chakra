@@ -5,6 +5,7 @@ import { ColorSwatch } from './ColorSwatch'
 
 type ColorSwatchStoryArgs = {
   value: string
+  size?: '2xs' | 'xs' | 'sm' | 'md' | 'lg' | 'xl' | '2xl' | 'inherit' | 'full'
   shape?: 'square' | 'circle' | 'rounded'
 }
 
@@ -14,9 +15,15 @@ const meta: Meta<ColorSwatchStoryArgs> = {
   tags: ['autodocs'],
   args: {
     value: '#0F766E',
-    shape: 'rounded',
+    size: 'xl',
+    shape: 'square',
   },
   argTypes: {
+    size: {
+      control: 'select',
+      options: ['2xs', 'xs', 'sm', 'md', 'lg', 'xl', '2xl', 'inherit', 'full'],
+      description: 'The size of the color swatch.',
+    },
     shape: {
       control: 'select',
       options: ['square', 'rounded', 'circle'],
@@ -29,7 +36,7 @@ export default meta
 type Story = StoryObj<typeof meta>
 
 export const Default: Story = {
-  render: (args) => <ColorSwatch.Root {...args} boxSize="10" />,
+  render: (args) => <ColorSwatch.Root {...args} />,
 }
 
 export const Mixed: Story = {

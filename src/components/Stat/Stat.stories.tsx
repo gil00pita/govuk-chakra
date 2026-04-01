@@ -69,7 +69,7 @@ export const WithTrend: Story = {
       <Stat.Label>Unique</Stat.Label>
       <HStack>
         <Stat.ValueText>
-          <FormatNumber value={8456.4} style="currency" currency="USD" />
+          <FormatNumber value={8456.4} style="currency" currency="EUR" />
         </Stat.ValueText>
         <Badge colorPalette="green" gap="0">
           <Stat.UpIndicator />
@@ -90,7 +90,7 @@ export const WithIcon: Story = {
           <LuDollarSign />
         </Icon>
       </HStack>
-      <Stat.ValueText>$4.24k</Stat.ValueText>
+      <Stat.ValueText>£4.24k</Stat.ValueText>
     </Stat.Root>
   ),
 }
@@ -100,7 +100,7 @@ export const WithProgressBar: Story = {
     <Stat.Root maxW="240px">
       <Stat.Label>This week</Stat.Label>
       <Stat.ValueText>
-        <FormatNumber value={1340} style="currency" currency="USD" maximumFractionDigits={0} />
+        <FormatNumber value={1340} style="currency" currency="GBP" maximumFractionDigits={0} />
       </Stat.ValueText>
       <Stat.HelpText mb="2">+12% from last week</Stat.HelpText>
       <Progress.Root defaultValue={65}>
@@ -116,11 +116,7 @@ export const AnimatedValue: Story = {
   render: () => (
     <Stat.Root>
       <Stat.Label>Total applications</Stat.Label>
-      <Stat.ValueText
-        value={28451}
-        formatOptions={{ maximumFractionDigits: 0 }}
-        animationDuration={1800}
-      />
+      <Stat.ValueText value={28451} formatOptions={{ maximumFractionDigits: 0 }} />
       <Stat.HelpText>updated this week</Stat.HelpText>
     </Stat.Root>
   ),

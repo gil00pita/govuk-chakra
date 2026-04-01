@@ -7,7 +7,7 @@ import { Stat } from './Stat'
 
 describe('Stat', () => {
   it('renders label, value text, and trend information', () => {
-    renderWithProvider(
+    const { container } = renderWithProvider(
       <Stat.Root>
         <Stat.Label>Unique visitors</Stat.Label>
         <HStack>
@@ -27,6 +27,8 @@ describe('Stat', () => {
     expect(screen.getByText('$8,456.40')).toBeVisible()
     expect(screen.getByText('12%')).toBeVisible()
     expect(screen.getByText(/since last month/i)).toBeVisible()
+
+    expect(container.querySelector('dl')).not.toBeInTheDocument()
   })
 
   it('uses the GOV.UK text scale in the stat recipe', () => {
@@ -45,5 +47,6 @@ describe('Stat', () => {
 
     expect(screen.getByText('28,451')).toBeInTheDocument()
     expect(container.querySelectorAll('[data-slot-reel]').length).toBe(5)
+    expect(container.querySelector('dl')).not.toBeInTheDocument()
   })
 })

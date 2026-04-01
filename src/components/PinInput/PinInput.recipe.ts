@@ -2,6 +2,7 @@ import { defineSlotRecipe } from '@chakra-ui/react'
 import { pinInputAnatomy } from '@chakra-ui/react/anatomy'
 
 import { govukFontSizes, govukTypeScale, pxToRem } from '@/utils'
+import { getFieldFocusStyles } from '@/utils/fieldFocusStyles'
 
 const pinInputRecipe = defineSlotRecipe({
   className: 'govuk-pin-input',
@@ -19,6 +20,7 @@ const pinInputRecipe = defineSlotRecipe({
       borderStyle: 'solid',
       borderWidth: pxToRem(2),
       borderColor: 'border.input',
+      border: '2px solid {colors.border.input}',
       focusVisibleRing: 'none',
       boxShadow: 'none',
       bg: 'transparent',
@@ -34,14 +36,8 @@ const pinInputRecipe = defineSlotRecipe({
       _hover: {
         borderColor: 'border.input',
       },
-      _focusVisible: {
-        outline: `1px solid`,
-        outlineColor: 'focus',
-        outlineOffset: '0',
-        borderColor: 'border.input',
-        boxShadow: 'none',
-        zIndex: '1',
-      },
+      _focus: getFieldFocusStyles(),
+      _focusVisible: getFieldFocusStyles(),
       _invalid: {
         borderColor: 'border.error',
       },

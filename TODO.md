@@ -6,10 +6,10 @@ Style the components according with GOV.UK Design system:
 [x] Feedback/Toast
 [x] Forms/ColorSwatch
 [x] Forms/ColorPicker
-[] Forms/Editable
-[] Forms/Pininput
-[] Forms/RadioCard
-[] Forms/Rating
+[x] Forms/Editable
+[x] Forms/Pininput
+[x] Forms/RadioCard
+[x] Forms/Rating
 [] Forms/RichTextEditor
 [] Forms/SegmentedControl
 [] Forms/Slider

@@ -30,6 +30,7 @@ import {
 } from 'react'
 
 import { Text } from '@/components/Text'
+import { getFieldFocusStyles } from '@/utils/fieldFocusStyles'
 import { govukFont, pxToRem } from '@/utils'
 
 export type SelectWidth = 'full' | '20' | '10' | '5'
@@ -268,20 +269,12 @@ const SelectTrigger = forwardRef<HTMLButtonElement, SelectTriggerProps>(function
       justifyContent="space-between"
       textAlign="left"
       _hover={{ borderColor: field.invalid ? 'fg.error' : 'border.input' }}
-      _focusVisible={{
-        outline: `${pxToRem(3)} solid`,
-        outlineColor: 'focus',
-        outlineOffset: '0',
+      _focusVisible={getFieldFocusStyles({
         borderColor: field.invalid ? 'fg.error' : 'border.input',
-        boxShadow: 'inset 0 0 0 2px {colors.border.input}',
-      }}
-      _focus={{
-        outline: `${pxToRem(3)} solid`,
-        outlineColor: 'focus',
-        outlineOffset: '0',
+      })}
+      _focus={getFieldFocusStyles({
         borderColor: field.invalid ? 'fg.error' : 'border.input',
-        boxShadow: 'inset 0 0 0 2px {colors.border.input}',
-      }}
+      })}
       _invalid={{ borderColor: 'fg.error' }}
       _disabled={{
         opacity: 1,

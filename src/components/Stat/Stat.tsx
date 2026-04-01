@@ -1,7 +1,18 @@
-import { Stat as ChakraStat, VisuallyHidden, chakra } from '@chakra-ui/react'
-import { forwardRef, useEffect, useState, type ComponentPropsWithoutRef } from 'react'
+import { Box, Stat as ChakraStat, VisuallyHidden, type HTMLChakraProps } from '@chakra-ui/react'
+import {
+  forwardRef,
+  useEffect,
+  useState,
+  type ComponentPropsWithoutRef,
+  type ForwardedRef,
+  type JSX,
+} from 'react'
+import { Text } from '../Text'
 
-export type StatProps = ComponentPropsWithoutRef<typeof ChakraStat.Root>
+export type StatProps = Omit<ComponentPropsWithoutRef<typeof ChakraStat.Root>, 'ref'> &
+  HTMLChakraProps<'div'>
+type StatLabelProps = ComponentPropsWithoutRef<typeof ChakraStat.Label>
+type StatHelpTextProps = ComponentPropsWithoutRef<typeof ChakraStat.HelpText>
 export interface StatValueTextProps extends Omit<
   ComponentPropsWithoutRef<typeof ChakraStat.ValueText>,
   'animationDuration'
@@ -19,7 +30,7 @@ type StatComponent = typeof ChakraStat.Root &
   }
 
 const SLOT_MACHINE_LOOPS = 2
-const DEFAULT_ANIMATION_DURATION = 1400
+const DEFAULT_ANIMATION_DURATION = 500
 
 function buildReelDigits(targetDigit: number) {
   const digits: Array<{ id: string; digit: string }> = []
@@ -81,7 +92,7 @@ function AnimatedValueReels({
   const [isSpinning, setIsSpinning] = useState(false)
 
   useEffect(() => {
-    return scheduleFrame(() => {
+    return scheduleAnimationStart(() => {
       setIsSpinning(true)
     })
   }, [])
@@ -91,18 +102,18 @@ function AnimatedValueReels({
   return (
     <>
       <VisuallyHidden>{formattedValue}</VisuallyHidden>
-      <chakra.span aria-hidden="true" display="inline-flex" alignItems="flex-end" lineHeight="1">
+      <Box aria-hidden="true" display="inline-flex" alignItems="flex-end" lineHeight="1">
         {characterEntries.map((entry) => {
           if (!entry.isDigit) {
             return (
-              <chakra.span key={entry.id} display="inline-flex" alignItems="center">
+              <Text as="span" key={entry.id} display="inline-flex" alignItems="center">
                 {entry.character}
-              </chakra.span>
+              </Text>
             )
           }
 
           return (
-            <chakra.span
+            <Box
               key={entry.id}
               data-slot-reel=""
               display="inline-flex"
@@ -112,7 +123,7 @@ function AnimatedValueReels({
               alignItems="flex-start"
               justifyContent="center"
             >
-              <chakra.span
+              <Text
                 display="flex"
                 flexDirection="column"
                 alignItems="center"
@@ -121,12 +132,13 @@ function AnimatedValueReels({
                 transform={isSpinning ? `translateY(-${entry.travel}em)` : 'translateY(0em)'}
                 transitionProperty="transform"
                 transitionDuration={`${entry.duration}ms`}
-                transitionTimingFunction="cubic-bezier(0.18, 0.88, 0.24, 1)"
+                transitionTimingFunction="linear"
                 transitionDelay={`${entry.delay}ms`}
                 willChange="transform"
               >
                 {entry.reelDigits.map((digitEntry) => (
-                  <chakra.span
+                  <Text
+                    as="span"
                     key={digitEntry.id}
                     display="inline-flex"
                     alignItems="center"
@@ -135,30 +147,55 @@ function AnimatedValueReels({
                     minW="0.72em"
                   >
                     {digitEntry.digit}
-                  </chakra.span>
+                  </Text>
                 ))}
-              </chakra.span>
-            </chakra.span>
+              </Text>
+            </Box>
           )
         })}
-      </chakra.span>
+      </Box>
     </>
   )
 }
 
-function scheduleFrame(callback: () => void) {
+function scheduleAnimationStart(callback: () => void) {
   if (typeof window !== 'undefined' && typeof window.requestAnimationFrame === 'function') {
-    const frame = window.requestAnimationFrame(callback)
+    let frame = 0
+    let nextFrame = 0
 
-    return () => window.cancelAnimationFrame(frame)
+    frame = window.requestAnimationFrame(() => {
+      nextFrame = window.requestAnimationFrame(callback)
+    })
+
+    return () => {
+      window.cancelAnimationFrame(frame)
+      window.cancelAnimationFrame(nextFrame)
+    }
   }
 
-  const timeout = setTimeout(callback, 16)
+  const timeout = setTimeout(callback, 32)
 
   return () => clearTimeout(timeout)
 }
 
-export const StatRoot = ChakraStat.Root
+export const StatRoot = forwardRef<HTMLDivElement, StatProps>(function StatRoot(props, ref) {
+  const Root = ChakraStat.Root as unknown as (
+    props: StatProps & { ref?: ForwardedRef<HTMLDivElement> }
+  ) => JSX.Element
+
+  return <Root ref={ref} as="div" {...props} />
+})
+
+export const StatLabel = forwardRef<HTMLElement, StatLabelProps>(function StatLabel(props, ref) {
+  return <ChakraStat.Label ref={ref} as="span" {...props} />
+})
+
+export const StatHelpText = forwardRef<HTMLElement, StatHelpTextProps>(
+  function StatHelpText(props, ref) {
+    return <ChakraStat.HelpText ref={ref} as="span" {...props} />
+  }
+)
+
 export const StatValueText = forwardRef<HTMLElement, StatValueTextProps>(function StatValueText(
   {
     value,
@@ -177,14 +214,14 @@ export const StatValueText = forwardRef<HTMLElement, StatValueTextProps>(functio
 
   if (!shouldAnimate || formattedValue == null) {
     return (
-      <ChakraStat.ValueText ref={ref} {...props}>
+      <ChakraStat.ValueText ref={ref} as="span" {...props}>
         {children ?? formattedValue ?? value}
       </ChakraStat.ValueText>
     )
   }
 
   return (
-    <ChakraStat.ValueText ref={ref} {...props}>
+    <ChakraStat.ValueText ref={ref} as="span" {...props}>
       <AnimatedValueReels
         key={`${formattedValue}-${animationDuration}`}
         formattedValue={formattedValue}
@@ -194,7 +231,10 @@ export const StatValueText = forwardRef<HTMLElement, StatValueTextProps>(functio
   )
 })
 
-export const Stat: StatComponent = Object.assign(ChakraStat.Root, {
+export const Stat: StatComponent = Object.assign(StatRoot as unknown as StatComponent, {
   ...ChakraStat,
+  HelpText: StatHelpText,
+  Label: StatLabel,
+  Root: StatRoot,
   ValueText: StatValueText,
 })

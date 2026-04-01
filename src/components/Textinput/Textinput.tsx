@@ -8,6 +8,7 @@ import {
 import { forwardRef, type ComponentPropsWithoutRef, useId, type ReactNode } from 'react'
 
 import { Text } from '@/components/Text'
+import { getFieldFocusStyles } from '@/utils/fieldFocusStyles'
 import { getGovukTypeScale, govukFont, pxToRem } from '@/utils'
 
 export type TextinputWidth = 'full' | '30' | '20' | '10' | '5' | '4' | '3' | '2'
@@ -142,13 +143,8 @@ const TextinputInput = forwardRef<HTMLInputElement, TextinputInputProps>(functio
         maxW={width === 'full' ? undefined : WIDTH_MAX[width]}
         _placeholder={{ color: 'fg.muted', opacity: 1 }}
         _hover={{ borderColor: invalid ? 'fg.error' : 'border.input' }}
-        _focusVisible={{
-          outline: `${pxToRem(3)} solid`,
-          outlineColor: 'focus',
-          outlineOffset: '0',
-          borderColor: 'border.input',
-          boxShadow: 'inset 0 0 0 2px {colors.border.input}',
-        }}
+        _focusVisible={getFieldFocusStyles()}
+        _focus={getFieldFocusStyles()}
         _invalid={{ borderColor: 'fg.error' }}
         _disabled={{
           opacity: 1,

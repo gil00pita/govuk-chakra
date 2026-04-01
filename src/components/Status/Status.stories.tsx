@@ -17,6 +17,16 @@ const meta: Meta<StatusStoryArgs> = {
     size: 'md',
     colorPalette: 'blue',
   },
+  argTypes: {
+    size: {
+      control: 'select',
+      options: ['sm', 'md', 'lg'],
+    },
+    colorPalette: {
+      control: 'select',
+      options: ['red', 'blue', 'orange', 'green'],
+    },
+  },
 }
 
 export default meta

@@ -17,9 +17,13 @@ import highlightRecipe from '@/components/Highlight/Highlight.recipe'
 import codeRecipe from '@/components/Code/Code.recipe'
 import pinInputRecipe from '@/components/PinInput/PinInput.recipe'
 import progressCircleRecipe from '@/components/ProgressCircle/ProgressCircle.recipe'
+import radioCardRecipe from '@/components/RadioCard/RadioCard.recipe'
+import ratingRecipe from '@/components/Rating/Rating.recipe'
+import richTextEditorRecipe from '@/components/RichTextEditor/RichTextEditor.recipe'
 import skeletonRecipe from '@/components/Skeleton/Skeleton.recipe'
 import spinnerRecipe from '@/components/Spinner/Spinner.recipe'
 import statRecipe from '@/components/Stat/Stat.recipe'
+import statusRecipe from '@/components/Status/Status.recipe'
 import stepsRecipe from '@/components/Steps/Steps.recipe'
 import timelineRecipe from '@/components/Timeline/Timeline.recipe'
 import toastRecipe from '@/components/Toast/Toast.recipe'
@@ -48,7 +52,11 @@ const govUkThemeConfig = defineConfig({
       listbox: listboxRecipe,
       pinInput: pinInputRecipe,
       progressCircle: progressCircleRecipe,
+      radioCard: radioCardRecipe,
+      ratingGroup: ratingRecipe,
+      richTextEditor: richTextEditorRecipe,
       stat: statRecipe,
+      status: statusRecipe,
       steps: stepsRecipe,
       timeline: timelineRecipe,
       toast: toastRecipe,

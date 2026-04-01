@@ -8,6 +8,7 @@ import {
 import { createContext, forwardRef, useContext, useId, type ReactNode } from 'react'
 
 import { Text } from '@/components/Text/Text'
+import { getFieldFocusStyles } from '@/utils/fieldFocusStyles'
 import { govukFont, pxToRem } from '@/utils'
 
 // ─── Types ───────────────────────────────────────────────────────────
@@ -141,13 +142,7 @@ export const Textarea = {
         w="100%"
         _placeholder={{ color: 'fg.muted', opacity: 1 }}
         _hover={{ borderColor: 'border.input' }}
-        _focusVisible={{
-          outline: `${pxToRem(3)} solid`,
-          outlineColor: 'focus',
-          outlineOffset: '0',
-          borderColor: 'border.input',
-          boxShadow: 'inset 0 0 0 2px {colors.border.input}',
-        }}
+        _focusVisible={getFieldFocusStyles()}
         _invalid={{ borderColor: 'fg.error' }}
         _disabled={{
           opacity: 1,

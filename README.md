@@ -5,7 +5,9 @@
 ![Build Status](https://vercelbadge.vercel.app/api/gil00pita/govuk-chakra) ![NPM Version](https://img.shields.io/npm/v/govuk-chakra) ![NPM Downloads](https://img.shields.io/npm/dm/govuk-chakra) ![NPM Last Update](https://img.shields.io/npm/last-update/govuk-chakra) ![NPM License](https://img.shields.io/npm/l/govuk-chakra) [![Storybook](https://cdn.jsdelivr.net/gh/storybookjs/brand@main/badge/badge-storybook.svg)](https://gov-uk-gds-react-chakra.vercel.app/)
 
 `govuk-chakra` is a React component library that applies a [GOV.UK](https://design-system.service.gov.uk/get-started)-style skin on top of [Chakra UI](https://www.chakra-ui.com).
-It is not a replacement for Chakra. The point is to keep Chakra's composability, theme system, and React ergonomics, while shipping a set of opinionated components and tokens that feel closer to the GOV.UK Design System. Current Chakra version 3.34.0.
+It is not a replacement for Chakra. The point is to keep Chakra's composability, theme system, and React ergonomics, while shipping a set of opinionated components and tokens that feel closer to the GOV.UK Design System.
+
+Current Chakra version being used is: **3.34.0**.
 
 ![Screenshot](public/screenshot.png)
 

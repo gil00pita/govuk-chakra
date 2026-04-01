@@ -1,5 +1,17 @@
 import { defineRecipe } from '@chakra-ui/react'
 
+import { pxToRem } from '@/utils'
+
+const roundedSizeVariants = [
+  { size: '2xs', borderRadius: pxToRem(2) },
+  { size: 'xs', borderRadius: pxToRem(2) },
+  { size: 'sm', borderRadius: pxToRem(3) },
+  { size: 'md', borderRadius: pxToRem(4) },
+  { size: 'lg', borderRadius: pxToRem(5) },
+  { size: 'xl', borderRadius: pxToRem(6) },
+  { size: '2xl', borderRadius: pxToRem(8) },
+] as const
+
 const colorSwatchRecipe = defineRecipe({
   className: 'govuk-color-swatch',
   base: {
@@ -32,9 +44,16 @@ const colorSwatchRecipe = defineRecipe({
     shape: {
       square: { borderRadius: 'none' },
       circle: { borderRadius: 'full' },
-      rounded: { borderRadius: 'l1' },
+      rounded: { rounded: 'md' },
     },
   },
+  compoundVariants: roundedSizeVariants.map(({ size, borderRadius }) => ({
+    size,
+    shape: 'rounded' as const,
+    css: {
+      borderRadius,
+    },
+  })),
   defaultVariants: {
     size: 'md',
     shape: 'rounded',

@@ -1,4 +1,4 @@
-import type { ComponentType } from 'react'
+import { useEffect, useState, type ComponentType } from 'react'
 import type { Meta, StoryObj } from '@storybook/react-vite'
 
 import { chakraColorPaletteOptions, selectArgType } from '@/utils/storybookControls'
@@ -41,5 +41,20 @@ export default meta
 type Story = StoryObj<typeof meta>
 
 export const Default: Story = {
-  render: (args) => <Rating.Root {...args} label="Rating" />,
+  render: (args) => {
+    const [value, setValue] = useState(args.defaultValue)
+
+    useEffect(() => {
+      setValue(args.defaultValue)
+    }, [args.defaultValue])
+
+    return (
+      <Rating.Root
+        {...args}
+        value={value}
+        onValueChange={(event) => setValue(event.value)}
+        label="Rating"
+      />
+    )
+  },
 }

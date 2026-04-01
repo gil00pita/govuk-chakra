@@ -3,9 +3,19 @@ import { screen } from '@testing-library/react'
 import userEvent from '@testing-library/user-event'
 
 import { renderWithProvider } from '@/test/renderWithProvider'
+import radioCardRecipe from './RadioCard.recipe'
 import { RadioCard } from './RadioCard'
 
 describe('RadioCard', () => {
+  it('uses the expected recipe defaults', () => {
+    expect(radioCardRecipe.defaultVariants?.size).toBe('md')
+    expect(radioCardRecipe.defaultVariants?.variant).toBe('outline')
+    expect(radioCardRecipe.base?.itemControl).toMatchObject({
+      borderWidth: 'max(2px, 0.125rem)',
+      borderColor: 'border.input',
+    })
+  })
+
   it('updates selection when a card is clicked', async () => {
     const user = userEvent.setup()
 

@@ -5,6 +5,7 @@ import StarterKit from '@tiptap/starter-kit'
 import { useState } from 'react'
 
 import { renderWithProvider } from '@/test/renderWithProvider'
+import richTextEditorRecipe from './RichTextEditor.recipe'
 import { Control, RichTextEditor } from './RichTextEditor'
 
 function RichTextEditorHarness() {
@@ -40,6 +41,16 @@ function RichTextEditorHarness() {
 }
 
 describe('RichTextEditor', () => {
+  it('uses the expected recipe base styles', () => {
+    expect(richTextEditorRecipe.base?.root).toMatchObject({
+      borderColor: 'border.input',
+      borderRadius: '0',
+    })
+    expect(richTextEditorRecipe.base?.toolbar).toMatchObject({
+      borderBottomColor: 'border.muted',
+    })
+  })
+
   it('applies toolbar actions to the editor content', async () => {
     const user = userEvent.setup()
 

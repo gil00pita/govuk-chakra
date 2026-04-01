@@ -1,4 +1,11 @@
-import { Box, ButtonGroup, HStack, IconButton, StackSeparator } from '@chakra-ui/react'
+import {
+  Box,
+  ButtonGroup,
+  HStack,
+  IconButton,
+  StackSeparator,
+  useSlotRecipe,
+} from '@chakra-ui/react'
 import type { BoxProps, StackProps } from '@chakra-ui/react'
 import type { Editor } from '@tiptap/react'
 import { EditorContent } from '@tiptap/react'
@@ -35,26 +42,18 @@ export interface RichTextEditorProps extends BoxProps {
 export const RichTextEditorRoot = forwardRef<HTMLDivElement, RichTextEditorProps>(
   function RichTextEditorRoot({ children, css, disabled, editor, ...props }, ref) {
     const value = useMemo(() => ({ editor }), [editor])
+    const recipe = useSlotRecipe({ key: 'richTextEditor' })
+    const styles = recipe()
 
     return (
       <RichTextEditorContext.Provider value={value}>
         <Box
           ref={ref}
           data-disabled={disabled || undefined}
-          borderWidth="1px"
-          rounded="sm"
-          overflow="hidden"
           css={[
+            styles.root,
             {
-              '& .ProseMirror': {
-                minHeight: '220px',
-                outline: 'none',
-                p: '4',
-              },
-              '&[data-disabled] .ProseMirror': {
-                opacity: 0.6,
-                pointerEvents: 'none',
-              },
+              '& .ProseMirror': styles.content,
             },
             css,
           ]}
@@ -71,28 +70,30 @@ export type RichTextEditorToolbarProps = StackProps
 
 export const RichTextEditorToolbar = forwardRef<HTMLDivElement, RichTextEditorToolbarProps>(
   function RichTextEditorToolbar(props, ref) {
-    return (
-      <HStack
-        ref={ref}
-        p="2"
-        borderBottomWidth="1px"
-        separator={<StackSeparator h="5" />}
-        wrap="wrap"
-        {...props}
-      />
-    )
+    const recipe = useSlotRecipe({ key: 'richTextEditor' })
+    const styles = recipe()
+
+    return <HStack ref={ref} css={styles.toolbar} separator={<StackSeparator h="5" />} {...props} />
   }
 )
 
 export const RichTextEditorFooter = forwardRef<HTMLDivElement, StackProps>(
   function RichTextEditorFooter(props, ref) {
-    return <HStack ref={ref} p="2" borderTopWidth="1px" {...props} />
+    const recipe = useSlotRecipe({ key: 'richTextEditor' })
+    const styles = recipe()
+
+    return <HStack ref={ref} css={styles.footer} {...props} />
   }
 )
 
 export const RichTextEditorControlGroup = forwardRef<HTMLDivElement, StackProps>(
   function RichTextEditorControlGroup(props, ref) {
-    return <ButtonGroup ref={ref} size="sm" variant="outline" gap="1" {...props} />
+    const recipe = useSlotRecipe({ key: 'richTextEditor' })
+    const styles = recipe()
+
+    return (
+      <ButtonGroup ref={ref} css={styles.controlGroup} size="sm" variant="outline" {...props} />
+    )
   }
 )
 
