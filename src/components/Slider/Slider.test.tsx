@@ -3,9 +3,18 @@ import userEvent from '@testing-library/user-event'
 
 import { renderWithProvider } from '@/test/renderWithProvider'
 import '@/test/mockResizeObserver'
+import sliderRecipe from './Slider.recipe'
 import { Slider } from './Slider'
 
 describe('Slider', () => {
+  it('uses the expected recipe defaults', () => {
+    expect(sliderRecipe.defaultVariants?.size).toBe('md')
+    expect(sliderRecipe.base?.track).toMatchObject({
+      borderColor: 'border.input',
+      borderRadius: '0',
+    })
+  })
+
   it('updates the slider value with keyboard interaction', async () => {
     const user = userEvent.setup()
 

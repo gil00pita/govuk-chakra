@@ -4,9 +4,18 @@ import userEvent from '@testing-library/user-event'
 
 import '@/test/mockResizeObserver'
 import { renderWithProvider } from '@/test/renderWithProvider'
+import popoverRecipe from './Popover.recipe'
 import { Popover } from './Popover'
 
 describe('Popover', () => {
+  it('uses the expected recipe defaults', () => {
+    expect(popoverRecipe.defaultVariants?.size).toBe('md')
+    expect(popoverRecipe.base?.content).toMatchObject({
+      borderColor: 'border.input',
+      borderRadius: '0',
+    })
+  })
+
   it('shows the popover body when the trigger is clicked', async () => {
     const user = userEvent.setup()
 

@@ -4,9 +4,19 @@ import userEvent from '@testing-library/user-event'
 
 import '@/test/mockResizeObserver'
 import { renderWithProvider } from '@/test/renderWithProvider'
+import menuRecipe from './Menu.recipe'
 import { Menu } from './Menu'
 
 describe('Menu', () => {
+  it('uses the expected recipe defaults', () => {
+    expect(menuRecipe.defaultVariants?.size).toBe('md')
+    expect(menuRecipe.defaultVariants?.variant).toBe('subtle')
+    expect(menuRecipe.base?.content).toMatchObject({
+      borderColor: 'border.input',
+      borderRadius: '0',
+    })
+  })
+
   it('opens and shows menu items', async () => {
     const user = userEvent.setup()
 

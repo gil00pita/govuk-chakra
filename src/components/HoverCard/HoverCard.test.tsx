@@ -4,9 +4,18 @@ import userEvent from '@testing-library/user-event'
 
 import '@/test/mockResizeObserver'
 import { renderWithProvider } from '@/test/renderWithProvider'
+import hoverCardRecipe from './HoverCard.recipe'
 import { HoverCard } from './HoverCard'
 
 describe('HoverCard', () => {
+  it('uses the expected recipe defaults', () => {
+    expect(hoverCardRecipe.defaultVariants?.size).toBe('md')
+    expect(hoverCardRecipe.base?.content).toMatchObject({
+      borderColor: 'border.input',
+      borderRadius: '0',
+    })
+  })
+
   it('shows content on hover', async () => {
     const user = userEvent.setup()
 

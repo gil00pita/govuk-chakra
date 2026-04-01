@@ -175,6 +175,7 @@ export const colors = {
     green: { value: govUKPalette.green[500].value },
   },
   brand: scale(govUKPalette.brand),
+  blue: scale(govUKPalette.brand),
   primary: scale(govUKPalette.brand),
   brown: scale(govUKPalette.brown),
   yellow: scale(govUKPalette.yellow),

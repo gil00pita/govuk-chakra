@@ -2,9 +2,19 @@ import { screen } from '@testing-library/react'
 import userEvent from '@testing-library/user-event'
 
 import { renderWithProvider } from '@/test/renderWithProvider'
+import tagsInputRecipe from './TagsInput.recipe'
 import { TagsInput } from './TagsInput'
 
 describe('TagsInput', () => {
+  it('uses the expected recipe defaults', () => {
+    expect(tagsInputRecipe.defaultVariants?.size).toBe('md')
+    expect(tagsInputRecipe.defaultVariants?.variant).toBe('outline')
+    expect(tagsInputRecipe.base?.control).toMatchObject({
+      borderColor: 'border.input',
+      borderRadius: '0',
+    })
+  })
+
   it('adds a tag from keyboard input', async () => {
     const user = userEvent.setup()
 

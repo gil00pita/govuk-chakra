@@ -3,9 +3,18 @@ import { screen, waitFor } from '@testing-library/react'
 import userEvent from '@testing-library/user-event'
 
 import { renderWithProvider } from '@/test/renderWithProvider'
+import dialogRecipe from './Dialog.recipe'
 import { Dialog } from './Dialog'
 
 describe('Dialog', () => {
+  it('uses the expected recipe defaults', () => {
+    expect(dialogRecipe.defaultVariants?.size).toBe('md')
+    expect(dialogRecipe.base?.content).toMatchObject({
+      borderColor: 'border.input',
+      borderRadius: '0',
+    })
+  })
+
   it('opens and closes the dialog content', async () => {
     const user = userEvent.setup()
 

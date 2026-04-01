@@ -9,24 +9,34 @@ import carouselRecipe from '@/components/Carousel/Carousel.recipe'
 import comboboxRecipe from '@/components/Combobox/Combobox.recipe'
 import colorPickerRecipe from '@/components/ColorPicker/ColorPicker.recipe'
 import colorSwatchRecipe from '@/components/ColorSwatch/ColorSwatch.recipe'
+import dialogRecipe from '@/components/Dialog/Dialog.recipe'
 import editableRecipe from '@/components/Editable/Editable.recipe'
 import emptyStateRecipe from '@/components/EmptyState/EmptyState.recipe'
+import hoverCardRecipe from '@/components/HoverCard/HoverCard.recipe'
 import kbdRecipe from '@/components/Kbd/Kbd.recipe'
 import listboxRecipe from '@/components/Listbox/Listbox.recipe'
+import menuRecipe from '@/components/Menu/Menu.recipe'
 import highlightRecipe from '@/components/Highlight/Highlight.recipe'
 import codeRecipe from '@/components/Code/Code.recipe'
 import pinInputRecipe from '@/components/PinInput/PinInput.recipe'
+import popoverRecipe from '@/components/Popover/Popover.recipe'
 import progressCircleRecipe from '@/components/ProgressCircle/ProgressCircle.recipe'
 import radioCardRecipe from '@/components/RadioCard/RadioCard.recipe'
 import ratingRecipe from '@/components/Rating/Rating.recipe'
 import richTextEditorRecipe from '@/components/RichTextEditor/RichTextEditor.recipe'
+import segmentedControlRecipe from '@/components/SegmentedControl/SegmentedControl.recipe'
 import skeletonRecipe from '@/components/Skeleton/Skeleton.recipe'
+import sliderRecipe from '@/components/Slider/Slider.recipe'
 import spinnerRecipe from '@/components/Spinner/Spinner.recipe'
 import statRecipe from '@/components/Stat/Stat.recipe'
 import statusRecipe from '@/components/Status/Status.recipe'
 import stepsRecipe from '@/components/Steps/Steps.recipe'
+import switchRecipe from '@/components/Switch/Switch.recipe'
+import tagsInputRecipe from '@/components/TagsInput/TagsInput.recipe'
 import timelineRecipe from '@/components/Timeline/Timeline.recipe'
 import toastRecipe from '@/components/Toast/Toast.recipe'
+import toggleTipRecipe from '@/components/ToggleTip/ToggleTip.recipe'
+import tooltipRecipe from '@/components/Tooltip/Tooltip.recipe'
 import treeViewRecipe from '@/components/TreeView/TreeView.recipe'
 
 const govUkThemeConfig = defineConfig({
@@ -47,19 +57,29 @@ const govUkThemeConfig = defineConfig({
       carousel: carouselRecipe,
       combobox: comboboxRecipe,
       colorPicker: colorPickerRecipe,
+      dialog: dialogRecipe,
       editable: editableRecipe,
       emptyState: emptyStateRecipe,
+      hoverCard: hoverCardRecipe,
       listbox: listboxRecipe,
+      menu: menuRecipe,
       pinInput: pinInputRecipe,
+      popover: popoverRecipe,
       progressCircle: progressCircleRecipe,
       radioCard: radioCardRecipe,
       ratingGroup: ratingRecipe,
       richTextEditor: richTextEditorRecipe,
+      segmentGroup: segmentedControlRecipe,
+      slider: sliderRecipe,
       stat: statRecipe,
       status: statusRecipe,
       steps: stepsRecipe,
+      switch: switchRecipe,
+      tagsInput: tagsInputRecipe,
       timeline: timelineRecipe,
       toast: toastRecipe,
+      toggleTip: toggleTipRecipe,
+      tooltip: tooltipRecipe,
       treeView: treeViewRecipe,
     },
     // recipe: one style object, one component surface.

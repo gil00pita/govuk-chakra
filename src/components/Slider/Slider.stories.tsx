@@ -1,6 +1,7 @@
 import type { ComponentType } from 'react'
 import type { Meta, StoryObj } from '@storybook/react-vite'
 
+import { chakraColorPaletteOptions, selectArgType } from '@/utils/storybookControls'
 import { Slider } from './Slider'
 
 type SliderStoryArgs = {
@@ -27,6 +28,10 @@ const meta: Meta<SliderStoryArgs> = {
     defaultValue: [40],
     colorPalette: 'blue',
     size: 'md',
+  },
+  argTypes: {
+    colorPalette: selectArgType(chakraColorPaletteOptions, 'The color palette of the component.'),
+    size: selectArgType(['sm', 'md', 'lg'], 'The size of the component.'),
   },
 }
 

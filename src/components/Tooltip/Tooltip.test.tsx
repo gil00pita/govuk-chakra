@@ -4,9 +4,17 @@ import userEvent from '@testing-library/user-event'
 
 import '@/test/mockResizeObserver'
 import { renderWithProvider } from '@/test/renderWithProvider'
+import tooltipRecipe from './Tooltip.recipe'
 import { Tooltip } from './Tooltip'
 
 describe('Tooltip', () => {
+  it('uses the expected recipe defaults', () => {
+    expect(tooltipRecipe.base?.content).toMatchObject({
+      borderRadius: '0',
+      fontFamily: 'body',
+    })
+  })
+
   it('shows the tooltip content on hover', async () => {
     const user = userEvent.setup()
 
