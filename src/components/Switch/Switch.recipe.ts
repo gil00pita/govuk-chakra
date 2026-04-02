@@ -19,7 +19,7 @@ function getTextStyles(size: keyof typeof govukTypeScale) {
   }
 }
 
-export const switchRecipeConfig = {
+const switchRecipeConfig = {
   slots: switchAnatomy.keys(),
   className: 'govuk-switch',
   base: {
