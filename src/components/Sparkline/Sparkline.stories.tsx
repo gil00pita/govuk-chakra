@@ -7,7 +7,7 @@ import { BarChart } from '../BarChart'
 import { Sparkline } from './Sparkline'
 
 const meta: Meta = {
-  title: 'Chakra Components/Charts/Sparkline',
+  title: 'Chakra Components/Charts/Spark Line',
   tags: ['autodocs'],
 }
 

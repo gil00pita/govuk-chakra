@@ -220,6 +220,68 @@ Use the GOV.UK Prototype Kit when:
 
 This project should be treated as a custom design-system layer built on Chakra UI. That is useful, but it also means consumers should expect to maintain alignment with both Chakra and the GOV.UK Design System over time.
 
+### Current GOV.UK styled components
+
+| GOV                 | Chakra                     |
+| ------------------- | -------------------------- |
+| Accordion           | Buttons / Icon Button      |
+| Back link           | Charts / Radar Chart       |
+| Breadcrumbs         | Charts / Area Chart        |
+| Button              | Charts / Bar Chart         |
+| Checkbox            | Charts / Bar List          |
+| Cookie banner       | Charts / Bar Segment       |
+| Date input          | Charts / Donut Chart       |
+| Details             | Charts / Line Chart        |
+| Error summary       | Charts / Pie Chart         |
+| Fieldset            | Charts / Scatter Chart     |
+| File upload         | Charts / Spark Line        |
+| GOV.UK - Footer     | Collections / Combobox     |
+| GOV.UK - Header     | Collections / Data Display |
+| Inset text          | Collections / Listbox      |
+| Link                | Collections / Tree View    |
+| Notification banner | Data Display / Avatar      |
+| Pagination          | Data Display / Card        |
+| Panel               | Data Display / Image       |
+| Phase banner        | Data Display / Marquee     |
+| Radio               | Data Display / QR Code     |
+| Select              | Data Display / Timeline    |
+| Separator           | Date & Time / Calendar     |
+| Service navigation  | Disclosure / Carousel      |
+| Skip link           | Disclosure / Collapsible   |
+| Summary list        | Disclosure / Steps         |
+| Table               | Feedback / Alert           |
+| Tabs                | Feedback / Empty State     |
+| Tag                 | Feedback / Progress        |
+| Task list           | Feedback / Progress Circle |
+| Textarea            | Feedback / Skeleton        |
+| Textinput           | Feedback / Spinner         |
+| Warning text        | Feedback / Stat            |
+|                     | Feedback / Status          |
+|                     | Feedback / Toast           |
+|                     | Forms / Color Picker       |
+|                     | Forms / Editable           |
+|                     | Forms / Pin Input          |
+|                     | Forms / Radio Card         |
+|                     | Forms / Rating             |
+|                     | Forms / Rich Text Editor   |
+|                     | Forms / Segmented Control  |
+|                     | Forms / Slider             |
+|                     | Forms / Switch             |
+|                     | Forms / Tags Input         |
+|                     | FormsColor Swatch          |
+|                     | Overlays / Dialog          |
+|                     | Overlays / Hover Card      |
+|                     | Overlays / Menu            |
+|                     | Overlays / Popover         |
+|                     | Overlays / Toggle Tip      |
+|                     | Overlays / Tooltip         |
+|                     | Typography / Code          |
+|                     | Typography / Code Block    |
+|                     | Typography / Heading       |
+|                     | Typography / Highlight     |
+|                     | Typography / Kbd           |
+|                     | Typography / Text          |
+
 ## License
 
 MIT License - see [LICENSE](LICENSE). Free to use, modify, and distribute. The only requirement is including the license notice.

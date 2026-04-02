@@ -1,5 +1,5 @@
 import { Meta, Unstyled } from '@storybook/addon-docs/blocks'
-import { Box, Card, Grid, HStack, Image, Separator, VStack } from '@chakra-ui/react'
+import { Box, Card, Grid, HStack, Image, Separator, Table, VStack } from '@chakra-ui/react'
 import { CodeBlock, Heading, Link, Text } from '@/components'
 
 <Meta title="GOV.UK/Overview" />
@@ -371,6 +371,76 @@ export function ExamplePage() {
             is useful, but consumers should expect to maintain alignment with both Chakra and the
             GOV.UK Design System over time.
           </Text>
+          <Heading size={22}>Current GOV.UK styled components</Heading>
+
+          <Table.Root size="sm" variant="outline" w="full">
+            <Table.Header>
+              <Table.Row>
+                <Table.ColumnHeader>GOV.UK Components</Table.ColumnHeader>
+                <Table.ColumnHeader>Chakra UI Components</Table.ColumnHeader>
+              </Table.Row>
+            </Table.Header>
+            <Table.Body>
+              <Table.Row><Table.Cell>Accordion</Table.Cell><Table.Cell>Buttons / Icon Button</Table.Cell></Table.Row>
+              <Table.Row><Table.Cell>Back link</Table.Cell><Table.Cell>Charts / Radar Chart</Table.Cell></Table.Row>
+              <Table.Row><Table.Cell>Breadcrumbs</Table.Cell><Table.Cell>Charts / Area Chart</Table.Cell></Table.Row>
+              <Table.Row><Table.Cell>Button</Table.Cell><Table.Cell>Charts / Bar Chart</Table.Cell></Table.Row>
+              <Table.Row><Table.Cell>Checkbox</Table.Cell><Table.Cell>Charts / Bar List</Table.Cell></Table.Row>
+              <Table.Row><Table.Cell>Cookie banner</Table.Cell><Table.Cell>Charts / Bar Segment</Table.Cell></Table.Row>
+              <Table.Row><Table.Cell>Date input</Table.Cell><Table.Cell>Charts / Donut Chart</Table.Cell></Table.Row>
+              <Table.Row><Table.Cell>Details</Table.Cell><Table.Cell>Charts / Line Chart</Table.Cell></Table.Row>
+              <Table.Row><Table.Cell>Error summary</Table.Cell><Table.Cell>Charts / Pie Chart</Table.Cell></Table.Row>
+              <Table.Row><Table.Cell>Fieldset</Table.Cell><Table.Cell>Charts / Scatter Chart</Table.Cell></Table.Row>
+              <Table.Row><Table.Cell>File upload</Table.Cell><Table.Cell>Charts / Spark Line</Table.Cell></Table.Row>
+              <Table.Row><Table.Cell>GOV.UK - Footer</Table.Cell><Table.Cell>Collections / Combobox</Table.Cell></Table.Row>
+              <Table.Row><Table.Cell>GOV.UK - Header</Table.Cell><Table.Cell>Collections / Data Display</Table.Cell></Table.Row>
+              <Table.Row><Table.Cell>Inset text</Table.Cell><Table.Cell>Collections / Listbox</Table.Cell></Table.Row>
+              <Table.Row><Table.Cell>Link</Table.Cell><Table.Cell>Collections / Tree View</Table.Cell></Table.Row>
+              <Table.Row><Table.Cell>Notification banner</Table.Cell><Table.Cell>Data Display / Avatar</Table.Cell></Table.Row>
+              <Table.Row><Table.Cell>Pagination</Table.Cell><Table.Cell>Data Display / Card</Table.Cell></Table.Row>
+              <Table.Row><Table.Cell>Panel</Table.Cell><Table.Cell>Data Display / Image</Table.Cell></Table.Row>
+              <Table.Row><Table.Cell>Phase banner</Table.Cell><Table.Cell>Data Display / Marquee</Table.Cell></Table.Row>
+              <Table.Row><Table.Cell>Radio</Table.Cell><Table.Cell>Data Display / QR Code</Table.Cell></Table.Row>
+              <Table.Row><Table.Cell>Select</Table.Cell><Table.Cell>Data Display / Timeline</Table.Cell></Table.Row>
+              <Table.Row><Table.Cell>Separator</Table.Cell><Table.Cell>Date &amp; Time / Calendar</Table.Cell></Table.Row>
+              <Table.Row><Table.Cell>Service navigation</Table.Cell><Table.Cell>Disclosure / Carousel</Table.Cell></Table.Row>
+              <Table.Row><Table.Cell>Skip link</Table.Cell><Table.Cell>Disclosure / Collapsible</Table.Cell></Table.Row>
+              <Table.Row><Table.Cell>Summary list</Table.Cell><Table.Cell>Disclosure / Steps</Table.Cell></Table.Row>
+              <Table.Row><Table.Cell>Table</Table.Cell><Table.Cell>Feedback / Alert</Table.Cell></Table.Row>
+              <Table.Row><Table.Cell>Tabs</Table.Cell><Table.Cell>Feedback / Empty State</Table.Cell></Table.Row>
+              <Table.Row><Table.Cell>Tag</Table.Cell><Table.Cell>Feedback / Progress</Table.Cell></Table.Row>
+              <Table.Row><Table.Cell>Task list</Table.Cell><Table.Cell>Feedback / Progress Circle</Table.Cell></Table.Row>
+              <Table.Row><Table.Cell>Textarea</Table.Cell><Table.Cell>Feedback / Skeleton</Table.Cell></Table.Row>
+              <Table.Row><Table.Cell>Textinput</Table.Cell><Table.Cell>Feedback / Spinner</Table.Cell></Table.Row>
+              <Table.Row><Table.Cell>Warning text</Table.Cell><Table.Cell>Feedback / Stat</Table.Cell></Table.Row>
+              <Table.Row><Table.Cell></Table.Cell><Table.Cell>Feedback / Status</Table.Cell></Table.Row>
+              <Table.Row><Table.Cell></Table.Cell><Table.Cell>Feedback / Toast</Table.Cell></Table.Row>
+              <Table.Row><Table.Cell></Table.Cell><Table.Cell>Forms / Color Picker</Table.Cell></Table.Row>
+              <Table.Row><Table.Cell></Table.Cell><Table.Cell>Forms / Editable</Table.Cell></Table.Row>
+              <Table.Row><Table.Cell></Table.Cell><Table.Cell>Forms / Pin Input</Table.Cell></Table.Row>
+              <Table.Row><Table.Cell></Table.Cell><Table.Cell>Forms / Radio Card</Table.Cell></Table.Row>
+              <Table.Row><Table.Cell></Table.Cell><Table.Cell>Forms / Rating</Table.Cell></Table.Row>
+              <Table.Row><Table.Cell></Table.Cell><Table.Cell>Forms / Rich Text Editor</Table.Cell></Table.Row>
+              <Table.Row><Table.Cell></Table.Cell><Table.Cell>Forms / Segmented Control</Table.Cell></Table.Row>
+              <Table.Row><Table.Cell></Table.Cell><Table.Cell>Forms / Slider</Table.Cell></Table.Row>
+              <Table.Row><Table.Cell></Table.Cell><Table.Cell>Forms / Switch</Table.Cell></Table.Row>
+              <Table.Row><Table.Cell></Table.Cell><Table.Cell>Forms / Tags Input</Table.Cell></Table.Row>
+              <Table.Row><Table.Cell></Table.Cell><Table.Cell>Forms / Color Swatch</Table.Cell></Table.Row>
+              <Table.Row><Table.Cell></Table.Cell><Table.Cell>Overlays / Dialog</Table.Cell></Table.Row>
+              <Table.Row><Table.Cell></Table.Cell><Table.Cell>Overlays / Hover Card</Table.Cell></Table.Row>
+              <Table.Row><Table.Cell></Table.Cell><Table.Cell>Overlays / Menu</Table.Cell></Table.Row>
+              <Table.Row><Table.Cell></Table.Cell><Table.Cell>Overlays / Popover</Table.Cell></Table.Row>
+              <Table.Row><Table.Cell></Table.Cell><Table.Cell>Overlays / Toggle Tip</Table.Cell></Table.Row>
+              <Table.Row><Table.Cell></Table.Cell><Table.Cell>Overlays / Tooltip</Table.Cell></Table.Row>
+              <Table.Row><Table.Cell></Table.Cell><Table.Cell>Typography / Code</Table.Cell></Table.Row>
+              <Table.Row><Table.Cell></Table.Cell><Table.Cell>Typography / Code Block</Table.Cell></Table.Row>
+              <Table.Row><Table.Cell></Table.Cell><Table.Cell>Typography / Heading</Table.Cell></Table.Row>
+              <Table.Row><Table.Cell></Table.Cell><Table.Cell>Typography / Highlight</Table.Cell></Table.Row>
+              <Table.Row><Table.Cell></Table.Cell><Table.Cell>Typography / Kbd</Table.Cell></Table.Row>
+              <Table.Row><Table.Cell></Table.Cell><Table.Cell>Typography / Text</Table.Cell></Table.Row>
+            </Table.Body>
+          </Table.Root>
+
         </VStack>
       </Card.Body>
     </Card.Root>
