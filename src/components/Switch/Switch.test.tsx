@@ -7,13 +7,24 @@ import { Switch } from './Switch'
 
 describe('Switch', () => {
   it('uses the expected recipe defaults', () => {
-    expect(switchRecipe.defaultVariants?.size).toBe('md')
-    expect(switchRecipe.defaultVariants?.variant).toBe('solid')
-    expect(switchRecipe.base?.control).toMatchObject({
-      borderColor: 'border.input',
-      borderRadius: '999px',
+    expect(
+      (switchRecipe as { defaultVariants?: { size?: string; variant?: string } }).defaultVariants
+    ).toMatchObject({
+      size: 'md',
+      variant: 'solid',
     })
-    expect(switchRecipe.base?.thumb).toMatchObject({
+
+    expect(
+      (switchRecipe as { base?: { control?: unknown; thumb?: unknown } }).base?.control
+    ).toMatchObject({
+      borderColor: 'border.input',
+      boxShadow: '0 0 0 2px {colors.border.input}',
+    })
+
+    expect(
+      (switchRecipe as { base?: { control?: unknown; thumb?: unknown } }).base?.thumb
+    ).toMatchObject({
+      borderRadius: '0',
       width: 'calc(var(--switch-height) - 4px)',
       height: 'calc(var(--switch-height) - 4px)',
     })

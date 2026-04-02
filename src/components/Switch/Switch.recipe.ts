@@ -1,6 +1,5 @@
-import { defineSlotRecipe } from '@chakra-ui/react'
 import { switchAnatomy } from '@chakra-ui/react/anatomy'
-
+import { defineSlotRecipe } from '@chakra-ui/react'
 import { govukTypeScale, pxToRem } from '@/utils'
 import { getFieldFocusStyles } from '@/utils/fieldFocusStyles'
 
@@ -20,7 +19,7 @@ function getTextStyles(size: keyof typeof govukTypeScale) {
   }
 }
 
-const switchRecipe = defineSlotRecipe({
+export const switchRecipeConfig = {
   slots: switchAnatomy.keys(),
   className: 'govuk-switch',
   base: {
@@ -30,7 +29,6 @@ const switchRecipe = defineSlotRecipe({
       alignItems: 'center',
       position: 'relative',
       verticalAlign: 'middle',
-
       '--switch-diff': 'calc(var(--switch-width) - var(--switch-height))',
       '--switch-x': {
         base: 'var(--switch-diff)',
@@ -46,36 +44,9 @@ const switchRecipe = defineSlotRecipe({
         color: 'fg.disabled',
       },
     },
-    // indicator: {
-    //   position: 'absolute',
-    //   height: 'calc(var(--switch-height) - 4px)',
-    //   width: 'calc(var(--switch-height) - 4px)',
-    //   fontSize: 'var(--switch-indicator-font-size)',
-    //   fontWeight: '700',
-    //   flexShrink: 0,
-    //   userSelect: 'none',
-    //   display: 'grid',
-    //   placeContent: 'center',
-    //   transition: 'inset-inline-start 0.12s ease',
-    //   insetInlineStart: 'calc(var(--switch-x) - 2px)',
-    //   _checked: {
-    //     insetInlineStart: '2px',
-    //   },
-    //   _focus: getFieldFocusStyles(),
-    //   _focusVisible: getFieldFocusStyles(),
-    // },
     control: {
       display: 'inline-flex',
       flexShrink: 0,
-      justifyContent: 'flex-start',
-      cursor: 'pointer',
-      borderRadius: 0,
-      position: 'relative',
-      width: 'var(--switch-width)',
-      height: 'var(--switch-height)',
-      alignItems: 'center',
-      borderWidth: 0,
-      borderStyle: 'solid',
       borderColor: 'border.input',
       boxShadow: '0 0 0 2px {colors.border.input}',
       bg: 'bg.muted',
@@ -181,9 +152,11 @@ const switchRecipe = defineSlotRecipe({
     },
   },
   defaultVariants: {
-    variant: 'solid',
-    size: 'md',
+    variant: 'solid' as const,
+    size: 'md' as const,
   },
-})
+} as const
+
+const switchRecipe: ReturnType<typeof defineSlotRecipe> = defineSlotRecipe(switchRecipeConfig)
 
 export default switchRecipe

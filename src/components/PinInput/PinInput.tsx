@@ -11,6 +11,11 @@ import { Text } from '../Text'
 
 export type PinInputProps = ComponentPropsWithoutRef<typeof ChakraPinInput.Root>
 export type PinInputInputProps = ComponentPropsWithoutRef<typeof ChakraPinInput.Input>
+type PinInputComponent = typeof PinInputRoot & Omit<typeof ChakraPinInput, 'Root' | 'Input'>
+type PinInputComposite = PinInputComponent & {
+  Root: typeof PinInputRoot
+  Input: typeof PinInputInput
+}
 
 const CUSTOM_MASK_SYMBOL = '🞶'
 const DEFAULT_PLACEHOLDER = '◇'
@@ -98,7 +103,7 @@ export const PinInputInput = forwardRef<HTMLInputElement, PinInputInputProps>(
   }
 )
 
-export const PinInput = Object.assign(PinInputRoot, {
+export const PinInput: PinInputComposite = Object.assign(PinInputRoot, {
   ...ChakraPinInput,
   Root: PinInputRoot,
   Input: PinInputInput,
