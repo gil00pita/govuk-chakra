@@ -37,6 +37,10 @@ const segmentedControlRecipe = defineSlotRecipe({
       borderColor: 'border.input',
       border: '2px solid {colors.border.input}',
       bg: 'bg.muted',
+      '&:focus-visible': {
+        focusRing: 'none',
+        ...getFieldFocusStyles(),
+      },
       _vertical: {
         flexDirection: 'column',
       },
@@ -60,7 +64,16 @@ const segmentedControlRecipe = defineSlotRecipe({
         color: 'fg.disabled',
         bg: 'bg.disabled',
       },
-      '&:has(input:focus-visible)': getFieldFocusStyles(),
+      '& input:focus, & input:focus-visible': {
+        outline: 'none',
+        boxShadow: 'none',
+      },
+      '&:has(input:focus-visible)': {
+        ...getFieldFocusStyles(),
+      },
+      '&:has(input:focus-visible):is(:focus, [data-focus])': {
+        ...getFieldFocusStyles(),
+      },
       _before: {
         content: '""',
         position: 'absolute',

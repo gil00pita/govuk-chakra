@@ -159,25 +159,6 @@ export function AppRoot() {
 }
 ```
 
-## Publishing
-
-This repo is prepared to publish as a package.
-
-Core package outputs:
-
-- ESM bundle: `dist/index.mjs`
-- CommonJS bundle: `dist/index.cjs`
-- Chakra passthrough bundle: `dist/chakra.mjs`
-- Type declarations: `dist/types`
-
-Useful commands:
-
-```bash
-yarn build
-yarn pack --dry-run
-yarn publish
-```
-
 ## Storybook Accessibility Tests
 
 Storybook accessibility checks run as part of the existing browser-based Storybook Vitest project:

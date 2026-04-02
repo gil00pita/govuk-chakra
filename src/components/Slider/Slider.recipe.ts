@@ -2,7 +2,7 @@ import { defineSlotRecipe } from '@chakra-ui/react'
 import { sliderAnatomy } from '@chakra-ui/react/anatomy'
 
 import { govukTypeScale, pxToRem } from '@/utils'
-import { getFieldFocusStyles } from '@/utils/fieldFocusStyles'
+import { getInsetFocusStyles } from '@/utils/fieldFocusStyles'
 
 function getTextStyles(size: keyof typeof govukTypeScale) {
   const scale = govukTypeScale[size]
@@ -75,10 +75,11 @@ const sliderRecipe = defineSlotRecipe({
       borderWidth: pxToRem(2),
       borderStyle: 'solid',
       borderColor: 'border.input',
-      bg: 'bg',
+      bg: 'bg.muted',
       transitionProperty: 'translate, background-color, border-color',
       transitionDuration: 'fast',
-      _focusVisible: getFieldFocusStyles(),
+      _focus: getInsetFocusStyles(),
+      _focusVisible: getInsetFocusStyles(),
       _disabled: {
         bg: 'bg.disabled',
         borderColor: 'border.disabled',
@@ -107,6 +108,7 @@ const sliderRecipe = defineSlotRecipe({
       borderWidth: '1px',
       borderStyle: 'solid',
       borderColor: 'border.input',
+      rounded: 'full',
     },
     markerLabel: {
       ...getTextStyles(16),
@@ -144,16 +146,26 @@ const sliderRecipe = defineSlotRecipe({
       },
     },
     variant: {
-      outline: {},
+      outline: {
+        thumb: {
+          bg: 'colorPalette.600',
+          borderColor: 'border.input',
+          outline: '2px solid {colors.bg}',
+        },
+        range: {
+          bg: 'colorPalette.300',
+        },
+      },
       solid: {
         track: {
           bg: 'bg.subtle',
+          borderColor: 'colorPalette.solid',
         },
         range: {
           bg: 'colorPalette.solid',
         },
         thumb: {
-          bg: 'colorPalette.solid',
+          bg: 'fg',
           borderColor: 'colorPalette.solid',
         },
       },
@@ -207,7 +219,8 @@ const sliderRecipe = defineSlotRecipe({
     },
   },
   defaultVariants: {
-    size: 'md',
+    size: 'lg',
+    colorPalette: 'blue',
     variant: 'outline',
     orientation: 'horizontal',
   },

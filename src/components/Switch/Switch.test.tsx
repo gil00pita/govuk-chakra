@@ -13,6 +13,10 @@ describe('Switch', () => {
       borderColor: 'border.input',
       borderRadius: '999px',
     })
+    expect(switchRecipe.base?.thumb).toMatchObject({
+      width: 'calc(var(--switch-height) - 4px)',
+      height: 'calc(var(--switch-height) - 4px)',
+    })
   })
 
   it('toggles the checked state when pressed', async () => {

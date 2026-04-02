@@ -173,6 +173,24 @@ const AccordionToggleAll = forwardRef<HTMLAnchorElement, AccordionToggleAllProps
         fontSize="sm"
         onClick={handleClick}
         textDecoration="underline"
+        css={{
+          '& .chevron': {
+            color: 'currentColor',
+            bgColor: 'transparent',
+            borderColor: 'currentColor',
+            textDecoration: 'underline',
+            textDecorationThickness: 'max(3px, 0.1875rem)',
+          },
+          '& .chevron:after': {
+            color: 'currentColor',
+            borderColor: 'currentColor',
+          },
+          '& .chevron-text': {
+            color: 'currentColor',
+            textDecoration: 'underline',
+            textDecorationThickness: 'max(3px, 0.1875rem)',
+          },
+        }}
         _dark={{
           '& .chevron-text': {
             color: 'primary.300',
@@ -199,44 +217,15 @@ const AccordionToggleAll = forwardRef<HTMLAnchorElement, AccordionToggleAllProps
         }}
         _hover={{
           bgColor: 'bg.muted',
-          '& .chevron': {
-            color: 'primary.600',
-            bgColor: 'transparent',
-            borderColor: 'primary.600',
-            textDecoration: 'underline',
-            textDecorationThickness: 'max(3px, 0.1875rem)',
-          },
-          '& .chevron:after': {
-            color: 'primary.600',
-            borderColor: 'primary.600',
-          },
-          '& .chevron-text': {
-            color: 'primary.500',
-            textDecoration: 'underline',
-            textDecorationThickness: 'max(3px, 0.1875rem)',
+          _focus: {
+            bgColor: 'yellow.500',
+            color: 'fg',
           },
         }}
         _focus={{
           bgColor: 'yellow.500',
           outline: 0,
-          '& .chevron': {
-            color: 'common.black',
-            bgColor: 'transparent',
-            borderColor: 'common.black',
-            textDecoration: 'underline',
-            textDecorationThickness: 'max(3px, 0.1875rem)',
-          },
-          '& .chevron:after': {
-            color: 'common.black',
-            borderColor: 'common.black',
-          },
-          '& .chevron-text': {
-            color: 'black',
-            bgColor: 'yellow.500',
-            textDecoration: 'underline',
-            textDecorationColor: 'common.black',
-            textDecorationThickness: 'max(3px, 0.1875rem)',
-          },
+          color: 'fg',
         }}
         {...props}
       >

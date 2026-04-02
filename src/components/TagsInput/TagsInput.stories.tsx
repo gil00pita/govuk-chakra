@@ -6,6 +6,7 @@ import { TagsInput } from './TagsInput'
 
 type TagsInputStoryArgs = {
   size?: 'sm' | 'md' | 'lg'
+  variant?: 'outline' | 'subtle'
 }
 
 const meta: Meta<TagsInputStoryArgs> = {
@@ -14,9 +15,11 @@ const meta: Meta<TagsInputStoryArgs> = {
   tags: ['autodocs'],
   args: {
     size: 'md',
+    variant: 'outline',
   },
   argTypes: {
     size: selectArgType(['sm', 'md', 'lg'], 'The size of the component.'),
+    variant: selectArgType(['outline', 'subtle'], 'The variant of the component.'),
   },
 }
 

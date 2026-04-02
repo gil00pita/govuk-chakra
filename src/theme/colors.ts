@@ -183,6 +183,7 @@ export const colors = {
   red: scale(govUKPalette.red),
   green: scale(govUKPalette.green),
   grey: scale(govUKPalette.grey),
+  gray: scale(govUKPalette.grey),
   orange: scale(govUKPalette.orange),
   magenta: scale(govUKPalette.magenta),
   purple: scale(govUKPalette.purple),

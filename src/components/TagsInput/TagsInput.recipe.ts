@@ -56,7 +56,6 @@ const tagsInputRecipe = defineSlotRecipe({
       bg: 'transparent',
       transitionProperty: 'border-color, box-shadow, outline-color',
       transitionDuration: 'normal',
-      _focusWithin: getFieldFocusStyles(),
       _disabled: {
         opacity: 1,
         bg: 'bg.disabled',
@@ -82,6 +81,8 @@ const tagsInputRecipe = defineSlotRecipe({
       _readOnly: {
         display: 'none',
       },
+      _focus: getFieldFocusStyles(),
+      _focusVisible: getFieldFocusStyles(),
     },
     item: {
       maxWidth: '100%',
@@ -111,6 +112,7 @@ const tagsInputRecipe = defineSlotRecipe({
       px: 'var(--tags-input-item-px)',
       maxWidth: '100%',
       bg: 'bg.muted',
+      color: 'fg',
       borderWidth: '1px',
       borderColor: 'border.muted',
       _highlighted: {
@@ -192,20 +194,39 @@ const tagsInputRecipe = defineSlotRecipe({
       },
     },
     variant: {
-      outline: {},
+      outline: {
+        itemPreview: {
+          bg: 'bg.muted',
+          color: 'fg',
+          _highlighted: {
+            bg: 'fg',
+            color: 'bg',
+          },
+        },
+      },
       subtle: {
         control: {
           bg: 'bg.subtle',
         },
         itemPreview: {
           bg: 'bg',
+          color: 'fg',
         },
       },
       flushed: {
+        itemPreview: {
+          _highlighted: {
+            bg: 'fg',
+            color: 'bg',
+          },
+        },
         control: {
-          borderWidth: '0 0 2px 0',
-          px: '0',
-          borderBottomColor: 'border.input',
+          borderWidth: '2px',
+          borderBottomWidth: '2px',
+          borderBottomColor: '2px',
+          border: '2px solid {colors.border.input}',
+          px: 'var(--tags-input-px)',
+          py: 'var(--tags-input-py)',
         },
       },
     },

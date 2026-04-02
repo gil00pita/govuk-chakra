@@ -3,6 +3,19 @@ import type { Meta, StoryObj } from '@storybook/react-vite'
 
 import { Tag } from './Tag'
 
+const tagVariantOptions = [
+  'grey',
+  'green',
+  'teal',
+  'blue',
+  'purple',
+  'magenta',
+  'red',
+  'orange',
+  'yellow',
+  'pink',
+] as const
+
 const meta: Meta<typeof Tag> = {
   title: 'GOV.UK/Components/Tag',
   component: Tag,
@@ -36,18 +49,7 @@ const meta: Meta<typeof Tag> = {
     bold: { control: 'boolean' },
     variant: {
       control: 'select',
-      options: [
-        'grey',
-        'green',
-        'teal',
-        'blue',
-        'purple',
-        'magenta',
-        'red',
-        'orange',
-        'yellow',
-        'pink (custom variantStyles)',
-      ],
+      options: tagVariantOptions,
     },
     uppercase: { control: 'boolean' },
     variantStyles: { control: 'object' },

@@ -9,9 +9,19 @@ import { Slider } from './Slider'
 describe('Slider', () => {
   it('uses the expected recipe defaults', () => {
     expect(sliderRecipe.defaultVariants?.size).toBe('md')
+    expect(sliderRecipe.defaultVariants?.variant).toBe('outline')
     expect(sliderRecipe.base?.track).toMatchObject({
+      bg: 'bg.muted',
       borderColor: 'border.input',
       borderRadius: '0',
+    })
+    expect(sliderRecipe.base?.thumb).toMatchObject({
+      bg: 'bg.muted',
+      borderColor: 'border.input',
+    })
+    expect(sliderRecipe.variants?.variant?.outline?.thumb).toMatchObject({
+      bg: 'bg.muted',
+      borderColor: 'border.input',
     })
   })
 
