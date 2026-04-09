@@ -54,7 +54,7 @@ yarn add govuk-chakra @emotion/react @emotion/styled framer-motion react react-d
 Wrap your app with the exported provider:
 
 ```tsx
-import { GOVUKProvider } from 'govuk-chakra'
+import { GOVUKProvider } from 'govuk-chakra/provider'
 
 export function AppRoot() {
   return (
@@ -144,13 +144,19 @@ export function ExamplePage() {
 - `govuk-chakra/chakra`
   Chakra UI passthrough plus the shared GOV.UK provider and theme exports
 
+- `govuk-chakra/theme`
+  Lightweight theme-only entry for `govUkTheme`
+
+- `govuk-chakra/provider`
+  Lightweight provider entry for `GOVUKProvider`
+
 ## Theme
 
 If you want direct access to the Chakra system rather than the convenience provider:
 
 ```tsx
 import { ChakraProvider } from '@chakra-ui/react'
-import { govUkTheme } from 'govuk-chakra'
+import { govUkTheme } from 'govuk-chakra/theme'
 
 export function AppRoot() {
   return (

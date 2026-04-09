@@ -15,6 +15,8 @@ const dirname =
 const libraryEntries = {
   index: path.resolve(dirname, 'src/lib.ts'),
   chakra: path.resolve(dirname, 'src/govuk-chakra.ts'),
+  theme: path.resolve(dirname, 'src/theme-entry.ts'),
+  provider: path.resolve(dirname, 'src/provider-entry.ts'),
 }
 
 const externalPackages = [

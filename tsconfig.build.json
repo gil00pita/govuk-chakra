@@ -12,6 +12,8 @@
   "include": [
     "src/lib.ts",
     "src/govuk-chakra.ts",
+    "src/theme-entry.ts",
+    "src/provider-entry.ts",
     "src/provider.tsx",
     "src/components/**/*.ts",
     "src/components/**/*.tsx",

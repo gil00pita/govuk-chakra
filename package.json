@@ -30,6 +30,16 @@
       "import": "./dist/chakra.mjs",
       "require": "./dist/chakra.cjs"
     },
+    "./theme": {
+      "types": "./dist/types/theme-entry.d.ts",
+      "import": "./dist/theme.mjs",
+      "require": "./dist/theme.cjs"
+    },
+    "./provider": {
+      "types": "./dist/types/provider-entry.d.ts",
+      "import": "./dist/provider.mjs",
+      "require": "./dist/provider.cjs"
+    },
     "./package.json": "./package.json"
   },
   "publishConfig": {
