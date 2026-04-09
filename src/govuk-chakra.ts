@@ -1,4 +1,6 @@
 export * from '@chakra-ui/react'
+export * from './provider'
+export * from './theme'
 
 export { Accordion } from './components/Accordion'
 export { Alert } from './components/Alert'

@@ -44,10 +44,10 @@ The design choice here is deliberate:
 ## Installation
 
 ```bash
-yarn add govuk-chakra @chakra-ui/react @emotion/react @emotion/styled framer-motion react react-dom
+yarn add govuk-chakra @emotion/react @emotion/styled framer-motion react react-dom
 ```
 
-`govuk-chakra` treats Chakra UI as a peer dependency, so consuming apps must install `@chakra-ui/react` themselves.
+`govuk-chakra` bundles Chakra UI, so consuming apps do not need to install `@chakra-ui/react` separately.
 
 ## Usage
 
@@ -142,7 +142,7 @@ export function ExamplePage() {
   Single combined barrel with Chakra UI exports plus local GOV.UK-styled overrides
 
 - `govuk-chakra/chakra`
-  Raw Chakra UI passthrough only, if you need the unmodified Chakra export surface explicitly
+  Chakra UI passthrough plus the shared GOV.UK provider and theme exports
 
 ## Theme
 

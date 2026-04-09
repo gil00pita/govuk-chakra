@@ -21,7 +21,6 @@ const externalPackages = [
   'react',
   'react/jsx-runtime',
   'react-dom',
-  '@chakra-ui/react',
   '@emotion/react',
   '@emotion/styled',
   'framer-motion',

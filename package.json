@@ -48,7 +48,6 @@
   ],
   "peerDependencies": {
     "@chakra-ui/charts": "^3.34.0",
-    "@chakra-ui/react": "^3.34.0",
     "@emotion/react": "^11.14.0",
     "@emotion/styled": "^11.14.1",
     "@tiptap/core": "^3.21.0",
@@ -166,5 +165,8 @@
     "vitest": "^4.1.2",
     "web-vitals": "^5.2.0",
     "webpack": "^5.105.4"
+  },
+  "dependencies": {
+    "@chakra-ui/react": "^3.34.0"
   }
 }
