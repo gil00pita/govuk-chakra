@@ -51,6 +51,8 @@ yarn add govuk-chakra @emotion/react @emotion/styled framer-motion react react-d
 
 ## Usage
 
+For app setup, prefer the lightweight provider and theme entry points.
+
 Wrap your app with the exported provider:
 
 ```tsx
@@ -64,6 +66,44 @@ export function AppRoot() {
   )
 }
 ```
+
+## Next.js App Router
+
+Create a client-side provider file:
+
+```tsx
+'use client'
+
+import type { ReactNode } from 'react'
+import { GOVUKProvider } from 'govuk-chakra/provider'
+
+type ProvidersProps = {
+  children: ReactNode
+}
+
+export function Providers({ children }: ProvidersProps) {
+  return <GOVUKProvider>{children}</GOVUKProvider>
+}
+```
+
+Then use it in your root layout:
+
+```tsx
+import type { ReactNode } from 'react'
+import { Providers } from '@/providers/Providers'
+
+export default function RootLayout({ children }: { children: ReactNode }) {
+  return (
+    <html lang="en">
+      <body>
+        <Providers>{children}</Providers>
+      </body>
+    </html>
+  )
+}
+```
+
+If you want direct access to the theme in Next.js, import it from `govuk-chakra/theme` instead of the package root.
 
 ## How Exports Work
 
@@ -139,7 +179,8 @@ export function ExamplePage() {
 ## Entry Points
 
 - `govuk-chakra`
-  Single combined barrel with Chakra UI exports plus local GOV.UK-styled overrides
+  Single combined barrel with Chakra UI exports plus local GOV.UK-styled overrides.
+  Use this for components, not app setup imports such as `govUkTheme` in Next.js
 
 - `govuk-chakra/chakra`
   Chakra UI passthrough plus the shared GOV.UK provider and theme exports
