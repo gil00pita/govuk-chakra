@@ -83,7 +83,11 @@ export const Default: Story = {
 
         <GOVUKFooter.Meta>
           <VStack alignItems={'flex-start'}>
-            <HStack>
+            <HStack
+              w={'full'}
+              justifyContent={{ base: 'center', md: 'space-between' }}
+              flexWrap={{ base: 'wrap', md: 'nowrap' }}
+            >
               <VStack
                 w={'full'}
                 justifyContent="space-between"
@@ -108,6 +112,7 @@ export const Default: Story = {
                 <Box>
                   <GOVUKOGL />
                 </Box>
+
                 <HStack
                   alignItems={'flex-start'}
                   w={'full'}

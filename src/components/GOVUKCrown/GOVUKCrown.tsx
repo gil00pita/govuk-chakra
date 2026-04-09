@@ -21,8 +21,8 @@ export const GOVUKCrown = forwardRef<SVGSVGElement, GOVUKCrownProps>(function GO
       aria-labelledby={resolvedTitleId}
       role={title ? 'img' : undefined}
       viewBox="0 0 64 60"
-      height="30"
-      width="32"
+      height="30px"
+      width="32px"
       fill="currentcolor"
       className="crown"
       {...props}
