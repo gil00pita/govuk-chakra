@@ -23,9 +23,23 @@ const externalPackages = [
   'react',
   'react/jsx-runtime',
   'react-dom',
+  'react-dom/server',
+  'react-is',
   '@emotion/react',
   '@emotion/styled',
   'framer-motion',
+  '@chakra-ui/charts',
+  'recharts',
+  'recharts-scale',
+  'shiki',
+  '@tiptap/core',
+  '@tiptap/pm',
+  '@tiptap/pm/state',
+  '@tiptap/pm/view',
+  '@tiptap/pm/model',
+  '@tiptap/pm/transform',
+  '@tiptap/react',
+  '@tiptap/starter-kit',
 ]
 
 // More info at: https://storybook.js.org/docs/next/writing-tests/integrations/vitest-addon
@@ -50,7 +64,16 @@ export default defineConfig({
       entry: libraryEntries,
     },
     rollupOptions: {
-      external: externalPackages,
+      external: (id) =>
+        externalPackages.includes(id) ||
+        /^react(\/|$)/.test(id) ||
+        /^react-dom(\/|$)/.test(id) ||
+        /^@emotion\//.test(id) ||
+        /^@chakra-ui\//.test(id) ||
+        /^@tiptap\//.test(id) ||
+        /^recharts(\/|$)/.test(id) ||
+        /^shiki(\/|$)/.test(id) ||
+        /^framer-motion(\/|$)/.test(id),
       output: [
         {
           format: 'es',
