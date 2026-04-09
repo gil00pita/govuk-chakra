@@ -23,19 +23,19 @@ type Story = StoryObj<typeof meta>
 
 export const Beta: Story = {
   render: () => (
-    <PhaseBanner width="720px">
+    <PhaseBanner.Root>
       <PhaseBanner.Text>This is a new service. Help us improve it and </PhaseBanner.Text>
       <PhaseBanner.Link href="#">give your feedback by email</PhaseBanner.Link>.
-    </PhaseBanner>
+    </PhaseBanner.Root>
   ),
 }
 
 export const Alpha: Story = {
   render: () => (
-    <PhaseBanner width="720px" phase="Alpha" phaseVariant="grey">
+    <PhaseBanner.Root phase="alpha">
       <PhaseBanner.Text>
         This service is in alpha. Your feedback will help us improve it before wider testing.
       </PhaseBanner.Text>
-    </PhaseBanner>
+    </PhaseBanner.Root>
   ),
 }

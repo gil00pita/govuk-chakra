@@ -1,4 +1,4 @@
-import { Box, type BoxProps } from '@chakra-ui/react'
+import { Box, HStack, type BoxProps, type StackProps } from '@chakra-ui/react'
 import { forwardRef, type ReactNode } from 'react'
 
 import { Link } from '@/components/Link'
@@ -6,9 +6,8 @@ import { Tag, type TagVariant } from '@/components/Tag'
 import { Text } from '@/components/Text'
 import { pxToRem } from '@/utils'
 
-export interface PhaseBannerProps extends BoxProps {
-  phase?: ReactNode
-  phaseVariant?: TagVariant
+export interface PhaseBannerProps extends StackProps {
+  phase?: 'discovery' | 'alpha' | 'beta' | 'live' | undefined
   children?: ReactNode
 }
 
@@ -19,20 +18,50 @@ export interface PhaseBannerTagProps extends Omit<React.ComponentProps<typeof Ta
 }
 
 export type PhaseBannerTextProps = React.ComponentProps<typeof Text>
-
 export type PhaseBannerLinkProps = React.ComponentProps<typeof Link>
 
+function getPhaseBannerStyles(phase: NonNullable<PhaseBannerProps['phase']>): {
+  label: string
+  tagVariant: TagVariant
+} {
+  switch (phase) {
+    case 'discovery':
+      return { label: 'Discovery', tagVariant: 'purple' }
+    case 'alpha':
+      return { label: 'Alpha', tagVariant: 'grey' }
+    case 'live':
+      return { label: 'Live', tagVariant: 'green' }
+    case 'beta':
+    default:
+      return { label: 'Beta', tagVariant: 'blue' }
+  }
+}
+
 const PhaseBannerRoot = forwardRef<HTMLDivElement, PhaseBannerProps>(function PhaseBanner(
-  { phase = 'Beta', phaseVariant = 'blue', children, ...props },
+  { phase = 'beta', children, ...props },
   ref
 ) {
+  const { label, tagVariant } = getPhaseBannerStyles(phase)
+
   return (
-    <Box ref={ref} borderBottom="1px solid" borderColor="border" py={pxToRem(10)} {...props}>
-      <PhaseBannerContent>
-        <PhaseBannerTag variant={phaseVariant}>{phase}</PhaseBannerTag>
+    <HStack
+      ref={ref}
+      w="full"
+      px={{ base: pxToRem(15), md: pxToRem(30) }}
+      alignItems="center"
+      maxW="1200px"
+      {...props}
+    >
+      <PhaseBannerContent
+        maxW="1200px"
+        w="full"
+        borderBottom="1px solid {colors.border}"
+        py={pxToRem(10)}
+      >
+        <PhaseBannerTag variant={tagVariant}>{label}</PhaseBannerTag>
         {children}
       </PhaseBannerContent>
-    </Box>
+    </HStack>
   )
 })
 
@@ -59,7 +88,18 @@ const PhaseBannerContent = forwardRef<HTMLParagraphElement, PhaseBannerContentPr
 const PhaseBannerTag = forwardRef<HTMLParagraphElement, PhaseBannerTagProps>(
   function PhaseBannerTag({ children, variant = 'blue', ...props }, ref) {
     return (
-      <Tag ref={ref} as="strong" variant={variant} flexShrink={0} mt={pxToRem(-1)} {...props}>
+      <Tag
+        ref={ref}
+        as="span"
+        variant={variant}
+        flexShrink={0}
+        fontSize={'1rem'}
+        fontWeight={500}
+        mt={pxToRem(-2)}
+        mb={pxToRem(-2)}
+        p="4px 8px 2px"
+        {...props}
+      >
         {children}
       </Tag>
     )

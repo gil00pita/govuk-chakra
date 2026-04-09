@@ -6,10 +6,10 @@ import { PhaseBanner } from './PhaseBanner'
 describe('PhaseBanner', () => {
   it('renders the default beta phase and feedback message', () => {
     renderWithProvider(
-      <PhaseBanner>
+      <PhaseBanner.Root>
         <PhaseBanner.Text>This is a new service. Help us improve it and</PhaseBanner.Text>
         <PhaseBanner.Link href="/feedback">give your feedback by email</PhaseBanner.Link>
-      </PhaseBanner>
+      </PhaseBanner.Root>
     )
 
     expect(screen.getByText('Beta')).toBeVisible()
@@ -22,16 +22,16 @@ describe('PhaseBanner', () => {
 
   it('supports a custom phase label and content', () => {
     renderWithProvider(
-      <PhaseBanner phase="Alpha" phaseVariant="grey">
+      <PhaseBanner.Root phase="alpha">
         <PhaseBanner.Text>
           This service is in alpha. Your feedback will help us improve it before wider testing.
         </PhaseBanner.Text>
-      </PhaseBanner>
+      </PhaseBanner.Root>
     )
 
-    const banner = screen.getByText('Alpha').closest('div')
+    const banner = screen.getByText('alpha').closest('div')
 
-    expect(screen.getByText('Alpha')).toBeVisible()
+    expect(screen.getByText('alpha')).toBeVisible()
     expect(within(banner ?? document.body).getByText(/this service is in alpha/i)).toBeVisible()
   })
 })
