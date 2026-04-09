@@ -44,8 +44,10 @@ The design choice here is deliberate:
 ## Installation
 
 ```bash
-yarn add govuk-chakra @emotion/react @emotion/styled framer-motion react react-dom
+yarn add govuk-chakra @chakra-ui/react @emotion/react @emotion/styled framer-motion react react-dom
 ```
+
+`govuk-chakra` treats Chakra UI as a peer dependency, so consuming apps must install `@chakra-ui/react` themselves.
 
 ## Usage
 
