@@ -19,6 +19,7 @@ const libraryEntries = {
   provider: path.resolve(dirname, 'src/provider-entry.ts'),
   charts: path.resolve(dirname, 'src/charts-entry.ts'),
   editor: path.resolve(dirname, 'src/editor-entry.ts'),
+  utils: path.resolve(dirname, 'src/utils-entry.ts'),
 }
 
 const externalPackages = [

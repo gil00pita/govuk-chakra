@@ -1,3 +1,5 @@
+export * from './utils/shiki-adapter'
+
 export {
   CodeBlock,
   CodeBlockRoot,

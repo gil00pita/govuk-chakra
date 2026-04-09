@@ -135,6 +135,67 @@ import { CodeBlock, Heading, Link, Text } from '@/components'
 
         <Box>
           <Heading size={27} mb={3}>
+            Optional peer dependencies
+          </Heading>
+          <Text mb={3}>
+            Charts, CodeBlock, and RichTextEditor live in separate entry points. Install only what you use.
+          </Text>
+          <CodeBlock.Root
+            code={`# Charts
+yarn add @chakra-ui/charts recharts
+
+# Code block + Rich text editor
+yarn add shiki @tiptap/core@^3.21.0 @tiptap/pm@^3.21.0 @tiptap/react@^3.21.0 @tiptap/starter-kit@^3.21.0`}
+            language="bash"
+            minWidth="0"
+            maxW="100%"
+            mb={4}
+          >
+            <CodeBlock.Header>
+              <CodeBlock.Title>Optional deps</CodeBlock.Title>
+              <CodeBlock.Control>
+                <CodeBlock.CopyButton copyLabel="Copy" copiedLabel="Copied" />
+              </CodeBlock.Control>
+            </CodeBlock.Header>
+            <CodeBlock.Content>
+              <CodeBlock.Code>
+                <CodeBlock.CodeText />
+              </CodeBlock.Code>
+            </CodeBlock.Content>
+          </CodeBlock.Root>
+          <CodeBlock.Root
+            code={`// Core components — no heavy deps needed
+import { Button, GOVUKHeader, Heading } from 'govuk-chakra'
+
+// Utilities — no extra deps
+import { pxToRem } from 'govuk-chakra/utils'
+
+// Charts — requires @chakra-ui/charts recharts
+import { BarChart, LineChart } from 'govuk-chakra/charts'
+
+// Code block + rich text — requires shiki and @tiptap/*
+import { CodeBlock, RichTextEditor } from 'govuk-chakra/editor'`}
+            language="tsx"
+            minWidth="0"
+            maxW="100%"
+            mb={8}
+          >
+            <CodeBlock.Header>
+              <CodeBlock.Title>Entry point imports</CodeBlock.Title>
+              <CodeBlock.Control>
+                <CodeBlock.CopyButton copyLabel="Copy" copiedLabel="Copied" />
+              </CodeBlock.Control>
+            </CodeBlock.Header>
+            <CodeBlock.Content>
+              <CodeBlock.Code>
+                <CodeBlock.CodeText />
+              </CodeBlock.Code>
+            </CodeBlock.Content>
+          </CodeBlock.Root>
+        </Box>
+
+        <Box>
+          <Heading size={27} mb={3}>
             Wrap your app with the provider
           </Heading>
           <CodeBlock.Root
@@ -274,11 +335,31 @@ export function ExamplePage() {
               <Heading size={27}>Entry points</Heading>
               <Box>
                 <Text fontWeight="bold">govuk-chakra</Text>
-                <Text>Combined barrel with Chakra exports plus local GOV.UK-styled overrides</Text>
+                <Text>Combined barrel with Chakra exports plus local GOV.UK-styled overrides. Does not include charts, CodeBlock, or RichTextEditor.</Text>
+              </Box>
+              <Box>
+                <Text fontWeight="bold">govuk-chakra/charts</Text>
+                <Text>All chart components. Requires <Text as="span" fontFamily="mono">@chakra-ui/charts</Text> and <Text as="span" fontFamily="mono">recharts</Text>.</Text>
+              </Box>
+              <Box>
+                <Text fontWeight="bold">govuk-chakra/editor</Text>
+                <Text>CodeBlock and RichTextEditor components, plus shikiAdapter helpers. Requires <Text as="span" fontFamily="mono">shiki</Text> and <Text as="span" fontFamily="mono">@tiptap/*</Text>.</Text>
+              </Box>
+              <Box>
+                <Text fontWeight="bold">govuk-chakra/utils</Text>
+                <Text>Standalone utilities: pxToRem, colorContrast, fieldFocusStyles, and icon helpers. No extra deps required.</Text>
+              </Box>
+              <Box>
+                <Text fontWeight="bold">govuk-chakra/provider</Text>
+                <Text>Lightweight provider entry for GOVUKProvider.</Text>
+              </Box>
+              <Box>
+                <Text fontWeight="bold">govuk-chakra/theme</Text>
+                <Text>Lightweight theme-only entry for govUkTheme.</Text>
               </Box>
               <Box>
                 <Text fontWeight="bold">govuk-chakra/chakra</Text>
-                <Text>Raw Chakra UI passthrough when you want the unmodified export surface</Text>
+                <Text>Raw Chakra UI passthrough when you want the unmodified export surface.</Text>
               </Box>
             </VStack>
           </Card.Body>

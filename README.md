@@ -203,7 +203,10 @@ export function ExamplePage() {
   All chart components. Requires `@chakra-ui/charts` and `recharts` to be installed.
 
 - `govuk-chakra/editor`
-  `CodeBlock` (requires `shiki`) and `RichTextEditor` (requires `@tiptap/*`) components.
+  `CodeBlock` (requires `shiki`) and `RichTextEditor` (requires `@tiptap/*`) components, plus `shikiAdapter` and `createGovUkShikiAdapter` helpers.
+
+- `govuk-chakra/utils`
+  Standalone utilities: `pxToRem`, `colorContrast`, `fieldFocusStyles`, and icon helpers. No extra deps required.
 
 - `govuk-chakra/chakra`
   Chakra UI passthrough plus the shared GOV.UK provider and theme exports
@@ -217,6 +220,9 @@ export function ExamplePage() {
 ```tsx
 // Core components — no heavy deps needed
 import { Button, GOVUKHeader, Heading } from 'govuk-chakra'
+
+// Utilities — no extra deps
+import { pxToRem } from 'govuk-chakra/utils'
 
 // Charts — requires @chakra-ui/charts recharts
 import { BarChart, LineChart } from 'govuk-chakra/charts'
