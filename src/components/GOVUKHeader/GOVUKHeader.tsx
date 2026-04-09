@@ -29,10 +29,9 @@ const GOVUKHeaderContainer = forwardRef<HTMLDivElement, GOVUKHeaderContainerProp
         bg="primary.500"
         display="flex"
         alignItems="center"
-        justifyContent="space-between"
+        justifyContent="center"
         gap={pxToRem(16)}
         mx="auto"
-        px={{ base: pxToRem(15), md: pxToRem(30) }}
         py={pxToRem(10)}
         w={'full'}
         h={pxToRem(60)}
@@ -41,7 +40,13 @@ const GOVUKHeaderContainer = forwardRef<HTMLDivElement, GOVUKHeaderContainerProp
         }}
         {...props}
       >
-        <HStack maxW="1200px" w={'full'} wrap={'wrap'}>
+        <HStack
+          maxW="1200px"
+          w={'full'}
+          wrap={'wrap'}
+          px={{ base: pxToRem(15), md: pxToRem(30) }}
+          gap={pxToRem(16)}
+        >
           {props.children}
         </HStack>
       </HStack>
