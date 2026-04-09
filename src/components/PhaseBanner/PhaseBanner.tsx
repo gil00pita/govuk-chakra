@@ -45,6 +45,7 @@ const PhaseBannerRoot = forwardRef<HTMLDivElement, PhaseBannerProps>(function Ph
 
   return (
     <HStack
+      className="govuk-phase-banner"
       ref={ref}
       w="full"
       px={{ base: pxToRem(15), md: pxToRem(30) }}

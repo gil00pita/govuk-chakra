@@ -1,4 +1,4 @@
-import { Box, type BoxProps } from '@chakra-ui/react'
+import { Box, VStack, type BoxProps } from '@chakra-ui/react'
 import { createContext, forwardRef, useContext, type ComponentProps } from 'react'
 
 import { Link } from '@/components/Link'
@@ -35,11 +35,22 @@ const BreadcrumbsRoot = forwardRef<HTMLDivElement, BreadcrumbsProps>(function Br
   ref
 ) {
   return (
-    <BreadcrumbsContext.Provider value={{ inverse }}>
-      <Box ref={ref} as="nav" aria-label={landmarkLabel} width="100%" color="inherit" {...props}>
-        {children}
-      </Box>
-    </BreadcrumbsContext.Provider>
+    <VStack
+      className="breadcrumbs-container"
+      maxW="1200px"
+      paddingTop={{ base: '30px', md: '15px' }}
+      paddingBottom={{ base: '50px', md: '20px' }}
+      marginLeft="auto"
+      marginRight="auto"
+      width="100%"
+      px={{ base: pxToRem(15), md: pxToRem(30) }}
+    >
+      <BreadcrumbsContext.Provider value={{ inverse }}>
+        <Box ref={ref} as="nav" aria-label={landmarkLabel} width="100%" color="inherit" {...props}>
+          {children}
+        </Box>
+      </BreadcrumbsContext.Provider>
+    </VStack>
   )
 })
 

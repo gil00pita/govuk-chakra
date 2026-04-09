@@ -5,6 +5,7 @@ import { ServiceNavigation } from '@/components/ServiceNavigation'
 import { Breadcrumbs } from '../Breadcrumbs'
 import { VStack } from '@chakra-ui/react'
 import { pxToRem } from '@/utils'
+import { PhaseBanner } from '..'
 
 const meta: Meta = {
   title: 'GOV.UK/Components/GOV.UK - Header',
@@ -171,6 +172,63 @@ export const WithServiceNameAndBreadcrumbs: Story = {
           </Breadcrumbs.List>
         </Breadcrumbs>
       </VStack>
+    </GOVUKHeader>
+  ),
+}
+export const WithPhaseBannerAndServiceNameAndBreadcrumbs: Story = {
+  render: () => (
+    <GOVUKHeader>
+      <GOVUKHeader.Container>
+        <GOVUKHeader.Logo href="#" />
+      </GOVUKHeader.Container>
+      <ServiceNavigation.Root>
+        <ServiceNavigation.ServiceContainer>
+          <ServiceNavigation.ServiceName href="#">Service name</ServiceNavigation.ServiceName>
+          <ServiceNavigation.Toggle />
+        </ServiceNavigation.ServiceContainer>
+        <ServiceNavigation.Nav>
+          <ServiceNavigation.List>
+            <ServiceNavigation.Item current>
+              <ServiceNavigation.Link href="#" current>
+                Navigation item 1
+              </ServiceNavigation.Link>
+            </ServiceNavigation.Item>
+            <ServiceNavigation.Item>
+              <ServiceNavigation.Link href="#">Navigation item 2</ServiceNavigation.Link>
+            </ServiceNavigation.Item>
+            <ServiceNavigation.Item>
+              <ServiceNavigation.Link href="#">Navigation item 3</ServiceNavigation.Link>
+            </ServiceNavigation.Item>
+            <ServiceNavigation.Item>
+              <ServiceNavigation.Link href="#">Navigation item 4</ServiceNavigation.Link>
+            </ServiceNavigation.Item>
+          </ServiceNavigation.List>
+        </ServiceNavigation.Nav>
+      </ServiceNavigation.Root>
+      <PhaseBanner.Root phase="alpha">
+        <PhaseBanner.Text>
+          This service is in alpha. Your feedback will help us improve it before wider testing.
+        </PhaseBanner.Text>
+      </PhaseBanner.Root>
+      <Breadcrumbs>
+        <Breadcrumbs.List>
+          <Breadcrumbs.Item>
+            <Breadcrumbs.Link href="#">Home</Breadcrumbs.Link>
+          </Breadcrumbs.Item>
+          <Breadcrumbs.Item>
+            <Breadcrumbs.Link href="#">Passports, travel and living abroad</Breadcrumbs.Link>
+          </Breadcrumbs.Item>
+          <Breadcrumbs.Item>
+            <Breadcrumbs.Link href="#">Travel abroad</Breadcrumbs.Link>
+          </Breadcrumbs.Item>
+          <Breadcrumbs.Item>
+            <Breadcrumbs.Link href="#">Foreign travel advice</Breadcrumbs.Link>
+          </Breadcrumbs.Item>
+          <Breadcrumbs.Item current>
+            <Breadcrumbs.Current>Spain</Breadcrumbs.Current>
+          </Breadcrumbs.Item>
+        </Breadcrumbs.List>
+      </Breadcrumbs>
     </GOVUKHeader>
   ),
 }
