@@ -17,7 +17,7 @@ export type GOVUKHeaderLogotypeProps = BoxProps
 
 const GOVUKHeaderRoot = forwardRef<HTMLDivElement, GOVUKHeaderProps>(
   function GOVUKHeader(props, ref) {
-    return <VStack ref={ref} as="header" alignItems={'flex-start'} gap={0} w={'full'} {...props} />
+    return <VStack ref={ref} as="header" alignItems={'center'} gap={0} w={'full'} {...props} />
   }
 )
 
