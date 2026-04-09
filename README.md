@@ -49,6 +49,23 @@ yarn add govuk-chakra @emotion/react @emotion/styled framer-motion react react-d
 
 `govuk-chakra` bundles Chakra UI, so consuming apps do not need to install `@chakra-ui/react` separately.
 
+### Optional peer dependencies
+
+Chart, code block, and rich text editor components are **not included in the main entry point**. They live in separate entry points so your app only pays the cost of the deps it actually uses.
+
+| Entry point           | Install                                                                                                    | Components                                                                                                                                  |
+| --------------------- | ---------------------------------------------------------------------------------------------------------- | ------------------------------------------------------------------------------------------------------------------------------------------- |
+| `govuk-chakra/charts` | `yarn add @chakra-ui/charts recharts`                                                                      | `AreaChart`, `BarChart`, `BarList`, `BarSegment`, `Chart`, `DonutChart`, `LineChart`, `PieChart`, `RadarChart`, `ScatterChart`, `Sparkline` |
+| `govuk-chakra/editor` | `yarn add shiki @tiptap/core@^3.21.0 @tiptap/pm@^3.21.0 @tiptap/react@^3.21.0 @tiptap/starter-kit@^3.21.0` | `CodeBlock`, `RichTextEditor`                                                                                                               |
+
+```bash
+# Charts
+yarn add @chakra-ui/charts recharts
+
+# Code block + Rich text editor
+yarn add shiki @tiptap/core@^3.21.0 @tiptap/pm@^3.21.0 @tiptap/react@^3.21.0 @tiptap/starter-kit@^3.21.0
+```
+
 ## Usage
 
 For app setup, prefer the lightweight provider and theme entry points.
@@ -180,7 +197,13 @@ export function ExamplePage() {
 
 - `govuk-chakra`
   Single combined barrel with Chakra UI exports plus local GOV.UK-styled overrides.
-  Use this for components, not app setup imports such as `govUkTheme` in Next.js
+  Does **not** include charts, `CodeBlock`, or `RichTextEditor` — use the dedicated entry points for those.
+
+- `govuk-chakra/charts`
+  All chart components. Requires `@chakra-ui/charts` and `recharts` to be installed.
+
+- `govuk-chakra/editor`
+  `CodeBlock` (requires `shiki`) and `RichTextEditor` (requires `@tiptap/*`) components.
 
 - `govuk-chakra/chakra`
   Chakra UI passthrough plus the shared GOV.UK provider and theme exports
@@ -190,6 +213,17 @@ export function ExamplePage() {
 
 - `govuk-chakra/provider`
   Lightweight provider entry for `GOVUKProvider`
+
+```tsx
+// Core components — no heavy deps needed
+import { Button, GOVUKHeader, Heading } from 'govuk-chakra'
+
+// Charts — requires @chakra-ui/charts recharts
+import { BarChart, LineChart } from 'govuk-chakra/charts'
+
+// Code block + rich text — requires shiki and @tiptap/*
+import { CodeBlock, RichTextEditor } from 'govuk-chakra/editor'
+```
 
 ## Theme
 
@@ -337,4 +371,4 @@ MIT License - see [LICENSE](LICENSE). Free to use, modify, and distribute. The o
 
 ---
 
-**Last Updated**: March 2026
+**Last Updated**: April 2026

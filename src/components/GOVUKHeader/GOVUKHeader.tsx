@@ -40,7 +40,11 @@ const GOVUKHeaderContainer = forwardRef<HTMLDivElement, GOVUKHeaderContainerProp
           bg: 'primary.600',
         }}
         {...props}
-      />
+      >
+        <HStack maxW="1200px" w={'full'} wrap={'wrap'}>
+          {props.children}
+        </HStack>
+      </HStack>
     )
   }
 )

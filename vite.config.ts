@@ -17,6 +17,8 @@ const libraryEntries = {
   chakra: path.resolve(dirname, 'src/govuk-chakra.ts'),
   theme: path.resolve(dirname, 'src/theme-entry.ts'),
   provider: path.resolve(dirname, 'src/provider-entry.ts'),
+  charts: path.resolve(dirname, 'src/charts-entry.ts'),
+  editor: path.resolve(dirname, 'src/editor-entry.ts'),
 }
 
 const externalPackages = [

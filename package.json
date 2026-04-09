@@ -1,6 +1,6 @@
 {
   "name": "govuk-chakra",
-  "version": "0.0.9",
+  "version": "0.0.10",
   "description": "A GOV.UK-flavoured component skin for Chakra UI with React.",
   "license": "MIT",
   "repository": {
@@ -39,6 +39,16 @@
       "types": "./dist/types/provider-entry.d.ts",
       "import": "./dist/provider.mjs",
       "require": "./dist/provider.cjs"
+    },
+    "./charts": {
+      "types": "./dist/types/charts-entry.d.ts",
+      "import": "./dist/charts.mjs",
+      "require": "./dist/charts.cjs"
+    },
+    "./editor": {
+      "types": "./dist/types/editor-entry.d.ts",
+      "import": "./dist/editor.mjs",
+      "require": "./dist/editor.cjs"
     },
     "./package.json": "./package.json"
   },
