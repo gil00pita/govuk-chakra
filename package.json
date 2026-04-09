@@ -1,6 +1,6 @@
 {
   "name": "govuk-chakra",
-  "version": "0.0.8",
+  "version": "0.0.9",
   "description": "A GOV.UK-flavoured component skin for Chakra UI with React.",
   "license": "MIT",
   "repository": {
