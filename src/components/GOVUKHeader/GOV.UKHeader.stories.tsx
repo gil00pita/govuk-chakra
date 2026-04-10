@@ -3,8 +3,6 @@ import type { Meta, StoryObj } from '@storybook/react-vite'
 import { GOVUKHeader } from './GOVUKHeader'
 import { ServiceNavigation } from '@/components/ServiceNavigation'
 import { Breadcrumbs } from '../Breadcrumbs'
-import { VStack } from '@chakra-ui/react'
-import { pxToRem } from '@/utils'
 import { PhaseBanner } from '..'
 
 const meta: Meta = {
@@ -29,18 +27,18 @@ type Story = StoryObj<typeof meta>
 export const Default: Story = {
   render: () => (
     <>
-      <GOVUKHeader>
+      <GOVUKHeader.Root>
         <GOVUKHeader.Container>
           <GOVUKHeader.Logo href="#" />
         </GOVUKHeader.Container>
-      </GOVUKHeader>
+      </GOVUKHeader.Root>
     </>
   ),
 }
 
 export const WithServiceName: Story = {
   render: () => (
-    <GOVUKHeader>
+    <GOVUKHeader.Root>
       <GOVUKHeader.Container>
         <GOVUKHeader.Logo href="#" />
       </GOVUKHeader.Container>
@@ -68,53 +66,42 @@ export const WithServiceName: Story = {
           </ServiceNavigation.List>
         </ServiceNavigation.Nav>
       </ServiceNavigation.Root>
-    </GOVUKHeader>
+    </GOVUKHeader.Root>
   ),
 }
 
 export const WithBreadcrumbs: Story = {
   render: () => (
-    <GOVUKHeader>
+    <GOVUKHeader.Root>
       <GOVUKHeader.Container>
         <GOVUKHeader.Logo href="#" />
       </GOVUKHeader.Container>
-      <VStack
-        className="app-container-wrapper"
-        maxW="1200px"
-        paddingTop={{ base: '30px', md: '15px' }}
-        paddingBottom={{ base: '50px', md: '20px' }}
-        marginLeft="auto"
-        marginRight="auto"
-        width="100%"
-        px={{ base: pxToRem(15), md: pxToRem(30) }}
-      >
-        <Breadcrumbs w="full">
-          <Breadcrumbs.List>
-            <Breadcrumbs.Item>
-              <Breadcrumbs.Link href="#">Home</Breadcrumbs.Link>
-            </Breadcrumbs.Item>
-            <Breadcrumbs.Item>
-              <Breadcrumbs.Link href="#">Passports, travel and living abroad</Breadcrumbs.Link>
-            </Breadcrumbs.Item>
-            <Breadcrumbs.Item>
-              <Breadcrumbs.Link href="#">Travel abroad</Breadcrumbs.Link>
-            </Breadcrumbs.Item>
-            <Breadcrumbs.Item>
-              <Breadcrumbs.Link href="#">Foreign travel advice</Breadcrumbs.Link>
-            </Breadcrumbs.Item>
-            <Breadcrumbs.Item current>
-              <Breadcrumbs.Current>Spain</Breadcrumbs.Current>
-            </Breadcrumbs.Item>
-          </Breadcrumbs.List>
-        </Breadcrumbs>
-      </VStack>
-    </GOVUKHeader>
+      <Breadcrumbs.Root w="full">
+        <Breadcrumbs.List>
+          <Breadcrumbs.Item>
+            <Breadcrumbs.Link href="#">Home</Breadcrumbs.Link>
+          </Breadcrumbs.Item>
+          <Breadcrumbs.Item>
+            <Breadcrumbs.Link href="#">Passports, travel and living abroad</Breadcrumbs.Link>
+          </Breadcrumbs.Item>
+          <Breadcrumbs.Item>
+            <Breadcrumbs.Link href="#">Travel abroad</Breadcrumbs.Link>
+          </Breadcrumbs.Item>
+          <Breadcrumbs.Item>
+            <Breadcrumbs.Link href="#">Foreign travel advice</Breadcrumbs.Link>
+          </Breadcrumbs.Item>
+          <Breadcrumbs.Item current>
+            <Breadcrumbs.Current>Spain</Breadcrumbs.Current>
+          </Breadcrumbs.Item>
+        </Breadcrumbs.List>
+      </Breadcrumbs.Root>
+    </GOVUKHeader.Root>
   ),
 }
 
 export const WithServiceNameAndBreadcrumbs: Story = {
   render: () => (
-    <GOVUKHeader>
+    <GOVUKHeader.Root>
       <GOVUKHeader.Container>
         <GOVUKHeader.Logo href="#" />
       </GOVUKHeader.Container>
@@ -142,42 +129,31 @@ export const WithServiceNameAndBreadcrumbs: Story = {
           </ServiceNavigation.List>
         </ServiceNavigation.Nav>
       </ServiceNavigation.Root>
-      <VStack
-        className="app-container-wrapper"
-        maxW="1200px"
-        paddingTop={{ base: '30px', md: '15px' }}
-        paddingBottom={{ base: '50px', md: '20px' }}
-        marginLeft="auto"
-        marginRight="auto"
-        width="100%"
-        px={{ base: pxToRem(15), md: pxToRem(30) }}
-      >
-        <Breadcrumbs w="full">
-          <Breadcrumbs.List>
-            <Breadcrumbs.Item>
-              <Breadcrumbs.Link href="#">Home</Breadcrumbs.Link>
-            </Breadcrumbs.Item>
-            <Breadcrumbs.Item>
-              <Breadcrumbs.Link href="#">Passports, travel and living abroad</Breadcrumbs.Link>
-            </Breadcrumbs.Item>
-            <Breadcrumbs.Item>
-              <Breadcrumbs.Link href="#">Travel abroad</Breadcrumbs.Link>
-            </Breadcrumbs.Item>
-            <Breadcrumbs.Item>
-              <Breadcrumbs.Link href="#">Foreign travel advice</Breadcrumbs.Link>
-            </Breadcrumbs.Item>
-            <Breadcrumbs.Item current>
-              <Breadcrumbs.Current>Spain</Breadcrumbs.Current>
-            </Breadcrumbs.Item>
-          </Breadcrumbs.List>
-        </Breadcrumbs>
-      </VStack>
-    </GOVUKHeader>
+      <Breadcrumbs.Root>
+        <Breadcrumbs.List>
+          <Breadcrumbs.Item>
+            <Breadcrumbs.Link href="#">Home</Breadcrumbs.Link>
+          </Breadcrumbs.Item>
+          <Breadcrumbs.Item>
+            <Breadcrumbs.Link href="#">Passports, travel and living abroad</Breadcrumbs.Link>
+          </Breadcrumbs.Item>
+          <Breadcrumbs.Item>
+            <Breadcrumbs.Link href="#">Travel abroad</Breadcrumbs.Link>
+          </Breadcrumbs.Item>
+          <Breadcrumbs.Item>
+            <Breadcrumbs.Link href="#">Foreign travel advice</Breadcrumbs.Link>
+          </Breadcrumbs.Item>
+          <Breadcrumbs.Item current>
+            <Breadcrumbs.Current>Spain</Breadcrumbs.Current>
+          </Breadcrumbs.Item>
+        </Breadcrumbs.List>
+      </Breadcrumbs.Root>
+    </GOVUKHeader.Root>
   ),
 }
 export const WithPhaseBannerAndServiceNameAndBreadcrumbs: Story = {
   render: () => (
-    <GOVUKHeader>
+    <GOVUKHeader.Root>
       <GOVUKHeader.Container>
         <GOVUKHeader.Logo href="#" />
       </GOVUKHeader.Container>
@@ -210,7 +186,7 @@ export const WithPhaseBannerAndServiceNameAndBreadcrumbs: Story = {
           This service is in alpha. Your feedback will help us improve it before wider testing.
         </PhaseBanner.Text>
       </PhaseBanner.Root>
-      <Breadcrumbs>
+      <Breadcrumbs.Root>
         <Breadcrumbs.List>
           <Breadcrumbs.Item>
             <Breadcrumbs.Link href="#">Home</Breadcrumbs.Link>
@@ -228,7 +204,7 @@ export const WithPhaseBannerAndServiceNameAndBreadcrumbs: Story = {
             <Breadcrumbs.Current>Spain</Breadcrumbs.Current>
           </Breadcrumbs.Item>
         </Breadcrumbs.List>
-      </Breadcrumbs>
-    </GOVUKHeader>
+      </Breadcrumbs.Root>
+    </GOVUKHeader.Root>
   ),
 }

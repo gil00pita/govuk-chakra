@@ -1,1 +1,1 @@
-export * from './govUkTheme'
+export * from './govUKTheme'

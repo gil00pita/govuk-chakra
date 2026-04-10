@@ -23,7 +23,7 @@ Current Chakra version being used is: **3.34.0**.
 
 - A Chakra-based design skin for React applications,
 - A set of GOV.UK-flavoured components such as `GOVUKHeader`, `GOVUKFooter`, `CookieBanner`, `TaskList`, `SummaryList`, and form primitives
-- A reusable Chakra system theme exported as `govUkTheme`
+- A reusable Chakra system theme exported as `govUKTheme`
 - A package that can be published to a package registry and consumed as a library instead of only being run as a local app
 
 ## What This Project Is Not
@@ -212,7 +212,7 @@ export function ExamplePage() {
   Chakra UI passthrough plus the shared GOV.UK provider and theme exports
 
 - `govuk-chakra/theme`
-  Lightweight theme-only entry for `govUkTheme`
+  Lightweight theme-only entry for `govUKTheme`
 
 - `govuk-chakra/provider`
   Lightweight provider entry for `GOVUKProvider`
@@ -237,11 +237,11 @@ If you want direct access to the Chakra system rather than the convenience provi
 
 ```tsx
 import { ChakraProvider } from '@chakra-ui/react'
-import { govUkTheme } from 'govuk-chakra/theme'
+import { govUKTheme } from 'govuk-chakra/theme'
 
 export function AppRoot() {
   return (
-    <ChakraProvider value={govUkTheme}>
+    <ChakraProvider value={govUKTheme}>
       <App />
     </ChakraProvider>
   )

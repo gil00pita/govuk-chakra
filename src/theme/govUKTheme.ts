@@ -39,7 +39,7 @@ import toggleTipRecipe from '@/components/ToggleTip/ToggleTip.recipe'
 import tooltipRecipe from '@/components/Tooltip/Tooltip.recipe'
 import treeViewRecipe from '@/components/TreeView/TreeView.recipe'
 
-const govUkThemeConfig = defineConfig({
+export const govUKTheme = {
   preflight: true,
   cssVarsPrefix: 'govuk', // changes --chakra-* to --govuk-*
   globalCss: {
@@ -287,6 +287,8 @@ const govUkThemeConfig = defineConfig({
       },
     },
   },
-})
+}
 
-export const govUkTheme = createSystem(defaultConfig, govUkThemeConfig)
+const govUKThemeConfig = defineConfig(govUKTheme)
+
+export const govUKThemeSystem = createSystem(defaultConfig, govUKThemeConfig)

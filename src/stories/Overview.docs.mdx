@@ -56,7 +56,7 @@ import { CodeBlock, Heading, Link, Text } from '@/components'
                 A set of GOV.UK-flavoured components such as GOVUKHeader, GOVUKFooter,
                 CookieBanner, TaskList, SummaryList, and form primitives
               </Text>
-              <Text as="li">A reusable Chakra system theme exported as govUkTheme</Text>
+              <Text as="li">A reusable Chakra system theme exported as govUKTheme</Text>
               <Text as="li">A package that can be published and consumed as a library</Text>
             </VStack>
           </VStack>
@@ -142,9 +142,11 @@ import { CodeBlock, Heading, Link, Text } from '@/components'
           </Text>
           <CodeBlock.Root
             code={`# Charts
+
 yarn add @chakra-ui/charts recharts
 
 # Code block + Rich text editor
+
 yarn add shiki @tiptap/core@^3.21.0 @tiptap/pm@^3.21.0 @tiptap/react@^3.21.0 @tiptap/starter-kit@^3.21.0`}
             language="bash"
             minWidth="0"
@@ -173,26 +175,25 @@ import { pxToRem } from 'govuk-chakra/utils'
 // Charts — requires @chakra-ui/charts recharts
 import { BarChart, LineChart } from 'govuk-chakra/charts'
 
-// Code block + rich text — requires shiki and @tiptap/*
+// Code block + rich text — requires shiki and @tiptap/\*
 import { CodeBlock, RichTextEditor } from 'govuk-chakra/editor'`}
-            language="tsx"
-            minWidth="0"
-            maxW="100%"
-            mb={8}
-          >
-            <CodeBlock.Header>
-              <CodeBlock.Title>Entry point imports</CodeBlock.Title>
-              <CodeBlock.Control>
-                <CodeBlock.CopyButton copyLabel="Copy" copiedLabel="Copied" />
-              </CodeBlock.Control>
-            </CodeBlock.Header>
-            <CodeBlock.Content>
-              <CodeBlock.Code>
-                <CodeBlock.CodeText />
-              </CodeBlock.Code>
-            </CodeBlock.Content>
-          </CodeBlock.Root>
-        </Box>
+language="tsx"
+minWidth="0"
+maxW="100%"
+mb={8} >
+<CodeBlock.Header>
+<CodeBlock.Title>Entry point imports</CodeBlock.Title>
+<CodeBlock.Control>
+<CodeBlock.CopyButton copyLabel="Copy" copiedLabel="Copied" />
+</CodeBlock.Control>
+</CodeBlock.Header>
+<CodeBlock.Content>
+<CodeBlock.Code>
+<CodeBlock.CodeText />
+</CodeBlock.Code>
+</CodeBlock.Content>
+</CodeBlock.Root>
+</Box>
 
         <Box>
           <Heading size={27} mb={3}>
@@ -355,7 +356,7 @@ export function ExamplePage() {
               </Box>
               <Box>
                 <Text fontWeight="bold">govuk-chakra/theme</Text>
-                <Text>Lightweight theme-only entry for govUkTheme.</Text>
+                <Text>Lightweight theme-only entry for govUKTheme.</Text>
               </Box>
               <Box>
                 <Text fontWeight="bold">govuk-chakra/chakra</Text>

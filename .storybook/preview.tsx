@@ -10,7 +10,7 @@ import { INITIAL_VIEWPORTS } from 'storybook/viewport'
 import { ColorModeProvider } from '@/components/ui/color-mode'
 import { colors } from '@/theme/colors'
 import { fonts } from '@/theme/fonts'
-import { govUkTheme } from '@/theme/govUkTheme'
+import { govUKTheme } from '@/theme/govUKTheme'
 
 const docsLightTheme = create({
   base: 'light',
@@ -65,7 +65,7 @@ const StorybookProviders: FC<PropsWithChildren> = ({ children }) => {
   }, [])
 
   return (
-    <ChakraProvider value={govUkTheme}>
+    <ChakraProvider value={govUKTheme}>
       <ColorModeProvider forcedTheme={forcedTheme}>{children}</ColorModeProvider>
     </ChakraProvider>
   )

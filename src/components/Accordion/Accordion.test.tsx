@@ -6,6 +6,7 @@ import { Accordion } from './Accordion'
 import { Box } from '@chakra-ui/react'
 import { GOVUKProvider } from '@/provider'
 import userEvent from '@testing-library/user-event'
+import { govUKThemeSystem } from '@/theme'
 
 const sections = [
   {
@@ -24,7 +25,7 @@ const sections = [
 
 function renderAccordion(props: Partial<React.ComponentProps<typeof Accordion.Root>> = {}) {
   return render(
-    <GOVUKProvider>
+    <GOVUKProvider value={govUKThemeSystem}>
       <Accordion.Root w="760px" maxW="100%" {...props}>
         <Accordion.Actions>
           <Accordion.ToggleAll />
