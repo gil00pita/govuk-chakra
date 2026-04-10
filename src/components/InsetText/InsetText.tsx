@@ -16,13 +16,13 @@ export const InsetText = forwardRef<HTMLDivElement, InsetTextProps>(function Ins
     <Box
       ref={ref}
       borderLeft="10px solid"
-      borderLeftColor="grey.100"
+      borderLeftColor="gray.100"
       pl={pxToRem(15)}
       py={pxToRem(10)}
       my={{ base: pxToRem(20), md: pxToRem(30) }}
       color="fg"
       _dark={{
-        borderLeftColor: 'grey.500',
+        borderLeftColor: 'gray.500',
       }}
       {...props}
     >

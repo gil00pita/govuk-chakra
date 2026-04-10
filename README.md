@@ -14,6 +14,8 @@ Current Chakra version being used is: **3.34.0**.
 ## Links
 
 - [**Live Demo**](https://gov-uk-gds-react-chakra.vercel.app 'Live demo')
+- [**Sandbox Demo**](https://codesandbox.io/p/devbox/ancient-sunset-cs6k5h 'Sandbox demo')
+
 - [**The npm page**](https://www.npmjs.com/package/govuk-chakra)
 - [**GOV.UK Design System Figma File in Community**](https://www.figma.com/community/file/1550623138170727031/gov-uk-design-system-2025)
 - [**Chakra-UI Library**](https://www.chakra-ui.com/docs/components/concepts/overview)

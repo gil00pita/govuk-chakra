@@ -119,43 +119,43 @@ export const govUKTheme = {
         bg: {
           value: {
             base: '{colors.govuk.white}',
-            _dark: '{colors.grey.900}',
+            _dark: '{colors.gray.900}',
           },
         },
         'bg.muted': {
           value: {
             base: '{colors.govuk.lightGrey}',
-            _dark: '{colors.grey.800}',
+            _dark: '{colors.gray.800}',
           },
         },
         'bg.subtle': {
           value: {
-            base: '{colors.grey.50}',
-            _dark: '{colors.grey.800}',
+            base: '{colors.gray.50}',
+            _dark: '{colors.gray.800}',
           },
         },
         'bg.panel': {
           value: {
             base: '{colors.common.white}',
-            _dark: '{colors.grey.800}',
+            _dark: '{colors.gray.800}',
           },
         },
         'bg.disabled': {
           value: {
-            base: '{colors.grey.100}',
-            _dark: '{colors.grey.900}',
+            base: '{colors.gray.100}',
+            _dark: '{colors.gray.900}',
           },
         },
         fg: {
           value: {
             base: '{colors.govuk.text}',
-            _dark: '{colors.grey.50}',
+            _dark: '{colors.gray.50}',
           },
         },
         'fg.muted': {
           value: {
             base: '{colors.govuk.secondaryText}',
-            _dark: '{colors.grey.100/80}',
+            _dark: '{colors.gray.100/80}',
           },
         },
         'fg.inverted': {
@@ -166,8 +166,8 @@ export const govUKTheme = {
         },
         'fg.disabled': {
           value: {
-            base: '{colors.grey.700}',
-            _dark: '{colors.grey.300}',
+            base: '{colors.gray.700}',
+            _dark: '{colors.gray.300}',
           },
         },
         'fg.link': {
@@ -185,7 +185,7 @@ export const govUKTheme = {
         border: {
           value: {
             base: '{colors.govuk.border}',
-            _dark: '{colors.grey.600}',
+            _dark: '{colors.gray.600}',
           },
         },
         'border.input': {
@@ -196,20 +196,20 @@ export const govUKTheme = {
         },
         'border.emphasized': {
           value: {
-            base: '{colors.grey.400}',
-            _dark: '{colors.grey.600}',
+            base: '{colors.gray.400}',
+            _dark: '{colors.gray.600}',
           },
         },
         'border.muted': {
           value: {
-            base: '{colors.grey.300}',
-            _dark: '{colors.grey.600}',
+            base: '{colors.gray.300}',
+            _dark: '{colors.gray.600}',
           },
         },
         'border.subtle': {
           value: {
-            base: '{colors.grey.100}',
-            _dark: '{colors.grey.700}',
+            base: '{colors.gray.100}',
+            _dark: '{colors.gray.700}',
           },
         },
         'border.error': {
@@ -245,7 +245,7 @@ export const govUKTheme = {
         'link.active': {
           value: {
             base: '{colors.govuk.linkActive}',
-            _dark: '{colors.grey.50}',
+            _dark: '{colors.gray.50}',
           },
         },
         focus: {
@@ -281,7 +281,7 @@ export const govUKTheme = {
         subtleBg: {
           value: {
             base: '{colors.govuk.lightGrey}',
-            _dark: '{colors.grey.800}',
+            _dark: '{colors.gray.800}',
           },
         },
       },

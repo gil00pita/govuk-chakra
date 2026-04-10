@@ -5,7 +5,7 @@ export type ButtonVariant = 'primary' | 'secondary' | 'plain' | 'error' | 'inver
 export const buttonFocusStyles: SystemStyleObject = {
   outline: 'none',
   bgColor: 'yellow.500',
-  color: 'grey.950',
+  color: 'gray.950',
 }
 
 export const buttonVariantStyles: Record<ButtonVariant, SystemStyleObject> = {
@@ -23,22 +23,22 @@ export const buttonVariantStyles: Record<ButtonVariant, SystemStyleObject> = {
     _focusVisible: buttonFocusStyles,
   },
   secondary: {
-    color: 'grey.900',
-    bgColor: 'grey.50',
+    color: 'gray.900',
+    bgColor: 'gray.50',
     _dark: {
-      color: 'grey.50',
-      bgColor: 'grey.600',
+      color: 'gray.50',
+      bgColor: 'gray.600',
       _hover: {
-        bgColor: 'grey.600',
+        bgColor: 'gray.600',
         _focus: buttonFocusStyles,
         _focusVisible: buttonFocusStyles,
       },
       _focus: buttonFocusStyles,
       _focusVisible: buttonFocusStyles,
     },
-    boxShadow: '0 2px 0 {colors.grey.200}',
+    boxShadow: '0 2px 0 {colors.gray.200}',
     _hover: {
-      bgColor: 'grey.100',
+      bgColor: 'gray.100',
       _focus: buttonFocusStyles,
       _focusVisible: buttonFocusStyles,
     },
@@ -87,8 +87,8 @@ export const buttonVariantStyles: Record<ButtonVariant, SystemStyleObject> = {
     color: 'fg',
     _dark: {
       _hover: {
-        color: 'grey.50',
-        bgColor: 'grey.800',
+        color: 'gray.50',
+        bgColor: 'gray.800',
         _focus: buttonFocusStyles,
         _focusVisible: buttonFocusStyles,
       },
@@ -96,8 +96,8 @@ export const buttonVariantStyles: Record<ButtonVariant, SystemStyleObject> = {
       _focusVisible: buttonFocusStyles,
     },
     _hover: {
-      color: 'grey.700',
-      bgColor: 'grey.100',
+      color: 'gray.700',
+      bgColor: 'gray.100',
       _focus: buttonFocusStyles,
       _focusVisible: buttonFocusStyles,
     },

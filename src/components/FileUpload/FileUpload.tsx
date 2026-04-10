@@ -168,7 +168,7 @@ export const FileUpload = {
           borderColor={invalid ? 'border.error' : 'transparent'}
           _hover={{
             '& button': {
-              bgColor: 'grey.100',
+              bgColor: 'gray.100',
             },
             '& .dropzone': {
               bg: 'bg.subtle',
@@ -176,7 +176,7 @@ export const FileUpload = {
             },
             _dark: {
               '& button': {
-                bgColor: 'grey.700',
+                bgColor: 'gray.700',
               },
             },
           }}
@@ -375,7 +375,7 @@ export const FileUpload = {
         fontWeight="400"
         color="fg"
         bgColor="bg.muted"
-        boxShadow="0 2px 0 var(--govuk-colors-grey-200)"
+        boxShadow="0 2px 0 var(--govuk-colors-gray-200)"
         padding={`${pxToRem(8)} ${pxToRem(12)} ${pxToRem(7)}`}
         _hover={{
           bgColor: 'bg.muted',
@@ -387,7 +387,7 @@ export const FileUpload = {
           outlineOffset: '0',
           color: 'fg',
           bgColor: 'yellow.500',
-          boxShadow: '0 2px 0 var(--govuk-colors-grey-200)',
+          boxShadow: '0 2px 0 var(--govuk-colors-gray-200)',
         }}
         _disabled={{
           opacity: 1,

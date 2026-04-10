@@ -125,7 +125,7 @@ const listboxRecipe = defineSlotRecipe({
         },
         item: {
           _hover: {
-            bgColor: 'grey.100',
+            bgColor: 'gray.100',
           },
           _selected: {
             bg: 'bg.muted',

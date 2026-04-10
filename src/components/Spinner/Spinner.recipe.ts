@@ -13,7 +13,7 @@ const spinnerRecipe = defineRecipe({
     height: 'var(--spinner-size)',
     animation: 'spin',
     animationDuration: 'slowest',
-    '--spinner-track-color': { base: 'colors.grey.50', _dark: 'colors.grey.800' },
+    '--spinner-track-color': { base: 'colors.gray.50', _dark: 'colors.gray.800' },
     borderBottomColor: 'var(--spinner-track-color)',
     borderInlineStartColor: 'var(--spinner-track-color)',
   },
@@ -32,7 +32,7 @@ const spinnerRecipe = defineRecipe({
       colorPalette: 'gray',
       css: {
         color: {
-          _dark: 'grey.500',
+          _dark: 'gray.500',
         },
       },
     },

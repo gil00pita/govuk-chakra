@@ -5,7 +5,7 @@ import { pxToRem } from '@/utils'
 import { Text } from '@/components'
 
 export type TagVariant =
-  | 'grey'
+  | 'gray'
   | 'green'
   | 'teal'
   | 'blue'
@@ -26,10 +26,10 @@ export interface TagProps extends Omit<BoxProps, 'color'> {
 }
 
 export const defaultTagVariantStyles: Record<TagVariant, SystemStyleObject> = {
-  grey: {
-    bgColor: 'grey.50',
+  gray: {
+    bgColor: 'gray.50',
     color: 'fg',
-    _dark: { bgColor: 'grey.700', color: 'common.white' },
+    _dark: { bgColor: 'gray.700', color: 'common.white' },
   },
   green: {
     bgColor: 'green.100',
@@ -70,9 +70,10 @@ export const defaultTagVariantStyles: Record<TagVariant, SystemStyleObject> = {
 }
 
 export const Tag = forwardRef<HTMLParagraphElement, TagProps>(function Tag(
-  { children, bold, uppercase, variant = 'grey', variantStyles, ...props },
+  { children, bold, uppercase, variant = 'gray', variantStyles, ...props },
   ref
 ) {
+  const normalizedVariant = variant === 'grey' ? 'gray' : variant
   const mergedVariantStyles: TagVariantStyles = {
     ...defaultTagVariantStyles,
     ...variantStyles,
@@ -93,7 +94,7 @@ export const Tag = forwardRef<HTMLParagraphElement, TagProps>(function Tag(
       borderRadius={pxToRem(2)}
       fontWeight={bold ? '700' : '400'}
       textTransform={uppercase ? 'uppercase' : 'none'}
-      {...mergedVariantStyles[variant]}
+      {...mergedVariantStyles[normalizedVariant]}
       {...props}
     >
       {children}

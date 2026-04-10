@@ -140,7 +140,7 @@ export const Links: Story = {
         </Link>{' '}
         in the middle of the text.
       </Text>
-      <Text bg="grey.900" color="white" p={4}>
+      <Text bg="gray.900" color="white" p={4}>
         This is text on a dark background with an{' '}
         <Link href="#" color="text.muted">
           inverse link

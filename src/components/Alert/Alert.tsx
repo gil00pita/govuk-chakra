@@ -72,8 +72,8 @@ const statusStyles: Record<
     role: 'alert',
   },
   neutral: {
-    borderColor: 'grey.700',
-    headerBg: 'grey.700',
+    borderColor: 'gray.700',
+    headerBg: 'gray.700',
     label: 'Important',
     role: 'region',
   },

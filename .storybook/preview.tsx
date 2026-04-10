@@ -10,7 +10,7 @@ import { INITIAL_VIEWPORTS } from 'storybook/viewport'
 import { ColorModeProvider } from '@/components/ui/color-mode'
 import { colors } from '@/theme/colors'
 import { fonts } from '@/theme/fonts'
-import { govUKTheme } from '@/theme/govUKTheme'
+import { govUKThemeSystem } from '@/theme'
 
 const docsLightTheme = create({
   base: 'light',
@@ -21,23 +21,23 @@ const docsLightTheme = create({
   fontSize: 16,
   fontBase: fonts.body.value,
   fontCode: fonts.mono.value,
-  inputBg: colors.grey[50].value,
-  inputBorder: colors.grey[100].value,
-  textColor: colors.grey[950].value,
-  barTextColor: colors.grey[950].value,
+  inputBg: colors.gray[50].value,
+  inputBorder: colors.gray[100].value,
+  textColor: colors.gray[950].value,
+  barTextColor: colors.gray[950].value,
 })
 
 const docsDarkTheme = create({
   base: 'dark',
-  appBg: colors.grey[950].value,
-  appContentBg: colors.grey[900].value,
-  barBg: colors.grey[950].value,
-  bodyBg: colors.grey[950].value,
+  appBg: colors.gray[950].value,
+  appContentBg: colors.gray[900].value,
+  barBg: colors.gray[950].value,
+  bodyBg: colors.gray[950].value,
   fontSize: 16,
   fontBase: fonts.body.value,
   fontCode: fonts.mono.value,
-  inputBg: colors.grey[900].value,
-  inputBorder: colors.grey[700].value,
+  inputBg: colors.gray[900].value,
+  inputBorder: colors.gray[700].value,
   textColor: colors.common.white.value,
   barTextColor: colors.common.white.value,
 })
@@ -65,7 +65,7 @@ const StorybookProviders: FC<PropsWithChildren> = ({ children }) => {
   }, [])
 
   return (
-    <ChakraProvider value={govUKTheme}>
+    <ChakraProvider value={govUKThemeSystem}>
       <ColorModeProvider forcedTheme={forcedTheme}>{children}</ColorModeProvider>
     </ChakraProvider>
   )
@@ -112,7 +112,7 @@ export const parameters = {
     default: 'light',
     values: [
       { name: 'light', value: '#ffffff' },
-      { name: 'dark', value: colors.grey[900].value },
+      { name: 'dark', value: colors.gray[900].value },
     ],
   },
   viewport: {

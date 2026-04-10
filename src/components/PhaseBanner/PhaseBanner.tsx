@@ -28,7 +28,7 @@ function getPhaseBannerStyles(phase: NonNullable<PhaseBannerProps['phase']>): {
     case 'discovery':
       return { label: 'Discovery', tagVariant: 'purple' }
     case 'alpha':
-      return { label: 'Alpha', tagVariant: 'grey' }
+      return { label: 'Alpha', tagVariant: 'gray' }
     case 'live':
       return { label: 'Live', tagVariant: 'green' }
     case 'beta':

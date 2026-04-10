@@ -31,7 +31,7 @@ export const Default: Story = {
   render: (args) => (
     <Box minH="320px" position="relative" bg="bg">
       <SkipLink {...args} />
-      <Box as="header" bg="grey.950" color="white" px={6} py={4}>
+      <Box as="header" bg="gray.950" color="white" px={6} py={4}>
         Service name
       </Box>
       <Box as="main" id="content" px={6} py={8}>

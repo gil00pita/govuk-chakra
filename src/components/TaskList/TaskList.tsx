@@ -32,7 +32,7 @@ export type TaskListStatuses = Record<string, TaskListStatusDefinition>
 const DEFAULT_STATUSES: TaskListStatuses = {
   completed: { label: 'Completed', color: 'green' },
   incomplete: { label: 'Incomplete', color: 'blue' },
-  cannotStartYet: { label: 'Cannot start yet', color: 'grey' },
+  cannotStartYet: { label: 'Cannot start yet', color: 'gray' },
   notStarted: { label: 'Not started', color: 'blue' },
 }
 
@@ -195,7 +195,7 @@ const TaskListStatus = forwardRef<HTMLParagraphElement, TaskListStatusProps>(
         ref={ref}
         as="span"
         flexShrink={0}
-        variant={statusConfig?.color ?? 'grey'}
+        variant={statusConfig?.color ?? 'gray'}
         fontSize={16}
         lineHeight={pxToRem(20)}
         {...props}

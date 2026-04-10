@@ -25,7 +25,7 @@ const colorSwatchRecipe = defineRecipe({
     boxShadow: 'inset 0 0 0 1px {colors.white/20}',
     '--checker-size': '8px',
     '--checker-bg': 'colors.bg',
-    '--checker-fg': { base: 'colors.grey.200', _dark: 'colors.grey.700' },
+    '--checker-fg': { base: 'colors.gray.200', _dark: 'colors.gray.700' },
     background:
       'linear-gradient(var(--color), var(--color)), repeating-conic-gradient(var(--checker-fg) 0%, var(--checker-fg) 25%, var(--checker-bg) 0%, var(--checker-bg) 50%) 0% 50% / var(--checker-size) var(--checker-size) !important',
   },

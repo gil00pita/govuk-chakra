@@ -108,19 +108,28 @@ const PaginationItem = forwardRef<HTMLLIElement, PaginationItemProps>(function P
       minW={ellipsis ? 'auto' : pxToRem(40)}
       h={ellipsis ? 'auto' : pxToRem(40)}
       display="flex"
+      color={current ? 'white' : 'primary.600'}
       alignItems="center"
       justifyContent="center"
       bgColor={current ? 'primary.600' : 'transparent'}
-      _hover={{ bgColor: current ? 'primary.600' : !ellipsis ? 'grey.50' : 'transparent' }}
+      _hover={{
+        border: '0',
+        borderColor: 'transparent',
+        bgColor: current ? 'primary.600' : !ellipsis ? 'gray.50' : 'transparent',
+      }}
       _dark={{
         _hover: {
-          bgColor: !ellipsis ? 'common.black' : current ? 'primary.600' : 'transparent',
+          border: '0',
+          bgColor: current ? 'primary.700' : !ellipsis ? 'gray.700' : 'transparent',
         },
+      }}
+      _visited={{
+        color: 'white',
       }}
       {...props}
     >
       {ellipsis ? (
-        <Text as="span" fontSize={19} color="fg" mb={0}>
+        <Text as="span" fontSize={19} color="currentColor" mb={0}>
           ...
         </Text>
       ) : (
@@ -148,10 +157,11 @@ const PaginationLink = forwardRef<HTMLAnchorElement, PaginationLinkProps>(functi
       minW={pxToRem(38)}
       h={pxToRem(38)}
       px={pxToRem(10)}
-      color={current ? 'common.white' : 'fg.link'}
+      color="currentColor"
       fontSize={19}
       fontWeight={current ? '700' : '400'}
       textDecoration={'underline'}
+      bgColor={current ? 'primary.600' : 'transparent'}
       _hover={{
         textDecoration: 'underline',
         textDecorationThickness: 'max(3px, 0.1875rem)',
@@ -171,13 +181,13 @@ const PaginationLink = forwardRef<HTMLAnchorElement, PaginationLinkProps>(functi
         },
       }}
       _visited={{
-        color: 'fg',
+        color: 'white',
       }}
       _dark={{
         color: current ? 'common.white' : 'fg.link',
         _hover: {
-          color: current ? 'common.white' : 'primary.300',
-          bgColor: 'common.black',
+          color: 'common.white',
+          bgColor: 'primary.700',
         },
         _focus: {
           color: 'common.black',
@@ -190,7 +200,7 @@ const PaginationLink = forwardRef<HTMLAnchorElement, PaginationLinkProps>(functi
           },
         },
         _visited: {
-          color: 'fg',
+          color: 'white',
         },
       }}
       {...props}
@@ -216,8 +226,12 @@ const PaginationPrevious = forwardRef<HTMLAnchorElement, PaginationNavLinkProps>
         h={children ? 'auto' : pxToRem(40)}
         pr={children ? '0' : pxToRem(15)}
         py={block ? pxToRem(15) : 0}
-        borderBottom={block ? '1px solid {colors.grey.100}' : 'none'}
-        _hover={{ bgColor: 'grey.50' }}
+        borderBottom={
+          block
+            ? { base: '1px solid {colors.gray.100}', _dark: '1px solid {colors.gray.700}' }
+            : 'none'
+        }
+        _hover={{ bgColor: { base: 'gray.50', _dark: 'gray.700' } }}
         _focus={{
           outline: 'none',
           bgColor: 'yellow.500',
@@ -231,11 +245,13 @@ const PaginationPrevious = forwardRef<HTMLAnchorElement, PaginationNavLinkProps>
           },
         }}
         _visited={{
-          color: 'fg',
+          color: 'primary.300',
         }}
         _dark={{
           color: 'fg.link',
-          borderBottom: block ? '1px solid {colors.grey.700}' : 'none',
+          borderBottom: block
+            ? { base: '1px solid {colors.gray.700}', _dark: '1px solid {colors.gray.700}' }
+            : 'none',
           _hover: {
             color: 'primary.300',
             bgColor: 'common.black',
@@ -251,7 +267,7 @@ const PaginationPrevious = forwardRef<HTMLAnchorElement, PaginationNavLinkProps>
             },
           },
           _visited: {
-            color: 'fg',
+            color: 'primary.300',
           },
         }}
         {...props}
@@ -300,7 +316,7 @@ const PaginationNext = forwardRef<HTMLAnchorElement, PaginationNavLinkProps>(
         h={children ? 'auto' : pxToRem(40)}
         pl={children ? '0' : pxToRem(15)}
         py={block ? pxToRem(15) : 0}
-        _hover={{ bgColor: 'grey.50' }}
+        _hover={{ bgColor: { base: 'gray.50', _dark: 'gray.700' } }}
         _focus={{
           outline: 'none',
           bgColor: 'yellow.500',
@@ -314,7 +330,7 @@ const PaginationNext = forwardRef<HTMLAnchorElement, PaginationNavLinkProps>(
           },
         }}
         _visited={{
-          color: 'fg',
+          color: 'primary.600',
         }}
         _dark={{
           color: 'fg.link',
@@ -333,7 +349,7 @@ const PaginationNext = forwardRef<HTMLAnchorElement, PaginationNavLinkProps>(
             },
           },
           _visited: {
-            color: 'fg',
+            color: 'primary.300',
           },
         }}
         {...props}

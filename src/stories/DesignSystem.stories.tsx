@@ -273,7 +273,7 @@ const chakraPaletteScales = [
     ],
   },
   {
-    family: 'grey',
+    family: 'gray',
     shades: [
       ['50', '#F3F3F3'],
       ['100', '#CECECE'],

@@ -93,13 +93,13 @@ const RadioItem = forwardRef<HTMLDivElement, RadioItemProps>(function RadioItem(
       _hover={{
         '& [data-govuk-radio-control]': {
           borderColor: 'border.input',
-          boxShadow: `0 0 0 10px {colors.grey.100}`,
+          boxShadow: `0 0 0 10px {colors.gray.100}`,
         },
       }}
       _dark={{
         _hover: {
           '& [data-govuk-radio-control]': {
-            boxShadow: `0 0 0 10px {colors.grey.700}`,
+            boxShadow: `0 0 0 10px {colors.gray.700}`,
           },
         },
       }}

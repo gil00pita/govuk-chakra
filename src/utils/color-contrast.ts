@@ -3,7 +3,7 @@ import { colors } from '@/theme/colors'
 const paletteAliases = {
   blue: 'primary',
   cyan: 'teal',
-  gray: 'grey',
+  grey: 'gray',
   pink: 'magenta',
 } as const
 

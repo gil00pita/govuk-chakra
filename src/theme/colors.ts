@@ -81,9 +81,9 @@ const govUKPalette = {
     900: { value: '#063723' },
     950: { value: '#042a1a' },
   },
-  grey: {
+  gray: {
     50: { value: '#f3f3f3' }, // lightGrey, secondary-bg-color
-    100: { value: '#cecece' }, // border-colour, hover-colour, tag-grey
+    100: { value: '#cecece' }, // border-colour, hover-colour, tag-gray
     200: { value: '#858686' },
     300: { value: '#6c6d6d' },
     400: { value: '#484949' }, // secondary-text-colour
@@ -161,16 +161,16 @@ export const colors = {
     blue: { value: govUKPalette.brand[500].value },
     darkBlue: { value: govUKPalette.brand[700].value },
     white: { value: govUKPalette.common.white.value },
-    text: { value: govUKPalette.grey[950].value },
-    secondaryText: { value: govUKPalette.grey[400].value },
-    border: { value: govUKPalette.grey[100].value },
-    lightGrey: { value: govUKPalette.grey[50].value },
+    text: { value: govUKPalette.gray[950].value },
+    secondaryText: { value: govUKPalette.gray[400].value },
+    border: { value: govUKPalette.gray[100].value },
+    lightGrey: { value: govUKPalette.gray[50].value },
     link: { value: govUKPalette.brand[600].value },
     linkHover: { value: govUKPalette.brand[700].value },
     linkVisited: { value: govUKPalette.purple[500].value },
-    linkActive: { value: govUKPalette.grey[950].value },
+    linkActive: { value: govUKPalette.gray[950].value },
     focusYellow: { value: govUKPalette.yellow[500].value },
-    focusText: { value: govUKPalette.grey[950].value },
+    focusText: { value: govUKPalette.gray[950].value },
     red: { value: govUKPalette.red[500].value },
     green: { value: govUKPalette.green[500].value },
   },
@@ -182,8 +182,8 @@ export const colors = {
   teal: scale(govUKPalette.teal),
   red: scale(govUKPalette.red),
   green: scale(govUKPalette.green),
-  grey: scale(govUKPalette.grey),
-  gray: scale(govUKPalette.grey),
+  gray: scale(govUKPalette.gray),
+  grey: scale(govUKPalette.gray),
   orange: scale(govUKPalette.orange),
   magenta: scale(govUKPalette.magenta),
   purple: scale(govUKPalette.purple),
