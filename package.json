@@ -1,6 +1,6 @@
 {
   "name": "govuk-chakra",
-  "version": "0.0.19",
+  "version": "0.0.20",
   "description": "A GOV.UK-flavoured component skin for Chakra UI with React.",
   "license": "MIT",
   "repository": {
@@ -72,6 +72,7 @@
     "component-library"
   ],
   "peerDependencies": {
+    "@chakra-ui/react": "^3.34.0",
     "@chakra-ui/charts": "^3.34.0",
     "@emotion/react": "^11.14.0",
     "@emotion/styled": "^11.14.1",
@@ -127,11 +128,9 @@
     ]
   },
   "devDependencies": {
-    "@chakra-ui/react-mcp": "^2.1.1",
     "@chakra-ui/charts": "^3.34.0",
     "@chakra-ui/react": "^3.34.0",
-    "@emotion/react": "^11.14.0",
-    "@emotion/styled": "^11.14.1",
+    "@chakra-ui/react-mcp": "^2.1.1",
     "@storybook/addon-a11y": "10.3.5",
     "@storybook/addon-docs": "10.3.5",
     "@storybook/addon-links": "10.3.5",
