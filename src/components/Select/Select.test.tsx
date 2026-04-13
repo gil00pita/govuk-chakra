@@ -94,7 +94,9 @@ describe('Select', () => {
   it('renders a native select when native is true', () => {
     renderSelect({ native: true })
 
-    expect(screen.getByRole('combobox', { name: /country/i })).toHaveDisplayValue('Select a country')
+    expect(screen.getByRole('combobox', { name: /country/i })).toHaveDisplayValue(
+      'Select a country'
+    )
     expect(screen.queryByRole('button', { name: /country/i })).not.toBeInTheDocument()
   })
 })

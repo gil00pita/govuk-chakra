@@ -384,12 +384,7 @@ export const Disabled: Story = {
 
 export const Native: Story = {
   render: (args) => (
-    <Select.Root
-      collection={countryOptions}
-      defaultValue={['united-kingdom']}
-      native
-      {...args}
-    >
+    <Select.Root collection={countryOptions} defaultValue={['united-kingdom']} native {...args}>
       <Select.Label>Country</Select.Label>
       <Select.HiddenSelect />
       <Select.Control>
