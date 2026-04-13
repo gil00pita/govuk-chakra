@@ -572,6 +572,9 @@ export const AsyncLoading: Story = {
     )
   },
   parameters: {
+    visual: {
+      disable: true,
+    },
     docs: {
       source: {
         code: `function AsyncSelect() {
