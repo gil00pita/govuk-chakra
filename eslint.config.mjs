@@ -14,8 +14,14 @@ export default [
 
   js.configs.recommended,
 
-  react.configs.flat.recommended,
-  react.configs.flat['jsx-runtime'],
+  {
+    files: ['**/*.{jsx,tsx}'],
+    ...react.configs.flat.recommended,
+  },
+  {
+    files: ['**/*.{jsx,tsx}'],
+    ...react.configs.flat['jsx-runtime'],
+  },
 
   {
     files: ['**/*.{js,jsx,mjs,cjs,ts,tsx}'],
