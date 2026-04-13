@@ -124,7 +124,7 @@ const PaginationItem = forwardRef<HTMLLIElement, PaginationItemProps>(function P
         },
       }}
       _visited={{
-        color: 'white',
+        color: current ? 'white' : 'primary.600',
       }}
       {...props}
     >
@@ -183,7 +183,7 @@ const PaginationLink = forwardRef<HTMLAnchorElement, PaginationLinkProps>(functi
         },
       }}
       _visited={{
-        color: 'white',
+        color: current ? 'white' : 'primary.600',
       }}
       _dark={{
         color: current ? 'common.white' : 'fg.link',
