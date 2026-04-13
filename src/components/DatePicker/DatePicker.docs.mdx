@@ -1,0 +1,63 @@
+import { Canvas, Meta } from '@storybook/addon-docs/blocks'
+import { CodeBlock } from '@/components'
+import * as DatePickerStories from './DatePicker.stories'
+
+<Meta of={DatePickerStories} />
+
+export function ExampleSection({ title, story }) {
+  const code = story?.parameters?.docs?.source?.code ?? ''
+
+  return (
+    <>
+      <h2>{title}</h2>
+      <Canvas of={story} sourceState="none" />
+      <CodeBlock.Root code={code} language="tsx" minWidth="0" maxW="100%" mb={8}>
+        <CodeBlock.Header>
+          <CodeBlock.Title>{title}</CodeBlock.Title>
+          <CodeBlock.Control>
+            <CodeBlock.CopyButton copyLabel="Copy" copiedLabel="Copied" />
+          </CodeBlock.Control>
+        </CodeBlock.Header>
+        <CodeBlock.Content>
+          <CodeBlock.Code>
+            <CodeBlock.CodeText />
+          </CodeBlock.Code>
+        </CodeBlock.Content>
+      </CodeBlock.Root>
+    </>
+  )
+}
+
+# Date Picker
+
+Use the DatePicker component to help users select one or more dates with a calendar UI, a formatted text input, or a custom trigger.
+The examples below mirror Chakra-style composition patterns while keeping the GOV.UK wrapper API used across this package.
+
+<ExampleSection title="Disabled" story={DatePickerStories.Disabled} />
+<ExampleSection title="Read Only" story={DatePickerStories.ReadOnly} />
+<ExampleSection title="Default View" story={DatePickerStories.DefaultView} />
+<ExampleSection title="Default Value" story={DatePickerStories.DefaultValue} />
+<ExampleSection title="Controlled" story={DatePickerStories.Controlled} />
+<ExampleSection title="Store" story={DatePickerStories.Store} />
+<ExampleSection title="Range Selection" story={DatePickerStories.RangeSelection} />
+<ExampleSection title="Multiple Selection" story={DatePickerStories.MultipleSelection} />
+<ExampleSection title="Month Picker" story={DatePickerStories.MonthPicker} />
+<ExampleSection title="Month Range" story={DatePickerStories.MonthRange} />
+<ExampleSection title="Year Picker" story={DatePickerStories.YearPicker} />
+<ExampleSection title="Year Range" story={DatePickerStories.YearRange} />
+<ExampleSection title="Min/Max" story={DatePickerStories.MinMax} />
+<ExampleSection title="Unavailable Dates" story={DatePickerStories.UnavailableDates} />
+<ExampleSection title="Formatting & Parsing" story={DatePickerStories.FormattingParsing} />
+<ExampleSection title="Localization" story={DatePickerStories.Localization} />
+<ExampleSection title="Button Trigger" story={DatePickerStories.ButtonTrigger} />
+<ExampleSection title="Outside Icon" story={DatePickerStories.OutsideIcon} />
+<ExampleSection title="Input Group" story={DatePickerStories.InputGroupExample} />
+<ExampleSection title="Clear Icon" story={DatePickerStories.ClearIcon} />
+<ExampleSection title="Placement" story={DatePickerStories.Placement} />
+<ExampleSection title="Header Layout" story={DatePickerStories.HeaderLayout} />
+<ExampleSection title="Month and Year Select" story={DatePickerStories.MonthAndYearSelect} />
+<ExampleSection title="Multiple Months" story={DatePickerStories.MultipleMonths} />
+<ExampleSection title="Presets" story={DatePickerStories.Presets} />
+<ExampleSection title="Presets Sidebar" story={DatePickerStories.PresetsSidebar} />
+<ExampleSection title="Today Button" story={DatePickerStories.TodayButton} />
+<ExampleSection title="With Time" story={DatePickerStories.WithTime} />
