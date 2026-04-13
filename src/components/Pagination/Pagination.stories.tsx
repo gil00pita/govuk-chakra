@@ -23,7 +23,7 @@ type Story = StoryObj<typeof meta>
 
 export const Default: Story = {
   render: () => (
-    <Pagination.Root width="720px">
+    <Pagination.Root>
       <Pagination.Previous href="#">Previous</Pagination.Previous>
 
       <Pagination.List>
@@ -51,7 +51,7 @@ export const Default: Story = {
 
 export const WithEllipsis: Story = {
   render: () => (
-    <Pagination.Root width="720px">
+    <Pagination.Root>
       <Pagination.Previous href="#">Previous</Pagination.Previous>
 
       <Pagination.List>
@@ -85,7 +85,7 @@ export const WithEllipsis: Story = {
 
 export const Block: Story = {
   render: () => (
-    <Pagination.Root width="720px" block>
+    <Pagination.Root block>
       <Pagination.Previous href="#" label="Applying for a provisional lorry or bus licence">
         Previous
       </Pagination.Previous>

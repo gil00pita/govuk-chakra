@@ -81,4 +81,20 @@ describe('Pagination', () => {
     expect(screen.getByText(/applying for a provisional lorry or bus licence/i)).toBeVisible()
     expect(screen.getByText(/driver cpc part 1 test: theory/i)).toBeVisible()
   })
+
+  it('keeps literal px sizing for previous and next titles', () => {
+    renderWithProvider(
+      <Pagination block>
+        <Pagination.Previous href="/previous" label="Previous step label">
+          Previous
+        </Pagination.Previous>
+        <Pagination.Next href="/next" label="Next step label">
+          Next
+        </Pagination.Next>
+      </Pagination>
+    )
+
+    expect(screen.getByText('Previous')).toHaveStyle({ fontSize: '27px' })
+    expect(screen.getByText('Next')).toHaveStyle({ fontSize: '27px' })
+  })
 })

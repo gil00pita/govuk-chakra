@@ -30,6 +30,19 @@ const IconButtonRoot = forwardRef<HTMLButtonElement, IconButtonProps>(
         />
       )
     }
+
+    return (
+      <ChakraIconButton
+        ref={ref}
+        borderRadius="0"
+        fontSize={fontSize}
+        fontFamily="body"
+        padding={pxToRem(8)}
+        minW="unset"
+        {...buttonVariantStyles[variant]}
+        {...props}
+      />
+    )
   }
 )
 

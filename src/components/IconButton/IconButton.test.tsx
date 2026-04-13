@@ -14,4 +14,16 @@ describe('IconButton', () => {
 
     expect(screen.getByRole('button', { name: /open settings/i })).toBeVisible()
   })
+
+  it('keeps literal px font sizes instead of applying the GOV.UK scale', () => {
+    renderWithProvider(
+      <IconButton.Root aria-label="Open settings" fontSize="16px">
+        <LuSettings />
+      </IconButton.Root>
+    )
+
+    expect(screen.getByRole('button', { name: /open settings/i })).toHaveStyle({
+      fontSize: '16px',
+    })
+  })
 })

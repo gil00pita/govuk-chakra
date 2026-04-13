@@ -69,7 +69,7 @@ const PaginationRoot = forwardRef<HTMLElement, PaginationProps>(function Paginat
           display="flex"
           flexDirection={block ? 'column' : { base: 'column', md: 'row' }}
           alignItems={block ? 'stretch' : { md: 'center' }}
-          justifyContent="space-between"
+          justifyContent="flex-start"
           gap={block ? 0 : pxToRem(10)}
         >
           {children}
@@ -162,6 +162,7 @@ const PaginationLink = forwardRef<HTMLAnchorElement, PaginationLinkProps>(functi
       fontWeight={current ? '700' : '400'}
       textDecoration={'underline'}
       bgColor={current ? 'primary.600' : 'transparent'}
+      rounded="0"
       _hover={{
         textDecoration: 'underline',
         textDecorationThickness: 'max(3px, 0.1875rem)',
@@ -172,6 +173,7 @@ const PaginationLink = forwardRef<HTMLAnchorElement, PaginationLinkProps>(functi
         outlineOffset: 0,
         bgColor: 'yellow.500',
         color: 'fg',
+        rounded: '0',
         textDecoration: 'underline',
         textDecorationThickness: 'max(3px, 0.1875rem)',
         _hover: {
@@ -275,12 +277,12 @@ const PaginationPrevious = forwardRef<HTMLAnchorElement, PaginationNavLinkProps>
         <ChevronIcon direction="previous" />
         {children ? (
           <VStack align="start" gap={0}>
-            <Text as="span" fontSize={27} color="inherit" fontWeight="700" mb={0}>
+            <Text as="span" fontSize={19} color="inherit" fontWeight="700" mb={0}>
               {children ?? 'Previous'}
             </Text>
             <>
               {label ? (
-                <Text as="span" display="block" fontSize={16} color="inherit" mb={0}>
+                <Text as="span" display="block" fontSize={19} color="inherit" mb={0}>
                   {label}
                 </Text>
               ) : null}
@@ -289,7 +291,7 @@ const PaginationPrevious = forwardRef<HTMLAnchorElement, PaginationNavLinkProps>
         ) : (
           <>
             {label ? (
-              <Text as="span" display="block" fontSize={16} color="inherit" mb={0}>
+              <Text as="span" display="block" fontSize={19} color="inherit" mb={0}>
                 {label}
               </Text>
             ) : null}
@@ -357,12 +359,12 @@ const PaginationNext = forwardRef<HTMLAnchorElement, PaginationNavLinkProps>(
         <ChevronIcon direction="next" />
         {children ? (
           <VStack align="start" gap={0}>
-            <Text as="span" fontSize={27} color="inherit" fontWeight="700" mb={0}>
+            <Text as="span" fontSize={19} color="inherit" fontWeight="700" mb={0}>
               {children ?? 'Previous'}
             </Text>
             <>
               {label ? (
-                <Text as="span" display="block" fontSize={16} color="inherit" mb={0}>
+                <Text as="span" display="block" fontSize={19} color="inherit" mb={0}>
                   {label}
                 </Text>
               ) : null}
@@ -371,7 +373,7 @@ const PaginationNext = forwardRef<HTMLAnchorElement, PaginationNavLinkProps>(
         ) : (
           <>
             {label ? (
-              <Text as="span" display="block" fontSize={16} color="inherit" mb={0}>
+              <Text as="span" display="block" fontSize={19} color="inherit" mb={0}>
                 {label}
               </Text>
             ) : null}

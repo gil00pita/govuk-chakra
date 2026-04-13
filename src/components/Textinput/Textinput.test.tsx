@@ -38,4 +38,12 @@ describe('Textinput', () => {
 
     expect(screen.getByLabelText(/reference number/i)).toBeDisabled()
   })
+
+  it('keeps literal px font sizes instead of applying the GOV.UK scale', () => {
+    renderWithProvider(<Textinput label="Reference number" fontSize="16px" />)
+
+    expect(screen.getByLabelText(/reference number/i)).toHaveStyle({
+      fontSize: '16px',
+    })
+  })
 })

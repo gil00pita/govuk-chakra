@@ -156,6 +156,36 @@ const TextinputInput = forwardRef<HTMLInputElement, TextinputInputProps>(functio
       />
     )
   }
+
+  return (
+    <ChakraInput
+      ref={ref}
+      borderRadius="0"
+      borderWidth={pxToRem(2)}
+      borderColor={invalid ? 'fg.error' : 'border.input'}
+      fontFamily="body"
+      bg="transparent"
+      color="fg"
+      fontSize={fontSize}
+      px={pxToRem(12)}
+      py={pxToRem(5)}
+      h={pxToRem(40)}
+      w={width === 'full' ? '100%' : 'auto'}
+      maxW={width === 'full' ? undefined : WIDTH_MAX[width]}
+      _placeholder={{ color: 'fg.muted', opacity: 1 }}
+      _hover={{ borderColor: invalid ? 'fg.error' : 'border.input' }}
+      _focusVisible={getFieldFocusStyles()}
+      _focus={getFieldFocusStyles()}
+      _invalid={{ borderColor: 'fg.error' }}
+      _disabled={{
+        opacity: 1,
+        cursor: 'not-allowed',
+        color: 'fg.disabled',
+        bg: 'bg.disabled',
+      }}
+      {...props}
+    />
+  )
 })
 
 const TextinputRootComponent = forwardRef<HTMLInputElement, TextinputProps>(function Textinput(
