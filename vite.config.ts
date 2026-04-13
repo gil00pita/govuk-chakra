@@ -51,10 +51,6 @@ export default defineConfig({
     react(),
     checker({
       typescript: true,
-      eslint: {
-        lintCommand: 'eslint . --no-color',
-        useFlatConfig: true,
-      },
     }),
     ViteMcp(),
   ],

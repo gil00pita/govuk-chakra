@@ -1,6 +1,8 @@
 import type { Meta, StoryObj } from '@storybook/react-vite'
+import { VStack } from '@chakra-ui/react'
 
 import { Radio } from './Radio'
+import { pxToRem } from '@/utils'
 
 const meta: Meta = {
   title: 'GOV.UK/Components/Radio',
@@ -141,6 +143,108 @@ export const Disabled: Story = {
             <Radio.ItemIndicator />
           </Radio.ItemControl>
           <Radio.ItemText>Phone</Radio.ItemText>
+        </Radio.Item>
+      </Radio.Root>
+    </Radio.Group>
+  ),
+}
+
+export const Sizes: Story = {
+  render: () => (
+    <VStack align="stretch" gap={8} minW="420px">
+      <Radio.Group legend="Small radios">
+        <Radio.Root defaultValue="email-small" name="contact-preference-small" smaller>
+          <Radio.Item value="email-small">
+            <Radio.ItemHiddenInput />
+            <Radio.ItemControl>
+              <Radio.ItemIndicator />
+            </Radio.ItemControl>
+            <Radio.ItemText>Email</Radio.ItemText>
+          </Radio.Item>
+
+          <Radio.Item value="phone-small">
+            <Radio.ItemHiddenInput />
+            <Radio.ItemControl>
+              <Radio.ItemIndicator />
+            </Radio.ItemControl>
+            <Radio.ItemText>Phone</Radio.ItemText>
+          </Radio.Item>
+        </Radio.Root>
+      </Radio.Group>
+
+      <Radio.Group legend="Default radios">
+        <Radio.Root defaultValue="email-default" name="contact-preference-default">
+          <Radio.Item value="email-default">
+            <Radio.ItemHiddenInput />
+            <Radio.ItemControl>
+              <Radio.ItemIndicator />
+            </Radio.ItemControl>
+            <Radio.ItemText>Email</Radio.ItemText>
+          </Radio.Item>
+
+          <Radio.Item value="phone-default">
+            <Radio.ItemHiddenInput />
+            <Radio.ItemControl>
+              <Radio.ItemIndicator />
+            </Radio.ItemControl>
+            <Radio.ItemText>Phone</Radio.ItemText>
+          </Radio.Item>
+        </Radio.Root>
+      </Radio.Group>
+
+      <Radio.Group legend="Large radios">
+        <Radio.Root defaultValue="email-large" name="contact-preference-large">
+          <Radio.Item value="email-large">
+            <Radio.ItemHiddenInput />
+            <Radio.ItemControl width={pxToRem(48)} height={pxToRem(48)} minWidth={pxToRem(48)}>
+              <Radio.ItemIndicator width={pxToRem(22)} height={pxToRem(22)} />
+            </Radio.ItemControl>
+            <Radio.ItemText fontSize="24px" lineHeight={pxToRem(48)}>
+              Email
+            </Radio.ItemText>
+          </Radio.Item>
+
+          <Radio.Item value="phone-large">
+            <Radio.ItemHiddenInput />
+            <Radio.ItemControl width={pxToRem(48)} height={pxToRem(48)} minWidth={pxToRem(48)}>
+              <Radio.ItemIndicator width={pxToRem(22)} height={pxToRem(22)} />
+            </Radio.ItemControl>
+            <Radio.ItemText fontSize="24px" lineHeight={pxToRem(48)}>
+              Phone
+            </Radio.ItemText>
+          </Radio.Item>
+        </Radio.Root>
+      </Radio.Group>
+    </VStack>
+  ),
+}
+
+export const Smaller: Story = {
+  render: () => (
+    <Radio.Group legend="Organisation">
+      <Radio.Root defaultValue="hmrc" name="organisation" smaller>
+        <Radio.Item value="hmrc">
+          <Radio.ItemHiddenInput />
+          <Radio.ItemControl>
+            <Radio.ItemIndicator />
+          </Radio.ItemControl>
+          <Radio.ItemText>HM Revenue and Customs</Radio.ItemText>
+        </Radio.Item>
+
+        <Radio.Item value="employment">
+          <Radio.ItemHiddenInput />
+          <Radio.ItemControl>
+            <Radio.ItemIndicator />
+          </Radio.ItemControl>
+          <Radio.ItemText>Employment Tribunal</Radio.ItemText>
+        </Radio.Item>
+
+        <Radio.Item value="mod">
+          <Radio.ItemHiddenInput />
+          <Radio.ItemControl>
+            <Radio.ItemIndicator />
+          </Radio.ItemControl>
+          <Radio.ItemText>Ministry of Defence</Radio.ItemText>
         </Radio.Item>
       </Radio.Root>
     </Radio.Group>

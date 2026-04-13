@@ -78,4 +78,20 @@ describe('Radio', () => {
       screen.getByText(/choose this option if your permanent address is in scotland\./i)
     ).toBeVisible()
   })
+
+  it('supports the smaller radio size on the root', () => {
+    renderRadioGroup({ smaller: true })
+
+    const englandLabel = screen.getByText('England')
+    const englandControl = englandLabel.parentElement?.querySelector('[data-govuk-radio-control]')
+
+    expect(englandLabel).toHaveStyle({
+      fontSize: '16px',
+    })
+    expect(englandControl).toHaveStyle({
+      width: 'max(20px, 1.25rem)',
+      height: 'max(20px, 1.25rem)',
+      minWidth: 'max(20px, 1.25rem)',
+    })
+  })
 })

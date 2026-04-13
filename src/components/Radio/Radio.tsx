@@ -6,17 +6,32 @@ import {
   type RadioGroupItemTextProps,
   type RadioGroupRootProps,
 } from '@chakra-ui/react'
-import React, { forwardRef, type ReactNode } from 'react'
+import React, { createContext, forwardRef, useContext, type ReactNode } from 'react'
 
 import { Heading } from '@/components/Heading'
 import { Text } from '@/components/Text'
 import { pxToRem } from '@/utils'
 
+const SMALLER_RADIO_CONTROL_SIZE = pxToRem(20)
+const DEFAULT_RADIO_CONTROL_SIZE = pxToRem(40)
+const SMALLER_RADIO_INDICATOR_SIZE = pxToRem(10)
+const DEFAULT_RADIO_INDICATOR_SIZE = pxToRem(18)
+const SMALLER_RADIO_HINT_OFFSET = pxToRem(35)
+const DEFAULT_RADIO_HINT_OFFSET = pxToRem(55)
+
+const RadioSizeContext = createContext({ smaller: false })
+
+function useRadioSize() {
+  return useContext(RadioSizeContext)
+}
+
 const RadioItemPrimitive = ChakraRadioGroup.Item as React.ElementType
 const RadioItemControlPrimitive = ChakraRadioGroup.ItemControl as React.ElementType
 const RadioItemTextPrimitive = ChakraRadioGroup.ItemText as React.ElementType
 
-export type RadioRootProps = RadioGroupRootProps
+export interface RadioRootProps extends RadioGroupRootProps {
+  smaller?: boolean
+}
 
 export interface RadioItemProps extends RadioGroupItemProps {
   children?: ReactNode
@@ -54,16 +69,29 @@ interface RadioComponents {
 }
 
 const RadioRoot = forwardRef<HTMLDivElement, RadioRootProps>(function RadioRoot(props, ref) {
+  const { smaller = false, ...rest } = props
+
   return (
-    <ChakraRadioGroup.Root ref={ref} display="flex" flexDirection="column" gap={0} {...props} />
+    <RadioSizeContext.Provider value={{ smaller }}>
+      <ChakraRadioGroup.Root
+        ref={ref}
+        data-smaller={smaller ? '' : undefined}
+        display="flex"
+        flexDirection="column"
+        gap={0}
+        {...rest}
+      />
+    </RadioSizeContext.Provider>
   )
 })
 
 const RadioHint = forwardRef<HTMLParagraphElement, RadioHintProps>(function RadioHint(props, ref) {
+  const { smaller } = useRadioSize()
+
   return (
     <Text
       ref={ref}
-      fontSize={19}
+      fontSize={smaller ? '16px' : 19}
       color="fg.muted"
       mt={pxToRem(-4)}
       mb={0}
@@ -77,12 +105,14 @@ const RadioItem = forwardRef<HTMLDivElement, RadioItemProps>(function RadioItem(
   { hint, children, ...props },
   ref
 ) {
+  const { smaller } = useRadioSize()
+
   return (
     <RadioItemPrimitive
       ref={ref}
       display="flex"
       flexWrap="wrap"
-      alignItems="flex-start"
+      alignItems={smaller ? 'center' : 'flex-start'}
       columnGap={pxToRem(15)}
       rowGap={0}
       py={0}
@@ -107,7 +137,7 @@ const RadioItem = forwardRef<HTMLDivElement, RadioItemProps>(function RadioItem(
     >
       {children}
       {hint ? (
-        <Box flexBasis="100%" pl={pxToRem(55)}>
+        <Box flexBasis="100%" pl={smaller ? SMALLER_RADIO_HINT_OFFSET : DEFAULT_RADIO_HINT_OFFSET}>
           <RadioHint>{hint}</RadioHint>
         </Box>
       ) : null}
@@ -124,6 +154,9 @@ const RadioItemHiddenInput = forwardRef<
 
 const RadioItemControl = forwardRef<HTMLDivElement, RadioControlProps>(
   function RadioControl(props, ref) {
+    const { smaller } = useRadioSize()
+    const controlSize = smaller ? SMALLER_RADIO_CONTROL_SIZE : DEFAULT_RADIO_CONTROL_SIZE
+
     return (
       <RadioItemControlPrimitive
         ref={ref}
@@ -133,9 +166,9 @@ const RadioItemControl = forwardRef<HTMLDivElement, RadioControlProps>(
         borderColor="border.input"
         borderWidth="2px"
         borderStyle="solid"
-        width={pxToRem(40)}
-        height={pxToRem(40)}
-        minWidth={pxToRem(40)}
+        width={controlSize}
+        height={controlSize}
+        minWidth={controlSize}
         position="relative"
         _focus={{
           outline: '3px solid transparent',
@@ -159,6 +192,8 @@ const RadioItemIndicator: RadioItemIndicatorComponent = forwardRef<
   HTMLSpanElement,
   React.ComponentPropsWithoutRef<typeof ChakraRadioGroup.ItemIndicator>
 >(function RadioIndicator(props, ref) {
+  const { smaller } = useRadioSize()
+
   return (
     <ChakraRadioGroup.ItemIndicator
       ref={ref}
@@ -167,8 +202,8 @@ const RadioItemIndicator: RadioItemIndicatorComponent = forwardRef<
       borderRadius="full"
       borderColor="transparent"
       borderWidth={0}
-      width={pxToRem(18)}
-      height={pxToRem(18)}
+      width={smaller ? SMALLER_RADIO_INDICATOR_SIZE : DEFAULT_RADIO_INDICATOR_SIZE}
+      height={smaller ? SMALLER_RADIO_INDICATOR_SIZE : DEFAULT_RADIO_INDICATOR_SIZE}
       position="absolute"
       top="50%"
       left="50%"
@@ -190,13 +225,15 @@ const RadioItemIndicator: RadioItemIndicatorComponent = forwardRef<
 })
 
 const RadioItemText = forwardRef<HTMLSpanElement, RadioTextProps>(function RadioText(props, ref) {
+  const { smaller } = useRadioSize()
+
   return (
     <RadioItemTextPrimitive
       ref={ref}
       color="fg"
       cursor="pointer"
-      fontSize={pxToRem(19)}
-      lineHeight={pxToRem(40)}
+      fontSize={smaller ? '16px' : pxToRem(19)}
+      lineHeight={smaller ? pxToRem(20) : pxToRem(40)}
       {...props}
     />
   )
@@ -216,6 +253,7 @@ const RadioGroup = forwardRef<HTMLFieldSetElement, RadioGroupProps>(function Rad
       paddingLeft={error ? pxToRem(15) : 0}
       borderLeftWidth={error ? pxToRem(5) : 0}
       borderLeftColor={error ? 'danger' : 'transparent'}
+      w="full"
       css={{
         '& [data-govuk-radio-item]:last-of-type': {
           mb: 0,

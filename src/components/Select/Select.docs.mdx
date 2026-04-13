@@ -1,0 +1,104 @@
+import { Canvas, Meta } from '@storybook/addon-docs/blocks'
+import { CodeBlock } from '@/components'
+import * as SelectStories from './Select.stories'
+
+<Meta of={SelectStories} />
+
+export function ExampleSection({ title, story }) {
+  const code = story?.parameters?.docs?.source?.code ?? ''
+
+  return (
+    <>
+      <h2>{title}</h2>
+      <Canvas of={story} sourceState="none" />
+      <CodeBlock.Root code={code} language="tsx" minWidth="0" maxW="100%" mb={8}>
+        <CodeBlock.Header>
+          <CodeBlock.Title>{title}</CodeBlock.Title>
+          <CodeBlock.Control>
+            <CodeBlock.CopyButton copyLabel="Copy" copiedLabel="Copied" />
+          </CodeBlock.Control>
+        </CodeBlock.Header>
+        <CodeBlock.Content>
+          <CodeBlock.Code>
+            <CodeBlock.CodeText />
+          </CodeBlock.Code>
+        </CodeBlock.Content>
+      </CodeBlock.Root>
+    </>
+  )
+}
+
+# Select
+
+Use the Select component to allow users to choose one option from a dropdown list.
+The Select component is useful for forms or content that require users to make a single choice from a list of options.
+Choose the variant based on the importance and context of the content so the interface stays clear and consistent. For GOV.UK guidance, see the GOV.UK Design System select documentation: [https://design-system.service.gov.uk/components/select/](https://design-system.service.gov.uk/components/select/).
+
+## Using collections
+
+`Select.Root` expects a Chakra `ListCollection`, not a plain array.
+If you pass `items` directly, you can get a runtime error like `findMany is not a function`.
+
+<CodeBlock.Root
+  code={`import { createListCollection } from '@chakra-ui/react'
+import { Select, type SelectItemData } from 'govuk-chakra'
+
+const countries = createListCollection<SelectItemData>({
+  items: [
+    { label: 'United Kingdom', value: 'uk' },
+    { label: 'France', value: 'fr' },
+  ],
+})
+
+<Select.Root collection={countries}>
+  <Select.Label>Country</Select.Label>
+  <Select.HiddenSelect />
+  <Select.Control>
+    <Select.Trigger>
+      <Select.ValueText placeholder="Select a country" />
+    </Select.Trigger>
+  </Select.Control>
+  <Select.Positioner>
+    <Select.Content>
+      {countries.items.map((item) => (
+        <Select.Item key={item.value} item={item} />
+      ))}
+    </Select.Content>
+  </Select.Positioner>
+</Select.Root>`}
+  language="tsx"
+  minWidth="0"
+  maxW="100%"
+  mb={8}
+>
+  <CodeBlock.Header>
+    <CodeBlock.Title>Collection setup</CodeBlock.Title>
+    <CodeBlock.Control>
+      <CodeBlock.CopyButton copyLabel="Copy" copiedLabel="Copied" />
+    </CodeBlock.Control>
+  </CodeBlock.Header>
+  <CodeBlock.Content>
+    <CodeBlock.Code>
+      <CodeBlock.CodeText />
+    </CodeBlock.Code>
+  </CodeBlock.Content>
+</CodeBlock.Root>
+
+<ExampleSection title="Default" story={SelectStories.Default} />
+<ExampleSection title="Option Group" story={SelectStories.OptionGroup} />
+<ExampleSection title="Controlled" story={SelectStories.Controlled} />
+<ExampleSection title="Async Loading" story={SelectStories.AsyncLoading} />
+<ExampleSection title="Hook Form" story={SelectStories.HookForm} />
+<ExampleSection title="Disabled" story={SelectStories.Disabled} />
+<ExampleSection title="Native" story={SelectStories.Native} />
+<ExampleSection title="Invalid" story={SelectStories.Error} />
+<ExampleSection title="Multiple" story={SelectStories.Multiple} />
+<ExampleSection title="Positioning" story={SelectStories.Positioning} />
+<ExampleSection title="Clear Trigger" story={SelectStories.ClearTrigger} />
+<ExampleSection title="Overflow" story={SelectStories.Overflow} />
+<ExampleSection title="Item Description" story={SelectStories.ItemDescription} />
+<ExampleSection title="Open From Popover" story={SelectStories.OpenFromPopover} />
+<ExampleSection title="Open From Dialog" story={SelectStories.OpenFromDialog} />
+<ExampleSection title="Avatar Select" story={SelectStories.AvatarSelect} />
+<ExampleSection title="Country Select" story={SelectStories.CountrySelect} />
+<ExampleSection title="Icon Button" story={SelectStories.IconButton} />

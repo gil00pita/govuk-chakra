@@ -83,4 +83,18 @@ describe('Select', () => {
 
     expect(screen.getByRole('combobox', { name: /country/i })).toBeDisabled()
   })
+
+  it('supports the same width scale values as Textinput', () => {
+    const { container } = renderSelect({ width: '2' })
+    const selectRoot = container.querySelector('[data-scope="select"][data-part="root"]')
+
+    expect(selectRoot).toBeInTheDocument()
+  })
+
+  it('renders a native select when native is true', () => {
+    renderSelect({ native: true })
+
+    expect(screen.getByRole('combobox', { name: /country/i })).toHaveDisplayValue('Select a country')
+    expect(screen.queryByRole('button', { name: /country/i })).not.toBeInTheDocument()
+  })
 })
