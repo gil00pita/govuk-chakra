@@ -40,6 +40,82 @@ parameters: {
 - `npx playwright install --with-deps chromium`
   - Downloads the Chromium binary needed for local visual test runs.
 
+## How To Use It
+
+### 1. Install the browser once
+
+Run this before your first local visual test run:
+
+```sh
+npx playwright install --with-deps chromium
+```
+
+### 2. Run the visual regression suite
+
+Use this when you want to verify that your component changes did not alter existing visuals unexpectedly:
+
+```sh
+yarn visual:test
+```
+
+This command:
+
+- builds Storybook
+- serves the static Storybook build
+- runs Playwright against the generated component stories
+- compares screenshots with the committed baselines
+
+### 3. Update baselines intentionally
+
+If a visual change is expected and correct, refresh the snapshots with:
+
+```sh
+yarn visual:update
+```
+
+After updating:
+
+- review the changed files under `tests/visual/__screenshots__`
+- confirm the new screenshots match the intended design change
+- commit the updated baselines with the component change
+
+### 4. Add visual coverage for a new component
+
+When adding a new component:
+
+1. Create or update its Storybook stories under `src/components/...`.
+2. Make sure the story lives under `GOV.UK/Components/*`.
+3. Keep the story deterministic:
+   - avoid random values
+   - avoid time-dependent output unless fixed in the story
+   - avoid animations that change captured state
+4. Run `yarn visual:update` to generate the first baseline.
+
+### 5. Skip a story when needed
+
+If a story is intentionally unstable or not suitable for screenshot comparison, opt it out with:
+
+```ts
+parameters: {
+  visual: {
+    disable: true,
+  },
+}
+```
+
+Use this sparingly. Prefer making stories stable where possible.
+
+### 6. What to do when tests fail
+
+If `yarn visual:test` fails:
+
+1. Open the Playwright diff output and inspect the changed screenshot.
+2. Decide whether the change is:
+   - an unintended regression
+   - an expected UI update
+3. If it is unintended, fix the component or story and rerun `yarn visual:test`.
+4. If it is intended, run `yarn visual:update` and commit the new baselines.
+
 ## Snapshot Rules
 
 - Browser: Chromium only in v1.

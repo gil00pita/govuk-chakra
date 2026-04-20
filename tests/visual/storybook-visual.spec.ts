@@ -1,4 +1,4 @@
-import { expect, test } from '@playwright/test'
+import { expect, test, type Page } from '@playwright/test'
 import { readFileSync } from 'node:fs'
 import { resolve } from 'node:path'
 
@@ -19,7 +19,9 @@ const storyIndex = JSON.parse(readFileSync(indexPath, 'utf8')) as StoryIndex
 const componentStories = Object.values(storyIndex.entries)
   .filter((entry) => entry.type === 'story')
   .filter((entry) => entry.title.startsWith('GOV.UK/Components/'))
-  .sort((left, right) => left.title.localeCompare(right.title) || left.name.localeCompare(right.name))
+  .sort(
+    (left, right) => left.title.localeCompare(right.title) || left.name.localeCompare(right.name)
+  )
 
 function sanitizeSegment(value: string) {
   return value
@@ -30,18 +32,20 @@ function sanitizeSegment(value: string) {
     .toLowerCase()
 }
 
-async function getVisualParameters(page: Parameters<typeof test>[1] extends never ? never : any, storyId: string) {
+async function getVisualParameters(page: Page, storyId: string) {
   return page.evaluate(async (currentStoryId: string) => {
-    const preview = (window as typeof window & {
-      __STORYBOOK_PREVIEW__?: {
-        storyStoreValue?: {
-          fromId?: (id: string) => { parameters?: { visual?: { disable?: boolean } } } | undefined
-          loadStory?: (input: { storyId: string }) => Promise<{
-            parameters?: { visual?: { disable?: boolean } }
-          }>
+    const preview = (
+      window as typeof window & {
+        __STORYBOOK_PREVIEW__?: {
+          storyStoreValue?: {
+            fromId?: (id: string) => { parameters?: { visual?: { disable?: boolean } } } | undefined
+            loadStory?: (input: { storyId: string }) => Promise<{
+              parameters?: { visual?: { disable?: boolean } }
+            }>
+          }
         }
       }
-    }).__STORYBOOK_PREVIEW__
+    ).__STORYBOOK_PREVIEW__
 
     const store = preview?.storyStoreValue
 
