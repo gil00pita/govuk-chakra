@@ -1,6 +1,6 @@
 {
   "name": "govuk-chakra",
-  "version": "0.0.22",
+  "version": "0.0.23",
   "description": "A GOV.UK-flavoured component skin for Chakra UI with React.",
   "license": "MIT",
   "repository": {
@@ -72,8 +72,8 @@
     "component-library"
   ],
   "dependencies": {
-    "@chakra-ui/react": "^3.34.0",
-    "@chakra-ui/charts": "^3.34.0"
+    "@chakra-ui/react": "^3.35.0",
+    "@chakra-ui/charts": "^3.35.0"
   },
   "peerDependencies": {
     "@emotion/react": "^11.14.0",
@@ -133,8 +133,8 @@
     ]
   },
   "devDependencies": {
-    "@chakra-ui/charts": "^3.34.0",
-    "@chakra-ui/react": "^3.34.0",
+    "@chakra-ui/charts": "^3.35.0",
+    "@chakra-ui/react": "^3.35.0",
     "@chakra-ui/react-mcp": "^2.1.1",
     "@emotion/react": "^11.14.0",
     "@emotion/styled": "^11.14.1",
@@ -161,13 +161,13 @@
     "@types/node": "^25.6.0",
     "@types/react": "^19.2.14",
     "@types/react-dom": "^19.2.3",
-    "@typescript-eslint/eslint-plugin": "^8.58.2",
-    "@typescript-eslint/parser": "^8.58.2",
+    "@typescript-eslint/eslint-plugin": "^8.59.0",
+    "@typescript-eslint/parser": "^8.59.0",
     "@vitejs/plugin-react": "^6.0.1",
-    "@vitest/browser-playwright": "^4.1.4",
-    "@vitest/coverage-v8": "^4.1.4",
-    "chromatic": "^16.3.0",
-    "chrome-devtools-mcp": "^0.21.0",
+    "@vitest/browser-playwright": "^4.1.5",
+    "@vitest/coverage-v8": "^4.1.5",
+    "chromatic": "^16.6.0",
+    "chrome-devtools-mcp": "^0.23.0",
     "eslint": "^10.2.1",
     "eslint-config-prettier": "^10.1.8",
     "eslint-plugin-jsx-a11y": "^6.10.2",
@@ -182,7 +182,7 @@
     "prettier": "^3.8.3",
     "prop-types": "^15.8.1",
     "react": "^19.2.5",
-    "react-doctor": "^0.0.37",
+    "react-doctor": "^0.0.39",
     "react-dom": "^19.2.5",
     "react-icons": "^5.6.0",
     "react-is": "^19.2.5",
@@ -191,10 +191,10 @@
     "shiki": "^4.0.2",
     "storybook": "10.3.5",
     "typescript": "^6.0.3",
-    "vite": "^8.0.9",
+    "vite": "^8.0.10",
     "vite-plugin-checker": "^0.13.0",
     "vite-plugin-mcp": "^0.3.2",
-    "vitest": "^4.1.4",
+    "vitest": "^4.1.5",
     "web-vitals": "^5.2.0",
     "webpack": "^5.106.2"
   }
