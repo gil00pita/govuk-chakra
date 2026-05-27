@@ -1,0 +1,8 @@
+interface:
+  display_name: "GOV.UK Chakra"
+  short_description: "Map GOV.UK and Chakra UI to React"
+  brand_color: "#1D70B8"
+  default_prompt: "Use $govuk-chakra-design-system to implement this React screen with the right govuk-chakra components."
+
+policy:
+  allow_implicit_invocation: true
