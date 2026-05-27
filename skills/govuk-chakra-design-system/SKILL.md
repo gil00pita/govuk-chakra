@@ -1,6 +1,6 @@
 ---
 name: govuk-chakra-design-system
-description: Use when building React screens, components, pages, or design-to-code output with govuk-chakra; maps GOV.UK/Components Storybook stories to official GOV.UK-style local components, Chakra Components stories to Chakra GOV skin components, and guides Chakra fallbacks for missing GOV.UK Design System components.
+description: Use when building React screens, components, pages, themes, or design-to-code output with govuk-chakra; maps GOV.UK/Components Storybook stories to official GOV.UK-style local components, Chakra Components stories to Chakra GOV skin components, guides Chakra fallbacks, and shows how to customize the Chakra theme.
 metadata:
   short-description: Build GOV.UK Chakra React UI
 ---
@@ -14,6 +14,7 @@ Use this skill to choose and compose `govuk-chakra` components for React screens
 1. Read `references/component-catalog.generated.md` when choosing components. It is generated from Storybook title prefixes, exports, and local prop types.
 2. Read `references/selection-guide.md` for component-choice rules and GOV.UK page/form patterns.
 3. Read `references/chakra-fallbacks.md` when a GOV.UK component is missing or the design calls for a non-GOV.UK Chakra component.
+4. Read `references/theme-customization.md` when the task changes colours, tokens, semantic tokens, fonts, breakpoints, recipes, or provider setup.
 
 ## Classification Rules
 
@@ -27,6 +28,7 @@ Use this skill to choose and compose `govuk-chakra` components for React screens
 - Default import surface: import implemented GOV.UK wrappers, most Chakra GOV skin wrappers, and Chakra primitives from `govuk-chakra`.
 - Charts: import chart wrappers from `govuk-chakra/charts`.
 - Editor/code helpers: import `CodeBlock` and `RichTextEditor` from `govuk-chakra/editor`.
+- Theme config: import `govUKTheme` from `govuk-chakra/theme`.
 - Raw Chakra: use `govuk-chakra/chakra` only when you deliberately need unwrapped Chakra behavior.
 
 ## Design-Screen Workflow

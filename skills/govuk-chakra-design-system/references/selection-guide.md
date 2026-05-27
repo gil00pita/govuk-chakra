@@ -44,6 +44,7 @@ Use this guide with `component-catalog.generated.md`. The catalog tells you what
 - Prefer one import from `govuk-chakra` for normal screens.
 - Keep GOV.UK-named wrappers in their local names: `Textinput`, `GOVUKHeader`, `GOVUKFooter`.
 - Use Chakra primitives such as `Box`, `Stack`, `Grid`, `Flex`, and `Container` for layout.
+- For brand or token changes, use `theme-customization.md` and pass a custom Chakra system to `GOVUKProvider`.
 - If the catalog entrypoint is only `internal component barrel`, do not import it in a consuming app until it has a public package entrypoint.
 - When translating Figma, map the visual to semantic intent before choosing a component.
 - Check the component story for composition patterns before guessing subcomponent names.

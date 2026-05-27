@@ -12,6 +12,7 @@ This file preserves the approved plan and current decisions so another Codex ses
 - Generated catalog script created at `scripts/generate-skill-catalog.mjs`.
 - Local install script created at `scripts/install-skill.mjs`.
 - Package scripts added: `skill:catalog`, `skill:catalog:check`, and `skill:install`.
+- Theme customization guidance added at `skills/govuk-chakra-design-system/references/theme-customization.md`.
 
 ## Current Decisions
 
@@ -128,6 +129,7 @@ The skill will use:
   - `skills/govuk-chakra-design-system/references/component-catalog.generated.md`
   - `skills/govuk-chakra-design-system/references/selection-guide.md`
   - `skills/govuk-chakra-design-system/references/chakra-fallbacks.md`
+  - `skills/govuk-chakra-design-system/references/theme-customization.md`
 - Add `scripts/generate-skill-catalog.mjs` to build the generated catalog from:
   - `src/govuk-chakra.ts`
   - `src/components/index.ts`
