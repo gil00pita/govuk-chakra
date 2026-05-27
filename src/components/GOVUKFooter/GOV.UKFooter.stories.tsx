@@ -1,9 +1,9 @@
+import { Box, HStack, Image, LinkOverlay, VStack } from '@chakra-ui/react'
 import type { Meta, StoryObj } from '@storybook/react-vite'
 
 import { GOVUKFooter } from './GOVUKFooter'
-import { Box, HStack, Image, LinkBox, LinkOverlay, VStack } from '@chakra-ui/react'
-import { pxToRem } from '@/utils'
 import { Link } from '../Link'
+import { pxToRem } from '@/utils'
 
 const meta: Meta = {
   title: 'GOV.UK/Components/GOV.UK - Footer',
