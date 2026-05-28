@@ -21,4 +21,16 @@ describe('Text', () => {
 
     expect(screen.getByText(/important supporting text/i)).toBeVisible()
   })
+
+  it('forwards string font weights without requiring a GOV.UK type scale font size', () => {
+    renderWithProvider(<Text fontWeight="700">Bold status</Text>)
+
+    expect(screen.getByText(/bold status/i)).toHaveStyle({ fontWeight: '700' })
+  })
+
+  it('forwards numeric font weights without requiring a GOV.UK type scale font size', () => {
+    renderWithProvider(<Text fontWeight={700}>Numeric bold status</Text>)
+
+    expect(screen.getByText(/numeric bold status/i)).toHaveStyle({ fontWeight: '700' })
+  })
 })

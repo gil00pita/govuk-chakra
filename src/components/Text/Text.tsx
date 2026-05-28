@@ -32,5 +32,12 @@ export const Text = forwardRef<HTMLParagraphElement, TextProps>(function Text(
     )
   }
 
-  return <ChakraText ref={ref} fontSize={fontSize as ChakraTextProps['fontSize']} {...props} />
+  return (
+    <ChakraText
+      ref={ref}
+      fontSize={fontSize as ChakraTextProps['fontSize']}
+      fontWeight={fontWeight}
+      {...props}
+    />
+  )
 })
