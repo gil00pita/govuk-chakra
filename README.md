@@ -326,6 +326,7 @@ This project should be treated as a custom design-system layer built on Chakra U
 | Error summary       | Charts / Pie Chart         |
 | Fieldset            | Charts / Scatter Chart     |
 | File upload         | Charts / Spark Line        |
+| Generic header      |                            |
 | GOV.UK - Footer     | Collections / Combobox     |
 | GOV.UK - Header     | Collections / Data Display |
 | Inset text          | Collections / Listbox      |
@@ -359,7 +360,7 @@ This project should be treated as a custom design-system layer built on Chakra U
 |                     | Forms / Slider             |
 |                     | Forms / Switch             |
 |                     | Forms / Tags Input         |
-|                     | FormsColor Swatch          |
+|                     | Forms / Color Swatch       |
 |                     | Overlays / Dialog          |
 |                     | Overlays / Floating Panel  |
 |                     | Overlays / Hover Card      |

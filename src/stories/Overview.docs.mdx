@@ -54,8 +54,8 @@ import { CodeBlock, Heading, Link, Text } from '@/components'
             <VStack as="ul" align="start" gap={2} pl={5} css={{ listStyleType: 'disc' }}>
               <Text as="li">A Chakra-based design skin for React applications</Text>
               <Text as="li">
-                A set of GOV.UK-flavoured components such as GOVUKHeader, GOVUKFooter,
-                CookieBanner, TaskList, SummaryList, and form primitives
+                A set of GOV.UK-flavoured components such as GOVUKHeader, GenericHeader,
+                GOVUKFooter, CookieBanner, TaskList, SummaryList, and form primitives
               </Text>
               <Text as="li">A reusable Chakra system theme exported as govUKTheme</Text>
               <Text as="li">A package that can be published and consumed as a library</Text>
@@ -168,7 +168,7 @@ yarn add shiki @tiptap/core@^3.21.0 @tiptap/pm@^3.21.0 @tiptap/react@^3.21.0 @ti
           </CodeBlock.Root>
           <CodeBlock.Root
             code={`// Core components — no heavy deps needed
-import { Button, GOVUKHeader, Heading } from 'govuk-chakra'
+import { Button, GenericHeader, GOVUKHeader, Heading } from 'govuk-chakra'
 
 // Utilities — no extra deps
 import { pxToRem } from 'govuk-chakra/utils'
@@ -248,6 +248,7 @@ export function AppRoot() {
       Button,
       Link,
       Table,
+      GenericHeader,
       GOVUKHeader,
       GOVUKFooter,
       Textinput,
@@ -476,6 +477,7 @@ export function ExamplePage() {
               <Table.Row><Table.Cell>Error summary</Table.Cell><Table.Cell>Charts / Pie Chart</Table.Cell></Table.Row>
               <Table.Row><Table.Cell>Fieldset</Table.Cell><Table.Cell>Charts / Scatter Chart</Table.Cell></Table.Row>
               <Table.Row><Table.Cell>File upload</Table.Cell><Table.Cell>Charts / Spark Line</Table.Cell></Table.Row>
+              <Table.Row><Table.Cell>Generic header</Table.Cell><Table.Cell></Table.Cell></Table.Row>
               <Table.Row><Table.Cell>GOV.UK - Footer</Table.Cell><Table.Cell>Collections / Combobox</Table.Cell></Table.Row>
               <Table.Row><Table.Cell>GOV.UK - Header</Table.Cell><Table.Cell>Collections / Data Display</Table.Cell></Table.Row>
               <Table.Row><Table.Cell>Inset text</Table.Cell><Table.Cell>Collections / Listbox</Table.Cell></Table.Row>
