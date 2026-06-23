@@ -7,13 +7,17 @@
     "declarationMap": false,
     "outDir": "./dist/types",
     "rootDir": "./src",
-    "stripInternal": true
+    "stripInternal": true,
+    "types": ["react"]
   },
   "include": [
     "src/lib.ts",
     "src/govuk-chakra.ts",
     "src/theme-entry.ts",
     "src/provider-entry.ts",
+    "src/charts-entry.ts",
+    "src/editor-entry.ts",
+    "src/utils-entry.ts",
     "src/provider.tsx",
     "src/components/**/*.ts",
     "src/components/**/*.tsx",
@@ -21,12 +25,19 @@
     "src/theme/**/*.tsx",
     "src/utils/**/*.ts",
     "src/utils/**/*.tsx",
-    "src/types/**/*.d.ts",
+    "src/types/**/*.d.ts"
+  ],
+  "exclude": [
     "src/**/*.stories.ts",
     "src/**/*.stories.tsx",
+    "src/**/*.test.ts",
+    "src/**/*.test.tsx",
+    "src/**/*.docs.mdx",
     "src/App.tsx",
-    "src/App.test.tsx",
-    "src/stories/**/*"
-  ],
-  "exclude": ["src/index.tsx", "src/reportWebVitals.ts", "src/setupTests.ts"]
+    "src/index.tsx",
+    "src/reportWebVitals.ts",
+    "src/setupTests.ts",
+    "src/stories/**/*",
+    "src/test/**/*"
+  ]
 }

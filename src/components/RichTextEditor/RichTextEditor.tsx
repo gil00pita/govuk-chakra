@@ -7,6 +7,11 @@ import {
   useSlotRecipe,
 } from '@chakra-ui/react'
 import type { BoxProps, StackProps } from '@chakra-ui/react'
+import type {} from '@tiptap/extension-bold'
+import type {} from '@tiptap/extension-heading'
+import type {} from '@tiptap/extension-italic'
+import type {} from '@tiptap/extension-list'
+import type {} from '@tiptap/extensions'
 import type { Editor } from '@tiptap/react'
 import { EditorContent } from '@tiptap/react'
 import {

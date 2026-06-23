@@ -62,9 +62,51 @@ async function getVisualParameters(page: Page, storyId: string) {
   }, storyId)
 }
 
+async function waitForStorybookPreview(page: Page) {
+  await page.waitForFunction(
+    () => {
+      return Boolean(
+        (
+          window as typeof window & {
+            __STORYBOOK_PREVIEW__?: {
+              storyStoreValue?: unknown
+            }
+          }
+        ).__STORYBOOK_PREVIEW__?.storyStoreValue
+      )
+    },
+    undefined,
+    { timeout: 10_000 }
+  )
+}
+
+async function waitForStoryRender(page: Page) {
+  try {
+    await page.waitForFunction(
+      () => {
+        const root = document.querySelector('#storybook-root')
+        return Boolean(root && root.childElementCount > 0)
+      },
+      undefined,
+      { timeout: 10_000 }
+    )
+  } catch (error) {
+    const bodyText = await page.locator('body').innerText({ timeout: 1_000 }).catch(() => '')
+    const detail = bodyText.trim() ? ` Page text: ${bodyText.trim().slice(0, 500)}` : ''
+    throw new Error(`Story did not render into #storybook-root within 10s.${detail}`, {
+      cause: error,
+    })
+  }
+}
+
 for (const story of componentStories) {
   test(`${story.title} / ${story.name}`, async ({ page }) => {
     await page.goto(`/iframe.html?id=${story.id}&viewMode=story`)
+
+    await waitForStorybookPreview(page)
+    const visual = await getVisualParameters(page, story.id)
+    test.skip(visual?.disable === true, 'Story opted out of visual regression testing.')
+
     await page.emulateMedia({ reducedMotion: 'reduce' })
     await page.addStyleTag({
       content: `
@@ -78,19 +120,13 @@ for (const story of componentStories) {
       `,
     })
 
-    await page.waitForFunction(() => {
-      const root = document.querySelector('#storybook-root')
-      return Boolean(root && root.childElementCount > 0)
-    })
+    await waitForStoryRender(page)
 
     await page.evaluate(async () => {
       if ('fonts' in document) {
         await document.fonts.ready
       }
     })
-
-    const visual = await getVisualParameters(page, story.id)
-    test.skip(visual?.disable === true, 'Story opted out of visual regression testing.')
 
     const directory = sanitizeSegment(story.title)
     const fileName = `${sanitizeSegment(story.name)}.png`

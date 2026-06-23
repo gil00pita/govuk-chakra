@@ -51,6 +51,7 @@ export default defineConfig({
     react(),
     checker({
       typescript: true,
+      enableBuild: false,
     }),
     ViteMcp(),
   ],
