@@ -5,6 +5,12 @@ export default defineConfig({
   fullyParallel: true,
   forbidOnly: !!process.env.CI,
   retries: process.env.CI ? 2 : 0,
+  expect: {
+    toHaveScreenshot: {
+      // Keep visual tests stable across small CI browser/font rendering differences.
+      maxDiffPixelRatio: 0.01,
+    },
+  },
   reporter: process.env.CI ? [['html', { open: 'never' }], ['list']] : 'list',
   snapshotPathTemplate: '{testDir}/__screenshots__/{arg}{ext}',
   use: {
