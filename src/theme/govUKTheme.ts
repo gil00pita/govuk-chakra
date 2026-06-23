@@ -12,6 +12,7 @@ import colorSwatchRecipe from '@/components/ColorSwatch/ColorSwatch.recipe'
 import dialogRecipe from '@/components/Dialog/Dialog.recipe'
 import editableRecipe from '@/components/Editable/Editable.recipe'
 import emptyStateRecipe from '@/components/EmptyState/EmptyState.recipe'
+import floatingPanelRecipe from '@/components/FloatingPanel/FloatingPanel.recipe'
 import hoverCardRecipe from '@/components/HoverCard/HoverCard.recipe'
 import kbdRecipe from '@/components/Kbd/Kbd.recipe'
 import listboxRecipe from '@/components/Listbox/Listbox.recipe'
@@ -60,6 +61,7 @@ export const govUKTheme = {
       dialog: dialogRecipe,
       editable: editableRecipe,
       emptyState: emptyStateRecipe,
+      floatingPanel: floatingPanelRecipe,
       hoverCard: hoverCardRecipe,
       listbox: listboxRecipe,
       menu: menuRecipe,

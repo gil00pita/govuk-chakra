@@ -7,7 +7,7 @@
 `govuk-chakra` is a React component library that applies a [GOV.UK](https://design-system.service.gov.uk/get-started)-style skin on top of [Chakra UI](https://www.chakra-ui.com).
 It is not a replacement for Chakra. The point is to keep Chakra's composability, theme system, and React ergonomics, while shipping a set of opinionated components and tokens that feel closer to the GOV.UK Design System.
 
-Current Chakra version being used is: **3.35.0**.
+Current Chakra version being used is: **3.36.0**.
 
 ![Screenshot](public/screenshot.png)
 
@@ -361,6 +361,7 @@ This project should be treated as a custom design-system layer built on Chakra U
 |                     | Forms / Tags Input         |
 |                     | FormsColor Swatch          |
 |                     | Overlays / Dialog          |
+|                     | Overlays / Floating Panel  |
 |                     | Overlays / Hover Card      |
 |                     | Overlays / Menu            |
 |                     | Overlays / Popover         |
