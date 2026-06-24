@@ -1,7 +1,5 @@
 # GOV.UK Chakra
 
-🚧 Work in Progress 🚧
-
 ![Build Status](https://vercelbadge.vercel.app/api/gil00pita/govuk-chakra) ![NPM Version](https://img.shields.io/npm/v/govuk-chakra) ![NPM Downloads](https://img.shields.io/npm/dm/govuk-chakra) ![NPM Last Update](https://img.shields.io/npm/last-update/govuk-chakra) ![NPM License](https://img.shields.io/npm/l/govuk-chakra) [![Storybook](https://cdn.jsdelivr.net/gh/storybookjs/brand@main/badge/badge-storybook.svg)](https://gov-uk-gds-react-chakra.vercel.app/)
 
 `govuk-chakra` is a React component library that applies a [GOV.UK](https://design-system.service.gov.uk/get-started)-style skin on top of [Chakra UI](https://www.chakra-ui.com).
@@ -378,7 +376,3 @@ This project should be treated as a custom design-system layer built on Chakra U
 ## License
 
 MIT License - see [LICENSE](LICENSE). Free to use, modify, and distribute. The only requirement is including the license notice.
-
----
-
-**Last Updated**: April 2026
