@@ -48,6 +48,20 @@ const config: StorybookConfig = {
   async viteFinal(config) {
     return {
       ...config,
+      build: {
+        ...config.build,
+        rolldownOptions: {
+          ...config.build?.rolldownOptions,
+          experimental: {
+            ...config.build?.rolldownOptions?.experimental,
+            // Storybook's Vite/Rolldown production build can optimize the
+            // @zag-js/i18n-utils barrel into an invalid reference
+            // (`i18nCache$2 is not defined`), preventing the preview iframe
+            // from booting in visual tests.
+            lazyBarrel: false,
+          },
+        },
+      },
       resolve: {
         ...config.resolve,
         alias: {
