@@ -31,5 +31,5 @@
     "jsx": "react-jsx",
     "types": ["react", "vitest/globals"]
   },
-  "include": ["src", ".storybook", "src/stories/.tsx"]
+  "include": ["src", ".storybook", "src/stories"]
 }
