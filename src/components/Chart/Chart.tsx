@@ -33,6 +33,8 @@ export type ChartRechartsTooltipProps = Omit<
   ChakraChartTooltipProps
 
 export interface ChartLegendContentProps extends ChakraChartLegendProps {
+  orientation?: 'horizontal' | 'vertical'
+  spacing?: string | number
   rootProps?: ComponentPropsWithoutRef<typeof Stack>
   itemProps?: ComponentPropsWithoutRef<typeof HStack>
   labelProps?: ComponentPropsWithoutRef<typeof Span>

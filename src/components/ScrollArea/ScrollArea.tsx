@@ -16,7 +16,8 @@ type ScrollAreaComponent = typeof ChakraScrollArea.Root & typeof ChakraScrollAre
 
 export const ScrollAreaRoot = ChakraScrollArea.Root
 export const ScrollAreaRootProvider = ChakraScrollArea.RootProvider
-export const ScrollAreaPropsProvider = ChakraScrollArea.PropsProvider
+export const ScrollAreaPropsProvider: typeof ChakraScrollArea.PropsProvider =
+  ChakraScrollArea.PropsProvider
 export const ScrollAreaViewport = ChakraScrollArea.Viewport
 export const ScrollAreaContent = ChakraScrollArea.Content
 export const ScrollAreaScrollbar = ChakraScrollArea.Scrollbar
