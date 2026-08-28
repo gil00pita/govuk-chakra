@@ -25,6 +25,7 @@ import progressCircleRecipe from '@/components/ProgressCircle/ProgressCircle.rec
 import radioCardRecipe from '@/components/RadioCard/RadioCard.recipe'
 import ratingRecipe from '@/components/Rating/Rating.recipe'
 import richTextEditorRecipe from '@/components/RichTextEditor/RichTextEditor.recipe'
+import scrollAreaRecipe from '@/components/ScrollArea/ScrollArea.recipe'
 import segmentedControlRecipe from '@/components/SegmentedControl/SegmentedControl.recipe'
 import skeletonRecipe from '@/components/Skeleton/Skeleton.recipe'
 import sliderRecipe from '@/components/Slider/Slider.recipe'
@@ -71,6 +72,7 @@ export const govUKTheme = {
       radioCard: radioCardRecipe,
       ratingGroup: ratingRecipe,
       richTextEditor: richTextEditorRecipe,
+      scrollArea: scrollAreaRecipe,
       segmentGroup: segmentedControlRecipe,
       slider: sliderRecipe,
       stat: statRecipe,

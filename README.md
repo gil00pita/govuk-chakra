@@ -338,6 +338,7 @@ This project should be treated as a custom design-system layer built on Chakra U
 | Separator           | Date & Time / Calendar     |
 | Service navigation  | Disclosure / Carousel      |
 | Skip link           | Disclosure / Collapsible   |
+|                     | Disclosure / Scroll Area   |
 | Summary list        | Disclosure / Steps         |
 | Table               | Feedback / Alert           |
 | Tabs                | Feedback / Empty State     |
