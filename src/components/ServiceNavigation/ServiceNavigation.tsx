@@ -72,7 +72,10 @@ export interface ServiceNavigationLinkProps extends ComponentProps<typeof Link> 
 }
 
 const ServiceNavigationRoot = forwardRef<HTMLDivElement, ServiceNavigationRootProps>(
-  function ServiceNavigationRoot({ children, defaultMobileOpen = false, ...props }, ref) {
+  function ServiceNavigationRoot(
+    { children, className, defaultMobileOpen = false, ...props },
+    ref
+  ) {
     const navigationId = useId()
     const [isMobileOpen, setIsMobileOpen] = useState(defaultMobileOpen)
 
@@ -86,6 +89,7 @@ const ServiceNavigationRoot = forwardRef<HTMLDivElement, ServiceNavigationRootPr
         <HStack
           ref={ref}
           as="nav"
+          className={['govuk-service-navigation', className].filter(Boolean).join(' ')}
           width="100%"
           borderBottom="1px solid"
           borderColor="primary.200"

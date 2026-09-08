@@ -56,6 +56,7 @@ const govukNameOverrides = {
   GOVUKFooter: 'GOV.UK footer',
   GOVUKHeader: 'GOV.UK header',
   InsetText: 'Inset text',
+  LanguageNavigation: 'Language navigation',
   NotificationBanner: 'Notification banner',
   PhaseBanner: 'Phase banner',
   Radio: 'Radios',

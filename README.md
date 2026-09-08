@@ -328,6 +328,7 @@ This project should be treated as a custom design-system layer built on Chakra U
 | GOV.UK - Footer     | Collections / Combobox     |
 | GOV.UK - Header     | Collections / Data Display |
 | Inset text          | Collections / Listbox      |
+| Language navigation |                            |
 | Link                | Collections / Tree View    |
 | Notification banner | Data Display / Avatar      |
 | Pagination          | Data Display / Card        |

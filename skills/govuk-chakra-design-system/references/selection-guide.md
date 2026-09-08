@@ -18,7 +18,7 @@ Use this guide with `component-catalog.generated.md`. The catalog tells you what
 
 ## Common GOV.UK Choices
 
-- Page chrome: `GOVUKHeader`, `GOVUKFooter`, `SkipLink`, `ServiceNavigation`.
+- Page chrome: `GOVUKHeader`, `GOVUKFooter`, `SkipLink`, `ServiceNavigation`, `LanguageNavigation`.
 - Navigation within content: `BackLink`, `Breadcrumbs`, `Pagination`, `Tabs`.
 - Forms: `Fieldset`, `Textinput`, `Textarea`, `Select`, `DateInput`, `Checkbox`, `Radio`, `FileUpload`.
 - Form errors: `ErrorSummary` at the top, plus field-level error props or fallback text near the field.
