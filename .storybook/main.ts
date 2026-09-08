@@ -28,13 +28,9 @@ const config: StorybookConfig = {
     viewport: true,
   },
   typescript: {
-    reactDocgen: 'react-docgen-typescript',
-    reactDocgenTypescriptOptions: {
-      exclude: ['**/*.stories.tsx', '**/.storybook/preview.tsx'],
-      propFilter: (prop) => (prop.parent ? !/node_modules/.test(prop.parent.fileName) : true),
-      shouldExtractLiteralValuesFromEnum: true,
-      shouldRemoveUndefinedFromOptional: true,
-    },
+    // react-docgen-typescript relies on TypeScript's legacy JavaScript compiler
+    // API, which is no longer exported by TypeScript 7.
+    reactDocgen: 'react-docgen',
   },
   core: {
     disableTelemetry: true,
