@@ -6,3 +6,6 @@ storybook-static
 package-lock.json
 yarn.lock
 pnpm-lock.yaml
+
+# Deterministic export; format its generator instead.
+adapters/open-design/govuk-chakra

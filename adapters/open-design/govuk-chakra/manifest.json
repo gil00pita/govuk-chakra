@@ -1,0 +1,15 @@
+{
+  "schemaVersion": "od-design-system-project/v1",
+  "id": "govuk-chakra",
+  "name": "GOV.UK Chakra",
+  "category": "Government & Public Services",
+  "description": "Repository-backed Chakra UI design guidance and 30 user-centred GOV.UK pattern examples.",
+  "source": {
+    "type": "github",
+    "url": "https://github.com/gil00pita/govuk-chakra"
+  },
+  "files": {
+    "design": "DESIGN.md",
+    "tokens": "tokens.css"
+  }
+}

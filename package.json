@@ -122,7 +122,10 @@
     "release:major": "npm version major && git push --follow-tags && npm publish",
     "push": "npm run release:patch",
     "push-minor": "npm run release:minor",
-    "push-major": "npm run release:major"
+    "push-major": "npm run release:major",
+    "design:open-design": "node scripts/export-open-design.mjs",
+    "design:open-design:check": "node scripts/export-open-design.mjs --check",
+    "test:open-design": "node --test scripts/export-open-design.test.mjs"
   },
   "browserslist": {
     "production": [

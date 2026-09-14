@@ -400,3 +400,9 @@ This project should be treated as a custom design-system layer built on Chakra U
 ## License
 
 MIT License - see [LICENSE](LICENSE). Free to use, modify, and distribute. The only requirement is including the license notice.
+
+## Open Design import
+
+Import [the standalone DESIGN.md](adapters/open-design/govuk-chakra/DESIGN.md) into Open Design to use this repository’s design guidance and all 30 pattern examples. The folder also provides `manifest.json` and `tokens.css` for Open Design libraries. See [import instructions](docs/open-design.md).
+
+Regenerate with `yarn design:open-design`; verify with `yarn design:open-design:check` and `yarn test:open-design`.
