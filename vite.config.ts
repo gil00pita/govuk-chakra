@@ -49,11 +49,16 @@ const externalPackages = [
 export default defineConfig({
   plugins: [
     react(),
-    checker({
-      typescript: true,
-      enableBuild: false,
-    }),
-    ViteMcp(),
+    // Development servers and checker workers must not keep Vitest alive.
+    ...(process.env.VITEST
+      ? []
+      : [
+          checker({
+            typescript: true,
+            enableBuild: false,
+          }),
+          ViteMcp(),
+        ]),
   ],
   publicDir: false,
   resolve: {

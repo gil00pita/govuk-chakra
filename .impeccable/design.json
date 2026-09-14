@@ -1,0 +1,123 @@
+{
+  "schemaVersion": 2,
+  "generatedAt": "2026-09-14T13:40:25.180475+00:00",
+  "title": "Design System: GOV.UK Chakra",
+  "extensions": {
+    "breakpoints": [
+      {
+        "name": "sm",
+        "value": "480px"
+      },
+      {
+        "name": "md",
+        "value": "640px"
+      },
+      {
+        "name": "lg",
+        "value": "1024px"
+      },
+      {
+        "name": "xl",
+        "value": "1280px"
+      },
+      {
+        "name": "2xl",
+        "value": "1536px"
+      }
+    ],
+    "shadows": [
+      {
+        "name": "button-primary-edge",
+        "value": "0 2px 0 #09442d",
+        "purpose": "Primary button lower edge."
+      },
+      {
+        "name": "field-focus",
+        "value": "0 0 0 3px {colors.border.input}",
+        "purpose": "Pairs with the yellow outline; resolve through the active Chakra theme."
+      }
+    ],
+    "motion": [
+      {
+        "name": "dialog-content-open",
+        "value": "moderate",
+        "purpose": "Inherited Chakra duration token."
+      },
+      {
+        "name": "dialog-content-close",
+        "value": "faster",
+        "purpose": "Inherited Chakra duration token."
+      }
+    ]
+  },
+  "components": [
+    {
+      "name": "Primary Button",
+      "kind": "button",
+      "refersTo": "button-primary",
+      "description": "Light-mode preview of the repository button variant.",
+      "html": "<button class=\"ds-button-primary\">Continue</button>",
+      "css": ".ds-button-primary { font-family: GDS Transport, arial, sans-serif; font-size: 1.1875rem; font-weight: 400; border: 0; border-radius: 0; padding: max(8px, .5rem) max(10px, .625rem) max(7px, .4375rem); background: #0f7a52; color: #ffffff; box-shadow: 0 2px 0 #09442d; } .ds-button-primary:hover { background: #105840; } .ds-button-primary:focus, .ds-button-primary:focus-visible { outline: none; background: #ffdd00; color: #0b0c0c; }"
+    },
+    {
+      "name": "Secondary Button",
+      "kind": "button",
+      "refersTo": "button-secondary",
+      "description": "Light-mode preview of the repository button variant.",
+      "html": "<button class=\"ds-button-secondary\">Continue</button>",
+      "css": ".ds-button-secondary { font-family: GDS Transport, arial, sans-serif; font-size: 1.1875rem; font-weight: 400; border: 0; border-radius: 0; padding: max(8px, .5rem) max(10px, .625rem) max(7px, .4375rem); background: #f3f3f3; color: #191b1b; box-shadow: 0 2px 0 #858686; } .ds-button-secondary:hover { background: #cecece; } .ds-button-secondary:focus, .ds-button-secondary:focus-visible { outline: none; background: #ffdd00; color: #0b0c0c; }"
+    },
+    {
+      "name": "Error Button",
+      "kind": "button",
+      "refersTo": "button-error",
+      "description": "Light-mode preview of the repository button variant.",
+      "html": "<button class=\"ds-button-error\">Continue</button>",
+      "css": ".ds-button-error { font-family: GDS Transport, arial, sans-serif; font-size: 1.1875rem; font-weight: 400; border: 0; border-radius: 0; padding: max(8px, .5rem) max(10px, .625rem) max(7px, .4375rem); background: #ca3535; color: #ffffff; box-shadow: 0 2px 0 #651b1b; } .ds-button-error:hover { background: #982828; } .ds-button-error:focus, .ds-button-error:focus-visible { outline: none; background: #ffdd00; color: #0b0c0c; }"
+    },
+    {
+      "name": "Text Input",
+      "kind": "input",
+      "refersTo": "text-input",
+      "description": "Default input with visible label and field focus treatment.",
+      "html": "<label class=\"ds-label\" for=\"ds-name\">Full name</label><input class=\"ds-input\" id=\"ds-name\" />",
+      "css": ".ds-label { display: block; margin-bottom: max(8px, .5rem); font: 700 19px/25px GDS Transport, arial, sans-serif; color: #0b0c0c; } .ds-input { box-sizing: border-box; width: 100%; height: max(40px, 2.5rem); border: 2px solid #000000; border-radius: 0; padding: max(5px, .3125rem) max(12px, .75rem); background: transparent; color: #0b0c0c; font: 400 16px/20px GDS Transport, arial, sans-serif; } .ds-input:focus { outline: 3px solid #ffdd00; outline-offset: 3px; box-shadow: 0 0 0 3px #000000; }"
+    },
+    {
+      "name": "Blue Tag",
+      "kind": "chip",
+      "refersTo": "tag-blue",
+      "description": "Non-interactive status label.",
+      "html": "<span class=\"ds-tag\">In progress</span>",
+      "css": ".ds-tag { display: inline-flex; font: 400 19px/25px GDS Transport, arial, sans-serif; border-radius: max(2px, .125rem); padding: max(2px, .125rem) max(8px, .5rem) max(3px, .1875rem); margin-top: -2px; margin-bottom: -3px; background: #d2e2f1; color: #052c53; }"
+    }
+  ],
+  "narrative": {
+    "overview": "This document records the existing implementation in `govuk-chakra`, a React component library built on Chakra UI v3. Its visual character is practical and restrained: strong headings, readable text, underlined links, square controls, visible borders, and explicit feedback for actions and errors. Colour primarily communicates identity, interaction, and status.",
+    "keyCharacteristics": [
+      "GDS Transport with Arial fallback for headings and body text.",
+      "Blue identity and links; green primary actions; yellow focus treatment.",
+      "Predominantly flat surfaces and square corners, with explicit component exceptions.",
+      "Responsive type, labelled form controls, and readable status feedback.",
+      "Semantic colour tokens with light and dark variants."
+    ],
+    "dos": [
+      "**Do** use the local wrappers and registered recipes before constructing replacements.",
+      "**Do** use semantic colours for text, surfaces, borders, and errors, checking component overrides in both modes.",
+      "**Do** keep primary buttons green and identity/navigation blue.",
+      "**Do** use numeric GOV.UK typography props when the responsive scale is intended.",
+      "**Do** preserve yellow focus treatments, visible labels, error descriptions, and semantic HTML.",
+      "**Do** retain the repo's precise spacing and small component-specific shape exceptions.",
+      "**Do** check source and adjacent stories when an implementation detail is not specified here."
+    ],
+    "donts": [
+      "**Don't** assume the config object is the constructed Chakra system or that the provider selects it automatically.",
+      "**Don't** assume naming GDS Transport loads the font.",
+      "**Don't** equate Chakra string sizes with numeric GOV.UK scale points.",
+      "**Don't** apply rounded cards, pill buttons, or decorative shadows as a new default.",
+      "**Don't** remove link underlines, focus indicators, or textual status and error cues.",
+      "**Don't** assume every component uses the semantic visited colour or identical dark-mode state mappings.",
+      "**Don't** describe this source extraction as proof of accessibility conformance or exact official GOV.UK parity."
+    ]
+  }
+}

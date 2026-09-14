@@ -248,6 +248,18 @@ export function AppRoot() {
 }
 ```
 
+## Unit Tests
+
+```bash
+yarn test          # Run unit tests in watch mode
+yarn test:run      # Run unit tests once
+yarn test:list     # List unit test files without running them
+```
+
+This repository uses Vitest. Use `yarn test:list` instead of the Jest-specific
+`yarn test --listTests` command. To filter the file list, pass a filename fragment,
+for example `yarn test:list Button`.
+
 ## Storybook Accessibility Tests
 
 Storybook accessibility checks run as part of the existing browser-based Storybook Vitest project:
