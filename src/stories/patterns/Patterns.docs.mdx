@@ -1,0 +1,31 @@
+import { Meta } from '@storybook/addon-docs/blocks'
+
+<Meta title="GOV.UK/Patterns/Overview" />
+
+# User-centred patterns
+
+Patterns describe service decisions and journeys across several components. These examples demonstrate the decisions, recovery routes and safeguards as well as the page layout.
+
+All examples use components exported by this repository. Open **Ask users for**, **Help users to** or **Pages** in the sidebar, then choose a story. Use the Canvas to try the journey and Docs for its intent, source and production requirements.
+
+## Ask users for
+
+Addresses, bank details, dates, email addresses, equality information, names, National Insurance numbers, passwords, payment card details and phone numbers.
+
+## Help users to
+
+Check a service is suitable, check answers, complete multiple tasks, confirm a phone number, confirm an email address, contact a department or service team, create a username, create accounts, exit a page quickly, navigate a service, recover from validation errors and start using a service.
+
+## Pages
+
+Confirmation, cookies, interruption, page not found, question, service unavailable, step by step navigation and problem with the service pages.
+
+## Try the journeys
+
+Submit an empty form to explore linked errors. Correct an answer and go back to check it is retained. Try both branches of a suitability question. Change an answer from the review screen. Explore unavailable tasks, resend and correction routes, and optional-cookie choices.
+
+Use fictional data only. Examples keep state in memory: refreshing resets the journey. They do not send messages, create accounts, process payments or submit real applications. Production services need server-side validation, durable storage, real routing and non-JavaScript fallback pages. Verification controls and security behaviour are demonstrations, not an authentication service.
+
+The password, quick-exit, interruption and content step-by-step examples compose existing components where a dedicated local wrapper is absent. They are not new official GOV.UK components. Equality information demonstrates an optional introduction and date-of-birth question, including skip routes, without inventing harmonised question categories.
+
+See `design/govuk/patterns/README.md` in the repository for the complete reference and links to all 30 implementations.

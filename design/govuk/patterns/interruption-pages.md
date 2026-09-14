@@ -1,0 +1,41 @@
+# Interruption pages
+
+Pause a journey only when users must understand unusually important information or confirm a significant consequence before continuing.
+
+## Example in this repository
+
+- Storybook: **GOV.UK / Patterns / Pages / Interruption pages**
+- Story ID: `gov-uk-patterns-pages--interruption-pages`
+- [Open in local Storybook](http://localhost:6006/?path=/story/gov-uk-patterns-pages--interruption-pages)
+- [Interactive implementation](../../../src/stories/patterns/Pages.tsx)
+- [Story and implementation notes](../../../src/stories/patterns/Pages.stories.tsx)
+- [All patterns](README.md)
+
+## When to use
+
+- Use when the user must notice information that materially changes whether or how they continue.
+- Use when a potentially surprising answer needs an explicit confirmation before a high-impact action.
+
+## When not to use
+
+- Do not interrupt routine journeys for ordinary guidance, marketing, reassurance or information that can appear at the point of need.
+- Do not use interruption styling as a generic visual emphasis treatment.
+
+## Journey and implementation rules
+
+- State the issue as the page heading, show the relevant value or consequence and provide one clear primary continuation action.
+- Offer a plainly worded secondary route to go back or correct the information.
+- Use the official interruption Panel variant and inverse controls without inventing new colours or urgency levels.
+
+## Accessibility and service safeguards
+
+- Keep both decisions keyboard accessible with descriptive labels that state their consequences.
+- Do not rely on the panel colour to communicate importance and do not trap focus or block the browser back action.
+
+## Demo and production responsibilities
+
+The local Panel has no dedicated interruption variant. The example composes its existing colour props with inverse controls. Confirm the consequence warrants an interruption and use tested production copy.
+
+## Reference
+
+Intent and safeguards are based on the supplied `govuk-design-md` pattern reference reviewed 9 September 2026. Check the [GOV.UK pattern guidance](https://design-system.service.gov.uk/patterns/interruption-pages/) when adapting this example for a live service.

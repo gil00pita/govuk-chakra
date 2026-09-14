@@ -62,6 +62,8 @@ export default defineConfig({
   ],
   publicDir: false,
   resolve: {
+    // Storybook's nested React dependencies must share the application's hook dispatcher.
+    dedupe: ['react', 'react-dom'],
     tsconfigPaths: true,
   },
   build: {

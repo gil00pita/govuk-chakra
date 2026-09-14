@@ -248,6 +248,16 @@ export function AppRoot() {
 }
 ```
 
+## User-centred pattern examples
+
+Run `yarn storybook` and open **GOV.UK → Patterns** for 30 examples grouped into
+**Ask users for**, **Help users to**, and **Pages**. The examples use this repo's
+components and include interactions, validation, recovery routes and service safeguards.
+
+See the [pattern index](design/govuk/patterns/README.md) for every example, its source
+and the production integrations it requires. These are in-memory demonstrations;
+use fictional data when exploring them.
+
 ## Unit Tests
 
 ```bash
