@@ -104,7 +104,19 @@ export const parameters = {
   options: {
     storySort: {
       method: 'alphabetical',
-      order: ['GOV.UK', ['Overview', 'Styles', 'Patterns', 'Components'], 'Chakra Components', '*'],
+      order: [
+        'GOV.UK',
+        [
+          'Overview',
+          'Styles',
+          ['Overview', 'Page structure', 'Typography', 'Visual elements'],
+          'Patterns',
+          ['Overview', 'Ask users for', 'Help users to', 'Pages'],
+          'Components',
+        ],
+        'Chakra Components',
+        '*',
+      ],
       locales: '',
     },
   },
