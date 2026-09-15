@@ -46,6 +46,6 @@ describe('PinInput', () => {
     const inputs = screen.getAllByRole('textbox')
     await user.type(inputs[0], '1')
 
-    expect(screen.getByText('✲')).toBeVisible()
+    expect(screen.getByText('🞶')).toBeVisible()
   })
 })

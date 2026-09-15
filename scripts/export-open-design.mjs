@@ -25,7 +25,7 @@ export async function buildExport() {
   }
   const colorSection = design.split('\ncolors:\n')[1].split('\ntypography:')[0]
   const colors = Object.fromEntries(
-    [...colorSection.matchAll(/^  ([\w-]+): ['"]?(#[\da-fA-F]{6})['"]?$/gm)].map((m) => [
+    [...colorSection.matchAll(/^ {2}([\w-]+): ['"]?(#[\da-fA-F]{6})['"]?$/gm)].map((m) => [
       m[1],
       m[2],
     ])
@@ -73,6 +73,10 @@ export async function buildExport() {
       /\n## Example in this repository\n[\s\S]*?(?=\n## )/,
       '\n'
     )
+    // Local Storybook links cannot be opened from a standalone import.
+    content = content
+      .replace(/^.*\]\(http:\/\/localhost:[^\n]+\n/gm, '')
+      .replace(/from '@\/components\/[^']+'/g, "from 'govuk-chakra'")
     content = absoluteLinks(content, source).replace(/^(#{1,2}) /gm, '$1## ')
     markdown += `\n${content.trim()}\n`
   }

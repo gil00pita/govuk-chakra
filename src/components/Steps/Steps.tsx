@@ -2,16 +2,7 @@ import { Steps as ChakraSteps } from '@chakra-ui/react'
 import type { ComponentPropsWithoutRef, ForwardRefExoticComponent, RefAttributes } from 'react'
 
 type StepsColorPalette =
-  | 'gray'
-  | 'red'
-  | 'orange'
-  | 'yellow'
-  | 'green'
-  | 'teal'
-  | 'blue'
-  | 'cyan'
-  | 'purple'
-  | 'pink'
+  'gray' | 'red' | 'orange' | 'yellow' | 'green' | 'teal' | 'blue' | 'cyan' | 'purple' | 'pink'
 
 type StepsSize = 'xs' | 'sm' | 'md' | 'lg'
 type StepsVariant = 'subtle' | 'solid' | 'outline'

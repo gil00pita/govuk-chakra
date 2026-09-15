@@ -91,7 +91,10 @@ async function waitForStoryRender(page: Page) {
       { timeout: 10_000 }
     )
   } catch (error) {
-    const bodyText = await page.locator('body').innerText({ timeout: 1_000 }).catch(() => '')
+    const bodyText = await page
+      .locator('body')
+      .innerText({ timeout: 1_000 })
+      .catch(() => '')
     const detail = bodyText.trim() ? ` Page text: ${bodyText.trim().slice(0, 500)}` : ''
     throw new Error(`Story did not render into #storybook-root within 10s.${detail}`, {
       cause: error,

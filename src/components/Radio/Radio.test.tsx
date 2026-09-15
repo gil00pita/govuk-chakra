@@ -80,7 +80,12 @@ describe('Radio', () => {
   })
 
   it('supports the smaller radio size on the root', () => {
+    // jsdom drops max() dimensions when parsing CSS; inspect the injected rule.
     renderRadioGroup({ smaller: true })
+    const rules =
+      Array.from(document.querySelectorAll('style'), (style) => style.textContent ?? '')
+        .join('')
+        .match(/[^{}]+\{[^{}]*\}/g) ?? []
 
     const englandLabel = screen.getByText('England')
     const englandControl = englandLabel.parentElement?.querySelector('[data-govuk-radio-control]')
@@ -88,10 +93,11 @@ describe('Radio', () => {
     expect(englandLabel).toHaveStyle({
       fontSize: '16px',
     })
-    expect(englandControl).toHaveStyle({
-      width: 'max(20px, 1.25rem)',
-      height: 'max(20px, 1.25rem)',
-      minWidth: 'max(20px, 1.25rem)',
-    })
+    const controlRule = rules.find((rule) =>
+      Array.from(englandControl?.classList ?? []).some((name) => rule.startsWith(`.${name}{`))
+    )
+    expect(controlRule).toContain('width:max(20px, 1.25rem)')
+    expect(controlRule).toContain('height:max(20px, 1.25rem)')
+    expect(controlRule).toContain('min-width:max(20px, 1.25rem)')
   })
 })

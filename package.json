@@ -125,7 +125,9 @@
     "push-major": "npm run release:major",
     "design:open-design": "node scripts/export-open-design.mjs",
     "design:open-design:check": "node scripts/export-open-design.mjs --check",
-    "test:open-design": "node --test scripts/export-open-design.test.mjs"
+    "test:open-design": "node --test scripts/export-open-design.test.mjs",
+    "precommit": "node scripts/precommit.mjs",
+    "hooks:install": "git config --local core.hooksPath .githooks"
   },
   "browserslist": {
     "production": [
@@ -144,6 +146,7 @@
     "@chakra-ui/react-mcp": "^2.1.1",
     "@emotion/react": "^11.14.0",
     "@emotion/styled": "^11.14.1",
+    "@eslint/js": "^9.39.0",
     "@playwright/test": "^1.63.0",
     "@storybook/addon-a11y": "10.6.0",
     "@storybook/addon-docs": "10.6.0",
@@ -174,7 +177,7 @@
     "@vitest/coverage-v8": "^5.0.1",
     "chromatic": "^18.8.1",
     "chrome-devtools-mcp": "^1.9.0",
-    "eslint": "^10.10.0",
+    "eslint": "^9.39.0",
     "eslint-config-prettier": "^10.1.8",
     "eslint-plugin-jsx-a11y": "^6.10.2",
     "eslint-plugin-prettier": "^5.5.6",
@@ -183,6 +186,7 @@
     "eslint-plugin-storybook": "^10.6.0",
     "framer-motion": "^13.3.0",
     "highlight.js": "^11.12.0",
+    "jsdom": "^29.1.1",
     "next-themes": "^0.4.6",
     "playwright": "^1.63.0",
     "prettier": "^3.9.6",
@@ -196,7 +200,7 @@
     "recharts": "^3.10.1",
     "shiki": "^4.4.3",
     "storybook": "10.6.0",
-    "typescript": "^7.0.2",
+    "typescript": "~6.0.3",
     "vite": "^8.3.0",
     "vite-plugin-checker": "^0.14.5",
     "vite-plugin-mcp": "^0.3.2",

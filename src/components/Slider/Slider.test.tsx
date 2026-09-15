@@ -8,7 +8,7 @@ import { Slider } from './Slider'
 
 describe('Slider', () => {
   it('uses the expected recipe defaults', () => {
-    expect(sliderRecipe.defaultVariants?.size).toBe('md')
+    expect(sliderRecipe.defaultVariants?.size).toBe('lg')
     expect(sliderRecipe.defaultVariants?.variant).toBe('outline')
     expect(sliderRecipe.base?.track).toMatchObject({
       bg: 'bg.muted',
@@ -20,7 +20,7 @@ describe('Slider', () => {
       borderColor: 'border.input',
     })
     expect(sliderRecipe.variants?.variant?.outline?.thumb).toMatchObject({
-      bg: 'bg.muted',
+      bg: 'colorPalette.600',
       borderColor: 'border.input',
     })
   })

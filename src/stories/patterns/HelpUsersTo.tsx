@@ -306,7 +306,7 @@ export function ConfirmContactExample({ kind }: { kind: 'phone' | 'email' }) {
   const [destination, setDestination] = useState(isPhone ? '07700 900123' : 'alex@example.com')
   const [editing, setEditing] = useState(false)
   const [code, setCode] = useState('')
-  const [issued, setIssued] = useState(Date.now())
+  const [issued, setIssued] = useState(() => Date.now())
   const [generation, setGeneration] = useState(0)
   const [attempts, setAttempts] = useState(0)
   const [resends, setResends] = useState(0)

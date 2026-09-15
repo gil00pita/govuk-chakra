@@ -157,7 +157,10 @@ const LanguageNavigationLink = forwardRef<HTMLAnchorElement, LanguageNavigationL
       >
         {children}
         {languageDescriptionText ? (
-          <VisuallyHidden>{` ${languageDescriptionText}`}</VisuallyHidden>
+          <>
+            {' '}
+            <VisuallyHidden>{languageDescriptionText}</VisuallyHidden>
+          </>
         ) : null}
       </Link>
     )

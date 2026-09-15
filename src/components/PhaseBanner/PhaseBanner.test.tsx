@@ -29,9 +29,9 @@ describe('PhaseBanner', () => {
       </PhaseBanner.Root>
     )
 
-    const banner = screen.getByText('alpha').closest('div')
+    const banner = screen.getByText('Alpha').closest('div')
 
-    expect(screen.getByText('alpha')).toBeVisible()
+    expect(screen.getByText('Alpha')).toBeVisible()
     expect(within(banner ?? document.body).getByText(/this service is in alpha/i)).toBeVisible()
   })
 })

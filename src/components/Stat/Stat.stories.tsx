@@ -7,16 +7,7 @@ import { Stat } from './Stat'
 
 type StatStoryArgs = {
   colorPalette?:
-    | 'gray'
-    | 'red'
-    | 'orange'
-    | 'yellow'
-    | 'green'
-    | 'teal'
-    | 'blue'
-    | 'cyan'
-    | 'purple'
-    | 'pink'
+    'gray' | 'red' | 'orange' | 'yellow' | 'green' | 'teal' | 'blue' | 'cyan' | 'purple' | 'pink'
   size?: 'sm' | 'md' | 'lg'
 }
 

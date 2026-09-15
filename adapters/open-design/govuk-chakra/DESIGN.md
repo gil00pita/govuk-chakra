@@ -1314,6 +1314,38 @@ Intent and safeguards are based on the supplied `govuk-design-md` pattern refere
 Prototype an end-to-end GOV.UK content journey as ordered expandable steps linking to the guidance and transactions needed to complete it.
 
 
+#### Reusable component
+
+Use `StepByStep` for numbered, expandable guidance with rich content and links. Each step has an individual Show/Hide control; Show all steps/Hide all steps expands or collapses the whole journey.
+
+- Storybook: **GOV.UK / Components / Step by Step**
+- [Component implementation](https://github.com/gil00pita/govuk-chakra/blob/main/src/components/StepByStep/StepByStep.tsx)
+- [Stories](https://github.com/gil00pita/govuk-chakra/blob/main/src/components/StepByStep/StepByStep.stories.tsx): default, first step expanded, all expanded, narrow and controlled.
+
+```tsx
+import { StepByStep } from 'govuk-chakra'
+
+;<StepByStep
+  items={[
+    {
+      id: 'prepare',
+      title: 'Prepare your application',
+      content: <p>Check what information you need before applying.</p>,
+    },
+    {
+      id: 'apply',
+      title: 'Apply for support',
+      content: <p>Complete your application and check your answers.</p>,
+    },
+  ]}
+  defaultValue={['prepare']}
+/>
+```
+
+Give each item a unique, stable `id`, a `title` and React `content`. Steps start collapsed unless their IDs appear in `defaultValue`. For controlled state, pass `value` and update it from `onValueChange={({ value }) => setValue(value)}`; this handles both individual and bulk controls.
+
+Set `headingLevel` to fit the surrounding page hierarchy (defaults to `h2`, supports `h2`–`h6`). Override `showLabel`, `hideLabel`, `showAllLabel` and `hideAllLabel` when different control wording is needed. The component composes `Accordion.Root`, `Accordion.Actions`, `Accordion.ToggleAll`, `Accordion.Items`, `Accordion.Item`, `Accordion.Trigger` and `Accordion.Content`, preserving their typography, spacing, borders, chevrons, focus styles and disclosure behavior. An ordered list adds numbered markers in a left gutter.
+
 #### When to use
 
 - Use for a GOV.UK journey with a specific start and end, several pieces of guidance or transactions and a helpful task order.
@@ -2421,7 +2453,7 @@ export function ConfirmContactExample({ kind }: { kind: 'phone' | 'email' }) {
   const [destination, setDestination] = useState(isPhone ? '07700 900123' : 'alex@example.com')
   const [editing, setEditing] = useState(false)
   const [code, setCode] = useState('')
-  const [issued, setIssued] = useState(Date.now())
+  const [issued, setIssued] = useState(() => Date.now())
   const [generation, setGeneration] = useState(0)
   const [attempts, setAttempts] = useState(0)
   const [resends, setResends] = useState(0)
@@ -2960,7 +2992,18 @@ export function StartUsingAServiceExample() {
 
 ```tsx
 import { useState } from 'react'
-import { Box, Button, Details, Heading, Link, Panel, Stack, Table, Text } from 'govuk-chakra'
+import {
+  Box,
+  Button,
+  Details,
+  Heading,
+  Link,
+  Panel,
+  Stack,
+  StepByStep,
+  Table,
+  Text,
+} from 'govuk-chakra'
 import { Choice, ContactLink, FieldsForm, Notice, PatternPage, storyHref } from './shared'
 
 export function ConfirmationExample() {
@@ -3290,23 +3333,20 @@ export function StepByStepExample() {
       <Text>
         Check whether you can get support, prepare the information you need and make an application.
       </Text>
-      <Box as="ol" pl={6}>
-        {steps.map((step) => (
-          <Box as="li" key={step.slug} pl={2}>
-            <Details.Root>
-              <Details.Summary>{step.title}</Details.Summary>
-              <Details.Content>
-                <Stack gap={3}>
-                  <Text>{step.text}</Text>
-                  <Link href={storyHref('help-users-to', step.slug)} target="_top">
-                    {step.link}
-                  </Link>
-                </Stack>
-              </Details.Content>
-            </Details.Root>
-          </Box>
-        ))}
-      </Box>
+      <StepByStep
+        items={steps.map((step) => ({
+          id: step.slug,
+          title: step.title,
+          content: (
+            <Stack gap={3}>
+              <Text>{step.text}</Text>
+              <Link href={storyHref('help-users-to', step.slug)} target="_top">
+                {step.link}
+              </Link>
+            </Stack>
+          ),
+        }))}
+      />
       <Box
         as="aside"
         borderTop="2px solid"

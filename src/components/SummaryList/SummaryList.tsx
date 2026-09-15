@@ -142,7 +142,12 @@ const SummaryListActionLink = forwardRef<HTMLAnchorElement, SummaryListActionLin
     return (
       <Link ref={ref} {...props}>
         {children}
-        {visuallyHiddenText ? <VisuallyHidden>{` ${visuallyHiddenText}`}</VisuallyHidden> : null}
+        {visuallyHiddenText ? (
+          <>
+            {' '}
+            <VisuallyHidden>{visuallyHiddenText}</VisuallyHidden>
+          </>
+        ) : null}
       </Link>
     )
   }

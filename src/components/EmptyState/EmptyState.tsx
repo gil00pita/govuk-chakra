@@ -2,16 +2,7 @@ import { EmptyState as ChakraEmptyState } from '@chakra-ui/react'
 import type { ComponentPropsWithoutRef, ForwardRefExoticComponent, RefAttributes } from 'react'
 
 type EmptyStateColorPalette =
-  | 'gray'
-  | 'red'
-  | 'orange'
-  | 'yellow'
-  | 'green'
-  | 'teal'
-  | 'blue'
-  | 'cyan'
-  | 'purple'
-  | 'pink'
+  'gray' | 'red' | 'orange' | 'yellow' | 'green' | 'teal' | 'blue' | 'cyan' | 'purple' | 'pink'
 
 type EmptyStateSize = 'sm' | 'md' | 'lg'
 type EmptyStateVariant = 'subtle' | 'solid' | 'outline' | 'plain'

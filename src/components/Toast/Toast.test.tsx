@@ -8,7 +8,7 @@ import { Toast, Toaster, createToaster } from './Toast'
 
 describe('Toast', () => {
   it('uses the expected text styles in the recipe', () => {
-    expect(toastRecipe.defaultVariants?.variant).toBe('subtle')
+    expect(toastRecipe.defaultVariants?.variant).toBe('outline')
     expect(toastRecipe.base?.root).toMatchObject({
       display: 'grid',
       gridTemplateColumns: 'auto minmax(0, 1fr)',
@@ -18,12 +18,12 @@ describe('Toast', () => {
     expect(toastRecipe.base?.title).toMatchObject({
       gridColumn: '2',
       textStyle: 'md',
-      fontWeight: 'medium',
+      fontWeight: '700',
     })
     expect(toastRecipe.base?.description).toMatchObject({
       gridColumn: '2',
       display: 'block',
-      textStyle: 'sm',
+      fontSize: '16px',
     })
     expect(toastRecipe.base?.actionTrigger).toMatchObject({
       textStyle: 'sm',

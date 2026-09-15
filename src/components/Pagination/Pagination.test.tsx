@@ -82,7 +82,8 @@ describe('Pagination', () => {
     expect(screen.getByText(/driver cpc part 1 test: theory/i)).toBeVisible()
   })
 
-  it('keeps literal px sizing for previous and next titles', () => {
+  it('uses the GOV.UK body type scale for previous and next titles', () => {
+    // jsdom drops max() font sizes when parsing CSS; inspect the injected rules.
     renderWithProvider(
       <Pagination block>
         <Pagination.Previous href="/previous" label="Previous step label">
@@ -94,7 +95,16 @@ describe('Pagination', () => {
       </Pagination>
     )
 
-    expect(screen.getByText('Previous')).toHaveStyle({ fontSize: '27px' })
-    expect(screen.getByText('Next')).toHaveStyle({ fontSize: '27px' })
+    const rules =
+      Array.from(document.querySelectorAll('style'), (style) => style.textContent ?? '')
+        .join('')
+        .match(/[^{}]+\{[^{}]*\}/g) ?? []
+
+    for (const title of ['Previous', 'Next']) {
+      const titleRule = rules.find((rule) =>
+        Array.from(screen.getByText(title).classList).some((name) => rule.startsWith(`.${name}{`))
+      )
+      expect(titleRule).toContain('font-size:max(19px, 1.1875rem)')
+    }
   })
 })

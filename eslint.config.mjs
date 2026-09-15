@@ -24,7 +24,7 @@ export default [
   },
 
   {
-    files: ['**/*.{js,jsx,mjs,cjs,ts,tsx}'],
+    files: ['**/*.{js,jsx,mjs,cjs,ts,tsx,mts,cts}'],
     plugins: {
       '@typescript-eslint': tsPlugin,
       'react-hooks': reactHooks,
@@ -77,7 +77,7 @@ export default [
   },
 
   {
-    files: ['**/*.{ts,tsx}'],
+    files: ['**/*.{ts,tsx,mts,cts}'],
     rules: {
       // Base ESLint cannot distinguish TypeScript-only symbols used in type positions.
       'no-undef': 'off',

@@ -6,16 +6,7 @@ import { Calendar } from './Calendar'
 
 type CalendarStoryArgs = {
   colorPalette?:
-    | 'gray'
-    | 'red'
-    | 'orange'
-    | 'yellow'
-    | 'green'
-    | 'teal'
-    | 'blue'
-    | 'cyan'
-    | 'purple'
-    | 'pink'
+    'gray' | 'red' | 'orange' | 'yellow' | 'green' | 'teal' | 'blue' | 'cyan' | 'purple' | 'pink'
   size?: 'sm' | 'md' | 'lg'
 }
 

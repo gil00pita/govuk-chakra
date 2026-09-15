@@ -1,4 +1,4 @@
-import { useEffect, useState, type ComponentType } from 'react'
+import { useState, type ComponentType } from 'react'
 import { HStack, Portal, parseColor } from '@chakra-ui/react'
 import type { Meta, StoryObj } from '@storybook/react-vite'
 
@@ -104,12 +104,16 @@ function WithSwatchesPreview() {
   )
 }
 
-function ColorPickerPreview({ title = 'Color', value = '#eb5e41', ...args }: ColorPickerStoryArgs) {
-  const [selectedColor, setSelectedColor] = useState(() => parseColor(value))
+function ColorPickerPreview(args: ColorPickerStoryArgs) {
+  return <ColorPickerPreviewState key={args.value ?? '#eb5e41'} {...args} />
+}
 
-  useEffect(() => {
-    setSelectedColor(parseColor(value))
-  }, [value])
+function ColorPickerPreviewState({
+  title = 'Color',
+  value = '#eb5e41',
+  ...args
+}: ColorPickerStoryArgs) {
+  const [selectedColor, setSelectedColor] = useState(() => parseColor(value))
 
   return (
     <ColorPicker.Root

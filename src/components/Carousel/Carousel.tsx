@@ -2,16 +2,7 @@ import { Carousel as ChakraCarousel } from '@chakra-ui/react'
 import type { ComponentPropsWithoutRef, ForwardRefExoticComponent, RefAttributes } from 'react'
 
 type CarouselColorPalette =
-  | 'gray'
-  | 'red'
-  | 'orange'
-  | 'yellow'
-  | 'green'
-  | 'teal'
-  | 'blue'
-  | 'cyan'
-  | 'purple'
-  | 'pink'
+  'gray' | 'red' | 'orange' | 'yellow' | 'green' | 'teal' | 'blue' | 'cyan' | 'purple' | 'pink'
 
 type CarouselSize = 'sm' | 'md' | 'lg'
 type CarouselVariant = 'subtle' | 'solid' | 'outline' | 'plain'

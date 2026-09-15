@@ -1,3 +1,4 @@
+import { parseDate } from '@chakra-ui/react'
 import { screen } from '@testing-library/react'
 import userEvent from '@testing-library/user-event'
 
@@ -10,7 +11,12 @@ describe('Calendar', () => {
     const handleValueChange = vi.fn()
 
     renderWithProvider(
-      <Calendar.Root inline width="fit-content" onValueChange={handleValueChange}>
+      <Calendar.Root
+        inline
+        defaultFocusedValue={parseDate('2026-09-15')}
+        width="fit-content"
+        onValueChange={handleValueChange}
+      >
         <Calendar.Content unstyled>
           <Calendar.View view="day">
             <Calendar.Header />
@@ -28,13 +34,14 @@ describe('Calendar', () => {
       </Calendar.Root>
     )
 
-    const dayButton = screen
-      .getAllByRole('button')
-      .find((button) => /^\d+$/.test(button.textContent?.trim() ?? ''))
+    const dayButton = screen.getByRole('button', { name: /September 16, 2026/i })
 
-    expect(dayButton).toBeDefined()
-    await user.click(dayButton!)
+    await user.click(dayButton)
 
-    expect(handleValueChange).toHaveBeenCalled()
+    expect(handleValueChange).toHaveBeenCalledWith(
+      expect.objectContaining({
+        value: [expect.objectContaining({ year: 2026, month: 9, day: 16 })],
+      })
+    )
   })
 })

@@ -121,16 +121,7 @@ type CodeBlockStoryArgs = {
   as?: ElementType
   asChild?: boolean
   colorPalette?:
-    | 'gray'
-    | 'red'
-    | 'orange'
-    | 'yellow'
-    | 'green'
-    | 'teal'
-    | 'blue'
-    | 'cyan'
-    | 'purple'
-    | 'pink'
+    'gray' | 'red' | 'orange' | 'yellow' | 'green' | 'teal' | 'blue' | 'cyan' | 'purple' | 'pink'
   size?: 'xs' | 'sm' | 'md' | 'lg'
   variant?: 'solid' | 'subtle' | 'outline' | 'surface' | 'plain'
 }

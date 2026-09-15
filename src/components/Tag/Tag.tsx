@@ -5,15 +5,7 @@ import { pxToRem } from '@/utils'
 import { Text } from '@/components'
 
 export type TagVariant =
-  | 'gray'
-  | 'green'
-  | 'teal'
-  | 'blue'
-  | 'purple'
-  | 'magenta'
-  | 'red'
-  | 'orange'
-  | 'yellow'
+  'gray' | 'green' | 'teal' | 'blue' | 'purple' | 'magenta' | 'red' | 'orange' | 'yellow'
 
 export type TagVariantStyles = Record<string, SystemStyleObject>
 

@@ -11,16 +11,7 @@ import { Spinner } from './Spinner'
 type SpinnerStoryArgs = {
   as?: (typeof htmlElementOptions)[number]
   colorPalette?:
-    | 'gray'
-    | 'red'
-    | 'orange'
-    | 'yellow'
-    | 'green'
-    | 'teal'
-    | 'blue'
-    | 'cyan'
-    | 'purple'
-    | 'pink'
+    'gray' | 'red' | 'orange' | 'yellow' | 'green' | 'teal' | 'blue' | 'cyan' | 'purple' | 'pink'
   size?: 'inherit' | 'xs' | 'sm' | 'md' | 'lg' | 'xl'
 }
 

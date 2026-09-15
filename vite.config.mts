@@ -6,11 +6,9 @@ import { ViteMcp } from 'vite-plugin-mcp'
 
 // https://vitejs.dev/config/
 import path from 'node:path'
-import { fileURLToPath } from 'node:url'
 import { storybookTest } from '@storybook/addon-vitest/vitest-plugin'
 import { playwright } from '@vitest/browser-playwright'
-const dirname =
-  typeof __dirname !== 'undefined' ? __dirname : path.dirname(fileURLToPath(import.meta.url))
+const dirname = import.meta.dirname
 
 const libraryEntries = {
   index: path.resolve(dirname, 'src/lib.ts'),
@@ -105,6 +103,10 @@ export default defineConfig({
         test: {
           name: 'unit',
           environment: 'jsdom',
+          environmentOptions: {
+            // Route jsdom diagnostics through the test console and setup filters.
+            jsdom: { console: true },
+          },
           include: ['src/**/*.test.{ts,tsx}'],
           exclude: ['src/**/*.stories.{ts,tsx}'],
         },
@@ -130,7 +132,6 @@ export default defineConfig({
               },
             ],
           },
-          setupFiles: ['.storybook/vitest.setup.ts'],
         },
       },
     ],

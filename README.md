@@ -406,3 +406,17 @@ MIT License - see [LICENSE](LICENSE). Free to use, modify, and distribute. The o
 Import [the standalone DESIGN.md](adapters/open-design/govuk-chakra/DESIGN.md) into Open Design to use this repository’s design guidance and all 30 pattern examples. The folder also provides `manifest.json` and `tokens.css` for Open Design libraries. See [import instructions](docs/open-design.md).
 
 Regenerate with `yarn design:open-design`; verify with `yarn design:open-design:check` and `yarn test:open-design`.
+
+## Checks before committing
+
+Enable the tracked Git hook once per clone:
+
+```sh
+yarn hooks:install
+```
+
+Every commit then runs `yarn precommit`: visual regression (`yarn visual:test`, including a Storybook build), lint (`yarn lint`), and unit tests (`yarn test:run`, without watch mode), in that order. Each stage prints its progress and stops the commit immediately if it fails. Run `yarn precommit` manually to check before opening the commit dialog.
+
+The check uses CI mode so it tests the freshly built Storybook and does not create missing baselines. Stop any server using port 6006 before running it. Install the browser once with `yarn playwright install chromium` if needed. The hook checks the current working tree, so stage the changes you intend to commit before running it.
+
+For intentional visual changes, review the differences, run `yarn visual:update`, inspect and stage the updated screenshots, then commit again.

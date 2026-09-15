@@ -8,16 +8,7 @@ import { ProgressCircle } from './ProgressCircle'
 type ProgressCircleStoryArgs = {
   value?: number
   colorPalette?:
-    | 'gray'
-    | 'red'
-    | 'orange'
-    | 'yellow'
-    | 'green'
-    | 'teal'
-    | 'blue'
-    | 'cyan'
-    | 'purple'
-    | 'pink'
+    'gray' | 'red' | 'orange' | 'yellow' | 'green' | 'teal' | 'blue' | 'cyan' | 'purple' | 'pink'
   size?: 'xs' | 'sm' | 'md' | 'lg' | 'xl'
 }
 
