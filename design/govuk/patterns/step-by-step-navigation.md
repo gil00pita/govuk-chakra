@@ -11,6 +11,39 @@ Prototype an end-to-end GOV.UK content journey as ordered expandable steps linki
 - [Story and implementation notes](../../../src/stories/patterns/Pages.stories.tsx)
 - [All patterns](README.md)
 
+## Reusable component
+
+Use `StepByStep` for numbered, expandable guidance with rich content and links. Each step has an individual Show/Hide control; Show all steps/Hide all steps expands or collapses the whole journey.
+
+- Storybook: **GOV.UK / Components / Step by Step**
+- [Open the component in local Storybook](http://localhost:6006/?path=/story/gov-uk-components-step-by-step--default)
+- [Component implementation](../../../src/components/StepByStep/StepByStep.tsx)
+- [Stories](../../../src/components/StepByStep/StepByStep.stories.tsx): default, first step expanded, all expanded, narrow and controlled.
+
+```tsx
+import { StepByStep } from '@/components/StepByStep'
+
+;<StepByStep
+  items={[
+    {
+      id: 'prepare',
+      title: 'Prepare your application',
+      content: <p>Check what information you need before applying.</p>,
+    },
+    {
+      id: 'apply',
+      title: 'Apply for support',
+      content: <p>Complete your application and check your answers.</p>,
+    },
+  ]}
+  defaultValue={['prepare']}
+/>
+```
+
+Give each item a unique, stable `id`, a `title` and React `content`. Steps start collapsed unless their IDs appear in `defaultValue`. For controlled state, pass `value` and update it from `onValueChange={({ value }) => setValue(value)}`; this handles both individual and bulk controls.
+
+Set `headingLevel` to fit the surrounding page hierarchy (defaults to `h2`, supports `h2`–`h6`). Override `showLabel`, `hideLabel`, `showAllLabel` and `hideAllLabel` when different control wording is needed. The component composes `Accordion.Root`, `Accordion.Actions`, `Accordion.ToggleAll`, `Accordion.Items`, `Accordion.Item`, `Accordion.Trigger` and `Accordion.Content`, preserving their typography, spacing, borders, chevrons, focus styles and disclosure behavior. An ordered list adds numbered markers in a left gutter.
+
 ## When to use
 
 - Use for a GOV.UK journey with a specific start and end, several pieces of guidance or transactions and a helpful task order.

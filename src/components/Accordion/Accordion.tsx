@@ -335,10 +335,12 @@ AccordionItem.displayName = 'AccordionItem'
 
 export interface AccordionTriggerProps extends ChakraAccordionItemTriggerProps {
   children: ReactNode
+  showLabel?: ReactNode
+  hideLabel?: ReactNode
 }
 
 const AccordionTrigger = forwardRef<HTMLButtonElement, AccordionTriggerProps>(
-  function AccordionTrigger(props, ref) {
+  function AccordionTrigger({ showLabel = 'Show', hideLabel = 'Hide', ...props }, ref) {
     return (
       <ChakraAccordionItemTrigger
         ref={ref}
@@ -499,7 +501,7 @@ const AccordionTrigger = forwardRef<HTMLButtonElement, AccordionTriggerProps>(
                 },
               }}
             >
-              Show
+              {showLabel}
             </Text>
             <Text
               className="chevron-text"
@@ -517,7 +519,7 @@ const AccordionTrigger = forwardRef<HTMLButtonElement, AccordionTriggerProps>(
                 },
               }}
             >
-              Hide
+              {hideLabel}
             </Text>
           </Box>
         </VStack>

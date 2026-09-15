@@ -1,5 +1,16 @@
 import { useState } from 'react'
-import { Box, Button, Details, Heading, Link, Panel, Stack, Table, Text } from '@/govuk-chakra'
+import {
+  Box,
+  Button,
+  Details,
+  Heading,
+  Link,
+  Panel,
+  Stack,
+  StepByStep,
+  Table,
+  Text,
+} from '@/govuk-chakra'
 import { Choice, ContactLink, FieldsForm, Notice, PatternPage, storyHref } from './shared'
 
 export function ConfirmationExample() {
@@ -329,23 +340,20 @@ export function StepByStepExample() {
       <Text>
         Check whether you can get support, prepare the information you need and make an application.
       </Text>
-      <Box as="ol" pl={6}>
-        {steps.map((step) => (
-          <Box as="li" key={step.slug} pl={2}>
-            <Details.Root>
-              <Details.Summary>{step.title}</Details.Summary>
-              <Details.Content>
-                <Stack gap={3}>
-                  <Text>{step.text}</Text>
-                  <Link href={storyHref('help-users-to', step.slug)} target="_top">
-                    {step.link}
-                  </Link>
-                </Stack>
-              </Details.Content>
-            </Details.Root>
-          </Box>
-        ))}
-      </Box>
+      <StepByStep
+        items={steps.map((step) => ({
+          id: step.slug,
+          title: step.title,
+          content: (
+            <Stack gap={3}>
+              <Text>{step.text}</Text>
+              <Link href={storyHref('help-users-to', step.slug)} target="_top">
+                {step.link}
+              </Link>
+            </Stack>
+          ),
+        }))}
+      />
       <Box
         as="aside"
         borderTop="2px solid"
