@@ -51,7 +51,7 @@ yarn add govuk-chakra @emotion/react @emotion/styled framer-motion react react-d
 
 ### Optional peer dependencies
 
-Chart, code block, and rich text editor components are **not included in the main entry point**. They live in separate entry points so your app only pays the cost of the deps it actually uses.
+Chart and rich text editor components are **not included in the main entry point**. They live in separate entry points so your app only pays the cost of the deps it actually uses. `CodeBlock` is available from both `govuk-chakra` and `govuk-chakra/editor` and requires `shiki`.
 
 | Entry point           | Install                                                                                                    | Components                                                                                                                                  |
 | --------------------- | ---------------------------------------------------------------------------------------------------------- | ------------------------------------------------------------------------------------------------------------------------------------------- |
@@ -197,7 +197,7 @@ export function ExamplePage() {
 
 - `govuk-chakra`
   Single combined barrel with Chakra UI exports plus local GOV.UK-styled overrides.
-  Does **not** include charts, `CodeBlock`, or `RichTextEditor` — use the dedicated entry points for those.
+  Includes the GOV.UK-styled `CodeBlock` compound component. Its `CodeBlock.CopyButton` helper takes precedence over Chakra's base `CodeBlock` export. Does **not** include charts or `RichTextEditor` — use the dedicated entry points for those.
 
 - `govuk-chakra/charts`
   All chart components. Requires `@chakra-ui/charts` and `recharts` to be installed.
@@ -229,6 +229,30 @@ import { BarChart, LineChart } from 'govuk-chakra/charts'
 
 // Code block + rich text — requires shiki and @tiptap/*
 import { CodeBlock, RichTextEditor } from 'govuk-chakra/editor'
+```
+
+`CodeBlock` can also be imported from the main entry point:
+
+```tsx
+import { CodeBlock } from 'govuk-chakra'
+
+export function ExampleCodeBlock({ source }: { source: string }) {
+  return (
+    <CodeBlock.Root code={source} language="typescript">
+      <CodeBlock.Header>
+        <CodeBlock.Title>example.ts</CodeBlock.Title>
+        <CodeBlock.Control>
+          <CodeBlock.CopyButton />
+        </CodeBlock.Control>
+      </CodeBlock.Header>
+      <CodeBlock.Content>
+        <CodeBlock.Code>
+          <CodeBlock.CodeText />
+        </CodeBlock.Code>
+      </CodeBlock.Content>
+    </CodeBlock.Root>
+  )
+}
 ```
 
 ## Theme

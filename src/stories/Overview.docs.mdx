@@ -137,7 +137,8 @@ import { CodeBlock, Heading, Link, Text } from '@/components'
             Optional peer dependencies
           </Heading>
           <Text mb={3}>
-            Charts, CodeBlock, and RichTextEditor live in separate entry points. Install only what you use.
+            Charts and RichTextEditor live in separate entry points. CodeBlock is also available from
+            the main entry point and requires shiki.
           </Text>
           <CodeBlock.Root
             code={`# Charts
@@ -174,8 +175,11 @@ import { pxToRem } from 'govuk-chakra/utils'
 // Charts — requires @chakra-ui/charts recharts
 import { BarChart, LineChart } from 'govuk-chakra/charts'
 
-// Code block + rich text — requires shiki and @tiptap/\*
-import { CodeBlock, RichTextEditor } from 'govuk-chakra/editor'`}
+// Code block — requires shiki
+import { CodeBlock } from 'govuk-chakra'
+
+// Rich text — requires @tiptap/\*
+import { RichTextEditor } from 'govuk-chakra/editor'`}
 language="tsx"
 minWidth="0"
 maxW="100%"
@@ -337,7 +341,7 @@ export function ExamplePage() {
               <Heading size={27}>Entry points</Heading>
               <Box>
                 <Text fontWeight="bold">govuk-chakra</Text>
-                <Text>Combined barrel with Chakra exports plus local GOV.UK-styled overrides. Does not include charts, CodeBlock, or RichTextEditor.</Text>
+                <Text>Combined barrel with Chakra exports plus local GOV.UK-styled overrides, including CodeBlock and CodeBlock.CopyButton. Does not include charts or RichTextEditor.</Text>
               </Box>
               <Box>
                 <Text fontWeight="bold">govuk-chakra/charts</Text>

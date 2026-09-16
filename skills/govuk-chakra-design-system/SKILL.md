@@ -27,7 +27,8 @@ Use this skill to choose and compose `govuk-chakra` components for React screens
 
 - Default import surface: import implemented GOV.UK wrappers, most Chakra GOV skin wrappers, and Chakra primitives from `govuk-chakra`.
 - Charts: import chart wrappers from `govuk-chakra/charts`.
-- Editor/code helpers: import `CodeBlock` and `RichTextEditor` from `govuk-chakra/editor`.
+- Code blocks: import `CodeBlock` from `govuk-chakra`; `govuk-chakra/editor` remains supported.
+- Rich text editing: import `RichTextEditor` from `govuk-chakra/editor`.
 - Theme config: import `govUKTheme` from `govuk-chakra/theme`.
 - Raw Chakra: use `govuk-chakra/chakra` only when you deliberately need unwrapped Chakra behavior.
 

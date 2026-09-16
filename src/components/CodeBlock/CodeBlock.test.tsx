@@ -1,6 +1,6 @@
 import { screen, waitFor } from '@testing-library/react'
 
-import { CodeBlock } from './CodeBlock'
+import { CodeBlock } from '@/govuk-chakra'
 import { renderWithProvider } from '@/test/renderWithProvider'
 import userEvent from '@testing-library/user-event'
 
