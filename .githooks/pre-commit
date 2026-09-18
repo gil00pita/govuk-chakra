@@ -6,4 +6,4 @@ printf '%s\n' 'Running visual regression, lint and unit tests before commit…'
 # Enable terminal colours for Yarn and its checks.
 unset NO_COLOR
 export FORCE_COLOR=1
-exec yarn precommit
+exec corepack yarn precommit

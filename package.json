@@ -1,11 +1,11 @@
 {
   "name": "govuk-chakra",
-  "version": "0.1.6",
+  "version": "0.1.8",
   "description": "A GOV.UK-flavoured component skin for Chakra UI with React.",
   "license": "MIT",
   "repository": {
     "type": "git",
-    "url": "git+ssh://git@github.com:gil00pita/govuk-chakra.git"
+    "url": "git+https://github.com/gil00pita/govuk-chakra.git"
   },
   "bugs": {
     "url": "https://github.com/gil00pita/govuk-chakra/issues"
@@ -73,7 +73,8 @@
   ],
   "dependencies": {
     "@chakra-ui/charts": "^3.37.0",
-    "@chakra-ui/react": "^3.37.0"
+    "@chakra-ui/react": "^3.37.0",
+    "react-icons": "^5.7.0"
   },
   "peerDependencies": {
     "@emotion/react": "^11.14.0",
@@ -95,6 +96,7 @@
     "clean:dist": "node -e \"require('node:fs').rmSync('dist', { recursive: true, force: true })\"",
     "build": "yarn clean:dist && vite build && yarn build:types",
     "build:types": "tsc -p tsconfig.build.json && node scripts/prepare-package.mjs",
+    "package:size:check": "node scripts/check-package-size.mjs",
     "build:storybook": "storybook build",
     "prepublishOnly": "yarn build",
     "test": "vitest --project unit",
@@ -117,12 +119,6 @@
     "skill:catalog": "node scripts/generate-skill-catalog.mjs",
     "skill:catalog:check": "node scripts/generate-skill-catalog.mjs --check",
     "skill:install": "node scripts/install-skill.mjs",
-    "release:patch": "npm version patch && git push --follow-tags && npm publish",
-    "release:minor": "npm version minor && git push --follow-tags && npm publish",
-    "release:major": "npm version major && git push --follow-tags && npm publish",
-    "push": "npm run release:patch",
-    "push-minor": "npm run release:minor",
-    "push-major": "npm run release:major",
     "design:open-design": "node scripts/export-open-design.mjs",
     "design:open-design:check": "node scripts/export-open-design.mjs --check",
     "test:open-design": "node --test scripts/export-open-design.test.mjs",
@@ -175,7 +171,7 @@
     "@vitejs/plugin-react": "^6.1.1",
     "@vitest/browser-playwright": "^5.0.1",
     "@vitest/coverage-v8": "^5.0.1",
-    "chromatic": "^18.9.1",
+    "chromatic": "^18.9.4",
     "chrome-devtools-mcp": "^1.9.0",
     "eslint": "^9.39.0",
     "eslint-config-prettier": "^10.1.8",
@@ -194,7 +190,6 @@
     "react": "^19.3.0",
     "react-doctor": "^0.9.14",
     "react-dom": "^19.3.0",
-    "react-icons": "^5.7.0",
     "react-is": "^19.3.0",
     "react-scripts": "5.0.1",
     "recharts": "^3.10.1",
@@ -207,5 +202,7 @@
     "vitest": "^5.0.1",
     "web-vitals": "^6.2.2",
     "webpack": "^5.111.0"
-  }
+  },
+  "packageManager": "yarn@4.18.0",
+  "allowScripts": {}
 }
