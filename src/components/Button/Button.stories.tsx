@@ -16,6 +16,7 @@ const meta: Meta<typeof Button> = {
         component:
           'Use the button component to help users carry out an action like starting an application or saving their information.\n\n' +
           'The button component has five variants: `primary`, `secondary`, `error`, `inverse`, and `link`. Use `primary` for the main action on a page. Use `secondary` for less important actions, `error` for destructive actions, `inverse` on dark backgrounds, and `link` when the action should appear visually closer to a text link.\n\n' +
+          'Pass an `href` when the control navigates somewhere. This renders a real link with the selected button styles. The `link` variant only changes the visual treatment; it does not change button semantics by itself.\n\n' +
           'Choose the variant based on the importance and context of the action so the interface stays clear and consistent. For GOV.UK guidance, see the GOV.UK Design System button documentation: https://design-system.service.gov.uk/components/button/.',
       },
     },
@@ -63,11 +64,23 @@ Start buttons do not usually submit form data, so use a link tag instead of a bu
   },
   render: () => (
     <Stack gap={4}>
-      <Button variant="primary" startButton>
+      <Button href="/start" variant="primary" startButton>
         Start
       </Button>
     </Stack>
   ),
+}
+
+export const LinkWithButtonStyles: Story = {
+  parameters: {
+    docs: {
+      description: {
+        story:
+          'Use `href` when selecting the control should navigate to another page. The component renders an anchor, supports normal browser link behaviour, and keeps the selected button styling.',
+      },
+    },
+  },
+  render: () => <Button href="/next-step">Continue to the next step</Button>,
 }
 
 export const DarkBackground: Story = {

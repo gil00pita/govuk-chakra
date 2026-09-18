@@ -26,6 +26,24 @@ describe('Button', () => {
     expect(container.querySelector('.govuk-button__start-icon')).toBeInTheDocument()
   })
 
+  it('renders a real link with button styling when href is provided', () => {
+    const { container } = renderWithProvider(
+      <Button href="/start" target="_blank" rel="noreferrer" startButton>
+        Start now
+      </Button>
+    )
+
+    const link = screen.getByRole('link', { name: /start now/i })
+
+    expect(link).toHaveAttribute('href', '/start')
+    expect(link).toHaveAttribute('target', '_blank')
+    expect(link).toHaveAttribute('rel', 'noreferrer')
+    expect(link.tagName).toBe('A')
+    expect(link).toHaveClass('chakra-button')
+    expect(screen.queryByRole('button', { name: /start now/i })).not.toBeInTheDocument()
+    expect(container.querySelector('.govuk-button__start-icon')).toBeInTheDocument()
+  })
+
   it('respects the disabled state', async () => {
     const user = userEvent.setup()
     const onClick = vi.fn()

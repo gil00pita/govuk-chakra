@@ -1,6 +1,6 @@
 {
   "name": "govuk-chakra",
-  "version": "0.1.5",
+  "version": "0.1.6",
   "description": "A GOV.UK-flavoured component skin for Chakra UI with React.",
   "license": "MIT",
   "repository": {
@@ -82,7 +82,7 @@
     "@tiptap/pm": "^3.31.3",
     "@tiptap/react": "^3.31.3",
     "@tiptap/starter-kit": "^3.31.3",
-    "framer-motion": "^13.3.0",
+    "framer-motion": "^13.4.0",
     "react": "^19.3.0",
     "react-dom": "^19.3.0",
     "react-is": "^19.3.0",
