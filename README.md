@@ -12,6 +12,7 @@ The supported Chakra version range is declared in [`package.json`](./package.jso
 ## Links
 
 - [**Live Demo**](https://gov-uk-gds-react-chakra.vercel.app 'Live demo')
+- [**Sandbox Demo**](https://github.com/gil00pita/govuk-chakra-demo 'Repo Demo Example')
 - [**Sandbox Demo**](https://codesandbox.io/p/devbox/ancient-sunset-cs6k5h 'Sandbox demo')
 
 - [**The npm page**](https://www.npmjs.com/package/govuk-chakra)
@@ -439,8 +440,8 @@ Enable the tracked Git hook once per clone:
 yarn hooks:install
 ```
 
-Every commit then runs `yarn precommit`: visual regression (`yarn visual:test`, including a Storybook build), lint (`yarn lint`), and unit tests (`yarn test:run`, without watch mode), in that order. Each stage prints its progress and stops the commit immediately if it fails. Run `yarn precommit` manually to check before opening the commit dialog.
+Every commit then runs `yarn precommit`: lint (`yarn lint`) and unit tests (`yarn test:run`, without watch mode). It first runs visual regression (`yarn visual:test`, including a Storybook build) only when the staged changes include an implementation `.tsx` file under `src/components/` or an implementation `.ts` file under `src/theme/`. Story, test, spec, and `index.ts` files do not trigger visual regression. Each stage prints its progress and stops the commit immediately if it fails. Run `yarn precommit` manually to check before opening the commit dialog.
 
-The check uses CI mode so it tests the freshly built Storybook and does not create missing baselines. Stop any server using port 6006 before running it. Install the browser once with `yarn playwright install chromium` if needed. The hook checks the current working tree, so stage the changes you intend to commit before running it.
+The check uses CI mode so it tests the freshly built Storybook and does not create missing baselines. Stop any server using port 6006 before running it. Install the browser once with `yarn playwright install chromium` if needed. The visual-regression trigger uses the staged index, while the checks themselves test the current working tree, so stage the changes you intend to commit before running it.
 
 For intentional visual changes, review the differences, run `yarn visual:update`, inspect and stage the updated screenshots, then commit again.
