@@ -41,6 +41,7 @@ const externalPackages = [
   '@tiptap/pm/transform',
   '@tiptap/react',
   '@tiptap/starter-kit',
+  'react-icons',
 ]
 
 // More info at: https://storybook.js.org/docs/next/writing-tests/integrations/vitest-addon
@@ -77,6 +78,7 @@ export default defineConfig({
         /^@chakra-ui\//.test(id) ||
         /^@tiptap\//.test(id) ||
         /^recharts(\/|$)/.test(id) ||
+        /^react-icons(\/|$)/.test(id) ||
         /^shiki(\/|$)/.test(id) ||
         /^framer-motion(\/|$)/.test(id),
       output: [

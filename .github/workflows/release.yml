@@ -1,0 +1,162 @@
+name: CI and Release
+
+on:
+  pull_request:
+  push:
+
+permissions:
+  contents: read
+
+jobs:
+  quality:
+    name: Quality checks
+    runs-on: ubuntu-latest
+    timeout-minutes: 20
+
+    steps:
+      - name: Check out repository
+        uses: actions/checkout@d23441a48e516b6c34aea4fa41551a30e30af803 # v6
+
+      - name: Set up Node.js
+        uses: actions/setup-node@249970729cb0ef3589644e2896645e5dc5ba9c38 # v6
+        with:
+          node-version: 24
+          package-manager-cache: false
+
+      - name: Enable Corepack
+        run: corepack enable
+
+      - name: Install dependencies
+        run: yarn install --immutable
+
+      - name: Check formatting
+        run: yarn prettier --check "src/**/*.{ts,tsx}" "scripts/**/*.{mjs,ts}" ".github/**/*.{yml,yaml}" "*.{json,md,mts}"
+
+      - name: Lint
+        run: yarn lint
+
+      - name: Run unit tests
+        run: yarn test:run
+
+      - name: Check generated skill catalogue
+        run: yarn skill:catalog:check
+
+      - name: Check Open Design export
+        run: yarn design:open-design:check
+
+      - name: Test Open Design export
+        run: yarn test:open-design
+
+      - name: Build package
+        run: yarn build
+
+      - name: Check published package size
+        run: yarn package:size:check
+
+  release:
+    name: Prepare GitHub release
+    if: github.event_name == 'push' && github.ref == 'refs/heads/main'
+    needs: quality
+    runs-on: ubuntu-latest
+    permissions:
+      contents: write
+      issues: write
+      pull-requests: write
+    outputs:
+      release_created: ${{ steps.release.outputs.release_created }}
+      release_sha: ${{ steps.release.outputs.sha }}
+      release_version: ${{ steps.release.outputs.version }}
+
+    steps:
+      - name: Create or update the release pull request
+        id: release
+        uses: googleapis/release-please-action@8b8fd2cc23b2e18957157a9d923d75aa0c6f6ad5 # v4
+        with:
+          config-file: release-please-config.json
+          manifest-file: .release-please-manifest.json
+          token: ${{ secrets.RELEASE_PLEASE_TOKEN || github.token }}
+
+  publish-stable:
+    name: Publish stable package
+    if: needs.release.outputs.release_created == 'true'
+    needs: release
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+    environment: npm
+    permissions:
+      contents: read
+      id-token: write
+
+    steps:
+      - name: Check out released commit
+        uses: actions/checkout@d23441a48e516b6c34aea4fa41551a30e30af803 # v6
+        with:
+          ref: ${{ needs.release.outputs.release_sha }}
+
+      - name: Set up Node.js and npm
+        uses: actions/setup-node@249970729cb0ef3589644e2896645e5dc5ba9c38 # v6
+        with:
+          node-version: 24
+          registry-url: https://registry.npmjs.org
+          package-manager-cache: false
+
+      - name: Enable Corepack
+        run: corepack enable
+
+      - name: Install dependencies
+        run: yarn install --immutable
+
+      - name: Verify release version
+        env:
+          RELEASE_VERSION: ${{ needs.release.outputs.release_version }}
+        run: test "$(node -p "require('./package.json').version")" = "$RELEASE_VERSION"
+
+      - name: Publish to npm
+        run: npm publish --access public --tag latest --provenance
+
+  publish-canary:
+    name: Publish canary package
+    if: needs.release.outputs.release_created != 'true' && vars.PUBLISH_CANARY != 'false'
+    needs: release
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+    environment: npm
+    permissions:
+      contents: read
+      id-token: write
+
+    steps:
+      - name: Check out commit
+        uses: actions/checkout@d23441a48e516b6c34aea4fa41551a30e30af803 # v6
+
+      - name: Set up Node.js and npm
+        uses: actions/setup-node@249970729cb0ef3589644e2896645e5dc5ba9c38 # v6
+        with:
+          node-version: 24
+          registry-url: https://registry.npmjs.org
+          package-manager-cache: false
+
+      - name: Enable Corepack
+        run: corepack enable
+
+      - name: Install dependencies
+        run: yarn install --immutable
+
+      - name: Create a unique canary version
+        id: canary
+        shell: bash
+        run: |
+          set -euo pipefail
+          base_version="$(node -p "require('./package.json').version")"
+          short_sha="${GITHUB_SHA:0:7}"
+          canary_version="${base_version}-canary.$(date -u +%Y%m%d%H%M%S).${GITHUB_RUN_ATTEMPT}.${short_sha}"
+          npm version "$canary_version" --no-git-tag-version
+          echo "version=$canary_version" >> "$GITHUB_OUTPUT"
+
+      - name: Publish to npm under the canary tag
+        run: npm publish --access public --tag canary --provenance
+
+      - name: Add package version to the job summary
+        env:
+          CANARY_VERSION: ${{ steps.canary.outputs.version }}
+        run: echo "Published \`govuk-chakra@$CANARY_VERSION\`" >> "$GITHUB_STEP_SUMMARY"

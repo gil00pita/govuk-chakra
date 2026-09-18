@@ -1,0 +1,41 @@
+version: 2
+
+updates:
+  - package-ecosystem: npm
+    directory: /
+    target-branch: main
+    schedule:
+      interval: weekly
+      day: monday
+      time: '09:00'
+      timezone: Europe/London
+    versioning-strategy: increase
+    open-pull-requests-limit: 2
+    allow:
+      - dependency-name: '@chakra-ui/*'
+        update-types:
+          - version-update:semver-patch
+          - version-update:semver-minor
+    groups:
+      chakra-ui:
+        patterns:
+          - '@chakra-ui/*'
+        update-types:
+          - patch
+          - minor
+    commit-message:
+      prefix: 'feat(chakra)'
+
+  - package-ecosystem: github-actions
+    directory: /
+    schedule:
+      interval: weekly
+      day: monday
+      time: '09:30'
+      timezone: Europe/London
+    groups:
+      github-actions:
+        patterns:
+          - '*'
+    commit-message:
+      prefix: 'chore(ci)'
