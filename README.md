@@ -440,7 +440,7 @@ Enable the tracked Git hook once per clone:
 yarn hooks:install
 ```
 
-Every commit then runs `yarn precommit`: lint (`yarn lint`) and unit tests (`yarn test:run`, without watch mode). When the staged changes include a file under `src/components/`, it first runs visual regression (`yarn visual:test`, including a Storybook build). Each stage prints its progress and stops the commit immediately if it fails. Run `yarn precommit` manually to check before opening the commit dialog.
+Every commit then runs `yarn precommit`: lint (`yarn lint`) and unit tests (`yarn test:run`, without watch mode). It first runs visual regression (`yarn visual:test`, including a Storybook build) only when the staged changes include an implementation `.tsx` file under `src/components/` or an implementation `.ts` file under `src/theme/`. Story, test, spec, and `index.ts` files do not trigger visual regression. Each stage prints its progress and stops the commit immediately if it fails. Run `yarn precommit` manually to check before opening the commit dialog.
 
 The check uses CI mode so it tests the freshly built Storybook and does not create missing baselines. Stop any server using port 6006 before running it. Install the browser once with `yarn playwright install chromium` if needed. The visual-regression trigger uses the staged index, while the checks themselves test the current working tree, so stage the changes you intend to commit before running it.
 

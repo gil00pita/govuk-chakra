@@ -1,22 +1,35 @@
 import { spawnSync } from 'node:child_process'
 
-const componentDiff = spawnSync('git', ['diff', '--cached', '--quiet', '--', 'src'], {
-  stdio: 'ignore',
+const stagedDiff = spawnSync('git', ['diff', '--cached', '--name-only', '-z'], {
+  encoding: 'utf8',
 })
 
-if (componentDiff.error) {
-  console.error(`Unable to inspect staged changes: ${componentDiff.error.message}`)
+if (stagedDiff.error) {
+  console.error(`Unable to inspect staged changes: ${stagedDiff.error.message}`)
   process.exit(1)
 }
 
-if (componentDiff.status !== 0 && componentDiff.status !== 1) {
-  console.error('Unable to inspect staged component changes.')
-  process.exit(componentDiff.status ?? 1)
+if (stagedDiff.status !== 0) {
+  console.error('Unable to inspect staged changes.')
+  process.exit(stagedDiff.status ?? 1)
 }
 
-const hasStagedComponentChanges = componentDiff.status === 1
+const hasStagedVisualChanges = stagedDiff.stdout
+  .split('\0')
+  .filter(Boolean)
+  .some((file) => {
+    const isSupportingFile = /\.(stories|test|spec)\.(ts|tsx)$/.test(file)
+    const isIndexFile = file.endsWith('/index.ts')
+
+    if (isSupportingFile || isIndexFile) return false
+
+    return (
+      (file.startsWith('src/components/') && file.endsWith('.tsx')) ||
+      (file.startsWith('src/theme/') && file.endsWith('.ts'))
+    )
+  })
 const checks = [
-  ...(hasStagedComponentChanges ? [{ script: 'visual:test', label: 'Visual regression' }] : []),
+  ...(hasStagedVisualChanges ? [{ script: 'visual:test', label: 'Visual regression' }] : []),
   { script: 'lint', label: 'Lint' },
   { script: 'test:run', label: 'Unit tests' },
 ]
@@ -24,8 +37,10 @@ const checks = [
 const env = { ...process.env, CI: '1', FORCE_COLOR: '1' }
 delete env.NO_COLOR
 
-if (!hasStagedComponentChanges) {
-  console.log('\nVisual regression skipped: no staged changes under src/.')
+if (!hasStagedVisualChanges) {
+  console.log(
+    '\nVisual regression skipped: no staged component .tsx or theme .ts implementation files.'
+  )
 }
 
 for (const [index, { script, label }] of checks.entries()) {
