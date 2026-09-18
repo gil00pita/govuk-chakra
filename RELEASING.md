@@ -32,8 +32,9 @@ the stable package under npm's `latest` dist-tag.
    contents and pull requests, save it as `RELEASE_PLEASE_TOKEN`, and use a bot or
    maintainer account. Without it, Release Please uses `GITHUB_TOKEN`; GitHub does
    not run other workflows for pull requests created by that token.
-5. Protect `main` and require the `Quality checks` and `Visual regression` status
-   checks before merging. Enable squash merging and repository auto-merge.
+5. Protect `main` and require the `Quality checks` status check before merging.
+   Enable squash merging and repository auto-merge. Visual regression runs in
+   the local pre-commit hook rather than GitHub Actions.
 6. After branch protection is active, create the repository variable
    `DEPENDABOT_AUTOMERGE` with the value `true`. Safe Chakra patch and minor pull
    requests will then enable auto-merge and wait for all required checks.
