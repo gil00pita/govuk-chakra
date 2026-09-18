@@ -4,7 +4,13 @@ import {
   Skeleton,
   type SystemStyleObject,
 } from '@chakra-ui/react'
-import { forwardRef, type ComponentPropsWithoutRef, type ElementRef, type ReactNode } from 'react'
+import {
+  forwardRef,
+  type ComponentPropsWithoutRef,
+  type ElementRef,
+  type ReactNode,
+  useId,
+} from 'react'
 import { LuCheck } from 'react-icons/lu'
 
 import { pxToRem, shikiAdapter } from '@/utils'
@@ -24,9 +30,7 @@ export type CodeBlockCopyIndicatorProps = ComponentPropsWithoutRef<
   typeof ChakraCodeBlock.CopyIndicator
 >
 export type CodeBlockOverlayProps = ComponentPropsWithoutRef<typeof ChakraCodeBlock.Overlay>
-export type CodeBlockCollapseTriggerProps = ComponentPropsWithoutRef<
-  typeof ChakraCodeBlock.CollapseTrigger
->
+export type CodeBlockCollapseTriggerProps = Omit<ButtonProps, 'as' | 'asChild' | 'href'>
 export interface CodeBlockCollapseIndicatorProps extends Omit<
   ComponentPropsWithoutRef<typeof ChakraCodeBlock.CollapseIndicator>,
   'collapsed'
@@ -203,12 +207,34 @@ const CodeBlockOverlay = forwardRef<
   return <ChakraCodeBlock.Overlay ref={ref} {...props} />
 })
 
-const CodeBlockCollapseTrigger = forwardRef<
-  ElementRef<typeof ChakraCodeBlock.CollapseTrigger>,
-  CodeBlockCollapseTriggerProps
->(function CodeBlockCollapseTrigger(props, ref) {
-  return <ChakraCodeBlock.CollapseTrigger ref={ref} {...props} />
-})
+const CodeBlockCollapseTrigger = forwardRef<HTMLButtonElement, CodeBlockCollapseTriggerProps>(
+  function CodeBlockCollapseTrigger(
+    {
+      children,
+      size = 'xs',
+      variant = 'secondary',
+      'aria-label': ariaLabel,
+      'aria-labelledby': ariaLabelledBy,
+      ...props
+    },
+    ref
+  ) {
+    const generatedLabelId = useId()
+    const indicatorLabelId = ariaLabel || ariaLabelledBy ? undefined : generatedLabelId
+
+    return (
+      <ChakraCodeBlock.CollapseTrigger
+        asChild
+        aria-label={ariaLabel}
+        aria-labelledby={ariaLabelledBy ?? indicatorLabelId}
+      >
+        <Button ref={ref} size={size} variant={variant} {...props}>
+          {indicatorLabelId ? <span id={indicatorLabelId}>{children}</span> : children}
+        </Button>
+      </ChakraCodeBlock.CollapseTrigger>
+    )
+  }
+)
 
 const CodeBlockCollapseIndicator = forwardRef<
   ElementRef<typeof ChakraCodeBlock.CollapseIndicator>,
@@ -218,28 +244,16 @@ const CodeBlockCollapseIndicator = forwardRef<
   ref
 ) {
   const expandedContent = expandedLabel ?? children
-  const collapsedComponent = () => {
-    return (
-      <Button variant="secondary" size="xs">
-        {collapsedLabel}
-      </Button>
-    )
-  }
   return (
     <ChakraCodeBlock.CollapseIndicator
-      asChild
       ref={ref}
-      cursor="pointer"
-      collapsed={collapsedComponent()}
+      collapsed={collapsedLabel}
       display="inline-flex"
       alignItems="center"
       justifyContent="center"
-      minH="auto"
       {...props}
     >
-      <Button variant="secondary" size="xs">
-        {expandedContent}
-      </Button>
+      {expandedContent}
     </ChakraCodeBlock.CollapseIndicator>
   )
 })

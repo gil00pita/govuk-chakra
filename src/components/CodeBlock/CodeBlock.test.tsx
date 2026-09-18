@@ -63,6 +63,8 @@ describe('CodeBlock', () => {
   })
 
   it('renders the collapse indicator when max lines are set', async () => {
+    const user = userEvent.setup()
+
     renderWithProvider(
       <CodeBlock.Root code={exampleCode} language="typescript" maxW="640px" maxLines={1}>
         <CodeBlock.Header>
@@ -86,6 +88,13 @@ describe('CodeBlock', () => {
       </CodeBlock.Root>
     )
 
-    expect(await screen.findByRole('button', { name: /show more/i })).toBeVisible()
+    const collapseButton = await screen.findByRole('button', { name: /show more/i })
+
+    expect(collapseButton).toBeVisible()
+    expect(collapseButton.querySelector('button')).toBeNull()
+
+    await user.click(collapseButton)
+
+    expect(collapseButton).toHaveAccessibleName(/show less/i)
   })
 })
