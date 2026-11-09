@@ -72,8 +72,8 @@
     "component-library"
   ],
   "dependencies": {
-    "@chakra-ui/charts": "^3.37.0",
-    "@chakra-ui/react": "^3.37.0",
+    "@chakra-ui/charts": "^3.38.0",
+    "@chakra-ui/react": "^3.38.0",
     "react-icons": "^5.7.0"
   },
   "peerDependencies": {
@@ -138,7 +138,7 @@
     ]
   },
   "devDependencies": {
-    "@chakra-ui/charts": "^3.37.0",
+    "@chakra-ui/charts": "^3.38.0",
     "@chakra-ui/react-mcp": "^2.1.1",
     "@emotion/react": "^11.14.0",
     "@emotion/styled": "^11.14.1",
