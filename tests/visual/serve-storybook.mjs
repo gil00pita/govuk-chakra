@@ -2,7 +2,7 @@ import { createReadStream, existsSync, statSync } from 'node:fs'
 import { join, normalize, resolve } from 'node:path'
 import { createServer } from 'node:http'
 
-const port = 6006
+const port = 6007
 const root = resolve(process.cwd(), 'storybook-static')
 
 if (!existsSync(root)) {
