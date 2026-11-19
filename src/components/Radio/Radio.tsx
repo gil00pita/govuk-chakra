@@ -120,19 +120,6 @@ const RadioItem = forwardRef<HTMLDivElement, RadioItemProps>(function RadioItem(
       cursor="pointer"
       color="fg"
       data-govuk-radio-item=""
-      _hover={{
-        '& [data-govuk-radio-control]': {
-          borderColor: 'border.input',
-          boxShadow: `0 0 0 10px {colors.gray.100}`,
-        },
-      }}
-      _dark={{
-        _hover: {
-          '& [data-govuk-radio-control]': {
-            boxShadow: `0 0 0 10px {colors.gray.700}`,
-          },
-        },
-      }}
       {...props}
     >
       {children}
@@ -170,6 +157,7 @@ const RadioItemControl = forwardRef<HTMLDivElement, RadioControlProps>(
         height={controlSize}
         minWidth={controlSize}
         position="relative"
+        cursor="pointer"
         _focus={{
           outline: '3px solid transparent',
           outlineOffset: '0',
@@ -198,6 +186,7 @@ const RadioItemIndicator: RadioItemIndicatorComponent = forwardRef<
     <ChakraRadioGroup.ItemIndicator
       ref={ref}
       className="check-indicator"
+      cursor="inherit"
       bgColor="transparent"
       borderRadius="full"
       borderColor="transparent"

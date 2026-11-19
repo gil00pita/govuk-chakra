@@ -24,9 +24,10 @@ describe('Dialog', () => {
           <Button variant="outline">Open dialog</Button>
         </Dialog.Trigger>
         <Portal>
-          <Dialog.Backdrop />
+          {/* jsdom does not run CSS animations or dispatch animationend. */}
+          <Dialog.Backdrop animation="none" />
           <Dialog.Positioner>
-            <Dialog.Content>
+            <Dialog.Content animation="none">
               <Dialog.CloseTrigger asChild>
                 <CloseButton />
               </Dialog.CloseTrigger>

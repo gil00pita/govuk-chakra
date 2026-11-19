@@ -14,7 +14,7 @@ export default defineConfig({
   reporter: process.env.CI ? [['html', { open: 'never' }], ['list']] : 'list',
   snapshotPathTemplate: '{testDir}/__screenshots__/{arg}{ext}',
   use: {
-    baseURL: 'http://127.0.0.1:6006',
+    baseURL: 'http://127.0.0.1:6007',
     viewport: { width: 1280, height: 900 },
     colorScheme: 'light',
     reducedMotion: 'reduce',
@@ -32,8 +32,8 @@ export default defineConfig({
   ],
   webServer: {
     command: 'node tests/visual/serve-storybook.mjs',
-    port: 6006,
+    port: 6007,
     timeout: 120_000,
-    reuseExistingServer: !process.env.CI,
+    reuseExistingServer: false,
   },
 })

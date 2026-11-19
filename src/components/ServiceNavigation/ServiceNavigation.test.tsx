@@ -57,12 +57,18 @@ describe('ServiceNavigation', () => {
       </ServiceNavigation.Root>
     )
 
-    const toggle = screen.getByRole('button', { name: 'Menu' })
+    // jsdom does not model the mobile viewport; test the toggle's state here.
+    const toggle = screen.getByRole('button', { hidden: true })
+    expect(toggle).toHaveTextContent('Menu')
 
     expect(toggle).toHaveAttribute('aria-expanded', 'false')
 
     await user.click(toggle)
 
     expect(toggle).toHaveAttribute('aria-expanded', 'true')
+
+    await user.click(toggle)
+
+    expect(toggle).toHaveAttribute('aria-expanded', 'false')
   })
 })
