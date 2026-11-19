@@ -1,8 +1,12 @@
+import { Blob } from 'node:buffer'
 import { screen, waitFor } from '@testing-library/react'
 
 import { CodeBlock } from '@/govuk-chakra'
 import { renderWithProvider } from '@/test/renderWithProvider'
 import userEvent from '@testing-library/user-event'
+
+// Shiki's WASM loader needs Blob.stream(), which jsdom's Blob does not implement.
+vi.stubGlobal('Blob', Blob)
 
 const exampleCode = `const greeting = "Hello, World!"\nconsole.log(greeting)`
 

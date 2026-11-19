@@ -8,7 +8,7 @@ import {
 import { forwardRef, type ComponentPropsWithoutRef, useId, type ReactNode } from 'react'
 
 import { Text } from '@/components/Text'
-import { getFieldFocusStyles } from '@/utils/fieldFocusStyles'
+import { getInsetFocusStyles } from '@/utils/fieldFocusStyles'
 import { getGovukTypeScale, govukFont, pxToRem } from '@/utils'
 
 export type TextinputWidth = 'full' | '30' | '20' | '10' | '5' | '4' | '3' | '2'
@@ -119,7 +119,7 @@ const TextinputError = forwardRef<HTMLDivElement, TextinputErrorProps>(function 
 })
 
 const TextinputInput = forwardRef<HTMLInputElement, TextinputInputProps>(function TextinputInput(
-  { width = 'full', fontSize = 16, invalid, ...props },
+  { width = 'full', fontSize = 19, invalid, ...props },
   ref
 ) {
   const scale = getGovukTypeScale(fontSize)
@@ -136,15 +136,15 @@ const TextinputInput = forwardRef<HTMLInputElement, TextinputInputProps>(functio
         color="fg"
         fontSize={{ base: scale.small.fontSize, md: scale.large.fontSize }}
         lineHeight={{ base: scale.small.lineHeight, md: scale.large.lineHeight }}
-        px={pxToRem(12)}
+        px={pxToRem(5)}
         py={pxToRem(5)}
         h={pxToRem(40)}
         w={width === 'full' ? '100%' : 'auto'}
         maxW={width === 'full' ? undefined : WIDTH_MAX[width]}
         _placeholder={{ color: 'fg.muted', opacity: 1 }}
         _hover={{ borderColor: invalid ? 'fg.error' : 'border.input' }}
-        _focusVisible={getFieldFocusStyles()}
-        _focus={getFieldFocusStyles()}
+        _focusVisible={getInsetFocusStyles()}
+        _focus={getInsetFocusStyles()}
         _invalid={{ borderColor: 'fg.error' }}
         _disabled={{
           opacity: 1,
@@ -167,15 +167,15 @@ const TextinputInput = forwardRef<HTMLInputElement, TextinputInputProps>(functio
       bg="transparent"
       color="fg"
       fontSize={fontSize}
-      px={pxToRem(12)}
+      px={pxToRem(5)}
       py={pxToRem(5)}
       h={pxToRem(40)}
       w={width === 'full' ? '100%' : 'auto'}
       maxW={width === 'full' ? undefined : WIDTH_MAX[width]}
       _placeholder={{ color: 'fg.muted', opacity: 1 }}
       _hover={{ borderColor: invalid ? 'fg.error' : 'border.input' }}
-      _focusVisible={getFieldFocusStyles()}
-      _focus={getFieldFocusStyles()}
+      _focusVisible={getInsetFocusStyles()}
+      _focus={getInsetFocusStyles()}
       _invalid={{ borderColor: 'fg.error' }}
       _disabled={{
         opacity: 1,
